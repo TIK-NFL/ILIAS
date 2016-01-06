@@ -314,11 +314,10 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 		$this->settingsTabs();
 
 		//sorting for threads
-		$rg_thr = new ilRadioGroupInputGUI($this->lng->txt('frm_sorting_threads'), 'thread_sorting');
-		$rg_thr->addOption(new ilRadioOption($this->lng->txt('order_by').' '.$this->lng->txt('date'), '0'));
-		$rg_thr->addOption(new ilRadioOption($this->lng->txt('sorting_manual_sticky'), '1'));
-		$a_form->addItem($rg_thr);
-		$rg_thr->setInfo($this->lng->txt('sticky_threads_always_on_top'));
+		$cb_sort = new ilCheckboxInputGUI($this->lng->txt('sorting_manual_sticky'),	'thread_sorting');
+		$cb_sort->setValue('1');
+		$cb_sort->setInfo($this->lng->txt('sticky_threads_always_on_top'));
+		$a_form->addItem($cb_sort);
 
 		// sorting for postings
 		$rg_pro = new ilRadioGroupInputGUI($this->lng->txt('frm_default_view'), 'default_view');
@@ -343,7 +342,10 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 			$cb_prop->setInfo($this->lng->txt('frm_anonymous_posting_desc'));
 			$a_form->addItem($cb_prop);
 		}
-
+		$cb_prop = new ilCheckboxInputGUI($this->lng->txt('mark_moderator_posts'), 'mark_mod_posts');
+		$cb_prop->setValue('1');
+		$cb_prop->setInfo($this->lng->txt('mark_moderator_posts_desc'));
+		$a_form->addItem($cb_prop);
 		if($ilSetting->get('enable_fora_statistics', false))
 		{
 			$cb_prop = new ilCheckboxInputGUI($this->lng->txt('frm_statistics_enabled'), 'statistics_enabled');
@@ -363,11 +365,6 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 		$frm_subject->addOption(new ilRadioOption($this->lng->txt('empty_subject'), 'empty_subject'));
 
 		$a_form->addItem($frm_subject);
-
-		$cb_prop = new ilCheckboxInputGUI($this->lng->txt('mark_moderator_posts'), 'mark_mod_posts');
-		$cb_prop->setValue('1');
-		$cb_prop->setInfo($this->lng->txt('mark_moderator_posts_desc'));
-		$a_form->addItem($cb_prop);
 
 		$cb_prop = new ilCheckboxInputGUI($this->lng->txt('enable_thread_ratings'), 'thread_rating');
 		$cb_prop->setValue(1);
@@ -669,14 +666,10 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 		$this->create_form_gui->addItem($description_gui);
 		
 		// view sorting threads
-		$sorting_threads_gui = new ilRadioGroupInputGUI($this->lng->txt('frm_sorting_threads'), 'thread_sorting');
-		$sort_dat = new ilRadioOption($this->lng->txt('order_by').' '.$this->lng->txt('date'), 0);
-		$sorting_threads_gui->addOption($sort_dat);
-
-		$sort_man = new ilRadioOption($this->lng->txt('sorting_manual_sticky'), 1);
-		$sorting_threads_gui->addOption($sort_man);
-		$sorting_threads_gui->setInfo($this->lng->txt('sticky_threads_always_on_top'));
-		$this->create_form_gui->addItem($sorting_threads_gui);
+		$sort_man = new ilCheckboxInputGUI($this->lng->txt('sorting_manual_sticky'), 'thread_sorting');
+		$sort_man->setInfo($this->lng->txt('sticky_threads_always_on_top'));
+		$sort_man->setValue(1);
+		$this->create_form_gui->addItem($sort_man);
 
 		// view
 		$view_group_gui = new ilRadioGroupInputGUI($this->lng->txt('frm_default_view'), 'sort');
@@ -1315,8 +1308,8 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 		}
 		
 		// alias
-		if($this->objProperties->isAnonymized() && 
-		   in_array($_GET['action'], array('showreply', 'ready_showreply')))
+		if($this->isWritingWithPseudonymAllowed()				
+		  && in_array($_GET['action'], array('showreply', 'ready_showreply')))
 		{
 			$oAnonymousNameGUI = new ilTextInputGUI($this->lng->txt('forums_your_name'), 'alias');
 			$oAnonymousNameGUI->setMaxLength(64);
@@ -1531,7 +1524,7 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 					}
 				}
 
-				if($this->objProperties->isAnonymized())
+				if($this->isWritingWithPseudonymAllowed())
 				{
 					if(!strlen($oReplyEditForm->getInput('alias')))
 					{
@@ -1541,17 +1534,19 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 					{
 						$user_alias = $oReplyEditForm->getInput('alias');
 					}
+					$display_user_id = 0;
 				}
 				else
 				{
 					$user_alias = $ilUser->getLogin();	
+					$display_user_id = $ilUser->getId();
 				}
 		
 				$newPost = $frm->generatePost(
 					$topicData['top_pk'], 
 					$this->objCurrentTopic->getId(),
 					$ilUser->getId(),
-					($this->objProperties->isAnonymized() ? 0 : $ilUser->getId()), 
+					$display_user_id, 
 					ilRTE::_replaceMediaObjectImageSrc($oReplyEditForm->getInput('message'), 0),
 					$this->objCurrentPost->getId(),
 					(int)$oReplyEditForm->getInput('notify'),
@@ -3239,6 +3234,16 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 		return true;
 	}
 	
+	private function isWritingWithPseudonymAllowed()
+	{
+		if($this->objProperties->isAnonymized()
+		&& (!$this->is_moderator || ($this->is_moderator && !$this->objProperties->getMarkModeratorPosts()))) 
+		{
+			return true;
+		}
+		return false;
+	}
+	
 	private function initTopicCreateForm()
 	{
 		/**
@@ -3258,7 +3263,7 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 		// form action
 		$this->create_topic_form_gui->setFormAction($this->ctrl->getFormAction($this, 'addThread'));
 
-		if($this->objProperties->isAnonymized() == 1)
+		if($this->isWritingWithPseudonymAllowed())
 		{
 			$alias_gui = new ilTextInputGUI($this->lng->txt('forums_your_name'), 'alias');
 			$alias_gui->setInfo($this->lng->txt('forums_use_alias'));
@@ -3429,7 +3434,7 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 				$ilUser->setCaptchaVerified(true);
 			}
 
-			if($this->objProperties->isAnonymized())
+			if($this->isWritingWithPseudonymAllowed())
 			{
 				if(!strlen($this->create_topic_form_gui->getInput('alias')))
 				{
@@ -3439,10 +3444,12 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 				{
 					$user_alias = $this->create_topic_form_gui->getInput('alias');
 				}
+				$display_user_id = 0;
 			}
 			else
 			{
 				$user_alias = $ilUser->getLogin();	
+				$display_user_id = $ilUser->getId();
 			}
 
 			$status = 1;
@@ -3458,7 +3465,7 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling
 			$newPost = $frm->generateThread(
 				$topicData['top_pk'],
 				$ilUser->getId(),
-				($this->objProperties->isAnonymized() ? 0 : $ilUser->getId()),
+				$display_user_id,
 				$this->handleFormInput($this->create_topic_form_gui->getInput('subject'), false),
 				ilRTE::_replaceMediaObjectImageSrc($this->create_topic_form_gui->getInput('message'), 0),
 				$this->create_topic_form_gui->getItemByPostVar('notify') ? (int)$this->create_topic_form_gui->getInput('notify') : 0,

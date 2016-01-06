@@ -86,7 +86,7 @@ class ilForumProperties
 	private $mark_mod_posts = 0;
 
 	/**
-	 * sorting type for threads
+	 * sorting type for threads (manual sorting)
 	 * 0 = default
 	 * 1 = manual
 	 * 
