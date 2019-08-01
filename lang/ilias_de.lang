@@ -2006,7 +2006,7 @@ badge#:#badge_assignment_deletion_confirmation#:#Wollen Sie wirklich die folgend
 badge#:#badge_award_badge#:#Badge verleihen
 badge#:#badge_backpack_connect_failed#:#Das Mozilla Backpack konnte nicht für %s angefragt werden.
 badge#:#badge_backpack_email#:#Mozilla Backpack Account (E-Mail)
-badge#:#badge_backpack_gallery_info#:#Dies sind die veröffentlichten Badge-Kollektionen deines Mozilla Backpacks.
+badge#:#badge_backpack_gallery_info#:#Dies sind die veröffentlichten Badge-Kollektionen ihres Mozilla Backpacks.
 badge#:#badge_backpack_list#:#Mein Backpack
 badge#:#badge_backpack_no_groups#:#Das Mozilla Backpack ist leer bzw. nicht öffentlich.
 badge#:#badge_badge#:#Badge
@@ -8153,7 +8153,7 @@ exc#:#exc_files_returned_text#:#Abgegebener Text
 exc#:#exc_fixed_date#:#Festes Datum
 exc#:#exc_fixed_date_info#:#Alle Teilnehmenden erhalten zunächst das gleiche feste Abgabedatum.
 exc#:#exc_global_feedback_file#:#Musterlösung
-exc#:#exc_global_feedback_file_after_date#:#After set Date
+exc#:#exc_global_feedback_file_after_date#:#Nach festem Datum
 exc#:#exc_global_feedback_file_cron#:#Benachrichtigung bei Verfügbarkeit
 exc#:#exc_global_feedback_file_cron_info#:#Teilnehmer werden per Mail über die Verfügbarkeit der Musterlösung informiert.
 exc#:#exc_global_feedback_file_date#:#Verfügbarkeit
@@ -8173,14 +8173,14 @@ exc#:#exc_late_submission_warning#:#Abgaben nach %s werden als verspätet gekenn
 exc#:#exc_limit_characters#:#Anzahl der Zeichen beschränken
 exc#:#exc_list_submission#:#Alle Lösungsabgaben
 exc#:#exc_list_text_assignment#:#Liste aller Abgaben
-exc#:#exc_mail_context_grade_reminder_info#:#Reminder Tutors/Teachers to Grade an Assignment
-exc#:#exc_mail_context_grade_reminder_title#:#Exercise Grade Reminder
-exc#:#exc_mail_context_peer_reminder_info#:#Reminder Users to provide Feedback in an Assignment
-exc#:#exc_mail_context_peer_reminder_title#:#Exercise Feedback/Peer Reminder
-exc#:#exc_mail_context_reminder_assignment_title#:#Assignment Title
-exc#:#exc_mail_context_reminder_exercise_title#:#Exercise Title
-exc#:#exc_mail_context_submit_reminder_info#:#Reminder Users to Submit an Assignment
-exc#:#exc_mail_context_submit_reminder_title#:#Exercise Submit Reminder
+exc#:#exc_mail_context_grade_reminder_info#:#Die Tutoren werden an die Bewertung der Enireichungen erinnert.
+exc#:#exc_mail_context_grade_reminder_title#:#Erinnerung an Bewertung
+exc#:#exc_mail_context_peer_reminder_info#:#Die Nutzer werden an die Abgabe des Peer-Feedbacks erinnert.
+exc#:#exc_mail_context_peer_reminder_title#:#Erinnerung an Peer-Feedback
+exc#:#exc_mail_context_reminder_assignment_title#:#Titel der Übungseinheit
+exc#:#exc_mail_context_reminder_exercise_title#:#Übungstitel
+exc#:#exc_mail_context_submit_reminder_info#:#Die Nutzer werden an die Abgabe ihrer Einreichungen erinnert.
+exc#:#exc_mail_context_submit_reminder_title#:#Erinnerung an Abgabe
 exc#:#exc_mail_permanent_link#:#Der folgende Link leitet weiter zur Übung:
 exc#:#exc_manage_team#:#Team verwalten
 exc#:#exc_mandatory#:#Verpflichtend
@@ -8541,6 +8541,8 @@ file#:#personal_workspace_disk_quota#:#Strikte Disk-Quota für Persönlichen Arb
 file#:#personal_workspace_quota_exceeded_warning#:#Sie haben den maximal verfügbaren Speicherplatz für Dateien im Persönlichen Arbeitsraum überschritten. Löschen Sie vorhandene Dateien, um Platz für neue Dateien zu schaffen.
 file#:#personal_workspace_quota_status_legend#:#Sie belegen %1$s Ihrer Disk-Quota von %2$s (%3$d%%).
 file#:#replace_file_info#:#Alle Dateiversionen werden gelöscht.
+file#:#upload_info#:#Datei
+file#:#upload_info_desc#:#Sie können die Dateien und die Dateiversionen im Tab "Versionen" verwalten.
 file#:#repository_disk_quota#:#Disk-Quota für Magazin
 file#:#repository_disk_quota_info#:#Wenn aktiviert, werden für alle Benutzer die Disk-Quota im Magazin geprüft und optional E-Mails an Administratoren und Benutzer versendet.
 fm#:#fm_settings_active#:#Dateimanager aktivieren
@@ -9300,7 +9302,7 @@ lhist#:#lhist_first_login#:#Erstes Login
 lhist#:#lhist_learning_history#:#Lernverlauf
 lhist#:#lhist_lhist#:#Lernverlauf
 lhist#:#lhist_manual#:#Manual
-lhist#:#lhist_no_entries#:#Verfolge weiter Deine Ziele! Lerne heute etwas, um Deinen Lernverlauf zu erweitern.
+lhist#:#lhist_no_entries#:#Verfolgen Sie weiter Ihre Ziele! Lernen Sie heute etwas, um Ihren Lernverlauf zu erweitern.
 lhist#:#lhist_period#:#Period
 lhist#:#lhist_selected#:#Selected
 lhist#:#lhist_show_more#:#Mehr anzeigen
@@ -13062,7 +13064,7 @@ skmg#:#skmg_sure_delete_self_evaluation#:#Möchten Sie die folgenden Selbsteinsc
 skmg#:#skmg_target_level#:#Profil-Zielausprägung
 skmg#:#skmg_trigger#:#Auslöser
 skmg#:#skmg_type#:#Typ
-skmg#:#skmg_type_of_formation#:#Type of Formation
+skmg#:#skmg_type_of_formation#:#Erhebungsart
 skmg#:#skmg_update_order#:#Reihenfolge speichern
 skmg#:#skmg_usage#:#Gebrauch
 skmg#:#skmg_usage_obj_objects#:#Objekt(e)
