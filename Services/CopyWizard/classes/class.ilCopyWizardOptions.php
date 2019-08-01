@@ -41,7 +41,10 @@ class ilCopyWizardOptions
 	const DISABLE_SOAP = -4;
 	const ROOT_NODE = -5;
 	const DISABLE_TREE_COPY = -6;
-	
+	// begin patch tik_content_only
+	const CONTENT_ONLY = -7;
+	// end patch tik_content_only
+
 	private $db;
 	
 	private $copy_id;
@@ -193,9 +196,35 @@ class ilCopyWizardOptions
 			));
 
 		return true;
-		
+	}
+	// begin patch tik_content_only
+	/**
+	 * Save content only id(s)
+	 * @param int[] $a_source_id
+	 * @return boolean
+	 */
+	public function saveContentOnlyNodes($a_source_ids)
+	{
+		$GLOBALS['DIC']->database()->insert("copy_wizard_options", array(
+			"copy_id" 	=> array("integer", $this->getCopyId()),
+			"source_id" => array("integer", self::CONTENT_ONLY),
+			"options"	=> array('clob',serialize($a_source_ids))
+			));
+
+		return true;
 	}
 	
+	/**
+	 * Check if only content should be copied.
+	 * @param bool
+	 * @return bool
+	 */
+	public function shouldCopyContentOnly($a_content_only_node)
+	{
+		return in_array($a_content_only_node, $this->getOptions(self::CONTENT_ONLY));
+	}
+	// end patch tik_content_only
+
 	/**
 	 * Is root node
 	 *
@@ -601,7 +630,7 @@ class ilCopyWizardOptions
 	 	{
 	 		$this->options[$row->source_id] = unserialize($row->options);
 	 	}
-
+		
 		return true;
 	}
 	
@@ -634,6 +663,4 @@ class ilCopyWizardOptions
 	 	}
 	}
 }
-
-
 ?>

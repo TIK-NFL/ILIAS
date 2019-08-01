@@ -1916,6 +1916,40 @@ class ilObject
 		 * @var $ilAppEventHandler ilAppEventHandler
 		 */
 		
+		// begin patch tik_content_only
+		include_once './Services/CopyWizard/classes/class.ilCopyWizardOptions.php';
+		$cwo = ilCopyWizardOptions::_getInstance($a_copy_id);
+		
+		ilLoggerFactory::getLogger('obj')->info('Check copy content only for ' . $this->getRefId());
+		if($cwo->shouldCopyContentOnly($this->getRefId()))
+		{
+			ilLoggerFactory::getLogger('obj')->info('Copy content only for ' . $this->getRefId());
+			
+			// new obj is existing
+			$mappings = $cwo->getMappings();
+			$new_ref_id = $mappings[$this->getRefId()];
+			$new_obj = ilObjectFactory::getInstanceByRefId($new_ref_id, false);
+			if(!$new_ref_id instanceof ilObject)
+			{
+				ilLoggerFactory::getLogger('obj')->error('Cannot create instance of target object for copy content only.');
+			}
+			include_once('./Services/AdvancedMetaData/classes/class.ilAdvancedMDValues.php');
+			ilAdvancedMDValues::_cloneValues($this->getId(),$new_obj->getId());
+
+			/** @var \ilObjectCustomIconFactory  $customIconFactory */
+			$customIconFactory = $DIC['object.customicons.factory'];
+			$customIcon        = $customIconFactory->getByObjId($this->getId(), $this->getType());
+			$customIcon->copy($new_obj->getId());
+
+			$ilAppEventHandler->raise('Services/Object', 'cloneObject', array(
+				'object'             => $new_obj,
+				'cloned_from_object' => $this,
+			));
+
+			return $new_obj;
+		}
+		// end patch tik_content_only
+
 		$location = $objDefinition->getLocation($this->getType());
 		$class_name = ('ilObj'.$objDefinition->getClassName($this->getType()));
 		
