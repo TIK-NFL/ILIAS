@@ -14,6 +14,12 @@
 // to the corresponding mode!
 // Language file names refer to ISO 639, see: http://www.oasis-open.org/cover/iso639a.html
 <!-- language file start -->
+crs#:#timings_cron_reminder_freshly_start#:#Der Bearbeitungszeitraum hat begonnen bei:
+crs#:#timings_cron_reminder_started_subject#:#Der Bearbeitungszeitraum hat begonnen
+crs#:#timings_cron_reminder_exceeded_subject#:#Sie haben den Bearbeitungszeitraum überschritten
+crs#:#timings_cron_reminder_exceeded_start#:#Der Bearbeitungszeitraum ist überfällig bei:
+crs#:#timings_reminder_notifications#:#Course Timings Notifications
+crs#:#timings_reminder_notifications_info#:#If enabled, course participants will be notified about exceeded timing materials.
 meta#:#meta_oer_harvester#:#OER Harvester
 meta#:#meta_oer_harvester_desc#:#OER Harvester
 meta#:#meta_oer_copyright_selection#:#Lizenzauswahl
@@ -594,6 +600,7 @@ assessment#:#tst_conflicting_setting#:#This setting does conflict with another s
 assessment#:#enlarge#:#Enlarge
 assessment#:#enter_anonymous_code#:#Enter Anonymous Access Code
 assessment#:#enter_enough_positive_points#:#The maximum available points must be greater than 0! Please enter sufficient positive points for your answers.
+assessment#:#enter_enough_positive_points_checked#:#At least one answer needs to score. Please enter a positive score for the selection of an answer.
 assessment#:#err_no_numeric_value#:#Please enter a numeric value
 assessment#:#error_importing_question#:#There was an error importing the question(s) from the file you have selected!
 assessment#:#error_open_image_file#:#Error opening an image file!
@@ -5246,6 +5253,7 @@ file#:#file_new_version#:#Create New Version
 file#:#replace_file_info#:#All previous file versions will be deleted.
 file#:#upload_info#:#Upload
 file#:#upload_info_desc#:#Manage Uploads and Versions in Tab "Versions"
+file#:#generate_sanitize_report#:#Report about inaccessible files
 common#:#page_count#:#Page Count
 form#:#form_days#:#Days
 form#:#form_file_input#:#File Input
@@ -9304,6 +9312,7 @@ skmg#:#skmg_edit_skll#:#Edit Competence Settings
 skmg#:#skmg_sktr#:#Competence Template Reference
 skmg#:#skmg_items#:#Items
 skmg#:#skmg_create_sctp#:#Create Template Category
+skmg#:#skmg_edit_sctp#:#Edit Template Category
 skmg#:#skmg_sctp#:#Competence Template Category
 skmg#:#skmg_insert_skill_template_from_clip#:#Insert Competence Template from Clipboard
 skmg#:#skmg_insert_template_category_from_clip#:#Insert Template Category from Clipboard
