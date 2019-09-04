@@ -421,7 +421,7 @@ div.ilc_ha_ihead_HAccordIHead:hover {
 }
 div.ilc_ha_ihcap_HAccordIHeadCap {
   font-size: 20px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   left: 10px;
   transform-origin: 0px 0px;
   -webkit-transform-origin: 0px 0px;
@@ -776,7 +776,7 @@ div.ilc_va_icont_VAccordICont {
   background-color: #FFFFFF;
 }
 div.ilc_va_ihead_VAccordIHead {
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-size: 20px;
   padding-right: 3px;
   background-color: #F9F9F9;
@@ -1158,7 +1158,7 @@ div.ilc_va_iheada_VAccordIHeadActive {
   padding-bottom: 3px;
   color: #909090;
   background-color: #F9F9F9;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   padding-right: 3px;
 }
 div.ilc_va_iheada_VAccordIHeadActive:hover {
