@@ -1,6 +1,26 @@
+# Object Component
+
+This component provides features for handling ILIAS objects like repository objects or other objects being derived from `ilObject`.
+
+**Topics**
+
+- [Export Entities](#Export-Entities)
+- [Object Service](#Object-Service)
+- [Common Settings](#Common-Settings)
+
+
+# Export Entities
+
+The object component "Services/Object" provides the following entities, which should be added as tail dependency, if the corresponding features are used. All of them need the general object IDs to be passed.
+
+- "transl": Multilanguage titles/descriptions
+- "service_settings": Additional feature settings. (full documentation will follow)
+- "icon": Custom Icons
+- "tile": Tile Images
+- "common": All of the entities above. Usually save to use this one, even if not all features are used. This entity should be enhanced automatically in the future, if more common properties/settings for objects will be introduced.
+
 # Object Service
 
-This service provides features for handling ILIAS objects like repository objects or other objects being derived from `ilObject`.
 
 The object service can be obtained using the `DIC`:
 
@@ -16,12 +36,8 @@ $obj_service = $this->getObjectService();
 
 ```
 
-**Subservices**
 
-- [Common Settings](##Common-Settings)
-
-
-##Common Settings
+## Common Settings
 
 The object service provides methods to include common settings into your settings forms and save them.
 
