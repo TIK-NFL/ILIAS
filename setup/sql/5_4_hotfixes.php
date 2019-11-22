@@ -1138,3 +1138,51 @@ if ($ilDB->tableColumnExists("lng_log", "identifier")) {
 	$ilDB->modifyTableColumn("lng_log", "identifier", $field);
 }
 ?>
+<#79>
+<?php
+// Add new index
+if (!$ilDB->indexExistsByFields('object_data', ['owner'])) {
+    $ilDB->addIndex('object_data', ['owner'], 'i5');
+}
+?>
+<#80>
+<?php
+$ilCtrlStructureReader->getStructure();
+?>
+<#81>
+<?php
+$ilDB->manipulate("UPDATE il_cert_template SET background_image_path = " .
+    "REPLACE(" .
+        "background_image_path , " .
+        $ilDB->quote('//exercise/certificates//', 'text') . " , " .
+        "CONCAT( CONCAT(" . $ilDB->quote('/', 'text') . ",obj_id)," . $ilDB->quote('/', 'text') . ") ".
+    ") " .
+    "WHERE background_image_path LIKE " . $ilDB->quote('%//background%', 'text')
+);
+$ilDB->manipulate("UPDATE il_cert_template SET background_image_path = " .
+    "REPLACE(" .
+    "background_image_path , " .
+    $ilDB->quote('//course/certificates//', 'text') . " , " .
+    "CONCAT( CONCAT(" . $ilDB->quote('/', 'text') . ",obj_id)," . $ilDB->quote('/', 'text') . ") ".
+    ") " .
+    "WHERE background_image_path LIKE " . $ilDB->quote('%//background%', 'text')
+);
+$ilDB->manipulate("UPDATE il_cert_template SET background_image_path = " .
+    "REPLACE(" .
+    "background_image_path , " .
+    $ilDB->quote('//assessment/certificates//', 'text') . " , " .
+    "CONCAT( CONCAT(" . $ilDB->quote('/', 'text') . ",obj_id)," . $ilDB->quote('/', 'text') . ") ".
+    ") " .
+    "WHERE background_image_path LIKE " . $ilDB->quote('%//background%', 'text')
+);
+$ilDB->manipulate("UPDATE il_cert_template SET background_image_path = " .
+    "REPLACE(" .
+    "background_image_path , " .
+    $ilDB->quote('//certificates/scorm//', 'text') . " , " .
+    "CONCAT( CONCAT(" . $ilDB->quote('/', 'text') . ",obj_id)," . $ilDB->quote('/', 'text') . ") ".
+    ") " .
+    "WHERE background_image_path LIKE " . $ilDB->quote('%//background%', 'text')
+);
+?>
+
+
