@@ -369,9 +369,24 @@ class ilAuthProviderECS extends ilAuthProvider implements ilAuthProviderInterfac
      */
     protected function resetMailOptions($a_usr_id)
     {
+        global $rbacsystem;
+
         include_once './Services/Mail/classes/class.ilMailOptions.php';
+        include_once './Services/Mail/classes/class.ilMailGlobalServices.php';
+
+        $mail_ref_id = ilMailGlobalServices::getMailObjectRefId();
+        if($rbacsystem->checkAccessOfUser($a_usr_id, 'smtp_mail', $mail_ref_id))
+        {
+            $mail_type = ilMailOptions::INCOMING_BOTH;
+        }
+        else
+        {
+            $mail_type = ilMailOptions::INCOMING_LOCAL;
+        }
+
         $options = new ilMailOptions($a_usr_id);
-        $options->setIncomingType(ilMailOptions::INCOMING_LOCAL);
+        //$options->setIncomingType(ilMailOptions::INCOMING_LOCAL);
+        $options->setIncomingType($mail_type);
         $options->updateOptions();
     }
 }
