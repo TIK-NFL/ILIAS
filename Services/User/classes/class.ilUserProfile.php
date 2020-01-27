@@ -520,7 +520,11 @@ class ilUserProfile
                             $val->setValue($a_user->getLogin());
                         }
                     }
-                    $a_form->addItem($val);
+                    if(!self::$mode == self::MODE_REGISTRATION)
+                    {
+                        $a_form->addItem($val);
+                    }
+                    //$a_form->addItem($val);
                     break;
                 
                 case "text":
