@@ -14,6 +14,7 @@
 // to the corresponding mode!
 // Language file names refer to ISO 639, see: http://www.oasis-open.org/cover/iso639a.html
 <!-- language file start -->
+ps#:#participants_list_courses#:#Allow Activation of Participant Lists in the Member Gallery of Courses
 crs#:#timings_cron_reminder_freshly_start#:#Der Bearbeitungszeitraum hat begonnen bei:
 crs#:#timings_cron_reminder_started_subject#:#Der Bearbeitungszeitraum hat begonnen
 crs#:#timings_cron_reminder_exceeded_subject#:#Sie haben den Bearbeitungszeitraum überschritten
@@ -15065,3 +15066,5 @@ crs#:#crs_objective_result_summary_qualifying#:#Achievement Test: %1$s (%2$s req
 crs#:#crs_objective_result_details#:#« Show Details
 exc#:#exc_text_saved#:#Text has been saved.
 exc#:#exc_team_by_random_add_info#:#Please note that you have to assign all participants first before using this mode.
+exc#:#exc_members_already_assigned_team#:#This user is already assigned to a team.
+style#:#sty_add_media_query_info#:#E.g. "only screen and (max-width: 600px)" for browser window smaller than 600px or "print" for printing devices.
