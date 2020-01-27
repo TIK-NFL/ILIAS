@@ -195,7 +195,6 @@ class ilCopyWizardOptions
         return true;
     }
 
-    }
     // begin patch tik_content_only
     /**
      * Save content only id(s)
