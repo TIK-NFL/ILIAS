@@ -6570,7 +6570,7 @@ pdesk#:#pdesk_intro#:#Welcome to your Personal Desktop!
 pdesk#:#pdesk_intro2#:#This is your personal space for organising your working and learning. You can put resources from other areas on your personal desktop. Doing so takes two steps:
 pdesk#:#pdesk_intro3#:#Click on '%s' and browse the existing working and learning resources.
 pdesk#:#pdesk_intro4#:#If you have found something of interest, put it on your desktop by clicking <i>Add to Desktop</i> in the object's <i>Actions</i> menu.
-ps#:#participants_list_courses#:#Allow Activation of Participant Lists in the Member Gallery of Courses
+ps#:#ps_participants_list_courses#:#Allow Activation of Participant Lists in the Member Gallery of Courses
 ps#:#ps_agreement_accepted#:#User Agreement Accepted
 ps#:#ps_auto_https_description#:#If enabled, ILIAS tries to detect the HTTPs Status by analysing the header value specified below.
 ps#:#ps_auto_https_header_name#:#Header Name
@@ -10965,8 +10965,8 @@ dateplaner#:#cal_ch_delete_booking#:#Delete Booking
 dateplaner#:#cal_ch_reject_booking#:#Cancel Booking
 dateplaner#:#cal_ch_bookings_tbl#:#Booked Appointments
 dateplaner#:#cal_ch_app_bookings#:#Bookings
-dateplaner#:#cal_ch_canceled_bookings#:#The selected bookings have been deleted.
-dateplaner#:#cal_ch_deleted_bookings#:#The selected bookings have been canceled.
+dateplaner#:#cal_ch_deleted_bookings#:#The selected bookings have been deleted.
+dateplaner#:#cal_ch_canceled_bookings#:#The selected bookings have been canceled.
 dateplaner#:#cal_ch_delete_booking_sure#:#Do you really want to delete the following bookings?
 dateplaner#:#cal_ch_cancel_booking_sure#:#Do you really want to cancel the following bookings?
 dateplaner#:#cal_ch_assign_participants#:#Assign Users
