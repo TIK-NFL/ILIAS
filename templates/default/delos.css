@@ -13049,6 +13049,10 @@ li.ilWikiBlockItem {
   background-color: transparent;
   color: #808080;
 }
+#ilTopNav .navbar-nav > li > a:focus {
+  outline: 1px dotted #434343;
+  text-decoration: underline;
+}
 #ilTopNav .navbar-nav > .active > a,
 #ilTopNav .navbar-nav > .open > a,
 #ilTopNav .navbar-nav > .active > a:hover,
@@ -13058,6 +13062,7 @@ li.ilWikiBlockItem {
 #ilTopNav .navbar-nav > .active > a:focus,
 #ilTopNav .navbar-nav > .open > a:focus {
   outline: 0 none;
+  text-decoration: none;
   border-top: 4px solid #4c6586;
   background-color: #fafafa;
   color: #808080;
