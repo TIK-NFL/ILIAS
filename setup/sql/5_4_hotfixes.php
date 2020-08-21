@@ -442,11 +442,11 @@ while ($row = $ilDB->fetchAssoc($res)) {
 			WHERE thr_fk = %s AND fpt_pk = %s
 		",
         ['integer', 'integer', 'integer'],
-        [$nextId, $row['thr_fk'], $row['fpt_pk']]
+        [$postId, $row['thr_fk'], $row['fpt_pk']]
     );
     $GLOBALS['ilLog']->info(sprintf(
         "Set parent to %s for posting with id %s in thread with id %s in database hotfix step %s",
-        $nextId,
+        $postId,
         $row['fpt_pk'],
         $row['thr_fk'],
         $step
@@ -1327,4 +1327,41 @@ if (!$idx) {
     $ilDB->addIndex('frm_user_read', ['usr_id', 'post_id'], 'i1');
     $setting->set('ilfrmreadidx1', 1);
 }
+?>
+<#90>
+<?php
+
+$query = 'update object_data set offline = 1 where type = '.
+    $ilDB->quote('crs',\ilDBConstants::T_TEXT) . '  and offline IS NULL';
+$ilDB->manipulate($query);
+
+?>
+
+<#91>
+<?php
+
+$ilDB->modifyTableColumn(
+        'ldap_role_assignments',
+        'rule_id',
+    [
+            'type' => \ilDBConstants::T_INTEGER,
+            'length' => 4,
+            'notnull' => false
+    ]
+);
+?>
+<#92>
+<?php
+$ilCtrlStructureReader->getStructure();
+?>
+<#93>
+<?php
+    // remove magpie cache dir
+    $mcdir = CLIENT_WEB_DIR."/magpie_cache";
+    ilUtil::delDir($mcdir);
+?>
+<#94>
+<?php
+$setting = new ilSetting();
+$setting->set('ilfrmtreemigr', 1);
 ?>

@@ -364,6 +364,7 @@ class ilSoapUserAdministration extends ilSoapAdministration
 
         $rbacreview = $DIC['rbacreview'];
         $rbacsystem = $DIC['rbacsystem'];
+        $access = $DIC->access();
         $tree = $DIC['tree'];
         $lng = $DIC['lng'];
         $ilUser = $DIC['ilUser'];
@@ -399,7 +400,11 @@ class ilSoapUserAdministration extends ilSoapAdministration
             default:
                 $conflict_rule = IL_FAIL_ON_CONFLICT;
         }
-
+        if ($folder_id == 0) {
+            if (!$access->checkAccess('create_usr', '', USER_FOLDER_ID)) {
+                return $this->__raiseError('Missing permission for creating/modifying users accounts' . USER_FOLDER_ID . ' ' . $ilUser->getId(), 'Server');
+            }
+        }
 
         // folder id 0, means to check permission on user basis!
         // must have create user right in time_limit_owner property (which is ref_id of container)
@@ -428,8 +433,6 @@ class ilSoapUserAdministration extends ilSoapAdministration
         }
 
         // first verify
-
-
         $importParser = new ilUserImportParser("", IL_VERIFY, $conflict_rule);
         $importParser->setUserMappingMode(IL_USER_MAPPING_ID);
         $importParser->setXMLContent($usr_xml);
@@ -723,30 +726,49 @@ class ilSoapUserAdministration extends ilSoapAdministration
 
         $ilDB = $DIC['ilDB'];
         $rbacreview = $DIC['rbacreview'];
-        $rbacsystem = $DIC['rbacsystem'];
-        $tree = $DIC['tree'];
-        $ilUser = $DIC['ilUser'];
+        $tree = $DIC->repositoryTree();
+        $ilUser = $DIC->user();
+        $access = $DIC->access();
 
 
         $global_roles = $rbacreview->getGlobalRoles();
 
 
         if (in_array($role_id, $global_roles)) {
+            // global roles
             if ($role_id == SYSTEM_ROLE_ID && !in_array(SYSTEM_ROLE_ID, $rbacreview->assignedRoles($ilUser->getId()))
             ) {
                 return $this->__raiseError("Role access not permitted. ($role_id)", "Server");
             }
         } else {
-            $rolf = $rbacreview->getFoldersAssignedToRole($role_id, true);
-            if ($rbacreview->isDeleted($rolf[0])
-                    || !$rbacsystem->checkAccess('write', $rolf[0])) {
-                return $this->__raiseError("Role access not permitted. ($role_id)", "Server");
+            // local roles
+            $rolfs = $rbacreview->getFoldersAssignedToRole($role_id, true);
+            $access_granted = true;
+            foreach ($rolfs as $rolf) {
+                if ($tree->isDeleted($rolf)) {
+                    $access_granted = false;
+                }
+                $type = \ilObject::_lookupType($rolf, true);
+                switch ($type) {
+                    case 'crs':
+                    case 'grp':
+                        if (!$access->checkAccess('manage_members', '', $rolf)) {
+                            $access_granted = false;
+                        }
+                        break;
+                    default:
+                        if (!$access->checkAccess('edit_permission', '', $rolf)) {
+                            $access_granted = false;
+                        }
+                        break;
+                }
             }
-            include_once('Services/PrivacySecurity/classes/class.ilPrivacySettings.php');
-            $privacy = ilPrivacySettings::_getInstance();
-            if (!$rbacsystem->checkAccess('read', SYSTEM_USER_ID) and
-               !$rbacsystem->checkAccess('export_member_data', $privacy->getPrivacySettingsRefId())) {
-                return $this->__raiseError("Export of local role members not permitted. ($role_id)", "Server");
+            // read user data must be granted
+            if (!$access->checkAccess('read_users', '', USER_FOLDER_ID)) {
+                $access_granted = false;
+            }
+            if (!$access_granted || !count($rolfs)) {
+                return $this->__raiseError('Role access not permitted. ' . '(' . $role_id .')', 'Server');
             }
         }
 

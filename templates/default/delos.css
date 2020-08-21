@@ -13049,6 +13049,10 @@ li.ilWikiBlockItem {
   background-color: transparent;
   color: #808080;
 }
+#ilTopNav .navbar-nav > li > a:focus {
+  outline: 1px dotted #434343;
+  text-decoration: underline;
+}
 #ilTopNav .navbar-nav > .active > a,
 #ilTopNav .navbar-nav > .open > a,
 #ilTopNav .navbar-nav > .active > a:hover,
@@ -13058,6 +13062,7 @@ li.ilWikiBlockItem {
 #ilTopNav .navbar-nav > .active > a:focus,
 #ilTopNav .navbar-nav > .open > a:focus {
   outline: 0 none;
+  text-decoration: none;
   border-top: 4px solid #4c6586;
   background-color: #fafafa;
   color: #808080;
@@ -13503,6 +13508,9 @@ div.ilTableNav {
   font-size: 80%;
   text-align: right;
 }
+div.ilTableNav table {
+  width: 100%;
+}
 tr.tblfooter {
   color: black;
   font-weight: normal;
@@ -13741,6 +13749,12 @@ textarea#note {
 }
 div.ilNoteInput {
   padding-bottom: 10px;
+}
+.ilNotesCheckboxes .ilComment {
+  padding-left: 80px;
+}
+.ilNotesCheckboxes .ilNoteList input[type="checkbox"] {
+  position: absolute;
 }
 /* Modules/Blog */
 div.ilBlogList {
@@ -15473,6 +15487,12 @@ span.ilNewsRssIcon:hover {
   margin-right: 0;
 }
 @media only screen and (max-width: 767px) {
+  .ilTimeline > li:nth-child(even) > .ilTimelineBadge {
+    right: auto;
+    left: 90%;
+  }
+}
+@media only screen and (max-width: 767px) {
   .ilTimeline > li {
     margin-right: 0;
   }
@@ -15527,6 +15547,8 @@ span.ilNewsRssIcon:hover {
 @media only screen and (max-width: 767px) {
   .ilTimeline > li > .ilTimelineBadge {
     left: 90%;
+    right: auto;
+    margin-left: -25px;
   }
 }
 .ilTimeline > li > .ilTimelineBadge > .ilTimelineDay {
@@ -15580,9 +15602,9 @@ span.ilNewsRssIcon:hover {
   margin-top: 8px;
 }
 .ilNewsTimelineTruncatedText {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  /*overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;*/
 }
 .ilNewsTimelineObjHead img {
   width: 22px;
