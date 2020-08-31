@@ -2470,7 +2470,7 @@ buddysystem#:#buddy_view_table#:#Liste
 cat#:#cat_copy#:#Kategorie kopieren
 cat#:#cat_import#:#Kategorie importieren
 cat#:#cat_more_translations#:#Weitere Übersetzungen
-cert#:#cert_currently_no_certs#:#Aktuelle besitzen Sie noch keine Zertifikate.
+cert#:#cert_currently_no_certs#:#Aktuell besitzen Sie noch keine Zertifikate.
 cert#:#cert_description_label#:#Beschreibung
 cert#:#cert_download_label#:#Herunterladen
 cert#:#cert_error_no_access#:#Sie haben keine Berichtigung auf dieses Zertifikat zuzugreifen.
@@ -8592,6 +8592,7 @@ form#:#captcha_code#:#Sicherheitsüberprüfung
 form#:#email_not_match#:#Ihre Eingaben für die E-Mail-Adresse stimmen nicht überein! Bitte geben Sie die E-Mail-Adresse erneut ein.
 form#:#form_alphabet_all#:#Alle
 form#:#form_chars_remaining#:#Verbleibende Zeichen:
+form#:#form_date_aria_desc#:#Es ist folgendes Eingabeformat gefordert:
 form#:#form_date_duration_end#:#Ende
 form#:#form_date_duration_start#:#Start
 form#:#form_days#:#Tage
@@ -15119,3 +15120,5 @@ awrn#:#user_awrn_default#:#Standard
 awrn#:#user_awrn_hide#:#Nicht anzeigen
 awrn#:#user_awrn_show#:#Anzeigen
 awrn#:#awrn_user_show#:#Mein Status in "Wer ist online?" anzeigen
+feed#:#feed_no_local_url#:#Bitte geben sie eine gültige externe Feed URL an.
+common#:#logo#:#ILIAS Logo
