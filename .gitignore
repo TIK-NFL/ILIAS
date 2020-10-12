@@ -43,3 +43,6 @@ virtual-data
 override.php
 captainhook.config.json
 captainhook.local.json
+
+# Ausschluss aus der Google-Suche
+/google*.html
