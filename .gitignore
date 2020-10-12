@@ -38,3 +38,6 @@ virtual-data
 /dicto/results/*
 !/dicto/results/README.md
 override.php
+
+# Ausschluss aus der Google-Suche
+/google*.html
