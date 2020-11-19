@@ -175,13 +175,12 @@ var Conversation = function Conversation(id, participants)
 			}
 
 			let id = val.id;
+			if (typeof id === "undefined") {
+				return false;
+			}
 
 			if (typeof val.getId === 'function') {
 				id = val.getId();
-			}
-
-			if (typeof id === "undefined") {
-				return false;
 			}
 
 			if (id.toString() === participant.getId().toString()) {
