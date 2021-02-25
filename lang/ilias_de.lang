@@ -1891,6 +1891,7 @@ assessment#:#without_solutions_participants#:#Teilnehmer ohne Antworten
 assessment#:#worked_through#:#Bearbeitet
 assessment#:#working_time#:#Bearbeitungsdauer
 assessment#:#you_received_a_of_b_points#:#Sie haben %s von %s möglichen Punkten erreicht.
+assessment#:#autosavecontent#:#Inhalt Autosave
 auth#:#auth_account_code#:#Code
 auth#:#auth_account_code_info#:#Um Ihr Benutzerkonto zu reaktivieren, können Sie einen ILIAS-Benutzerkonten-Code benutzen.
 auth#:#auth_account_code_title#:#Benutzerkonten-Code
@@ -8642,6 +8643,7 @@ form#:#form_please_select#:#Bitte auswählen
 form#:#form_retype_email#:#E-Mail nochmals eingeben
 form#:#form_retype_password#:#Passwort nochmals eingeben
 form#:#form_seconds#:#Sekunden
+form#:#form_msg_max_upload#:#Maximale Anzahl von gleichzeitig hochladbaren Dateien:
 forum#:#activate_new_posts#:#Neue Beiträge freischalten
 forum#:#activate_only_current#:#Beitrag freischalten
 forum#:#activate_post#:#Freischalten
