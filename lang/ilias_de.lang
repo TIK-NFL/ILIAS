@@ -662,6 +662,7 @@ assessment#:#essay_scoring_mode_without_keywords_desc#:#Es werden keine Punkte a
 assessment#:#eval_all_users#:#Auswertung für alle Benutzer
 assessment#:#eval_legend_link#:#Für die Bedeutung der Spaltenüberschriften betrachten Sie bitte die Legende
 assessment#:#exam_id#:#ILIAS-Prüfungsnummer:
+assessment#:#exam_id_label#:#ILIAS-Prüfungsnummer
 assessment#:#examid_in_test_pass#:#ILIAS-Prüfungsnummer anzeigen
 assessment#:#examid_in_test_pass_desc#:#Im Test wird eine ILIAS-Prüfungsnummer angezeigt. Für jeden Testdurchlauf wird eine eigene Nummer erzeugt.
 assessment#:#examid_in_test_res#:#ILIAS-Prüfungsnummer anzeigen
@@ -13108,7 +13109,7 @@ skmg#:#skmg_status_draft_info#:#Eintrag wird Benutzern nicht angezeigt.
 skmg#:#skmg_status_outdated#:#Veraltet
 skmg#:#skmg_status_outdated_info#:#Der Eintrag kann von Benutzer nicht mehr als persönliche Kompetenz neu ausgewählt werden. Wurde die Kompetenz bereits früher ausgewählt, so bleibt diese Auswahl weiterhin bestehen.
 skmg#:#skmg_status_publish#:#Veröffentlicht
-skmg#:#skmg_status_publish_info#:#Die Kompetenz kann von Benutzern genutzt werden, falls alle übergeordneten Einträge ebenfalls freigegeben sind. Sobald die Kompetenz genutzt wird, kann sie nicht mehr gelöscht oder der Status "In Vorbereitung" gesetzt werden.
+skmg#:#skmg_status_publish_info#:#Die Kompetenz kann von Benutzern genutzt werden, falls alle übergeordneten Einträge ebenfalls freigegeben sind.
 skmg#:#skmg_suggested#:#Vorgeschlagenes Magazinobjekt
 skmg#:#skmg_suggested_resources#:#Zugewiesene Magazinobjekte
 skmg#:#skmg_sure_delete_self_evaluation#:#Möchten Sie die folgenden Selbsteinschätzungen wirklich löschen?
