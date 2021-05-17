@@ -894,7 +894,7 @@ class ilTemplate extends HTML_Template_ITX
             $php = ", PHP " . phpversion();
         }
         // $ftpl->setVariable("ILIAS_VERSION", $ilSetting->get("ilias_version") . $php);
-        $ftpl->setVariable("ILIAS_VERSION", "");
+        $ftpl->setVariable("ILIAS_VERSION", "5.4");
         
         $link_items = array();
         
