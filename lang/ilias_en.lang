@@ -2710,7 +2710,7 @@ common#:#gdf_add#:#Add Definition
 common#:#gdf_new#:#New Definition
 common#:#gender_f#:#Ms.
 common#:#gender_m#:#Mr.
-common#:#gender_n#:#No salutation desired
+common#:#gender_n#:#Not stated
 common#:#gender#:#Salutation
 common#:#general_settings#:#General Settings
 common#:#generate#:#Generate
@@ -4707,7 +4707,7 @@ content#:#cont_text_code#:#Code:
 content#:#cont_text_com#:#Comment:
 content#:#cont_text_emp#:#Emphatic Text:
 content#:#cont_text_fn#:#Footnote:
-content#:#cont_text_iln_link#:#Interal Link
+content#:#cont_text_iln_link#:#Internal Link
 content#:#cont_text_imp#:#Important:
 content#:#cont_text_keyword#:#Keyword
 content#:#cont_text_placeh#:#Click and edit to insert text
@@ -10976,7 +10976,7 @@ dcl#:#dcl_view_own_records_perm#:#View only own entries
 dcl#:#dcl_msg_no_perm_view#:#No permission given to view this Entry
 dcl#:#dcl_msg_no_perm_edit#:#No permission given to edit this Entry
 dcl#:#dcl_delete_fields#:#Delete fields
-dcl#:#dcl_link_detail_page#:#Link entries to detail page
+dcl#:#dcl_link_detail_page#:#Link to detailed view
 dcl#:#dcl_manage#:#Manage
 dcl#:#dcl_display_record_alt#:#Display this entry
 dcl#:#dcl_delete_records#:#Delete Entries
