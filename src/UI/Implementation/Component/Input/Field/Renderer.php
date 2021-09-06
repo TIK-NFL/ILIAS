@@ -58,6 +58,9 @@ class Renderer extends AbstractComponentRenderer
             case ($component instanceof F\Section):
                 return $this->renderSection($component, $default_renderer);
 
+            case ($component instanceof F\Duration):
+                return $this->renderDurationField($component, $default_renderer);
+
             case ($component instanceof F\Group):
                 return $default_renderer->render($component->getInputs());
 
@@ -90,9 +93,6 @@ class Renderer extends AbstractComponentRenderer
 
             case ($component instanceof F\DateTime):
                 return $this->renderDateTimeField($component, $default_renderer);
-
-            case ($component instanceof F\Duration):
-                return $this->renderDurationField($component, $default_renderer);
 
             case ($component instanceof F\File):
                 return $this->renderFileField($component, $default_renderer);
@@ -365,7 +365,7 @@ class Renderer extends AbstractComponentRenderer
         //disable first option if required.
         $tpl->setCurrentBlock("options");
         if (!$value) {
-            $tpl->setVariable("SELECTED", "selected");
+            $tpl->setVariable("SELECTED", 'selected="selected"');
         }
         if ($component->isRequired()) {
             $tpl->setVariable("DISABLED_OPTION", "disabled");
@@ -378,7 +378,7 @@ class Renderer extends AbstractComponentRenderer
         foreach ($component->getOptions() as $option_key => $option_value) {
             $tpl->setCurrentBlock("options");
             if ($value == $option_key) {
-                $tpl->setVariable("SELECTED", "selected");
+                $tpl->setVariable("SELECTED", 'selected="selected"');
             }
             $tpl->setVariable("VALUE", $option_key);
             $tpl->setVariable("VALUE_STR", $option_value);

@@ -7584,6 +7584,14 @@ a fieldset[disabled] .active {
   background: #6ea03c;
   border: 1px solid #bfbfbf;
 }
+.il-toggle-button.on .il-toggle-label-on {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  font-weight: 600;
+  font-size: 0.9em;
+  color: white;
+}
 .il-toggle-button.on .il-toggle-switch {
   left: 53%;
   background: #f9f9f9;
@@ -7592,6 +7600,13 @@ a fieldset[disabled] .active {
 .il-toggle-button.off {
   background: #f9f9f9;
   border: 1px solid #bfbfbf;
+}
+.il-toggle-button.off .il-toggle-label-off {
+  position: absolute;
+  top: 0;
+  left: 23px;
+  font-weight: 600;
+  font-size: 0.9em;
 }
 .il-toggle-button.off .il-toggle-switch {
   background: #f9f9f9;
@@ -8215,6 +8230,12 @@ ul.dropdown-menu > li > .btn:focus {
   height: 25px;
   table-layout: fixed;
 }
+.il-filter .input-group select {
+  width: 100%;
+  height: 25px;
+  border: 1px solid #A8A8A8;
+  background-color: white;
+}
 .il-filter .leftaddon {
   overflow: hidden;
   white-space: nowrap;
@@ -8228,35 +8249,35 @@ ul.dropdown-menu > li > .btn:focus {
   width: 10%;
 }
 .il-filter-bar {
+  display: flex;
   padding: 3px 12px;
 }
-.il-filter-bar .il-toggle-button {
-  height: 13px;
-  padding-left: 15px;
-  padding-right: 15px;
+.il-filter-bar .il-filter-bar-opener {
+  flex: 1;
 }
-.il-filter-bar .il-toggle-button .il-toggle-switch {
-  width: 19px;
-  height: 19px;
-}
-.il-filter-bar .btn-bulky {
+.il-filter-bar .il-filter-bar-opener .btn-bulky {
   display: inline-flex;
+  width: 100%;
+  background-color: initial;
+  font-size: 1.2em;
+}
+.il-filter-bar .il-filter-bar-opener .btn-bulky .glyph {
+  padding-right: 0.3em;
+}
+.il-filter-bar .il-filter-bar-toggle {
+  float: right;
+  padding-left: 10px;
+}
+.il-filter-controls {
+  position: absolute;
+  bottom: 0px;
+  padding-left: 15px;
+  padding-bottom: 6px;
+}
+.il-filter-controls .btn-bulky {
   width: auto;
   background-color: initial;
   font-size: 14px;
-  border-width: 0;
-}
-.il-filter-bar .btn-bulky.disabled .bulky-label {
-  color: #b0b0b0;
-}
-.il-filter-bar .glyph {
-  padding-right: 0.3em;
-}
-.il-filter.disabled .il-filter-bar-controls .btn-bulky {
-  display: none;
-}
-.il-filter-bar-controls {
-  float: right;
 }
 .il-filter-inputs-active {
   background-color: #f9f9f9;
@@ -8270,22 +8291,23 @@ ul.dropdown-menu > li > .btn:focus {
   margin: 3px 8px 3px 0;
   padding: 0 8px;
   float: left;
-  background-color: #f9f9f9;
+  background-color: white;
   font-size: 0.8em;
 }
 .il-filter-input-section {
   border-top: 1px solid #dddddd;
+  position: relative;
+  padding-bottom: 40px;
+  margin: 0;
+}
+.il-filter-input-section .il-input-multiselect {
+  margin: 0.8em;
 }
 .il-filter-field {
   cursor: text;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-@media (max-width: 768px) {
-  .il-filter-bar-controls .bulky-label {
-    display: none;
-  }
 }
 @media (max-width: 768px) {
   .il-filter .webui-popover {
@@ -8307,11 +8329,7 @@ ul.dropdown-menu > li > .btn:focus {
     background-color: #f9f9f9;
   }
 }
-.il-filter.disabled .input-group-addon {
-  background-color: #f9f9f9;
-  color: #b0b0b0;
-}
-.il-filter.disabled .input-group span.form-control {
+.il-filter.disabled .il-filter-inputs-active span {
   color: #b0b0b0;
 }
 .il-filter-add-list ul {
@@ -10613,6 +10631,11 @@ footer {
 .il-avatar.il-avatar-letter.il-avatar-letter-color-25 {
   background-color: #963a30;
   border-color: #e5b3ad;
+  color: white;
+}
+.il-avatar.il-avatar-letter.il-avatar-letter-color-26 {
+  background-color: #e74c3c;
+  border-color: #fdf3f2;
   color: white;
 }
 @media only screen and (max-width: 768px) {
@@ -18633,7 +18656,7 @@ span.ilProfileBadge .modal .img-responsive {
 .ilPreviewTextLoading {
   width: 14px;
   height: 14px;
-  background: transparent url(../../../../templates/default/images/loader.svg) no-repeat 0 0;
+  background: transparent url("images/loader.svg") no-repeat 0 0;
   display: none;
 }
 .ilPreviewActions a.submit,
@@ -18683,7 +18706,7 @@ span.ilProfileBadge .modal .img-responsive {
   margin-top: 0;
   border: 0;
   border-radius: 0;
-  background: transparent url(images/preview_close.png) no-repeat 0 0;
+  background: transparent url("images/preview_close.png") no-repeat 0 0;
   width: 16px;
   height: 16px;
 }
@@ -18708,7 +18731,7 @@ span.ilProfileBadge .modal .img-responsive {
 }
 .ilPreviewTooltipPrev {
   position: absolute;
-  background: transparent url(images/preview_arrows.png) no-repeat 0 0;
+  background: transparent url("images/preview_arrows.png") no-repeat 0 0;
   width: 30px;
   height: 40px;
   left: 0;
@@ -18726,7 +18749,7 @@ span.ilProfileBadge .modal .img-responsive {
 }
 .ilPreviewTooltipNext {
   position: absolute;
-  background: transparent url(images/preview_arrows.png) no-repeat 0 -40px;
+  background: transparent url("images/preview_arrows.png") no-repeat 0 -40px;
   width: 30px;
   height: 40px;
   right: 0;

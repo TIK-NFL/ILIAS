@@ -181,7 +181,7 @@ class ilCertificateAppEventListener implements ilAppEventListener
      */
     private function handleLPUpdate()
     {
-        $status = $this->parameters['status'] ?? \ilLpStatus::LP_STATUS_NOT_ATTEMPTED_NUM;
+        $status = $this->parameters['status'] ?? \ilLPStatus::LP_STATUS_NOT_ATTEMPTED_NUM;
 
         $settings = new ilSetting('certificate');
 
@@ -230,7 +230,7 @@ class ilCertificateAppEventListener implements ilAppEventListener
                 }
             } else {
                 $this->logger->info(sprintf(
-                    "Object type is not of interest, skipping certificate evaluation for this object"
+                    "Object type ($type) is not of interest, skipping certificate evaluation for this object"
                 ));
             }
 
@@ -377,7 +377,7 @@ class ilCertificateAppEventListener implements ilAppEventListener
                     \ilCronConstants::IN_PROGRESS,
                     $template->getId(),
                     time()
-                                                      );
+                );
                 $mode = $settings->get('persistent_certificate_mode', '');
                 if ($mode === 'persistent_certificate_mode_instant') {
                     $cronjob = new ilCertificateCron();
