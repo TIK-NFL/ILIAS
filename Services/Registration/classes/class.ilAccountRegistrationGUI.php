@@ -356,21 +356,24 @@ class ilAccountRegistrationGUI
             $form_valid = false;
         }
 
+        // BEGIN Patch hide username in registration forms
         // validate username
-        $login_obj = $this->form->getItemByPostVar('username');
-        $login = $this->form->getInput("username");
+        // $login_obj = $this->form->getItemByPostVar('username');
+        // $login = $this->form->getInput("username");
+        $login = "registration_".time();
         if (!ilUtil::isLogin($login)) {
-            $login_obj->setAlert($this->lng->txt("login_invalid"));
+            // $login_obj->setAlert($this->lng->txt("login_invalid"));
             $form_valid = false;
         } elseif (ilObjUser::_loginExists($login)) {
-            $login_obj->setAlert($this->lng->txt("login_exists"));
+            // $login_obj->setAlert($this->lng->txt("login_exists"));
             $form_valid = false;
         } elseif ((int) $ilSetting->get('allow_change_loginname') &&
             (int) $ilSetting->get('reuse_of_loginnames') == 0 &&
             ilObjUser::_doesLoginnameExistInHistory($login)) {
-            $login_obj->setAlert($this->lng->txt('login_exists'));
+            // $login_obj->setAlert($this->lng->txt('login_exists'));
             $form_valid = false;
         }
+        //END Patch
 
         if (!$form_valid) {
             ilUtil::sendFailure($this->lng->txt('form_input_not_valid'));
