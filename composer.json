@@ -85,7 +85,16 @@
 			"./Services/Migration",
 			"./*/*/lib", "./*/*/test",
 			"./Services/CAS/phpcas",
-			"./Customizing/**/vendor"
+			"./Customizing/**/vendor",
+			"./Customizing/global/plugins/Modules/TestQuestionPool/Questions",
+			"./Customizing/global/plugins/Services/COPage/PageComponent",
+			"./Customizing/global/plugins/Services/Cron/CronHook",
+			"./Customizing/global/plugins/Services/EventHandling/EventHook",
+			"./Customizing/global/plugins/Services/Repository/RepositoryObject/TestOverview",
+			"./Customizing/global/plugins/Services/Repository/RepositoryObject/MultiVc",
+			"./Customizing/global/plugins/Services/Repository/RepositoryObject/InteractiveVideo",
+			"./Customizing/global/plugins/Services/Repository/RepositoryObject/EtherpadLite",
+			"./Customizing/global/plugins/Services/Repository/RepositoryObject/AdobeConnect"
 		]
 	},
 	"extra": {
