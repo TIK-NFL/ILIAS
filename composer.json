@@ -87,7 +87,7 @@
 			"./Services/CAS/phpcas",
 			"./Customizing/**/vendor",
 			"./Customizing/global/plugins/Services/EventHandling/EventHook",
-			"./Customizing/global/plugins/Services/Repository/RepositoryObject/EtherpadLite",
+			"./Customizing/global/plugins/Services/Repository/RepositoryObject/EtherpadLite"
 		]
 	},
 	"extra": {
