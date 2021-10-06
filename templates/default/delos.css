@@ -8900,7 +8900,7 @@ grid-based layout
   }
 }
 .il-layout-page {
-  background: #f0f0f0;
+  background: #fafafa;
   display: -ms-grid;
   display: grid;
   grid-gap: 0px;
