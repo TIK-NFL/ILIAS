@@ -29,6 +29,12 @@ if (!isset($GLOBALS['ilGlobalStartTime']) || !$GLOBALS['ilGlobalStartTime']) {
     $GLOBALS['ilGlobalStartTime'] = microtime();
 }
 
+global $DIC;
+if (null === $DIC) {
+    // Don't remove this, intellisense autocompletion does not work in PhpStorm without a top level assignment
+    $DIC = new Container();
+}
+
 include_once "Services/Context/classes/class.ilContext.php";
 
 /** @defgroup ServicesInit Services/Init
@@ -1103,7 +1109,7 @@ class ilInitialisation
             return;
         }
 
-        $GLOBALS["DIC"] = new \ILIAS\DI\Container();
+        $GLOBALS["DIC"] = new Container();
         $GLOBALS["DIC"]["ilLoggerFactory"] = function ($c) {
             return ilLoggerFactory::getInstance();
         };
