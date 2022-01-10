@@ -170,6 +170,7 @@ survey#:#svy_notification_tutor_results_alert#:#Diese Funktion erfordert ein End
 survey#:#survey_results_tutor_subject#:#Ergebnisse der Umfrage "%s"
 survey#:#survey_results_tutor_body#:#Im Anhang finden Sie die Ergebnisse der folgenden Umfrage
 content#:#cont_lpe_openid_connect_login#:#OpenID-Connect-Login
+content#:#cont_lpe_saml_login#:#SAML-Login
 common#:#msg_wrong_filetypes#:#Erlaubte Dateiendungen:
 common#:#msg_to_many_files#:#Zu viele Dateien ausgewählt, erlaubte Anzahl Dateien:
 common#:#msg_no_files_selected#:#Keine Dateien ausgewählt
@@ -2392,7 +2393,6 @@ cntr#:#cntr_view_sessions#:#Sitzungsansicht
 cntr#:#cntr_view_simple#:#Einfache Liste
 cntr#:#container_import_zip_file_invalid#:#Die hochgeladene Datei ist kein gültiger ILIAS Export. Um Verzeichnisstrukturen hochzuladen benutzen Sie bitte ein Datei-Objekt.
 cntr#:#edit_questions#:#Fragen bearbeiten
-common#:#3rd_party_software#:#Drittanbieter-Software
 common#:#absolute_path#:#Absoluter Pfad
 common#:#accept_usr_agreement#:#Nutzungsvereinbarung akzeptieren?
 common#:#withdraw_consent_header#:#Einverständnis zur Nutzungsvereinbarung widerrufen
@@ -2412,6 +2412,7 @@ common#:#withdrawal_complete_deleted#:#Widerrufsvorgang ist abgeschlossen. Der N
 common#:#withdrawal_complete_redirect#:#Widerrufsvorgang ist abgeschlossen. Zur Löschung des Accounts nehmen Sie bitte Kontakt zu Ihrer Organisation auf.
 common#:#withdrawal_mail_subject#:#Widerruf Einverständnis zu Nutzungsvereinbarungen
 common#:#withdrawal_sure_account_deletion#:#Sind Sie sicher, dass Sie Ihr Einverständnis zu den Nutzungsvereinbarungen widerrufen möchten? Ihr Benutzerkonto wird in Folge dessen unwiderruflich gelöscht.
+common#:#withdrawal_sure_account_deletion_no_consent_yet#:#Sind Sie sicher, dass Sie Ihr Einverständnis zu den Nutzungsvereinbarungen nicht erteilen möchten? Ihr Benutzerkonto wird in Folge dessen unwiderruflich gelöscht.
 common#:#withdrawal_sure_account#:#Sind Sie sicher, dass Sie Ihr Einverständnis zu den Nutzungsvereinbarungen widerrufen möchten?
 common#:#withdrawal_mail_text#:#Sehr geehrte Damen und Herren,[BR][BR]hiermit widerrufe ich mein Einverständnis zu den Nutzungsvereinbarungen Ihrer ILIAS Installation. Bitte leiten Sie die entsprechenden Maßnahmen ein.[BR][BR]Name: %1$s[BR]Benutzername: %2$s[BR]Externers Benutzerkonto: %3$s[BR][BR]Mit freundlichen Grüßen[BR]%1$s
 common#:#withdrawal_mail_info#:#Die folgende Nachricht wird in Ihrem Auftrag versandt, wenn Sie bestätigen:[BR][BR]
@@ -3151,8 +3152,8 @@ common#:#forums#:#Foren
 common#:#forums_anonymized#:#Forum anonymisiert
 common#:#forums_anonymous#:#Anonym
 common#:#forums_articles#:#Beiträge
-common#:#forums_disable_forum_notification#:#Benachrichtigung für dieses Forum beenden
-common#:#forums_enable_forum_notification#:#Benachrichtigung für dieses Forum starten
+common#:#forums_disable_forum_notification#:#Benachrichtigung für gesamtes Forum beenden
+common#:#forums_enable_forum_notification#:#Benachrichtigung für gesamtes Forum starten
 common#:#forums_forum_notification_enabled#:#Sie werden über neue Beiträge in diesem Forum benachrichtigt.
 common#:#forums_last_post#:#Letzter Beitrag
 common#:#forums_new_articles#:#Neue Beiträge
@@ -3281,6 +3282,7 @@ common#:#hint#:#Hinweis
 common#:#hist_lm_delete_pg#:#Seite "%1" [%2] wurde gelöscht.
 common#:#hist_lm_delete_st#:#Kapitel "%1" [%2] wurde gelöscht.
 common#:#hist_lm_pg_create#:#Seite erstellt.
+common#:#hist_lm_pg_update#:#Seite geändert.
 common#:#hist_lm_st_create#:#Kapitel erstellt.
 common#:#hist_webr_add#:#Neuer Weblink angelegt mit Titel: "%1"
 common#:#hist_webr_delete#:#Weblink wurde gelöscht. Titel: "%1"
@@ -6560,10 +6562,10 @@ forum#:#forums_censor_comment#:#Bemerkung des Zensors
 forum#:#forums_count_art#:#Anzahl Beiträge
 forum#:#forums_created_by#:#Angelegt von
 forum#:#forums_delete_file#:#Dateianhang löschen
-forum#:#forums_disable_notification#:#Benachrichtigung für Thema beenden
+forum#:#forums_disable_notification#:#Benachrichtigung für dieses Thema beenden
 forum#:#forums_download_attachment#:#Datei herunterladen
 forum#:#forums_edit_post#:#Beitrag bearbeiten
-forum#:#forums_enable_notification#:#Benachrichtigung für Thema starten
+forum#:#forums_enable_notification#:#Benachrichtigung für dieses Thema starten
 forum#:#forums_info_censor_post#:#Sind Sie sicher, dass dieser Beitrag nicht mehr angezeigt werden soll?
 forum#:#forums_info_censor2_post#:#Sind Sie sicher, dass die Zensur für diesen Beitrag aufgehoben werden soll?
 forum#:#forums_info_delete_post#:#Sind Sie sicher, dass dieser Beitrag inklusive aller darauf folgenden Beiträge gelöscht werden soll?
@@ -13055,7 +13057,7 @@ common#:#clientlist_public_access#:#Öffentlicher Bereich
 common#:#clientlist_login#:#Anmelden
 common#:#clientlist_start_page#:#Öffentlicher Bereich
 common#:#clientlist_login_page#:#Anmelden
-forum#:#file_upload_allowed_fora_desc#:#Wenn "Anhängen von Dateien in ausgewählten Foren erlauben" ausgewählt ist, können Moderatoren das Anhängen von Dateien in den jeweiligen Foren-Einstellungen gezielt aktivieren. Bei neuen Foren wird das Anhängen von Dateien standardmäßig deaktiviert.
+forum#:#file_upload_allowed_fora_desc#:#Anhängen von Dateien muss in jedem Forum aktiviert werden. Bei neuen Foren wird das Anhängen von Dateien standardmäßig deaktiviert.
 forum#:#file_upload_allowed_fora#:#Dateien anhängen
 forum#:#file_upload_option_allow#:#Anhängen von Dateien in allen Foren erlauben
 forum#:#file_upload_option_disallow#:#Anhängen von Dateien in ausgewählten Foren erlauben
@@ -16635,3 +16637,5 @@ forum#:#sticky_threads_sorting#:#Top-Thema-Sortierung
 prg#:#prgr_new#:#Create Study Programme Link###03 11 2021 new variable
 prg#:#prgr_edit_info#:#Please choose one Study Programme for creating a new link.###03 11 2021 new variable
 common#:#actions_for#:#Aktionen für %s
+common#:#withdrawal_sure_account_no_consent_ye#:#Are you sure you do not want to accept the terms of service?###15 12 2021 new variable
+forum#:#file_upload_option_allow_info#:#In allen Foren können Dateien an Beiträge angehängt werden.
