@@ -5134,7 +5134,7 @@ crs#:#event_unregistered#:#You have been unregistered.
 crs#:#event_updated#:#Saved Settings
 crs#:#event#:#Session
 crs#:#events#:#Sessions
-crs#:#export_members#:#Export Participants
+crs#:#export_members#:#Export Data of Participants
 crs#:#grouping_change_assignment#:#Change Assignment
 crs#:#sess_attendance_list#:#Attendance List
 crs#:#sess_gen_attendance_list#:#Generate List
@@ -6876,8 +6876,8 @@ ps#:#ps_error_message_password_min3_because_chars_numbers_sc#:#Minimum password 
 ps#:#ps_export_admin#:#Administrators
 ps#:#ps_export_confirm#:#User Confirmation when Entering Courses
 ps#:#ps_export_confirm_group#:#User Confirmation when Entering Groups
-ps#:#ps_export_course#:#Visibility of User Profile Data in Courses
-ps#:#ps_export_groups#:#Visibility of User Profile Data in Groups
+ps#:#ps_export_course#:#Allow export of user profile data in courses
+ps#:#ps_export_groups#:#Allow export of user profile data in groups
 ps#:#ps_export_data#:#Data Types of the Personal Profile
 ps#:#ps_export_files#:#Export Files
 ps#:#ps_export_member#:#Members
@@ -12496,7 +12496,7 @@ rbac#:#file_read_learning_progress#:#User can view learning progress of other us
 rbac#:#mcst_read_learning_progress#:#User can view learning progress of other users
 rbac#:#lso_read_learning_progress#:#User can view learning progress of other users
 content#:#cont_progress_icons#:#Progress Icons
-content#:#cont_progress_icons_info#:#Show progress icons instead of chapter page icons in presentation mode. Please note that progress information is stored only with ILIAS 5.0 and higher.
+content#:#cont_progress_icons_info#:#Show progress icons instead of chapter page icons in presentation mode.
 content#:#cont_self_assessment#:#Self Assessment
 content#:#cont_tries#:#Question Behaviour
 content#:#cont_tries_reset_on_visit#:#Reset on Page Visit
@@ -13465,7 +13465,7 @@ awrn#:#awrn_hide_from_awareness#:#Hide Me From ‘Who is online?’-Tool
 awrn#:#awrn_hide_from_awareness_info#:#The ‘Who is online?’-Tool is in the top bar and listing selected users (e.g. contacts or members of your courses).
 common#:#contact_sysadmin#:#Contact Technical Support
 common#:#report_accessibility_issue#:#Report Accessibility Issue
-common#:#report_accessibility_link#:#Reported Link:
+common#:#report_accessibility_link#:#Reported%20Link:
 common#:#accessibility_control_concept#:#Accessibility Control Concept
 common#:#no_accessibility_control_concept_description#:#There is currently no Accessibility Control Concept provided with this installation. Please contact the <a href="%1$s">Accessibility Point of Contact</a>.
 common#:#mainbar_aria_label#:#Mainbar
@@ -16096,8 +16096,8 @@ prg#:#modal_categories_title#:#Category to be monitored
 prg#:#category#:#Category
 common#:#obj_prgr#:#Link to Study Programme
 common#:#obj_prgrs#:#Links to Study Programmes
-prg#:#prgr_new#:#Create Study Programme Link
-prg#:#prgr_edit_info#:#Please choose one Study Programme for creating a new link.
+common#:#prgr_new#:#Create Study Programme Link
+common#:#prgr_edit_info#:#Please choose one Study Programme for creating a new link.
 prg#:#prgr_may_not_create_circular_reference#:#This Study Programme may not be linked here since the parent object is alredy linked within the target.
 prg#:#prg_validity_of_qualification_limit#:#Qualification Expiry
 prg#:#prg_validity_of_qualification_restart#:#Restart
@@ -16630,3 +16630,4 @@ ui#:#duration_end_must_not_be_earlier_than_start#:#Start must not be later than 
 forum#:#sticky_threads_sorting#:#Sticky Threads Sorting
 common#:#actions_for#:#Actions for %s
 forum#:#file_upload_option_allow_info#:#Files can be attached to posts in all forums.
+exc#:#exc_fullscreen#:#Fullscreen

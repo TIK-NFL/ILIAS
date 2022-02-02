@@ -1,3 +1,4 @@
+/**
 * This file is part of ILIAS, a powerful learning management system
 * published by ILIAS open source e-Learning e.V.
 *
@@ -748,7 +749,7 @@ assessment#:#tst_nav_next_locks_current_answer_header#:#Navigieren zur nächsten
 assessment#:#tst_nav_next_locks_current_answer_confirm#:#Wenn Sie zur nächsten Frage navigieren wird die Antwort zur aktuellen Frage festgeschrieben und kann nicht nochmals verändert werden.
 assessment#:#tst_filter_question_type#:#Fragentyp
 assessment#:#tst_filter_question_type_enabled#:#Fragentyp Filter verwenden
-assessment#:#tst_filter_lifecycle_enabled#:#Lifecycle Filter verwenden
+assessment#:#tst_filter_lifecycle_enabled#:#Filter „Lebenszyklus“ verwenden
 assessment#:#tst_objectives_progress_header#:#Fortschritte in den Lernzielen
 assessment#:#tst_objective_progress_header#:#Fortschritt im Lernziel
 assessment#:#assClozeTest#:#Lückentextfrage
@@ -1910,8 +1911,8 @@ assessment#:#tst_allowed_users_desc#:#ILIAS prüft die Anzahl der gleichzeitigen
 assessment#:#tst_allowed_users_time_gap_desc#:#Teilnehmer die im Ablauf der angegeben Sekunden keinen Klick im Test ausführen, werden als ‚inaktiv‘ eingestuft und aus dem Test entfernt.
 assessment#:#tst_nr_of_tries_desc#:#Maximale Anzahl der Testdurchläufe, die ein Teilnehmer absolvieren kann.
 assessment#:#saved_adjustment#:#Veränderung gespeichert.
-assessment#:#qst_lifecycle_filter_all#:#Alle Lifecycle
-assessment#:#qst_lifecycle#:#Lifecycle
+assessment#:#qst_lifecycle_filter_all#:#Alle Lebenszyklen
+assessment#:#qst_lifecycle#:#Lebenszyklus
 assessment#:#qst_lifecycle_draft#:#Entwurf
 assessment#:#qst_lifecycle_review#:#Überarbeitung notwendig
 assessment#:#qst_lifecycle_rejected#:#Abgelehnt
@@ -5897,7 +5898,7 @@ crs#:#event_unregister#:#Abmelden
 crs#:#event_unregistered#:#Sie wurden abgemeldet.
 crs#:#event_updated#:#Die Änderungen wurden gespeichert
 crs#:#events#:#Sitzungen
-crs#:#export_members#:#Teilnehmerexport
+crs#:#export_members#:#Export der Teilnehmendendaten
 crs#:#grouping_change_assignment#:#Zuordnungen ändern
 crs#:#sess_attendance_list#:#Teilnehmerliste
 crs#:#sess_gen_attendance_list#:#Liste erstellen
@@ -7951,11 +7952,11 @@ ps#:#ps_error_message_password_min3_because_chars_numbers_sc#:#Minimale Passwort
 ps#:#ps_export_admin#:#Administratoren
 ps#:#ps_export_confirm#:#Nutzungsvereinbarung für Kursmitglieder aktivieren
 ps#:#ps_export_confirm_group#:#Nutzungsvereinbarung für Gruppenmitglieder aktivieren
-ps#:#ps_export_course#:#Persönliche Daten in Kursen anzeigen und exportieren
+ps#:#ps_export_course#:#Export der Persönlichen Daten aus Kursen erlauben
 ps#:#ps_export_data#:#Daten des Persönlichen Profils
 ps#:#ps_export_excel#:#Starte Excel-Export
 ps#:#ps_export_files#:#Exportdateien
-ps#:#ps_export_groups#:#Persönliche Daten in Gruppen anzeigen und exportieren
+ps#:#ps_export_groups#:#Export der Persönlichen Daten aus Gruppen erlauben
 ps#:#ps_export_member#:#Teilnehmer
 ps#:#ps_export_settings#:#Einstellungen zum Export
 ps#:#ps_export_sub#:#Noch nicht freigeschaltete Benutzer
@@ -12419,7 +12420,7 @@ rbac#:#file_read_learning_progress#:#Benutzer kann Lernfortschritt anderer Benut
 rbac#:#mcst_read_learning_progress#:#Benutzer kann Lernfortschritt anderer Benutzer einsehen
 rbac#:#lso_read_learning_progress#:#Benutzer kann Lernfortschritt anderer Benutzer einsehen
 content#:#cont_progress_icons#:#Fortschritts-Icons
-content#:#cont_progress_icons_info#:#Zeigt Fortschritts-Icons anstatt der Kapitel- und Seiten-Icons im Inhaltsverzeichnis an. Fortschrittsinformationen werden von ILIAS ab Version 5.0 gespeichert.
+content#:#cont_progress_icons_info#:#Zeigt Fortschritts-Icons anstatt der Kapitel- und Seiten-Icons im Inhaltsverzeichnis an.
 content#:#cont_self_assessment#:#Selbsttests
 content#:#cont_tries#:#Antwortversuche
 content#:#cont_tries_reset_on_visit#:#Zurücksetzen bei Aufruf der Seite
@@ -13466,7 +13467,7 @@ awrn#:#awrn_hide_from_awareness#:#Mich nicht in „Wer ist online?“-Anzeige au
 awrn#:#awrn_hide_from_awareness_info#:#Die „Wer ist online?“-Anzeige erscheint oben im Kopf der Anwendung und listet ausgewählte Benutzer auf (z.B. Kontakte oder Mitglieder Ihrer Kurse).
 common#:#contact_sysadmin#:#Technische Betreuung kontaktieren
 common#:#report_accessibility_issue#:#Barriere melden
-common#:#report_accessibility_link#:#Gemeldeter Link:
+common#:#report_accessibility_link#:#Gemeldeter%20Link:
 common#:#accessibility_control_concept#:#Info Barrierefreiheit
 common#:#no_accessibility_control_concept_description#:#Aktuell wird in dieser Installation keine Info zur Barrierefreiheit angeboten. Bitte kontaktieren Sie die <a href="%1$s">Anlaufstelle für Barrierefreiheit</a> für weitere Informationen.
 common#:#mainbar_aria_label#:#Hauptleiste
@@ -16625,8 +16626,9 @@ content#:#cont_sur_block_format#:#Umgebender Block
 ui#:#datetime_required#:#Zeit/Datum erforderlich
 ui#:#duration_end_must_not_be_earlier_than_start#:#Der Beginn muss zeitlich vor dem Ende liegen.
 forum#:#sticky_threads_sorting#:#Top-Thema-Sortierung
-prg#:#prgr_new#:#Create Study Programme Link###03 11 2021 new variable
-prg#:#prgr_edit_info#:#Please choose one Study Programme for creating a new link.###03 11 2021 new variable
+common#:#prgr_new#:#Neuen Link zu einem Studienprogramm anlegen
+common#:#prgr_edit_info#:#Bitte wählen Sie das Studienprogramm aus, für das Sie einen Link erstellen möchten.
 common#:#actions_for#:#Aktionen für %s
 common#:#withdrawal_sure_account_no_consent_yet#:#Are you sure you do not want to accept the terms of service?###15 12 2021 new variable
 forum#:#file_upload_option_allow_info#:#In allen Foren können Dateien an Beiträge angehängt werden.
+exc#:#exc_fullscreen#:#Vollbild
