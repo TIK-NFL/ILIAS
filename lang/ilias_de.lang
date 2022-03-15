@@ -423,7 +423,7 @@ administration#:#adm_db_benchmark_user#:#Benutzer-Login
 administration#:#adm_db_benchmark_user_desc#:#Für diesen Benutzer wird die Messung durchgeführt. Sie sollten nicht den gleichen Benutzer verwenden, der die Funktion aktiviert.
 administration#:#adm_edit_settings_template#:#Vorlagen bearbeiten
 administration#:#adm_hide#:#Im Einstellungsformular ausblenden
-administration#:#adm_hide_tabs#:#Tabs ausblenden
+administration#:#adm_hide_tabs#:#Reiter ausblenden
 administration#:#adm_item_cmd_asynch#:#Asynchrones Laden der Aktionsmenüs im Magazin
 administration#:#adm_item_cmd_asynch_info#:#Aktionsmenüs, z. B. im Magazin, werden asynchron geladen. Dies erhöht die Performanz allgemein. In Einzelfällen kann es zu kurzen Verzögerungen beim Anzeigen des Popup-Menüs kommen.
 administration#:#adm_locale#:#Locale
@@ -4318,7 +4318,7 @@ common#:#shib_country#:#Attribut für Land
 common#:#shib_data_conv#:#Pfad zum Daten Manipulations-API
 common#:#shib_data_conv_warning#:#Das angegebene Daten-Manipulations-API kann nicht gelesen werden.
 common#:#shib_department#:#Attribut für Departement
-common#:#shib_email#:#Attribut für E-Mailadresse
+common#:#shib_email#:#Attribut für E-Mail-Adresse
 common#:#shib_federation_name#:#Name der Shibboleth-Föderation
 common#:#shib_firstname#:#Attribut für Vornamen
 common#:#shib_gender#:#Attribut für Anrede (muss 'n', 'm' oder 'f' sein)
@@ -5246,6 +5246,7 @@ content#:#cont_pc_iim#:#Interaktives Bild
 content#:#cont_pc_incl#:#Inhaltsbaustein
 content#:#cont_pc_list#:#Erweiterte Liste
 content#:#cont_pc_map#:#Karte
+content#:#cont_pc_media#:#Bild/Audio/Video
 content#:#cont_pc_mob#:#Medienobjekt
 content#:#cont_pc_modified#:#Geänderte Inhalte
 content#:#cont_pc_new#:#Neue Inhalte
@@ -5987,6 +5988,7 @@ dateplaner#:#cal_ch_booking_owner#:#Inhaber
 dateplaner#:#cal_ch_bookings#:#Teilnehmer
 dateplaner#:#cal_ch_cancel_booking#:#Buchung stornieren
 dateplaner#:#cal_ch_ch#:#Sprechstundentermine
+dateplaner#:#cal_change_calendar_view#:#Kalenderansicht ändern
 dateplaner#:#cal_ch_current_bookings#:#Aktuelle Teilnehmer
 dateplaner#:#cal_ch_deadline#:#Späteste Anmeldung
 dateplaner#:#cal_ch_deadline_info#:#Bitte legen Sie fest, bis zu wie viel Stunden vor der Sprechstunde eine Anmeldung ermöglicht werden soll.
@@ -10618,7 +10620,7 @@ forum#:#frm_notification_activated#:#Benachrichtigung aktiviert
 forum#:#frm_notification_deactivated#:#Benachrichtigung deaktiviert
 ecs#:#ecs_cms_tree_synchronize#:#Synchronisieren
 ecs#:#ecs_cms_tree_synchronized#:#Der Baum wurde synchronisiert.
-rep#:#rep_activation_online_object_info#:#Diese Einstellung wirkt sich auf alle Referenzen im Repository aus.
+rep#:#rep_activation_online_object_info#:#Diese Einstellung wirkt sich auf alle Referenzen im Magazin aus.
 rep#:#rep_activation_access_ref_info#:#Dieses Einstellung betrifft nur die aktuelle und keine andere Referenz.
 poll#:#poll_block_results_available_on#:#Die Ergebnisse werden am %s veröffentlicht.
 survey#:#svy_activation_online_info#:#Nur wenn die Umfrage online ist, können Benutzer an der Umfrage teilnehmen.
@@ -10694,7 +10696,7 @@ dateplaner#:#cal_notification_users#:#Benachrichtigung für ausgewählte Benutze
 dateplaner#:#cal_adm_notification_user_info#:#Wählen Sie diese Einstellung, um eine optionale Mailbenachrichtigung an einzelne, auswählbare Benutzer versenden zu können.
 dateplaner#:#cal_err_invalid_notification_rcps#:#Die Empfänger für die E-Mail-Benachrichtigung sind nicht gültig. Bitte wählen geben Sie ausschließlich ILIAS-Benutzerkontennamen oder gültige E-Mail-Adressen an.
 dateplaner#:#cal_user_notification#:#Benutzerbenachrichtigung
-dateplaner#:#cal_user_notification_info#:#Die ausgewählten Benutzer erhalten eine E-Mail mit den Termindetails. Bitte geben Sie ILIAS-Benutzernamen oder gültige E-Mailadressen ein.
+dateplaner#:#cal_user_notification_info#:#Die ausgewählten Benutzer erhalten eine E-Mail mit den Termindetails. Bitte geben Sie ILIAS-Benutzernamen oder gültige E-Mail-Adressen ein.
 dateplaner#:#cal_cg_notification#:#Kurs/Gruppenbenachrichtigung
 dateplaner#:#cal_mail_notification_subject#:#Termineinladung: "%s"
 dateplaner#:#cal_mail_notification_body#:#Sie wurden zu einem Termin eingeladen.
@@ -11807,8 +11809,8 @@ common#:#ps_password_must_not_contain_loginame_info#:#Falls aktiviert, darf der 
 common#:#password_contains_parts_of_login_err#:#Das von Ihnen gewählte Passwort enthält Teile des Benutzernamens. Bitte tragen Sie ein anderes Passwort ein.
 common#:#password_must_contain_lcase_chars#:#Das Passwort muss mindestens %s Kleinbuchstaben enthalten.
 common#:#password_must_contain_ucase_chars#:#Das Passwort muss mindestens %s Großbuchstaben enthalten.
-search#:#search_user_search_form#:#Suche in Persönlichen Profilen
-search#:#search_user_search_info_form#:#Benutzerdaten in Persönlichen Profilen werden indexiert und können genutzt werden, um Benutzer über die globale Suche zu finden.
+search#:#search_user_search_form#:#Globale Benutzersuche
+search#:#search_user_search_info_form#:#Benutzerkonten können in globalen Suchen gefunden werden. Sofern die Lucene-Volltextsuche aktiviert ist, werden auch Profildaten in den Index aufgenommen.
 exc#:#exc_fb_tutor_info#:#Wird eine Datei zur Bewertung der Übungseinheit hochgeladen, erhält die Teilnehmerin oder der Teilnehmer eine Benachrichtigung und kann dann in der Übersicht der Übungseinheiten heruntergeladen und eingesehen werden.
 obj#:#svy_results#:#Ergebnisse
 survey#:#svy_result_mail_notification_info#:#Nach Beenden einer Umfrage werden die Antworten des Teilnehmers an die eingetragen Empfänger gesendet.
@@ -16644,3 +16646,5 @@ rating#:#rating_personal_rating#:#Ihre Bewertung
 rating#:#rating_rate_x_of_5#:#Mit %s von 5 Sternen bewerten
 rating#:#rating_open_dialog#:#Bewertungsskala aufklappen
 tagging#:#tagging_no_obj_for_tag#:#Es sind keine Inhalte mit '%s' verschlagwortet.
+rep#:#rep_favourites#:#Favoriten
+rep#:#rep_favourites_info#:#Benutzer können einzelne Magazinobjekte als Favorit markieren. Favoritenlisten können in der Dashboard- und Hauptmenükonfiguration aktiviert werden.

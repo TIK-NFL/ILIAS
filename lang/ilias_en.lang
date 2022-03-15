@@ -4591,6 +4591,7 @@ content#:#cont_pc_hacc#:#Accordion (Horizontal)
 content#:#cont_pc_incl#:#Content Snippet
 content#:#cont_pc_list#:#Advanced List
 content#:#cont_pc_map#:#Map
+content#:#cont_pc_media#:#Image/Media
 content#:#cont_pc_mob#:#Media
 content#:#cont_pc_modified#:#Modified Content
 content#:#cont_pc_new#:#New Content
@@ -8273,6 +8274,7 @@ dateplaner#:#cal_ch_deadline_info#:#Please define the number of hours until the 
 dateplaner#:#cal_ch_num_appointments_info#:#Please define the number of sequent appointments.
 dateplaner#:#cal_ch_personal_ch#:#Personal Consultation Hours
 dateplaner#:#cal_ch_ch#:#Consultation Hours
+dateplaner#:#cal_change_calendar_view#:#Change Calendar View
 ps#:#rbac_log_age#:#Keep Log Entries
 ps#:#rbac_log_age_info#:#Maximum age of log entries in month
 rbac#:#rbac_role_rights_copy#:#Copy Permissions
@@ -11848,8 +11850,8 @@ content#:#cont_current_lang#:#Current Language
 obj#:#obj_deactivate_content_lang#:#Deactivate Translation for Page Editing
 content#:#cont_edit_language_version#:#Edit Version
 content#:#cont_page_translation_does_not_exist#:#The translation page does not exist yet and will be created by copying the content of the current master page. Language of the translation page
-search#:#search_user_search_form#:#Search in Personal Profiles
-search#:#search_user_search_info_form#:#Data in personal profiles of users is indexed and can be used to search for users.
+search#:#search_user_search_form#:#Global User Search
+search#:#search_user_search_info_form#:#Users can be found in the global search. Furthermore, data in personal profiles of users is indexed if the Lucene fulltext search is enabled. 
 adve#:#adve_blocking_mode#:#Edit Lock
 adve#:#adve_minutes#:#Minutes
 adve#:#adve_minutes_info#:#Minutes of inactivity before an edit lock expires and a page can be edited by another user.
@@ -16643,3 +16645,5 @@ rating#:#rating_personal_rating#:#Your Rating
 rating#:#rating_rate_x_of_5#:#Rate with %s of 5 stars
 rating#:#rating_open_dialog#:#Open rating dialog
 tagging#:#tagging_no_obj_for_tag#:#No Resources tagged with %s.
+rep#:#rep_favourites#:#Favourites
+rep#:#rep_favourites_info#:#Users can mark single repository items as favourites. Favourites lists can be activated and configured in the dashboard and menu settings.
