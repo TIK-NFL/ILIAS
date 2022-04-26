@@ -1075,11 +1075,11 @@ div.ilc_va_iheada_VAccordIHeadActive {
   background-image: url("../../../libs/ilias/Style/basic_style/images/tree_exp.svg");
   padding-left: 54px;
   padding-top: 3px;
-  font-size: 20px;
+  font-size: 18px;
   padding-bottom: 3px;
   color: #161616;
   background-color: #f9f9f9;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   padding-right: 3px;
 }
 div.ilc_va_iheada_VAccordIHeadActive:hover {
