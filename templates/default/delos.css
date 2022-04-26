@@ -1365,7 +1365,7 @@ mark,
   text-transform: capitalize;
 }
 .text-muted {
-  color: #777777;
+  color: #737373;
 }
 .text-primary {
   color: #4c6586;
@@ -2446,7 +2446,7 @@ table th[class*="col-"] {
 caption {
   padding-top: 8px;
   padding-bottom: 8px;
-  color: #777777;
+  color: #737373;
   text-align: left;
 }
 th {
@@ -7138,17 +7138,39 @@ button.close {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0px 0px rgba(0, 0, 0, 0.15);
   /* see bug #24947 */
 }
-.il-card img {
+.il-card .il-card-image-container {
   width: 100%;
+  padding-top: 100%;
+  position: relative;
+}
+.il-card .il-card-image-container a:focus-visible {
+  position: static;
+}
+.il-card img.img-responsive,
+.il-card img.img-standard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-height: 100%;
+  margin: auto;
+  z-index: 100;
 }
 .il-card a {
   overflow: hidden;
 }
+.il-card .card-title .btn,
+.il-card .card-title a {
+  font-size: 14px;
+}
 .il-card.thumbnail {
   margin-bottom: 0px;
+  font-size: 12px;
 }
 .il-card.thumbnail:focus-within .il-card-repository-head {
-  z-index: 1;
+  z-index: 400;
 }
 .il-card.thumbnail a:focus-visible {
   overflow: visible;
@@ -7160,7 +7182,7 @@ button.close {
 }
 .il-card .card-no-highlight {
   background-color: transparent;
-  height: 3px;
+  height: 6px;
   width: 100%;
 }
 .il-card .caption {
@@ -7184,6 +7206,7 @@ button.close {
   right: 0;
   height: 47px;
   padding: 0 6px;
+  z-index: 300;
 }
 .il-card .il-card-repository-head .icon.outlined {
   filter: invert(1);
@@ -7230,7 +7253,7 @@ button.close {
     display: flex;
     flex-direction: column;
   }
-  .row-eq-height .il-card :last-child {
+  .row-eq-height .il-card .card-title {
     flex-grow: 2;
   }
 }
@@ -9270,20 +9293,15 @@ footer {
 @media only screen and (max-width: 768px) {
   .il-layout-page {
     background: #f0f0f0;
-    display: -ms-grid;
-    display: grid;
-    grid-gap: 0px;
-    -ms-grid-columns: 1fr;
-    grid-template-columns: 1fr;
-    -ms-grid-rows: 45px auto 1fr;
-    grid-template-rows: 45px auto 1fr;
-    height: 100%;
-    overflow: hidden;
+    display: block;
+    overflow: initial;
     width: 100%;
   }
   .il-layout-page .nav.il-maincontrols {
-    grid-row: 4;
-    grid-column: 1;
+    position: fixed;
+    bottom: 0;
+    z-index: 997;
+    width: 100%;
   }
   .il-layout-page .nav.il-maincontrols .il-maincontrols-mainbar {
     display: grid;
@@ -9318,7 +9336,7 @@ footer {
     -ms-grid-row: 3;
     grid-column: 1;
     grid-row: 3;
-    height: 100%;
+    height: calc(100% - 45px);
   }
   .il-layout-page.with-mainbar-slates-engaged .nav.il-maincontrols .il-maincontrols-mainbar {
     -ms-grid-columns: 1fr;
@@ -9349,13 +9367,13 @@ footer {
     display: none;
   }
   header {
-    -ms-grid-column: 1;
-    -ms-grid-row: 1;
-    grid-column: 1;
-    grid-row: 1;
-    z-index: 999;
+    position: -webkit-sticky;
+    position: sticky;
+    width: 100%;
+    top: 0;
   }
   .header-inner {
+    position: relative;
     height: 45px;
     padding: 0;
     width: 100%;
@@ -9465,15 +9483,13 @@ footer {
     display: block;
   }
   .il-layout-page-content {
-    -ms-grid-column: 1;
-    -ms-grid-row: 3;
-    grid-column: 1;
-    grid-row: 3;
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 45px);
+    padding-bottom: 50px;
   }
-  div.il-system-infos {
-    grid-column: 1;
-    -ms-grid-column: 1;
+  .il-layout-page-content > div {
+    flex-grow: 1;
   }
 }
 /*
@@ -11847,6 +11863,14 @@ body {
     -webkit-text-size-adjust: none;
   }
 }
+@media only screen and (max-width: 768px) {
+  html,
+  body {
+    overflow: initial;
+    height: auto;
+    min-height: 100vh;
+  }
+}
 /* see bug ILIAS bug #17589 and http://stackoverflow.com/questions/17045132/scrollbar-overlay-in-ie10-how-do-you-stop-that */
 body {
   -ms-overflow-style: scrollbar;
@@ -13079,9 +13103,6 @@ img.ilSmallIcon {
   -webkit-hyphens: auto;
   hyphens: auto;
 }
-span.ilIcalIcon {
-  text-align: initial;
-}
 /* Component Imports */
 /* Services/Accordion */
 .il_VAccordionHead,
@@ -13244,7 +13265,6 @@ select.form-control {
   margin-left: -20px;
   margin-top: 7px;
   min-width: 13px;
-  vertical-align: top;
 }
 @media only screen and (max-width: 768px) {
   .radio input[type="radio"],
@@ -13253,6 +13273,10 @@ select.form-control {
   .checkbox-inline input[type="checkbox"] {
     min-width: 16px;
   }
+}
+.radio input[type="radio"],
+.radio-inline input[type="radio"] {
+  vertical-align: top;
 }
 [dir="rtl"] .form-horizontal .control-label {
   text-align: left;
@@ -13428,6 +13452,11 @@ input:invalid {
 /* provisory fix for #0021322  */
 div[id$="color-picker-menu"] {
   z-index: 3;
+}
+/* This is a memento that we should get rid of the legacy UI */
+.wzdrow input[type=file]:focus-visible {
+  outline: 3px solid #0078D7;
+  outline-offset: 0;
 }
 /* Services/UI/Explorer2 */
 table.ilExplorer {
@@ -14101,6 +14130,9 @@ div.il-copg-button-group-wide {
   border-right: 0;
   margin: 0;
 }
+#iltinymenu {
+  padding: 0 15px;
+}
 #iltinymenu .bd div.last {
   float: left;
   white-space: nowrap;
@@ -14290,6 +14322,9 @@ a.nostyle:hover {
 #error_panel_c {
   z-index: 2000 !important;
 }
+#ilPageEditLegend {
+  margin: 10px 0;
+}
 #ilPageEditLegend > div {
   margin: 5px 0;
 }
@@ -14301,7 +14336,7 @@ a.nostyle:hover {
   height: 21px;
 }
 #ilPageEditLegend tr > td {
-  padding: 9px;
+  padding: 3px 15px;
 }
 #ilPageEditLegend tr > td:first-child {
   white-space: nowrap;
@@ -14418,7 +14453,7 @@ div.ilCOPGMediaPrint {
   min-width: 100px;
 }
 #copg-editor-slate-content {
-  padding: 15px;
+  padding: 9px 0px;
 }
 #copg-editor-slate-content p {
   padding: 0;
@@ -14436,19 +14471,38 @@ div.ilCOPGMediaPrint {
 #copg-editor-slate-content div.alert {
   margin: 10px 0;
 }
-#copg-editor-slate-content form .ilFormHeader {
-  padding: 10px;
+#copg-editor-slate-content form.form-horizontal {
+  margin-bottom: 9px;
 }
-#copg-editor-slate-content form .ilFormHeader h3.ilHeader {
+#copg-editor-slate-content form.form-horizontal .ilFormHeader {
+  padding: 9px 15px;
+}
+#copg-editor-slate-content form.form-horizontal .ilFormHeader h3.ilHeader {
   font-size: 14px;
 }
-#copg-editor-slate-content form .col-sm-3,
-#copg-editor-slate-content form .col-sm-9 {
+#copg-editor-slate-content form.form-horizontal .col-sm-3,
+#copg-editor-slate-content form.form-horizontal .col-sm-9 {
   width: 100%;
 }
-#copg-editor-slate-content form .control-label {
+#copg-editor-slate-content form.form-horizontal .control-label {
   text-align: left;
   font-weight: bold;
+  min-height: auto;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+#copg-editor-slate-content form.form-horizontal .ilFormFooter {
+  padding: 3px 15px;
+  background-color: white;
+}
+#copg-editor-slate-content > .btn-link {
+  padding: 0px 15px;
+}
+#copg-top-actions {
+  padding: 0 15px;
+}
+.copg-edit-button-group {
+  padding: 3px 15px;
 }
 p#copg-auto-save {
   padding: 0;
@@ -14679,6 +14733,8 @@ th.calstd {
   border-width: 1px;
   border-style: solid;
   border-color: #ddd;
+  line-break: auto;
+  vertical-align: top;
 }
 td.calheadertime {
   width: 6em;
@@ -14914,6 +14970,10 @@ span.calminiinactive {
 .calnewapplink {
   float: right;
   visibility: hidden;
+}
+span.ilIcalIcon .btn {
+  text-align: initial;
+  margin-top: 6px;
 }
 /* Modules/Wiki */
 a.ilWikiPageMissing:link,
@@ -15497,6 +15557,12 @@ div.ilTableNav {
 div.ilTableNav table {
   width: 100%;
 }
+div.ilTableNav select {
+  display: inline-block;
+}
+div.ilTableNav .ilFloatRight .ilOverlay {
+  display: none;
+}
 tr.tblfooter {
   color: #161616;
   font-weight: normal;
@@ -15675,6 +15741,12 @@ tr.tblheader {
 }
 td > img[src$="icon_custom.svg"] {
   max-width: 32px;
+}
+.ilTableCommandRowTop .ilFloatLeft img,
+.ilTableCommandRow .ilFloatLeft img,
+.ilTableCommandRowTop .ilFloatLeft select,
+.ilTableCommandRow .ilFloatLeft select {
+  display: inline-block;
 }
 @media only screen and (max-width: 768px) {
   .table-responsive {
@@ -16768,6 +16840,10 @@ div.il_ContainerListItem {
   margin: 0;
   color: #161616;
 }
+.ilContainerBlockHeader .form-control {
+  width: auto;
+  display: inline-block;
+}
 .ilContainerBlockHeaderExpanded,
 .ilContainerBlockHeaderCollapsed {
   background-repeat: no-repeat;
@@ -17005,6 +17081,79 @@ div[id^="ilAdvSelListTable_"] {
   clear: both;
   display: none;
   position: absolute;
+}
+@media only screen and (min-width: 1200px) {
+  #ilAdvSelListAnchorText_asl + ul.dropdown-menu > li > div.row .row,
+  #ilAdvSelListAnchorText_asl + .dropdown-backdrop + ul.dropdown-menu > li > div.row .row,
+  #mm_adm_tr + span + ul.dropdown-menu > li > div.row .row,
+  #mm_adm_tr + ul.dropdown-menu > li > div.row .row {
+    width: auto;
+  }
+  #ilAdvSelListAnchorText_asl + ul.dropdown-menu > li > div.row ul,
+  #ilAdvSelListAnchorText_asl + .dropdown-backdrop + ul.dropdown-menu > li > div.row ul,
+  #mm_adm_tr + span + ul.dropdown-menu > li > div.row ul,
+  #mm_adm_tr + ul.dropdown-menu > li > div.row ul {
+    min-width: 250px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  #ilAdvSelListAnchorText_asl + ul.dropdown-menu > li > div.row,
+  #ilAdvSelListAnchorText_asl + .dropdown-backdrop + ul.dropdown-menu > li > div.row,
+  #mm_adm_tr + span + ul.dropdown-menu > li > div.row,
+  #mm_adm_tr + ul.dropdown-menu > li > div.row {
+    width: 100% !important;
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 992px) {
+  #ilAdvSelListAnchorText_asl + ul.dropdown-menu > li > div.row {
+    min-width: 260px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  #ilAdvSelListAnchorText_asl + ul.dropdown-menu > li > div.row {
+    min-width: 520px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  #ilAdvSelListAnchorText_asl + ul.dropdown-menu > li > div.row {
+    min-width: 780px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  #ilAdvSelListAnchorText_asl + ul.dropdown-menu {
+    position: absolute;
+    background-color: white;
+  }
+}
+div.ilNewObjectSelector {
+  display: block;
+  text-align: right;
+  margin-bottom: 8px;
+  padding: 0;
+  width: 100%;
+}
+div.ilNewObjectSelector > .btn-group.open {
+  display: inline-block;
+  width: 100%;
+}
+div.ilNewObjectSelector > .btn-group.open #ilAdvSelListAnchorText_asl {
+  float: right;
+}
+div.ilNewObjectSelector > .btn-group.open #ilAdvSelListAnchorText_asl + .dropdown-menu {
+  top: 30px;
+  right: 0;
+  left: auto;
+}
+div.ilNewObjectSelector > .btn-group.open #ilAdvSelListAnchorText_asl + .dropdown-menu .dropdown-header {
+  margin-right: 1px;
+}
+[dir="rtl"] div.ilNewObjectSelector > .btn-group #ilAdvSelListAnchorText_asl {
+  float: left;
+}
+#il-add-new-item-gl h2,
+#il-add-new-item-gl a {
+  white-space: break-spaces;
 }
 /* Services/Object */
 .ilHeadAction img {
@@ -18454,19 +18603,6 @@ span.ilProfileBadge .modal .img-responsive {
   width: 50%;
   height: auto;
 }
-.ilBadgeDeck .il-card img {
-  object-fit: contain;
-  width: 75%;
-  height: 200px;
-}
-.ilBadgeDeck .icon img {
-  width: 100%;
-  height: auto;
-}
-.ilBadgeDeck .il-card img.medium {
-  width: 35px;
-  height: 35px;
-}
 .ilBadgeDeck .modal .img-responsive {
   margin: auto;
   width: 50%;
@@ -19749,31 +19885,6 @@ img[src$="icon_checked.svg"] {
   font-size: 11px;
   text-align: center;
 }
-div.ilNewObjectSelector {
-  display: block;
-  text-align: right;
-  margin-bottom: 8px;
-  padding: 0;
-  width: 100%;
-}
-div.ilNewObjectSelector > .btn-group.open {
-  display: inline-block;
-  width: 100%;
-}
-div.ilNewObjectSelector > .btn-group.open #ilAdvSelListAnchorText_asl {
-  float: right;
-}
-div.ilNewObjectSelector > .btn-group.open #ilAdvSelListAnchorText_asl + .dropdown-menu {
-  top: 30px;
-  right: 0;
-  left: auto;
-}
-div.ilNewObjectSelector > .btn-group.open #ilAdvSelListAnchorText_asl + .dropdown-menu .dropdown-header {
-  margin-right: 1px;
-}
-[dir="rtl"] div.ilNewObjectSelector > .btn-group #ilAdvSelListAnchorText_asl {
-  float: left;
-}
 .pdMailRow .imageSpace {
   margin-left: 40px;
 }
@@ -19839,50 +19950,6 @@ table.mceToolbar td {
 }
 .alert > a.btn {
   text-decoration: none;
-}
-@media only screen and (min-width: 1200px) {
-  #ilAdvSelListAnchorText_asl + ul.dropdown-menu > li > div.row .row,
-  #ilAdvSelListAnchorText_asl + .dropdown-backdrop + ul.dropdown-menu > li > div.row .row,
-  #mm_adm_tr + span + ul.dropdown-menu > li > div.row .row,
-  #mm_adm_tr + ul.dropdown-menu > li > div.row .row {
-    width: auto;
-  }
-  #ilAdvSelListAnchorText_asl + ul.dropdown-menu > li > div.row ul,
-  #ilAdvSelListAnchorText_asl + .dropdown-backdrop + ul.dropdown-menu > li > div.row ul,
-  #mm_adm_tr + span + ul.dropdown-menu > li > div.row ul,
-  #mm_adm_tr + ul.dropdown-menu > li > div.row ul {
-    min-width: 250px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  #ilAdvSelListAnchorText_asl + ul.dropdown-menu > li > div.row,
-  #ilAdvSelListAnchorText_asl + .dropdown-backdrop + ul.dropdown-menu > li > div.row,
-  #mm_adm_tr + span + ul.dropdown-menu > li > div.row,
-  #mm_adm_tr + ul.dropdown-menu > li > div.row {
-    width: 100% !important;
-    margin: 0;
-  }
-}
-@media only screen and (max-width: 992px) {
-  #ilAdvSelListAnchorText_asl + ul.dropdown-menu > li > div.row {
-    min-width: 250px;
-  }
-}
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-  #ilAdvSelListAnchorText_asl + ul.dropdown-menu > li > div.row {
-    min-width: 500px;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  #ilAdvSelListAnchorText_asl + ul.dropdown-menu > li > div.row {
-    min-width: 750px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  #ilAdvSelListAnchorText_asl + ul.dropdown-menu {
-    position: absolute;
-    background-color: white;
-  }
 }
 .code-container {
   display: grid;
