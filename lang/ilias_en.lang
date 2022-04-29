@@ -6083,6 +6083,8 @@ mail#:#mail_email_usr_subject#:#Test E-Mail User Mail
 mail#:#mail_email_usr_body#:#This is a test e-mail to test the delivery of user mails to the external mail account.
 mail#:#mail_email_sys_subject#:#Test E-Mail System Mail
 mail#:#mail_email_sys_body#:#This is a test e-mail to test the delivery of system mails to the external mail account.
+mail#:#mail_is_read#:#gelesen
+mail#:#mail_is_unread#:#ungelesen
 maps#:#maps_enable_maps_info#:#Activates Maps in user profiles, groups and courses.
 maps#:#maps_enable_maps#:#Enable Maps
 maps#:#maps_custom_tile_server_info#:#Server URL to provide tile-data. Multiple inputs should be separated by spaces. Defaults is "%s".
@@ -13397,10 +13399,15 @@ buddysystem#:#buddy_bs_action_already_ignored#:#Action not possible. Already ign
 buddysystem#:#buddy_bs_action_already_unlinked#:#Action not possible. The contact state for user '%s' is already unlinked.
 buddysystem#:#buddy_bs_state_linked#:#Linked
 buddysystem#:#buddy_bs_state_linked_a#:#Linked
+buddysystem#:#buddy_bs_state_linked_p#:#Linked
+buddysystem#:#buddy_bs_state_unlinked#:#Unlinked
 buddysystem#:#buddy_bs_state_unlinked_a#:#Unlinked
+buddysystem#:#buddy_bs_state_unlinked_p#:#Unlinked
 buddysystem#:#buddy_bs_state_requested#:#Requested
 buddysystem#:#buddy_bs_state_requested_a#:#Requested
 buddysystem#:#buddy_bs_state_requested_p#:#Requested
+buddysystem#:#buddy_bs_state_requested_filter_a#:#Waiting for Reaction
+buddysystem#:#buddy_bs_state_requested_filter_p#:#Action Required
 buddysystem#:#buddy_bs_state_ignoredrequest#:#Ignored
 buddysystem#:#buddy_bs_state_ignored_request_a#:#Requested
 buddysystem#:#buddy_bs_state_ignored_request_p#:#Ignored
