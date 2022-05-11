@@ -1434,4 +1434,39 @@ if(!$ilDB->indexExistsByFields('il_exc_team', ['id'])) {
     $ilDB->addIndex('il_exc_team', ['id'], 'i1');
 }
 ?>
+<#82>
+<?php
+$fields = ['gap_id'];
+if (!$ilDB->indexExistsByFields('qpl_a_cloze', $fields)) {
+    $ilDB->addIndex(
+        'qpl_a_cloze',
+        $fields,
+        'i2'
+    );
+}
 
+$fields = ['gap_fi', 'question_fi'];
+if (!$ilDB->indexExistsByFields('qpl_a_cloze_combi_res', $fields)) {
+    $ilDB->addIndex(
+        'qpl_a_cloze_combi_res',
+        $fields,
+        'i1'
+    );
+}
+?>
+<#83>
+<?php
+$ilDB->manipulateF('DELETE FROM settings WHERE keyword = %s', ['text'], ['enable_block_moving']);
+$ilDB->manipulate('DELETE FROM il_block_setting WHERE ' . $ilDB->like('type', 'text', 'pd%'));
+?>
+<#84>
+<?php
+if ($ilDB->tableColumnExists('adv_mdf_definition', 'field_values')) {
+    $field_infos = [
+        'type' => 'clob',
+        'notnull' => false,
+        'default' => null
+    ];
+    $ilDB->modifyTableColumn('adv_mdf_definition', 'field_values', $field_infos);
+}
+?>
