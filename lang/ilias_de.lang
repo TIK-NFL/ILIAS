@@ -2705,6 +2705,7 @@ rbac#:#cert_read#:#Lesezugriff auf die Zertifikatsverwaltung
 rbac#:#cert_visible#:#Zertifikatsverwaltung ist sichtbar
 rbac#:#cert_write#:#Einstellungen der Zertifikatsverwaltung bearbeiten
 common#:#certificate#:#Zertifikat
+common#:#certificates#:#Zertifikate
 common#:#change#:#Ändern
 common#:#change_assignment#:#Zuweisung ändern
 rbac#:#change_existing_object_type_desc#:#Wenn aktiviert, werden auch die Rechte von bereits vorhandenen Objekten dieses Typs geändert. Ansonsten gilt die Rechteänderung nur für künftig erstellte Objekte.
@@ -11310,6 +11311,7 @@ ecs#:#ecs_cmap_att_module#:#Modul
 ecs#:#ecs_cmap_att_venue#:#Ort
 assessment#:#tst_man_scoring_by_part#:#Bewertung nach Teilnehmer
 assessment#:#tst_man_scoring_by_qst#:#Bewertung nach Frage
+assessment#:#tst_man_scoring_only_answered#:#Nur beantwortete
 assessment#:#tst_no_scorable_qst_available#:#Keine manuell bewertbare Frage verfügbar
 assessment#:#part_received_a_of_b_points#:#Der Teilnehmer hat %s von %s möglichen Punkten erreicht.
 assessment#:#answers_of#:#Antworten von:
@@ -13484,7 +13486,8 @@ awrn#:#awrn_hide_from_awareness#:#Mich nicht in „Wer ist online?“-Anzeige au
 awrn#:#awrn_hide_from_awareness_info#:#Die „Wer ist online?“-Anzeige erscheint oben im Kopf der Anwendung und listet ausgewählte Benutzer auf (z.B. Kontakte oder Mitglieder Ihrer Kurse).
 common#:#contact_sysadmin#:#Technische Betreuung kontaktieren
 common#:#report_accessibility_issue#:#Barriere melden
-common#:#report_accessibility_link#:#Gemeldeter%20Link:
+common#:#report_accessibility_link#:#Gemeldeter Link:
+common#:#report_accessibility_link_mailto#:#Gemeldeter%20Link:
 common#:#accessibility_control_concept#:#Info Barrierefreiheit
 common#:#no_accessibility_control_concept_description#:#Aktuell wird in dieser Installation keine Info zur Barrierefreiheit angeboten. Bitte kontaktieren Sie die <a href="%1$s">Anlaufstelle für Barrierefreiheit</a> für weitere Informationen.
 common#:#mainbar_aria_label#:#Hauptleiste
