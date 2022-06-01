@@ -741,7 +741,9 @@ assessment#:#assTextSubset#:#Text Subset Question
 assessment#:#autosave_failed#:#Autosave failed!
 assessment#:#autosave_success#:#Autosave successful...
 assessment#:#average_reached_points#:#Average Points
-assessment#:#backtocallingtest#:#Back to the calling test
+assessment#:#backtocallingtest#:#Back to the test
+assessment#:#backtocallingpage#:#Back to the question page
+assessment#:#backtocallingpool#:#Back to the question pool
 assessment#:#assLongMenu#:#Long Menu
 assessment#:#answers_text_box#:#Text
 assessment#:#min_auto_complete#:#Autocomplete
@@ -1808,7 +1810,7 @@ assessment#:#tst_btn_hide_best_solutions#:#Hide Best Solutions
 assessment#:#tst_settings_header_intro#:#Information Before Start of Test
 assessment#:#tst_settings_header_execution#:#Administering the Test: Access
 assessment#:#tst_starting_time_desc#:#Point in time after which the test can be started by clicking the button ‚Start‘, participants can provide answers to questions.
-assessment#:#tst_ending_time_desc#:#Point in time at which the test will be finished: Participants an no longer answer questions, the test is finished by ILIAS.
+assessment#:#tst_ending_time_desc#:#Point in time at which the test will be finished: Participants can no longer answer questions, the test is finished by ILIAS.
 assessment#:#tst_allowed_users_desc#:#ILIAS will monitor the number of participants taking the test at the same time. If more users than maximally allowed try to access ILIAS will prevent them from starting the test.
 assessment#:#tst_allowed_users_time_gap_desc#:#Participants that do not click in the test for the indicated amount of time will be categorized as ‚inactive‘ and removed from the test.
 assessment#:#tst_settings_header_test_run#:#Administering the Test: Test Run
@@ -5609,7 +5611,7 @@ forum#:#forums_disable_notification#:#Disable Notification for this Thread
 forum#:#forums_download_attachment#:#Download file
 forum#:#forums_edit_post#:#Edit Article
 forum#:#forums_enable_notification#:#Enable Notification for this Thread
-forum#:#forums_info_censor_post#:#Are you sure you want to hide this article?
+forum#:#forums_info_censor_post#:#Please provide a reason for hiding this article.
 forum#:#forums_info_censor2_post#:#Revoke Censorship?
 forum#:#forums_info_delete_post#:#Are you sure you want to delete this article including any responses?
 forum#:#forums_mark_read#:#Mark All as Read
@@ -5831,7 +5833,7 @@ jscalendar#:#wk#:#wk
 mathjax#:#mathjax_enable_mathjax_info#:#Activates support for MathJax based mathematical output of LaTeX expressions.
 mathjax#:#mathjax_enable_mathjax#:#Enable MathJax
 mathjax#:#mathjax_mathjax#:#MathJax
-mathjax#:#mathjax_path_to_mathjax_desc#:#E.g. https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML or a URL to your local installation.
+mathjax#:#mathjax_path_to_mathjax_desc#:#E.g. https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML or a URL to your local installation. ILIAS 6 and 7 supports MathJax 2.7, not yet MathJax 3.
 mathjax#:#mathjax_path_to_mathjax#:#URL to MathJax
 mathjax#:#mathjax_settings#:#MathJax Settings
 mathjax#:#mathjax_limiter#:#Inline Delimiters
@@ -14017,6 +14019,7 @@ glo#:#glo_referenced_term#:#Referenced Term
 glo#:#glo_term_reference#:#Term Reference
 glo#:#glo_reference#:#Reference
 glo#:#glo_selected_terms_have_been_copied#:#The selected terms have been copied to the clipboard. Please open the target glossary and click "Paste".
+glo#:#glo_please_select_other_glo#:#Please select another glossary.
 prg#:#prg_assign_date#:#Assignment date
 prg#:#prg_assigned_by#:#Assigned by
 style#:#add_system_style#:#Add System Style
@@ -16659,3 +16662,5 @@ rating#:#rating_open_dialog#:#Open rating dialog
 tagging#:#tagging_no_obj_for_tag#:#No Resources tagged with %s.
 rep#:#rep_favourites#:#Favourites
 rep#:#rep_favourites_info#:#Users can mark single repository items as favourites. Favourites lists can be activated and configured in the dashboard and menu settings.
+prtf#:#prtf_copy_pg#:#Copy Page
+prtf#:#prtf_copy_blog_pg#:#Copy Blog Page
