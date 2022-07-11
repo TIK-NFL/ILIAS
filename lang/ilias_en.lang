@@ -11737,7 +11737,7 @@ assessment#:#tolerance#:#Tolerance (%)
 assessment#:#result_units#:#Available Units
 assessment#:#precision#:#Precision
 assessment#:#err_range#:#The maximum range must be greater than the minimum range
-assessment#:#err_division#:#This value has to be smaller than the maximum range.
+assessment#:#err_division#:#The value you chose would make it impossible to generate a valid value for the variable.
 assessment#:#err_divider_too_big#:#The divider of one of the variables in this question is too big.
 assessment#:#err_no_formula#:#You must enter a formula
 assessment#:#err_wrong_rating_advanced#:#Please make sure that the addition of the advanced rating settings equals to 100 percent
@@ -14208,8 +14208,8 @@ rbac#:#news_add_news#:#Add News
 rbac#:#grp_news_add_news#:#Add and edit own news entries in group
 news#:#news_timline_add_entries_info#:#No news available yet. Click "Add" to create news entries.
 obj#:#obj_tool_setting_use_news#:#News
-obj#:#obj_tool_setting_use_news_info#:#Activate the news block and/or timeline view. Users can subscribe for notifications, if the news block or the timeline are activated.
-obj#:#obj_tool_setting_use_news_open_settings#:#Open Settings
+obj#:#obj_tool_setting_use_news_info#:#Use of the news block and/or timeline view. Users can subscribe for notifications if the news block or the timeline are activated.
+obj#:#obj_tool_setting_use_news_open_settings#:#Open Settings of News Block and Timeline
 cont#:#cont_news_settings#:#News Settings
 cont#:#cont_news_timeline_landing_page#:#Landing Page
 cont#:#cont_news_timeline_landing_page_info#:#Timeline page will be the landing page.
@@ -15391,7 +15391,7 @@ cont#:#cont_list_presentation#:#Item Presentation
 cont#:#cont_item_list#:#List
 cont#:#cont_tile_view#:#Tiles
 obj#:#obj_tile_image#:#Tile Image
-obj#:#obj_tile_image_info#:#The tile image will be used, if the container (course, folder, group, ...) activates the tile view presentation.
+obj#:#obj_tile_image_info#:#The tile image will be used, if the container (course, folder, group, ...) activates the tile view presentation. To avoid performance issues, upload files with a resolution of 72dpi and a width less than 1000 px. Otherwise the display of the page will be unnecessarily delayed.
 fold#:#fold_presentation#:#Folder Presentation
 rep#:#rep_tree_limit#:#Limit Items in Tree
 rep#:#rep_tree_limit_info#:#The number of objects in the repository tree will be limited to enhance performance.

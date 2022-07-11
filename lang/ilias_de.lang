@@ -11688,7 +11688,7 @@ assessment#:#tolerance#:#Toleranz (%)
 assessment#:#result_units#:#Auswählbare Einheiten
 assessment#:#precision#:#Präzision
 assessment#:#err_range#:#Die obere Grenze muss größer als die untere Grenze sein.
-assessment#:#err_division#:#Dieser Wert muss kleiner als das Maximum sein.
+assessment#:#err_division#:#Der von Ihnen gesetzte Wert macht es unmöglich einen gültigen Wert für die Variable zu generieren.
 assessment#:#err_divider_too_big#:#Der Teiler einer der Variablen in dieser Frage ist zu gross.
 assessment#:#err_no_formula#:#Bitte geben Sie eine Formel zur Berechnung des Ergebnisses an.
 assessment#:#err_wrong_rating_advanced#:#Bitte stellen Sie sicher, dass die Summe der erweiterten Bewertungsoptionen genau 100 Prozent ergibt.
@@ -14200,8 +14200,8 @@ rbac#:#news_add_news#:#Neuigkeiten erstellen
 rbac#:#grp_news_add_news#:#Neuigkeiten erstellen und eigene Neuigkeiten bearbeiten
 news#:#news_timline_add_entries_info#:#Zurzeit sind noch keine Neuigkeiten vorhanden. Klicken Sie auf "Beitrag hinzufügen" um Neuigkeiten anzulegen.
 obj#:#obj_tool_setting_use_news#:#Neuigkeiten
-obj#:#obj_tool_setting_use_news_info#:#Nutzung des Blocks "Neuigkeiten" oder der Timeline für Neuigkeiten. Benutzer können Benachrichtigungen für Neuigkeiten aktivieren, sobald der Block oder die Timeline aktiv sind.
-obj#:#obj_tool_setting_use_news_open_settings#:#Einstellungen öffnen
+obj#:#obj_tool_setting_use_news_info#:#Nutzung des Blocks „Neuigkeiten“ oder der Timeline für Neuigkeiten. Benutzer können Benachrichtigungen für Neuigkeiten aktivieren, sobald der Block oder die Timeline aktiv sind.
+obj#:#obj_tool_setting_use_news_open_settings#:#Einstellungen für Block und Timeline öffnen
 cont#:#cont_news_settings#:#Neuigkeiten
 cont#:#cont_news_timeline_landing_page#:#Startseite
 cont#:#cont_news_timeline_landing_page_info#:#Timeline als Startseite
@@ -15401,7 +15401,7 @@ cont#:#cont_list_presentation#:#Präsentationsansicht für Inhalte
 cont#:#cont_item_list#:#Liste
 cont#:#cont_tile_view#:#Kacheln
 obj#:#obj_tile_image#:#Kachelbild
-obj#:#obj_tile_image_info#:#Das Kachelbild wird genutzt, wenn im übergeordneten Container die Kachelansicht gewählt wurde.
+obj#:#obj_tile_image_info#:#Das Kachelbild wird genutzt, wenn im übergeordneten Container die Kachelansicht gewählt wurde. Um Performanzprobleme zu verhindern, laden Sie nur Bilder mit einer Auflösung von 72 dpi und einer Breite von weniger als 1000 px hoch. Ansonsten kommt es möglicherweise zu einem verzögerten Seitenaufbau.
 fold#:#fold_presentation#:#Darstellung
 validation#:#not_an_int#:#Wert vom Typ '%s' ist kein Integer.
 validation#:#not_a_string#:#Wert vom Typ '%s' ist kein String.
