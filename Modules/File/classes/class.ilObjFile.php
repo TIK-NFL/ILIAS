@@ -8,6 +8,7 @@ use ILIAS\FileUpload\DTO\UploadResult;
 use ILIAS\ResourceStorage\Revision\Revision;
 use ILIAS\ResourceStorage\Identification\ResourceIdentification;
 use ILIAS\ResourceStorage\Policy\FileNamePolicyException;
+use ILIAS\ResourceStorage\Preloader\SecureString;
 
 /**
  * Class ilObjFile
@@ -22,6 +23,7 @@ class ilObjFile extends ilObject2 implements ilObjFileImplementationInterface
     use ilObjFileUsages;
     use ilObjFilePreviewHandler;
     use ilObjFileNews;
+    use SecureString;
 
     public const MODE_FILELIST = "filelist";
     public const MODE_OBJECT = "object";
@@ -44,7 +46,7 @@ class ilObjFile extends ilObject2 implements ilObjFileImplementationInterface
      */
     protected $log;
 
-// ABSTRACT
+    // ABSTRACT
     /**
      * @var string
      */
@@ -69,7 +71,7 @@ class ilObjFile extends ilObject2 implements ilObjFileImplementationInterface
      * @var string
      */
     protected $action;
-// ABSTRACT
+    // ABSTRACT
 
     /**
      * @var string|null
@@ -118,7 +120,10 @@ class ilObjFile extends ilObject2 implements ilObjFileImplementationInterface
     {
         if ($this->resource_id && ($id = $this->manager->find($this->resource_id)) !== null) {
             $resource = $this->manager->getResource($id);
-            $this->implementation = new ilObjFileImplementationStorage($resource);
+            $this->implementation = new ilObjFileImplementationStorage(
+                $resource,
+                (int) $this->getId()
+            );
             $this->setMaxVersion($resource->getMaxRevision());
             $this->setVersion($resource->getMaxRevision());
         } else {
@@ -421,7 +426,7 @@ class ilObjFile extends ilObject2 implements ilObjFileImplementationInterface
         $r = $DIC->database()->queryF($q, ['integer'], [$this->getId()]);
         $row = $r->fetchObject();
 
-        $this->setFileName($row->file_name);
+        $this->setFileName($this->secure($row->file_name));
         $this->setFileType($row->file_type);
         $this->setFileSize($row->file_size);
         $this->setVersion($row->version ? $row->version : 1);
@@ -687,12 +692,12 @@ class ilObjFile extends ilObject2 implements ilObjFileImplementationInterface
     }
 
     /**
-     * @param $a_target_dir
+     * @param string $target_dir
      * @deprecated
      */
-    public function export($a_target_dir)
+    public function export(string $target_dir) : void
     {
-        $this->implementation->export($a_target_dir);
+        $this->implementation->export($target_dir);
     }
 
     /**
@@ -778,5 +783,4 @@ class ilObjFile extends ilObject2 implements ilObjFileImplementationInterface
     {
         return $this->implementation->getFileExtension();
     }
-
 }
