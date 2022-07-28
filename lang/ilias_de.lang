@@ -3743,7 +3743,7 @@ common#:#msg_user_last_role1#:#Die folgenden Benutzer sind nur dieser einen Roll
 common#:#msg_user_last_role2#:#Bitte löschen Sie die Benutzer oder weisen Sie ihnen einer anderen Rolle zu.
 common#:#msg_userassignment_changed#:#Benutzerzuweisung geändert
 common#:#msg_wrong_format#:#Der Wert, den Sie eingegeben haben, erfüllt nicht das vorgegebene Format.
-common#:#msg_bt_download_started#:#ILIAS erzeugt ein ZIP-Archiv mit allen zugehörigen Dateien. Sie können diese anschließend im Notification Center (Glocken-Symbol) oben rechts herunterladen.
+common#:#msg_bt_download_started#:#Ein ZIP-Archiv mit allen Download-Dateien wird jetzt im Hintergrund erstellt. Den Status Ihrer Hintergrundprozesse sehen Sie oben rechts in der Nachrichtenzentrale. Dort können Sie das ZIP-Archiv auch herunterladen.
 common#:#my_bms#:#Meine Bookmarks
 common#:#my_courses#:#Meine Kurse
 common#:#my_courses_groups#:#Meine Kurse und Gruppen
@@ -3776,7 +3776,7 @@ common#:#no_start_file#:#Keine Startdatei
 common#:#no_title#:#Kein Titel
 common#:#no_users_selected#:#Bitte wählen Sie mindestens einen Benutzer aus.
 common#:#no_xml_file_found_in_zip#:#Die XML-Datei konnte nicht innerhalb der ZIP-Datei gefunden werden:
-common#:#noc#:#Notification Center
+common#:#noc#:#Nachrichtenzentrale
 common#:#non_internal_local_roles_only#:#Lokale Rollen (nur selbsterstellte)
 common#:#none#:#Keine
 common#:#normal#:#Normal
@@ -4860,6 +4860,7 @@ content#:#cont_cp_question_diff_formats_info#:#Beachten Sie bitte, dass einige F
 content#:#cont_create_link#:#Link erzeugen
 content#:#cont_create_mob#:#Medienobjekt anlegen
 content#:#cont_credit_mode#:#Bewertung / Steuerung der Lerneraktivitäten
+content#:#cont_credit_mode_info#:#Dem Lernmodul wird über cmi.core.credit mitgeteilt, ob die erzielte Leistung (bestanden/nicht bestanden und Punktzahl) für die Bewertung erwünscht (credit) oder nicht erwünscht ist (no-credit). Es ist Aufgabe des Lernmoduls, diese Anweisung adäquat zu interpretieren.
 content#:#cont_credit_off#:#Ohne Bewertung
 content#:#cont_credit_on#:#Mit Bewertung (bestanden | nicht bestanden)
 content#:#cont_credits#:#Punkte
@@ -10173,7 +10174,7 @@ rep#:#rep_activation_limited_visibility#:#Immer sichtbar
 crs#:#crs_activation_limited_visibility_info#:#Außerhalb des angegebenen Zeitraums wird der Kurstitel angezeigt, die Inhalte aber nicht.
 rep#:#rep_visibility_until#:#Zeitlich begrenzte Verfügbarkeit
 assessment#:#tst_activation_online_info#:#Nur wenn der Test online geschaltet ist, können Benutzer am Test teilnehmen.
-assessment#:#tst_activation_limited_visibility_info#:#Außerhalb des angegebenen Zeitraums wird der Testtitel angezeigt. Der Test kann aber nicht gestartet werden.
+assessment#:#tst_activation_limited_visibility_info#:#Außerhalb des angegebenen Zeitraums wird der Testtitel angezeigt. Der Test kann aber nicht gestartet werden. Der weitere Zugriff, auch auf bereits laufende Tests, wird zum Ende des Zeitraums unterbunden.
 book#:#booking_nr_of_items#:#Anzahl
 book#:#book_schedule_type_fixed#:#Belegungen zu Terminen
 book#:#book_schedule_type_fixed_info#:#Dieser Typ ist geeignet für Räume, Beamer, etc.
@@ -13152,16 +13153,18 @@ forum#:#forums_notification_show_frm#:#Zum Forum gehen: %s
 forum#:#thread_deleted_by#:#folgendes Thema im Forum "%2$s" wurde von "%1$s" gelöscht:
 forum#:#content_deleted_thread#:#Inhalt des gelöschten Themas:
 forum#:#post_uncensored_by#:#für folgenden Beitrag wurde die Zensur von "%1$s" aufgehoben:
+forum#:#frm_noti_obj_crs#:#Kurs
+forum#:#frm_noti_obj_grp#:#Gruppe
 forum#:#frm_noti_message#:#Nachricht:
 forum#:#frm_noti_new_post#:#es wurde ein neuer Beitrag im Forum "%1$s" erstellt.
-forum#:#frm_noti_subject_new_post#:#Neuer Beitrag im Forum "%1$s" zum Thema "%2$s"
-forum#:#frm_noti_subject_del_thread#:#Thema "%2$s" im Forum "%1$s" gelöscht
-forum#:#frm_noti_subject_act_post#:#Beitrag im Forum "%1$s" zum Thema "%2$s" aktiviert
-forum#:#frm_noti_subject_answ_post#:#Beitrag im Forum "%1$s" zum Thema "%2$s" beantwortet
-forum#:#frm_noti_subject_upt_post#:#Beitrag im Forum "%1$s" zum Thema "%2$s" geändert
-forum#:#frm_noti_subject_cens_post#:#Beitrag im Forum "%1$s" zum Thema "%2$s" zensiert
-forum#:#frm_noti_subject_uncens_post#:#Zensur aufgehoben für einen Beitrag im Forum "%1$s" zum Thema "%2$s"
-forum#:#frm_noti_subject_del_post#:#Beitrag im Forum "%1$s" zum Thema "%2$s" gelöscht
+forum#:#frm_noti_subject_act_post#:#Beitrag im Forum "%1$s%2$s zum Thema "%3$s" aktiviert
+forum#:#frm_noti_subject_answ_post#:#Beitrag im Forum "%1$s%2$s zum Thema "%3$s" beantwortet
+forum#:#frm_noti_subject_cens_post#:#Beitrag im Forum "%1$s%2$s zum Thema "%3$s" zensiert
+forum#:#frm_noti_subject_del_post#:#Beitrag im Forum "%1$s"%2$s zum Thema "%3$s" gelöscht
+forum#:#frm_noti_subject_del_thread#:#Thema "%3$s" im Forum "%1$s"%2$s gelöscht
+forum#:#frm_noti_subject_new_post#:#Neuer Beitrag im Forum "%1$s"%2$s zum Thema "%3$s"
+forum#:#frm_noti_subject_uncens_post#:#Zensur aufgehoben für einen Beitrag im Forum "%1$s"%2$s zum Thema "%3$s"
+forum#:#frm_noti_subject_upt_post#:#Beitrag im Forum "%1$s"%2$s zum Thema "%3$s" geändert
 search#:#search_show_inactive_user#:#Inaktive Benutzer anzeigen
 search#:#search_show_inactive_user_info#:#In der Benutzersuche werden auch Benutzer angezeigt, deren Konto nicht aktiv ist.
 search#:#search_show_limited_user#:#Zeitlich begrenzte Benutzer anzeigen
@@ -14875,7 +14878,7 @@ common#:#cron_users_without_login_del_create_date_thr#:#Schwellenwert
 common#:#cron_users_without_login_del_create_date_thr_info#:#Alle Benutzerkonten, deren Erstellung länger her ist als der hier definierte Schwellenwert, werden für eine Löschung berücksichtigt.
 common#:#user_never_logged_in#:#Benutzerzugänge ohne Anmeldung löschen
 common#:#user_never_logged_in_info#:#Accounts werden gelöscht, wenn sie sich noch nie in ILIAS angemeldet haben.
-dateplaner#:#cal_download_files_started#:#ILIAS erzeugt ein ZIP-Archiv mit allen zugehörigen Dateien. Sie können diese anschließend im Notification Center (Glocken-Symbol) oben rechts herunterladen.
+dateplaner#:#cal_download_files_started#:#Ein ZIP-Archiv mit allen Download-Dateien wird jetzt im Hintergrund erstellt. Den Status Ihrer Hintergrundprozesse sehen Sie oben rechts in der Nachrichtenzentrale. Dort können Sie das ZIP-Archiv auch herunterladen.
 common#:#usr_name_undisclosed#:#Nicht freigegeben
 common#:#obj_exc_duplicate#:#Übung kopieren
 meta#:#adt_error_max_length#:#Der eingegebene Text ist zu lang. Bitte geben Sie einen kürzeren Text ein.
@@ -15450,7 +15453,7 @@ user#:#msg_spoint_not_modified#:#Die Startseite wurde nicht geändert.
 skll#:#skll_lhist_skill_self_eval#:#Status $4$ von $3$ ist selbst zugewiesen.
 skll#:#skll_lhist_skill_self_eval_in#:#Status $4$ von $3$ wurde selbst zugewiesen in $1$.
 blog#:#blog_download_submission#:#Kopie der Abgabe herunterladen
-exc#:#exc_down_files_started_bg#:#Das Download-Paket wird erstellt. Bitte überprüfen Sie ihre Hintergrundprozesse oben rechts in der Top-Bar.
+exc#:#exc_down_files_started_bg#:#Ein ZIP-Archiv mit allen Download-Dateien wird jetzt im Hintergrund erstellt. Den Status Ihrer Hintergrundprozesse sehen Sie oben rechts in der Nachrichtenzentrale. Dort können Sie das ZIP-Archiv auch herunterladen.
 lti#:#lti_cron_title#:#LTI Outcome Service
 lti#:#lti_cron_title_desc#:#Überträgt den Lernfortschritt von LTI-Benutzern an die aufrufende Plattform. Dieser Cron-Job wird nur in den Fällen benötigt, wenn der Lernfortschritt aufgrund von Einstellungsänderungen neu berechnet werden muss.
 crs#:#crs_timings_short_end#:#Enddatum
@@ -15786,12 +15789,14 @@ lti#:#lti_con_prov_category#:#Kategorie
 lti#:#lti_con_prov_category_info#:#Kategorie, um Einträge zu filtern, wenn ein LTI-Konsument-Objekt erstellt wird.
 lti#:#conf_privacy_ident#:#Benutzeridentifikation
 lti#:#conf_privacy_ident_info#:#Standard ist häufig die E-Mail-Adresse. Die eindeutige ILIAS-Plattform-ID lautet:
-lti#:#conf_privacy_ident_il_uuid_user_id#:#ILIAS-Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist.
-lti#:#conf_privacy_ident_il_uuid_user_id_info#:#Dies ist identisch mit jedem Aufruf, erlaubt aber keine direkte Rückschlüsse auf den ILIAS-Benutzer.
-lti#:#conf_privacy_ident_il_uuid_login#:#ILIAS-Login kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist.
-lti#:#conf_privacy_ident_il_uuid_login_info#:#Dies ist identisch mit jedem Aufruf, kann aber direkte Rückschlüsse auf den ILIAS-Benutzer zulassen.
-lti#:#conf_privacy_ident_il_uuid_ext_account#:#Externe Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist.
+lti#:#conf_privacy_ident_il_uuid_user_id#:#ILIAS-Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
+lti#:#conf_privacy_ident_il_uuid_user_id_info#:#Sendet die interne numerische Benutzer-Id. Dies ist identisch mit jedem Aufruf, ermöglicht aber Rückschlüsse auf den ILIAS-Benutzer.
+lti#:#conf_privacy_ident_il_uuid_login#:#ILIAS-Login kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
+lti#:#conf_privacy_ident_il_uuid_login_info#:#Sendet den Benutzernamen. Dies ist identisch mit jedem Aufruf, kann aber direkte Rückschlüsse auf den ILIAS-Benutzer zulassen.
+lti#:#conf_privacy_ident_il_uuid_ext_account#:#Externe Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
 lti#:#conf_privacy_ident_il_uuid_ext_account_info#:#Dies ist identisch mit jedem Aufruf, kann aber direkte Rückschlüsse auf den Benutzer zulassen.
+lti#:#conf_privacy_ident_il_uuid_SHA256#:#Hash kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
+lti#:#conf_privacy_ident_il_uuid_SHA256_info#:#Dies ist identisch mit jedem Aufruf, erlaubt aber keine direkten Rückschlüsse auf den ILIAS-Benutzer.
 lti#:#conf_privacy_ident_real_email#:#E-Mail-Adresse
 lti#:#conf_privacy_ident_real_email_info#:#Sendet die E-Mail-Adresse des Benutzers als Identifikation (Achtung: eine E-Mail-Adresse kann von mehreren Benutzern verwendet werden!)
 lti#:#conf_privacy_name#:#Benutzername
@@ -15978,13 +15983,15 @@ cmix#:#info_external_lrs#:#Bei einem externen Learning Record Store (LRS) wird d
 cmix#:#conf_privacy_ident#:#Benutzeridentifikation
 cmix#:#conf_privacy_ident_info#:#Standard ist häufig die E-Mail-Adresse. Die eindeutige ILIAS-Plattform-ID lautet:
 cmix#:#conf_privacy_ident_il_uuid_user_id#:#ILIAS-Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-cmix#:#conf_privacy_ident_il_uuid_user_id_info#:#Dies ist identisch mit jedem Aufruf, erlaubt aber keine direkte Rückschlüsse auf den ILIAS-Benutzer.
+cmix#:#conf_privacy_ident_il_uuid_user_id_info#:#Sendet die interne numerische Benutzer-Id. Dies ist identisch mit jedem Aufruf, ermöglicht aber Rückschlüsse auf den ILIAS-Benutzer.
 cmix#:#conf_privacy_ident_il_uuid_login#:#ILIAS-Login kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-cmix#:#conf_privacy_ident_il_uuid_login_info#:#Dies ist identisch mit jedem Aufruf, kann aber eine direkte Rückschlüsse auf den ILIAS-Benutzer zulassen.
+cmix#:#conf_privacy_ident_il_uuid_login_info#:#Sendet den Benutzernamen. Dies ist identisch mit jedem Aufruf, kann aber eine direkte Rückschlüsse auf den ILIAS-Benutzer zulassen.
 cmix#:#conf_privacy_ident_il_uuid_ext_account#:#Externe Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
 cmix#:#conf_privacy_ident_il_uuid_ext_account_info#:#Dies ist identisch mit jedem Aufruf, kann aber eine direkte Rückschlüsse auf den Benutzer zulassen.
 cmix#:#conf_privacy_ident_il_uuid_random#:#Zufalls-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
 cmix#:#conf_privacy_ident_il_uuid_random_info#:#Pro ILIAS-Objekt und ILIAS-Benutzer wird eine Zufalls-ID erzeugt, die bei jedem Aufruf identisch bleibt. Rückschlüsse auf einen Benutzer sind sehr eingeschränkt, da Objekt-übergreifende Nutzerprofile praktisch nicht erstellt werden können.
+cmix#:#conf_privacy_ident_il_uuid_SHA256#:#Hash kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
+cmix#:#conf_privacy_ident_il_uuid_SHA256_info#:#Dies ist identisch mit jedem Aufruf, erlaubt aber keine direkten Rückschlüsse auf den ILIAS-Benutzer.
 cmix#:#conf_privacy_ident_real_email#:#E-Mail-Adresse
 cmix#:#conf_privacy_ident_real_email_info#:#Sendet die E-Mail-Adresse des Benutzers als Identifikation (Achtung: eine E-Mail-Adresse kann von mehreren Benutzern verwendet werden!)
 cmix#:#conf_privacy_name#:#Benutzername
@@ -16675,3 +16682,7 @@ prtf#:#prtf_copy_blog_pg#:#Blogseite kopieren
 assessment#:#question_is_part_of_running_test#:#Die Frage ist Teil eines laufenden Tests und darf nicht geändert werden.
 copg#:#copg_error_occured_modal#:#Es ist leider ein Fehler aufgetreten. Bitte drücken Sie "Seite neu laden" um zum zuletzt gespeicherten Inhalt zu gelangen.
 copg#:#copg_reload_page#:#Seite neu laden
+assessment#:#qst_use_nested_answers#:#Einrückung in Anworten verwenden
+assessment#:#qst_nested_nested_answers_on#:#Mit Einrückung
+assessment#:#qst_nested_nested_answers_off#:#Ohne Einrückung
+assessment#:#tab_nest_answers#:#Einrückung

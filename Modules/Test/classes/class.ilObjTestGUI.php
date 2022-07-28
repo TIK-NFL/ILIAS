@@ -748,6 +748,7 @@ class ilObjTestGUI extends ilObjectGUI
                 if (!$ilAccess->checkAccess("read", "", $_GET["ref_id"]) && !$ilAccess->checkAccess("visible", "", $_GET["ref_id"])) {
                     $ilias->raiseError($this->lng->txt("permission_denied"), $ilias->error_obj->MESSAGE);
                 }
+                $this->prepareOutput();
                 require_once "Services/Object/classes/class.ilCommonActionDispatcherGUI.php";
                 $gui = ilCommonActionDispatcherGUI::getInstanceFromAjaxCall();
                 $this->ctrl->forwardCommand($gui);
@@ -968,7 +969,7 @@ class ilObjTestGUI extends ilObjectGUI
     {
         switch ($this->object->getQuestionSetType()) {
             case ilObjTest::QUESTION_SET_TYPE_FIXED:
-                $this->ctrl->redirectByClass('ilTestExpressPageObjectGUI', 'showPage');
+                $this->ctrl->redirectByClass('ilObjTestGUI', 'questions');
 
                 // no break
             case ilObjTest::QUESTION_SET_TYPE_RANDOM:
