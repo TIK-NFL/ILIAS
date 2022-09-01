@@ -20,6 +20,7 @@ class ilPageObjectGUI
     const PREVIEW = "preview";
     const OFFLINE = "offline";
     const PRINTING = "print";
+    protected $profile_back_url = "";
 
     protected $enabled_href = true;
 
@@ -149,7 +150,8 @@ class ilPageObjectGUI
         $a_id,
         $a_old_nr = 0,
         $a_prevent_get_id = false,
-        $a_lang = ""
+        $a_lang = "",
+        $concrete_lang = ""
     ) {
         global $DIC;
 
@@ -164,6 +166,7 @@ class ilPageObjectGUI
         $this->help = $DIC["ilHelp"];
         $this->ui = $DIC->ui();
         $this->toolbar = $DIC->toolbar();
+        $this->concrete_lang = $concrete_lang;
 
         $this->setParentType($a_parent_type);
         $this->setId($a_id);
@@ -228,6 +231,7 @@ class ilPageObjectGUI
             $this->getOldNr(),
             $this->getLanguage()
         );
+        $page->setConcreteLang($this->concrete_lang);
         $this->setPageObject($page);
     }
     
@@ -740,7 +744,7 @@ class ilPageObjectGUI
      * Set open placeholder
      * @param string $a_val open placeholder pc id
      */
-    function setOpenPlaceHolder($a_val)
+    public function setOpenPlaceHolder($a_val)
     {
         $this->open_place_holder = $a_val;
     }
@@ -749,7 +753,7 @@ class ilPageObjectGUI
      * Get open placeholder
      * @return string open placeholder pc id
      */
-    function getOpenPlaceHolder()
+    public function getOpenPlaceHolder()
     {
         return $this->open_place_holder;
     }
@@ -1939,6 +1943,7 @@ class ilPageObjectGUI
                 $pc_obj->setSourcecodeDownloadScript($this->determineSourcecodeDownloadScript());
                 $pc_obj->setFileDownloadLink($this->determineFileDownloadLink());
                 $pc_obj->setFullscreenLink($this->determineFullscreenLink());
+                $pc_obj->setProfileBackUrl($this->getProfileBackUrl());
 
                 // post xsl page content modification by pc elements
                 $output = $pc_obj->modifyPageContentPostXsl($output, $this->getOutputMode(), $this->getAbstractOnly());
@@ -2301,6 +2306,7 @@ class ilPageObjectGUI
      */
     public function setDefaultLinkXml()
     {
+        $this->page_linker->setProfileBackUrl($this->getProfileBackUrl());
         $this->page_linker->setOffline($this->getOutputMode() == self::OFFLINE);
         $this->setLinkXML($this->page_linker->getLinkXml($this->getPageObject()->getInternalLinks()));
     }
@@ -2322,10 +2328,21 @@ class ilPageObjectGUI
      */
     public function getProfileBackUrl()
     {
+        if ($this->profile_back_url != "") {
+            return $this->profile_back_url;
+        }
         return $this->ctrl->getLinkTargetByClass(strtolower(get_class($this)), "preview");
     }
 
-    
+    /**
+     * Get profile back url
+     */
+    public function setProfileBackUrl($url)
+    {
+        $this->profile_back_url = $url;
+    }
+
+
     /**
      * Download file of file lists
      */
@@ -3575,5 +3592,4 @@ class ilPageObjectGUI
     {
         return [];
     }
-
 }
