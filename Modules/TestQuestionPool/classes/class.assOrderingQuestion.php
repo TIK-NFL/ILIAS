@@ -109,11 +109,19 @@ class assOrderingQuestion extends assQuestion implements ilObjQuestionScoringAdj
     */
     public function isComplete() : bool
     {
+        $elements = array_filter(
+            $this->getOrderingElementList()->getElements(),
+            function ($element) {
+                return trim($element->getContent()) != '';
+            }
+        );
+        $has_at_least_two_elements = count($elements) > 1;
+
         return  $this->getAuthor()
             && $this->getTitle()
             && $this->getQuestion()
             && $this->getMaximumPoints()
-            && $this->getOrderingElementList()->countElements();
+            && $has_at_least_two_elements;
     }
 
 
@@ -431,6 +439,7 @@ class assOrderingQuestion extends assQuestion implements ilObjQuestionScoringAdj
             } else {
                 $this->setOrderingType(self::OQ_PICTURES);
             }
+            $this->setThumbGeometry($this->getThumbGeometry());
         }
         if ($ct == self::OQ_CT_TERMS) {
             if ($this->isOrderingTypeNested()) {
@@ -1073,7 +1082,7 @@ class assOrderingQuestion extends assQuestion implements ilObjQuestionScoringAdj
     */
     public function setThumbGeometry($a_geometry)
     {
-        $this->thumb_geometry = ($a_geometry < 1) ? 100 : $a_geometry;
+        $this->thumb_geometry = ((int)$a_geometry < 1) ? 100 : $a_geometry;
     }
 
     /*
