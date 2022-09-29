@@ -1684,7 +1684,7 @@ class ilPageObjectGUI
                 $par = $this->obj->getParagraphForPCID($this->abstract_pcid);
                 $content = "<dummy><PageObject><PageContent><Paragraph Characteristic='" . $par->getCharacteristic() . "'>" .
                     $par->getText() . $link_xml .
-                    "</Paragraph></PageContent></PageObject></dummy>";
+                    "</Paragraph></PageContent></PageObject>".$this->obj->getMultimediaXML()."</dummy>";
             }
         } else {
             $content = $this->obj->getXMLFromDom(
@@ -3206,6 +3206,8 @@ class ilPageObjectGUI
     */
     public function editActivation()
     {
+        $this->setBackToEditTabs();
+
         $atpl = new ilTemplate("tpl.page_activation.php", true, true, "Services/COPage");
         $this->initActivationForm();
         $this->getActivationFormValues();
