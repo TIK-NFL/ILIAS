@@ -15,11 +15,7 @@ require_once 'Services/UIComponent/Glyph/classes/class.ilGlyphGUI.php';
 
 class ilTestQuestionsTableGUI extends ilTable2GUI
 {
-    /**
-     * @var bool
-     */
-    protected $questionTitleLinksEnabled = false;
-    
+
     /**
      * @var bool
      */
@@ -210,13 +206,9 @@ class ilTestQuestionsTableGUI extends ilTable2GUI
         if ($this->isColumnSelected('qid')) {
             $this->tpl->setVariable("QUESTION_ID_PRESENTATION", $data['question_id']);
         }
-        
-        if ($this->isQuestionTitleLinksEnabled()) {
-            $this->tpl->setVariable("QUESTION_TITLE", $this->buildQuestionTitleLink($data));
-        } else {
-            $this->tpl->setVariable("QUESTION_TITLE", $data["title"]);
-        }
-        
+
+        $this->tpl->setVariable("QUESTION_TITLE", $this->buildQuestionTitleLink($data));
+
         if (!$data['complete']) {
             $this->tpl->setVariable("IMAGE_WARNING", ilUtil::getImagePath("icon_alert.svg"));
             $this->tpl->setVariable("ALT_WARNING", $this->lng->txt("warning_question_not_complete"));
@@ -544,23 +536,7 @@ class ilTestQuestionsTableGUI extends ilTable2GUI
     {
         $this->totalWorkingTime = $totalWorkingTime;
     }
-    
-    /**
-     * @return bool
-     */
-    public function isQuestionTitleLinksEnabled() : bool
-    {
-        return $this->questionTitleLinksEnabled;
-    }
-    
-    /**
-     * @param bool $questionTitleLinksEnabled
-     */
-    public function setQuestionTitleLinksEnabled(bool $questionTitleLinksEnabled)
-    {
-        $this->questionTitleLinksEnabled = $questionTitleLinksEnabled;
-    }
-    
+
     /**
      * @return bool
      */
