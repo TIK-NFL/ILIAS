@@ -5,4 +5,4 @@ Disallow: /register.php?lang=en
 Disallow: /pwassist.php
 Disallow: /pwassist.php?lang=de
 Disallow: /pwassist.php?lang=en
-Disallow: /goto_Uni_Stuttgart_usr_nameassist.html
+Disallow: /goto_UniStuttgartFG_usr_nameassist.html
