@@ -1517,7 +1517,6 @@ class ilObjMediaObject extends ilObject
             $width = 300;
             $height = 20;
         }
-        
         if (ilUtil::deducibleSize($a_format)) {
             include_once("./Services/MediaObjects/classes/class.ilMediaImageUtil.php");
             if ($a_type == "File") {
@@ -1569,7 +1568,6 @@ class ilObjMediaObject extends ilObject
         if ($height == 0 && $a_user_height === "") {
             $height = "";
         }
-
         return array("width" => $width, "height" => $height, "info" => $info);
     }
 
@@ -1702,6 +1700,19 @@ class ilObjMediaObject extends ilObject
         $a_format = "png",
         $a_size = "80"
     ) {
+        $size = (int) $a_size;
+        $m_dir = ilObjMediaObject::_getDirectory($this->getId());
+        $t_dir = ilObjMediaObject::_getThumbnailDirectory($this->getId());
+        $file = $m_dir . "/" . $a_file;
+
+        $mime = ilObjMediaObject::getMimeType($file);
+        $wh = ilMediaImageUtil::getImageSize($file);
+
+        // see #8602
+        if ($size > (int) $wh[0] && $size > $wh[1]) {
+            $a_size = "";
+        }
+
         $m_dir = ilObjMediaObject::_getDirectory($this->getId());
         $t_dir = ilObjMediaObject::_getThumbnailDirectory($this->getId());
         self::_createThumbnailDirectory($this->getId());

@@ -1647,6 +1647,7 @@ assessment#:#tst_pass_details#:#Detaillierte Ergebnisse
 assessment#:#tst_pass_details_header_lo_initial#:#Einstiegsergebnisse zu den Lernzielen<br />%s - %s
 assessment#:#tst_pass_details_header_lo_qualifying#:#Qualifizierende Ergebnisse zu den Lernzielen<br />%s - %s
 assessment#:#tst_pass_details_overview_table_title#:#Detaillierte Testergebnisse für Testdurchlauf %s
+assessment#:#tst_pass_finished#:#Testdurchlauf wurde beendet
 assessment#:#tst_pass_finished_on#:#Testdurchlauf beendet am
 assessment#:#tst_pass_last_pass#:#Letzten Testdurchlauf bewerten
 assessment#:#tst_pass_last_pass_desc#:#Es wird immer der letzte Testdurchlauf eines Teilnehmers bewertet.
@@ -3397,6 +3398,7 @@ common#:#HH#:#SS:MM
 common#:#absolute_path#:#Absoluter Pfad
 common#:#accept_usr_agreement#:#Nutzungsvereinbarung akzeptieren?
 common#:#accept_usr_agreement_btn#:#Zustimmen
+common#:#accept_usr_agreement_intro#:#Es liegen neue Nutzungsbedingungen vor. Sie müssen sie akzeptieren, bevor Sie mit der Nutzung von ILIAS fortfahren können. Lesen Sie das folgende Dokument sorgfältig durch und geben Sie unten auf der Seite Ihre Zustimmung oder Ablehnung.
 common#:#access#:#Zugriff
 common#:#accessFree#:#Befristung des Zugriffs aufheben
 common#:#accessRestrict#:#Zugriff befristen
@@ -4609,7 +4611,7 @@ common#:#mm_favorites#:#Favoriten
 common#:#mm_learning_history#:#Lernverlauf
 common#:#mm_learning_progress#:#Lernfortschritt
 common#:#mm_mail#:#Mail
-common#:#mm_news#:#News
+common#:#mm_news#:#Neuigkeiten
 common#:#mm_notes#:#Notizen
 common#:#mm_organisation#:#Organisation
 common#:#mm_personal_and_shared_r#:#Persönliche und geteilte Ressourcen
@@ -5813,6 +5815,7 @@ common#:#usr_account_inactive#:#Inaktiver Benutzer
 common#:#usr_active_only#:#Nur aktive Benutzer
 common#:#usr_add#:#Neuer Benutzer
 common#:#usr_agreement#:#Nutzungsvereinbarung
+common#:#usr_agreement_footer_intro#:#Zu dieser Nutzungsvereinbarung haben Sie ihr Einverständnis erklärt.
 common#:#usr_edit#:#Benutzer bearbeiten
 common#:#usr_filter_coursemember#:#Mitglied eines Kurses
 common#:#usr_filter_groupmember#:#Mitglied einer Gruppe
@@ -6573,17 +6576,17 @@ content#:#cont_list_outdent#:#Liste ausrücken
 content#:#cont_list_properties#:#Listen-Eigenschaften
 content#:#cont_lists#:#Listen
 content#:#cont_lk_chapter#:#Kapitel
-content#:#cont_lk_chapter_new#:#Kapitel (Neuer Frame)
+content#:#cont_lk_chapter_new#:#Kapitel in neuem Tab
 content#:#cont_lk_file#:#Datei/Dokument
-content#:#cont_lk_media_faq#:#Medienobjekt (FAQ Frame)
+content#:#cont_lk_media_faq#:#Medienobjekt in FAQ Tool
 content#:#cont_lk_media_inline#:#Medienobjekt (Inline)
-content#:#cont_lk_media_media#:#Medienobjekt (Media Frame)
-content#:#cont_lk_media_new#:#Medienobjekt (Neuer Frame)
+content#:#cont_lk_media_media#:#Medienobjekt in Media Tool
+content#:#cont_lk_media_new#:#Medienobjekt in neuem Tab
 content#:#cont_lk_page#:#Seite
-content#:#cont_lk_page_faq#:#Seite (FAQ Frame)
-content#:#cont_lk_page_new#:#Seite (Neuer Frame)
+content#:#cont_lk_page_faq#:#Seite in FAQ Tool
+content#:#cont_lk_page_new#:#Seite in neuem Tab
 content#:#cont_lk_term#:#Glossarbegriff
-content#:#cont_lk_term_new#:#Glossarbegriff (Neuer Frame)
+content#:#cont_lk_term_new#:#Glossarbegriff in neuem Tab
 content#:#cont_lm_comments_desc#:#Erlaubt es Benutzern öffentliche Kommentare auf allen Lernmodulseiten hinzuzufügen.
 content#:#cont_lm_default_layout#:#Standardlayout des Lernmoduls
 content#:#cont_lm_mail_permanent_link#:#Klicken Sie auf den folgenden Link um das Lernmodul aufzurufen:
@@ -7800,9 +7803,11 @@ crs#:#crs_view_timing#:#Lernplanungsansicht
 crs#:#crs_view_timing_absolute#:#Absolutes Datum
 crs#:#crs_view_timing_relative#:#Relatives Datum
 crs#:#crs_view_timings#:#Lernplanungstyp
+crs#:#crs_visibility#:#Sichtbarkeit
 crs#:#crs_visibility_limitless#:#Unbegrenzt – wenn online geschaltet
 crs#:#crs_visibility_until#:#Zeitlich begrenzte Verfügbarkeit
 crs#:#crs_visibility_until_info#:#Der Kurs wird seinen Mitgliedern nur für einen bestimmten Zeitraum angezeigt.
+crs#:#crs_visibility_unvisible#:#Der Kurs ist nicht sichtbar.
 crs#:#crs_wait_info#:#Ist die maximale Mitgliederanzahl erreicht, können sich weitere Benutzer auf eine Warteliste setzen lassen.
 crs#:#crs_waiting_list#:#Warteliste
 crs#:#crs_waiting_list_autofill#:#Mit automatischem Aufrücken
@@ -13864,9 +13869,11 @@ rep#:#rep_add_to_favourites#:#Zu Favoriten hinzufügen
 rep#:#rep_added_rec_content#:#Empfohlener Inhalt wurde hinzugefügt.
 rep#:#rep_added_to_favourites#:#Das Objekt wurden den Favoriten hinzugefügt.
 rep#:#rep_breadcr_crs#:#Brotkrumennavigation beginnt mit Kurs
+rep#:#rep_breadcr_crs_config#:#Konfiguration
 rep#:#rep_breadcr_crs_overwrite#:#Brotkrumendarstellung kann im Kurs konfiguriert werden.
 rep#:#rep_breadcr_crs_overwrite_not#:#Brotkrumendarstellung kann im Kurs nicht konfiguriert werden.
 rep#:#rep_configure#:#Konfigurieren
+rep#:#rep_crs_default_shortened#:#Standardvorgabe: Gekürzte Brotkrumen
 rep#:#rep_custom_icons#:#Angepasste Icons
 rep#:#rep_default#:#Standardwert
 rep#:#rep_dependencies#:#Abhängigkeiten
@@ -16056,7 +16063,7 @@ trac#:#trac_in_progress#:#In Bearbeitung
 trac#:#trac_info_edited#:#Wenn Sie der Meinung sind, dass Sie alle Inhalte bearbeitet haben, können Sie hier den Status Ihres Lernfortschrittes ändern.
 trac#:#trac_last_access#:#Letzter Zugriff
 trac#:#trac_last_aggregation#:#Stand
-trac#:#trac_last_maxed_out_sessions#:#Letze Vollast
+trac#:#trac_last_maxed_out_sessions#:#Letze Volllast
 trac#:#trac_learning_progress#:#Lernfortschritt
 trac#:#trac_learning_progress_of#:#Lernfortschritt von %s
 trac#:#trac_learning_progress_settings_info#:#Erweiterte Daten aktivieren
