@@ -1572,6 +1572,9 @@ class ilStartUpGUI
 
         $tpl = self::initStartUpTemplate('tpl.view_terms_of_service.html', $back_to_login, !$back_to_login);
 
+        $this->mainTemplate->setTitle($this->lng->txt('accept_usr_agreement'));
+        $this->mainTemplate->setOnScreenMessage('info', $this->lng->txt('accept_usr_agreement_intro'));
+
         $helper = new ilTermsOfServiceHelper();
         $handleDocument = $helper->isGloballyEnabled() && $this->termsOfServiceEvaluation->hasDocument();
         if ($handleDocument) {
