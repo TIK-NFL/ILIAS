@@ -1,8 +1,5 @@
 User-agent: *
-Disallow: /register.php
-Disallow: /register.php?lang=de
-Disallow: /register.php?lang=en
-Disallow: /pwassist.php
-Disallow: /pwassist.php?lang=de
-Disallow: /pwassist.php?lang=en
-Disallow: /goto_UniStuttgartFG_usr_nameassist.html
+Disallow: /register.php*
+Disallow: /pwassist.php*
+Disallow: /goto_UniStuttgartFG_usr_nameassist.html*
+Disallow: /goto_UniStuttgartFG_usr_pwassist.html*
