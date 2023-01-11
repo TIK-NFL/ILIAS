@@ -8464,7 +8464,7 @@ dcl#:#dcl_last_update_description#:#The date the entry was last edited.
 dcl#:#dcl_learning_progress#:#Show the learning progress of the linked module of the viewer
 dcl#:#dcl_legend_placeholders#:#Placeholders
 dcl#:#dcl_length#:#Length
-dcl#:#dcl_length_info#:#(for more than 200 characters, use the additional option Text Area)
+dcl#:#dcl_length_info#:#Number of characters a user can enter (maximum 4000). For more than 200 characters, use the additional option Text Area.
 dcl#:#dcl_limit_end#:#End
 dcl#:#dcl_limit_start#:#Start
 dcl#:#dcl_limited#:#Limited Add / Edit / Delete Period
@@ -11081,7 +11081,9 @@ meta#:#md_adv_record_lng_table_lng#:#Language
 meta#:#md_adv_records#:#Included Data Sets
 meta#:#md_adv_records_exported#:#A new export file has been created.
 meta#:#md_adv_scope#:#Scope
+meta#:#md_adv_scope_info#:#Usage of this custom metadata set will be limited to selected parts of the repository.
 meta#:#md_adv_scope_list_header#:#Limited to:
+meta#:#md_adv_scope_objects#:#Data Set Effective From
 meta#:#md_adv_searchable#:#Searchable
 meta#:#md_adv_select_one_file#:#Please choose one file.
 meta#:#md_adv_show#:#Show
@@ -13779,6 +13781,7 @@ registration#:#reg_confirmation_hash_life_time#:#Lifetime
 registration#:#reg_confirmation_hash_life_time_expired#:#The confirmation link is not valid anymore. Please register again!
 registration#:#reg_confirmation_hash_life_time_info#:#Enter the lifetime (seconds) of confirmation links. Recommended value is 1800 seconds.
 registration#:#reg_confirmation_hash_not_found#:#No user account could be matched to this confirmation link.
+registration#:#reg_confirmation_hash_not_passed#:#The confirmation link is incomplete.
 registration#:#reg_confirmation_link_successful#:#You successfully submitted an account request to ILIAS. You will receive a confirmation e-mail in the next minutes. Please confirm your registration by clicking the confirmation link in this mail.<br />You will be redirected to the <a href="%s" title="login screen">login screen</a> after 20 seconds.
 registration#:#reg_default#:#Default
 registration#:#reg_deleted_assignment#:#Deleted assignment(s).

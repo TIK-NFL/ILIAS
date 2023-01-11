@@ -364,14 +364,18 @@ class ilAccountRegistrationGUI
         if (!ilUtil::isLogin($login)) {
             // $login_obj->setAlert($this->lng->txt("login_invalid"));
             $form_valid = false;
-        } elseif (ilObjUser::_loginExists($login)) {
-            // $login_obj->setAlert($this->lng->txt("login_exists"));
-            $form_valid = false;
-        } elseif ((int) $ilSetting->get('allow_change_loginname') &&
-            (int) $ilSetting->get('reuse_of_loginnames') == 0 &&
-            ilObjUser::_doesLoginnameExistInHistory($login)) {
-            // $login_obj->setAlert($this->lng->txt('login_exists'));
-            $form_valid = false;
+        }
+
+        if ($form_valid) {
+            if (ilObjUser::_loginExists($login)) {
+                // $login_obj->setAlert($this->lng->txt("login_exists"));
+                $form_valid = false;
+            } elseif ((int) $ilSetting->get('allow_change_loginname') &&
+                (int) $ilSetting->get('reuse_of_loginnames') == 0 &&
+                ilObjUser::_doesLoginnameExistInHistory($login)) {
+                // $login_obj->setAlert($this->lng->txt("login_exists"));
+                $form_valid = false;
+            }
         }
         //END Patch
 
@@ -508,7 +512,7 @@ class ilAccountRegistrationGUI
                         
                         case "relative":
                             $rel = unserialize($code_data["alimitdt"]);
-                            $access_limit = $rel["d"] * 86400 + $rel["m"] * 2592000 + time();
+                            $access_limit = $rel["d"] * 86400 + $rel["m"] * 2592000 + $rel["y"] * 31536000 + time();
                             break;
                     }
                 }
