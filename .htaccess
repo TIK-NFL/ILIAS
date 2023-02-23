@@ -17,6 +17,8 @@
 </IfModule>
 <IfModule mod_alias.c>
 	RedirectMatch 404 /\.git
+	RedirectMatch 404 /patches
+	RedirectMatch 404 /\.github
 </IfModule>
 <IfModule mod_xsendfile.c>
 	XSendFile On
