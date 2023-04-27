@@ -6139,7 +6139,7 @@ content#:#cont_auto_glossaries#:#Automatisch verlinkte Glossare
 content#:#cont_auto_last_visited#:#Mit zuletzt besuchtem Abschnitt fortfahren
 content#:#cont_auto_last_visited_info#:#Dem Benutzer wird beim erneuten Aufrufen des SCORM-Lernmoduls das zuletzt besuchte SCO oder Asset angezeigt.
 content#:#cont_auto_suspend#:#Abruf vorhandener Lernstandsdaten sicherstellen
-content#:#cont_auto_suspend_info#:#Diese Option ist für SCORM-Lernmodule, die SCORM 2004 in unzureichender Weise unterstützen, indem sie keine geeigneten Werte für cmi.exit senden.
+content#:#cont_auto_suspend_info#:#Diese Option ist für SCORM-Lernmodule, die SCORM in unzureichender Weise unterstützen, indem sie keine geeigneten Werte für cmi.exit senden.
 content#:#cont_auto_time#:#Wartezeit Animation
 content#:#cont_autoindent#:#Automatische Einrückung
 content#:#cont_automatically_set_store_tries#:#Die Option "$1" wurde automatisch aktiviert, da der Modus "$2" aktiviert wurde.
@@ -6478,6 +6478,8 @@ content#:#cont_grid_width_s#:#Klein (Small)
 content#:#cont_grid_width_s_info#:#z.B. Smartphone
 content#:#cont_grid_width_xl#:#Sehr groß (Extra Large)
 content#:#cont_grid_width_xl_info#:#z.B. Wide Desktop
+content#:#cont_hacc_needs_height#:#Bitte geben Sie für horizontale Akkordeons eine Höhe an.
+content#:#cont_hacc_needs_width#:#Bitte geben Sie für horizontale Akkordeons eine Breite an.
 content#:#cont_header#:#Kopfzeile
 content#:#cont_height#:#Höhe in Pixel
 content#:#cont_help_no_valid_tooltip_id#:#Die eingegebene Tooltip-ID ist nicht gültig.
@@ -10552,6 +10554,7 @@ lti#:#lti_object_consumer#:#LTI-Konsumenten
 lti#:#lti_object_release_settings_form#:#LTI-Freigaben bearbeiten
 lti#:#lti_provider#:#LTI-Freigaben
 lti#:#lti_provider_not_avail_msg#:#LTI Provider ist auf 'Nicht verfügbar' gesetzt.
+lti#:#lti_provider_not_set_msg#:#LTI-Provider ist unvollständig konfiguriert.
 lti#:#lti_providing_tab#:#ILIAS als LTI-Provider
 lti#:#lti_released_objects#:#Objekt-Freigaben
 lti#:#lti_select_provider#:#Provider auswählen
@@ -13017,7 +13020,7 @@ rbac#:#coms_read#:#Lesezugriff auf Administration für Kommentare
 rbac#:#coms_visible#:#Administration für Kommentare ist sichtbar.
 rbac#:#coms_write#:#Einstellungen in Administration für Kommentare ändern
 rbac#:#condition_failed#:#Nicht bestanden
-rbac#:#condition_learning_progress#:#Status aus Lernfortschritt ableiten
+rbac#:#condition_learning_progress#:#gemäß Lernfortschritt
 rbac#:#contribute#:#Beiträge erstellen
 rbac#:#copa_copy#:#Inhaltsseite kopieren
 rbac#:#copa_delete#:#Inhaltsseite löschen
