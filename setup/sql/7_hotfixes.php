@@ -1679,3 +1679,22 @@ if (!$ilDB->indexExistsByFields('style_usage', array('style_id'))) {
     $ilDB->addIndex('style_usage', array('style_id'), 'i1');
 }
 ?>
+<#97>
+<?php
+$ilDB->manipulateF('DELETE FROM cmix_users WHERE usr_id = %s', ['integer'], [13]);
+?>
+<#98>
+<?php
+if (!$ilDB->indexExistsByFields('webr_items', array('webr_id'))) {
+    $ilDB->addIndex('webr_items', array('webr_id'), 'i3');
+}
+?>
+<#99>
+<?php
+if (!$ilDB->indexExistsByFields('cal_entries', array('starta'))) {
+    $ilDB->addIndex('cal_entries', array('starta'), 'i3');
+}
+if (!$ilDB->indexExistsByFields('cal_entries', array('enda'))) {
+    $ilDB->addIndex('cal_entries', array('enda'), 'i4');
+}
+?>
