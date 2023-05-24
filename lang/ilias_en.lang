@@ -12230,6 +12230,9 @@ notifications_adm#:#osd_vanish_desc#:#Visible time of a notification on the scre
 obj#:#cont_filter_empty#:#Please use the filter to see any objects.
 obj#:#cont_skll_published#:#All assignments have been published.
 obj#:#cont_skll_published_some_not#:#All given assignments have been published. Some users lacked competence assignments, thus no assignments could be published for them.
+obj#:#copy_container_page_no_label#:#Don't Copy Content Page
+obj#:#copy_container_page_yes_byline#:#The content page and corresponding style settings of the source object will be copied to this object. Pre-existing page elements will be overwritten.
+obj#:#copy_container_page_yes_label#:#Copy Content Page
 obj#:#edit_questions#:#Edit Questions
 obj#:#obj_activate_content_lang#:#Activate Translation for Page Editing
 obj#:#obj_activate_multilang#:#Activate Multilingualism

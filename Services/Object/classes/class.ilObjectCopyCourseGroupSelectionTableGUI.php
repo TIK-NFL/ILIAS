@@ -48,8 +48,7 @@ class ilObjectCopyCourseGroupSelectionTableGUI extends ilObjectTableGUI
         $this->setFormAction($ilCtrl->getFormAction($this->getParentObject()));
 
         $this->enableObjectPath(true);
-        $this->addCommandButton('saveSourceMembership', $this->lng->txt('btn_next'));
-        $this->addCommandButton('cancel', $this->lng->txt('cancel'));
+        $this->addCommandButton('saveSourceMembership', $this->lng->txt('next'));
     }
 
     public function fillRowSelectionInput(array $set): void
