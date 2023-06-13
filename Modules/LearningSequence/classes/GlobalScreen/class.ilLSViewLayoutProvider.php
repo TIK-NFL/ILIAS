@@ -1,4 +1,20 @@
 <?php
+/**
+ * This file is part of ILIAS, a powerful learning management system
+ * published by ILIAS open source e-Learning e.V.
+ *
+ * ILIAS is licensed with the GPL-3.0,
+ * see https://www.gnu.org/licenses/gpl-3.0.en.html
+ * You should have received a copy of said license along with the
+ * source code, too.
+ *
+ * If this is not the case or you just want to try ILIAS, you'll find
+ * us at:
+ * https://www.ilias.de
+ * https://github.com/ILIAS-eLearning
+ *
+ *********************************************************************/
+
 use ILIAS\GlobalScreen\Scope\Layout\Provider\AbstractModificationProvider;
 use ILIAS\GlobalScreen\Scope\Layout\Provider\ModificationProvider;
 use ILIAS\GlobalScreen\ScreenContext\Stack\ContextCollection;
@@ -53,7 +69,10 @@ class ilLSViewLayoutProvider extends AbstractModificationProvider implements Mod
         }
         return $this->globalScreen()->layout()->factory()->mainbar()
             ->withModification(
-                function (MainBar $mainbar) : ?MainBar {
+                function (?MainBar $mainbar) : ?MainBar {
+                    if ($mainbar === null) {
+                        return null;
+                    }
                     $entries = $this->data_collection->get(\ilLSPlayer::GS_DATA_LS_MAINBARCONTROLS);
                     $tools = $mainbar->getToolEntries();
                     $mainbar = $mainbar->withClearedEntries();
@@ -77,7 +96,10 @@ class ilLSViewLayoutProvider extends AbstractModificationProvider implements Mod
         }
         return $this->globalScreen()->layout()->factory()->metabar()
             ->withModification(
-                function (MetaBar $metabar) : ?Metabar {
+                function (?MetaBar $metabar) : ?Metabar {
+                    if ($metabar === null) {
+                        return null;
+                    }
                     $metabar = $metabar->withClearedEntries();
                     foreach ($this->data_collection->get(\ilLSPlayer::GS_DATA_LS_METABARCONTROLS) as $key => $entry) {
                         $metabar = $metabar->withAdditionalEntry($key, $entry);
