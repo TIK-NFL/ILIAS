@@ -60,6 +60,7 @@ class ilMembershipGUI
         $this->lng = $GLOBALS['DIC']->language();
         $this->lng->loadLanguageModule('crs');
         $this->lng->loadLanguageModule($this->getParentObject()->getType());
+        $this->lng->loadLanguageModule('trac');
         $this->tpl = $GLOBALS['DIC']->ui()->mainTemplate();
         $this->ctrl = $GLOBALS['DIC']->ctrl();
         $this->logger = $DIC->logger()->mmbr();
@@ -246,14 +247,16 @@ class ilMembershipGUI
                     $rep_search->setCallback(
                         $this,
                         'assignMembers',
-                        $this->getParentGUI()->getLocalRoles()
+                        $this->getParentGUI()->getLocalRoles(),
+                        (string) $this->getDefaultRole()
                     );
                 } else {
                     //#18445 excludes admin role
                     $rep_search->setCallback(
                         $this,
                         'assignMembers',
-                        $this->getLocalRoles(array($this->getParentObject()->getDefaultAdminRole()))
+                        $this->getLocalRoles(array($this->getParentObject()->getDefaultAdminRole())),
+                        (string) $this->getDefaultRole()
                     );
                 }
                 
@@ -278,7 +281,7 @@ class ilMembershipGUI
                     !$rbacsystem->checkAccess(
                         'internal_mail',
                         $mail->getMailObjectReferenceId()
-                )) {
+                    )) {
                     $ilErr->raiseError($this->lng->txt("msg_no_perm_read"), $ilErr->MESSAGE);
                 }
                 
