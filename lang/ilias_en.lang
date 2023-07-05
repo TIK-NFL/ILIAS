@@ -2043,7 +2043,7 @@ auth#:#auth_info_add#:#Choose this option if you have never registered to ILIAS.
 auth#:#auth_info_migrate#:#If you have already an ILIAS account, enter username and password to migrate your personal data (mail, test results...).
 auth#:#auth_ldap_server_ds#:#LDAP-Server
 auth#:#auth_login_editor#:#Loginscreen Editor
-auth#:#auth_oidc#:#OpenId Connect
+auth#:#auth_oidc#:#OpenID Connect
 auth#:#auth_oidc_failed#:#Login via OpenID Connect failed
 auth#:#auth_oidc_login_element_info#:#Login to ILIAS via OpenID Connect
 auth#:#auth_oidc_mapping_table#:#Mapping ILIAS User Information to OpenID Connect Attributes
@@ -2080,13 +2080,13 @@ auth#:#auth_oidc_settings_provider#:#Provider URL
 auth#:#auth_oidc_settings_secret#:#Client Key
 auth#:#auth_oidc_settings_section_user_sync#:#User Synchronisation Settings
 auth#:#auth_oidc_settings_session_duration#:#Duration
-auth#:#auth_oidc_settings_title#:#Configure OpenID Connect Authentification
+auth#:#auth_oidc_settings_title#:#Configure OpenID Connect Authentication
 auth#:#auth_oidc_settings_txt#:#Text
 auth#:#auth_oidc_settings_txt_val_info#:#Enter a text to be displayed on the login page. The text will link automatically to the OpenID Connect login script.
 auth#:#auth_oidc_settings_user_attr#:#Attribute name of user accounts
 auth#:#auth_oidc_settings_user_sync#:#Synchronise Automatically
 auth#:#auth_oidc_settings_user_sync_info#:#Users who do not have an ILIAS account, but have successfully authenticated themselves using OpenID Connect, will have an ILIAS account created for them automatically.
-auth#:#auth_oidc_settings_validate_scope_custom#:#Use custom OpenID Connect Discovery url
+auth#:#auth_oidc_settings_validate_scope_custom#:#Use custom OpenID Connect Discovery URL
 auth#:#auth_oidc_settings_validate_scope_default#:#Use :Provider-URL:/.well-known/openid-configuration
 auth#:#auth_oidc_settings_validate_scope_none#:#Do not validate Scopes on saving
 auth#:#auth_oidc_settings_validate_scopes#:#Validate Scopes upon saving
@@ -2575,7 +2575,7 @@ book#:#book_reservation_failed_overbooked#:#The booking failed because the objec
 book#:#book_reservation_filter_period#:#Period for the reservation list
 book#:#book_reservation_filter_period_info#:#The default value for the period-filter in days from the current date.
 book#:#book_reservation_fix_info#:#The reservation can only be done for fixed hours.
-book#:#book_reservation_overview#:#Reservation Overviews
+book#:#book_reservation_overview#:#Reservation Overview
 book#:#book_reservation_status_5#:#Cancelled
 book#:#book_reservation_title#:#Booking Reservation for
 book#:#book_reservations_list#:#Reservations
@@ -7561,11 +7561,13 @@ crs#:#crs_member#:#Member
 crs#:#crs_member_administration#:#Edit Participants
 crs#:#crs_member_passed_status_changed#:#Passed Status Changed
 crs#:#crs_members#:#Members
-crs#:#crs_members_deleted#:#Deleted members
+crs#:#crs_members_deleted#:#Selected members were successfully removed from course.
 crs#:#crs_members_groups#:#Memberships in Groups
 crs#:#crs_members_map#:#Course Members Map
 crs#:#crs_members_print_title#:#Course members
 crs#:#crs_min_one_admin#:#There has to be at least one administrator assigned to this course.
+crs#:#crs_my_courses_groups_enabled#:#My Courses and Groups
+crs#:#crs_my_courses_groups_enabled_info#:#If activated, the section 'My Courses and Groups' is visible.
 crs#:#crs_new_status#:#Your new status is:
 crs#:#crs_new_subscription#:#User registered for course "%s"
 crs#:#crs_new_subscription_body#:#%s has registered for course "%s".
@@ -9841,7 +9843,7 @@ grp#:#grp_mem_contacts#:#Tutorial Support
 grp#:#grp_mem_tbl_header#:#Group Participants
 grp#:#grp_member_administration#:#Edit Participants
 grp#:#grp_members#:#Members
-grp#:#grp_members_deleted#:#Deleted members
+grp#:#grp_members_deleted#:#Selected members were successfully removed from group.
 grp#:#grp_members_map#:#Group Members Map
 grp#:#grp_members_print_title#:#Group Members
 grp#:#grp_missing_grp_type#:#Please choose a group type.
@@ -10346,7 +10348,7 @@ lso#:#lso_mainbar_button_label_curriculum#:#Curriculum
 lso#:#lso_mainbar_button_label_toc#:#Content
 lso#:#lso_mem_tbl_header#:#Learning Sequence Member
 lso#:#lso_member_administration#:#Edit Participants
-lso#:#lso_members_deleted#:#Deleted members
+lso#:#lso_members_deleted#:#Selected members were successfully removed from learning sequence.
 lso#:#lso_members_gallery#:#Learning Sequence Members Gallery
 lso#:#lso_members_print_title#:#Learning sequence members
 lso#:#lso_min_one_admin#:#There has to be at least one administrator assigned to this learning sequence.
@@ -13215,8 +13217,6 @@ rbac#:#iass_read_learning_progress#:#View learning progress information of an In
 rbac#:#iass_visible#:#Individual Assessment is visible
 rbac#:#iass_write#:#Edit an Individual Assessment
 rbac#:#il_lti_global_role#:#LTI User
-rbac#:#il_orgu_employee#:#Organisational Unit Employee
-rbac#:#il_orgu_superior#:#Organisational Unit Superior
 rbac#:#il_sess_participant#:#Session Participant
 rbac#:#il_sess_status_closed#:#Non-Participant Closed Session
 rbac#:#ilias_id#:#ILIAS-ID
@@ -13347,8 +13347,10 @@ rbac#:#orgu_cat_administrate_users#:#User can create and administrate local user
 rbac#:#orgu_copy#:#Copy Organisational Unit
 rbac#:#orgu_delete#:#User can move or delete Organisational Unit
 rbac#:#orgu_edit_permission#:#User can change permission settings
+rbac#:#orgu_employee#:#Organisational Unit Employee
 rbac#:#orgu_read#:#User has read access to Organisational Unit
 rbac#:#orgu_read_users#:#User can read local user accounts created in this Organisational Unit
+rbac#:#orgu_superior#:#Organisational Unit Superior
 rbac#:#orgu_view_learning_progress#:#View Learning Progress
 rbac#:#orgu_view_learning_progress_rec#:#View Learning Progress of Unit incl. Subunits
 rbac#:#orgu_visible#:#Organisational Unit is visible

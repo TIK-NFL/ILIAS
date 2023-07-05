@@ -2029,49 +2029,49 @@ auth#:#auth_info_add#:#Изберете тази опция, ако никога
 auth#:#auth_info_migrate#:#Ако вече имате акаунт в ILIAS, въведете потребителско име и парола, за да мигрирате личните си данни (поща, резултати от тестове...).
 auth#:#auth_ldap_server_ds#:#LDAP-Server
 auth#:#auth_login_editor#:#Редактор на екрана за вход
-auth#:#auth_oidc#:#OpenId Connect
+auth#:#auth_oidc#:#OpenID Connect
 auth#:#auth_oidc_failed#:#Login via OpenID Connect failed###16 03 2023 new variable
 auth#:#auth_oidc_login_element_info#:#Влизане в ILIAS чрез OpenID Connect
-auth#:#auth_oidc_mapping_table#:#Съпоставяне на потребителски данни на ILIAS с атрибути на OpenId Connect  
-auth#:#auth_oidc_profile#:#Присвояване на данните на профила
-auth#:#auth_oidc_role_info#:#OpenID Connect Attribute::Value (напр: "roles::employee").
-auth#:#auth_oidc_role_mapping_table#:#Присвояване на ролите на ILIAS към атрибутите на OpenId Connect
-auth#:#auth_oidc_roles#:#Присвояване на роля
+auth#:#auth_oidc_mapping_table#:#Картиране на потребителски данни от ILIAS към атрибути на OpenID Connect
+auth#:#auth_oidc_profile#:#Картиране на данните на профила
+auth#:#auth_oidc_role_info#:#OpenID-Connect атрибут::стойност (например: "roles::Staff").
+auth#:#auth_oidc_role_mapping_table#:#съпоставяне на ролите на ILIAS с атрибутите на OpenID Connect.
+auth#:#auth_oidc_roles#:#Картиране на ролите
 auth#:#auth_oidc_settings#:#Настройки на сървъра
 auth#:#auth_oidc_settings_activation#:#Активиране на OpenID Connect
-auth#:#auth_oidc_settings_additional_scopes#:#Допълнителни обхвати###22 06 2022 new variable
-auth#:#auth_oidc_settings_client_id#:#Client-ID
+auth#:#auth_oidc_settings_additional_scopes#:#Допълнителни обхвати
+auth#:#auth_oidc_settings_client_id#:#Идентификатор на клиента
 auth#:#auth_oidc_settings_custom_session_duration#:#Продължителност на сесията
-auth#:#auth_oidc_settings_custom_session_duration_option#:#Продължителност на собствената сесия
-auth#:#auth_oidc_settings_custom_session_duration_type#:#Настройки за продължителността на сесията
+auth#:#auth_oidc_settings_custom_session_duration_option#:#Подходяща продължителност на сесията
+auth#:#auth_oidc_settings_custom_session_duration_type#:#Настройки на продължителността на сесията
 auth#:#auth_oidc_settings_default_role#:#Присвояване на роля
 auth#:#auth_oidc_settings_default_role_info#:#Моля, изберете глобална роля за новосъздадените потребители на ILIAS
 auth#:#auth_oidc_settings_discovery_error#:#Retrieving the Discovery URL failed with: %s###16 03 2023 new variable
 auth#:#auth_oidc_settings_discovery_url#:#Discovery URL of the provider###16 03 2023 new variable
-auth#:#auth_oidc_settings_img#:#Изображение
-auth#:#auth_oidc_settings_img_file_info#:#Качете изображение, което да се показва на страницата за вход. Изображението автоматично се свързва със скрипта за вход в OpenId Connect.
-auth#:#auth_oidc_settings_invalid_scopes#:#Следните стойности не са валидни обхвати: %s###22 06 2022 new variable
-auth#:#auth_oidc_settings_le#:#Представяне на страницата за вход
-auth#:#auth_oidc_settings_login_option_default#:#Не налагайте принудителна регистрация
-auth#:#auth_oidc_settings_login_option_default_info#:#Не е необходимо да влизате в OpenId Connect Server, ако вече съществува валидна сесия.
-auth#:#auth_oidc_settings_login_option_enforce#:#Принудително влизане в системата
-auth#:#auth_oidc_settings_login_option_enforce_info#:#Регистрацията в сървъра OpenId Connect е необходима във всеки случай - дори ако вече съществува валидна сесия.
-auth#:#auth_oidc_settings_login_options#:#Опции за регистрация
+auth#:#auth_oidc_settings_img#:#image
+auth#:#auth_oidc_settings_img_file_info#:#Закачете изображение, което да се показва на страницата за вход. Изображението автоматично ще се свърже със скрипта за влизане в OpenID Connect.
+auth#:#auth_oidc_settings_invalid_scopes#:#Следните стойности не са валидни за обхвата: %s
+auth#:#auth_oidc_settings_le#:#Страница за вход в представителството
+auth#:#auth_oidc_settings_login_option_default#:#Не налагайте влизане
+auth#:#auth_oidc_settings_login_option_default_info#:#Вписването в сървъра OpenID Connect не е необходимо, ако вече има валидна сесия.
+auth#:#auth_oidc_settings_login_option_enforce#:#Force login
+auth#:#auth_oidc_settings_login_option_enforce_info#:#При всеки случай е необходимо влизане в сървъра OpenID Connect - дори ако вече има валидна сесия.
+auth#:#auth_oidc_settings_login_options#:#Опции за вход
 auth#:#auth_oidc_settings_logout_scope#:#Поведение при излизане от системата
 auth#:#auth_oidc_settings_logout_scope_global#:#Глобално излизане от системата
-auth#:#auth_oidc_settings_logout_scope_global_info#:#Ако е активирано, сесията OpenId Connect и сесията ILIAS се прекратяват при излизане от системата. 
-auth#:#auth_oidc_settings_logout_scope_local#:#Излизане само от ILIAS
+auth#:#auth_oidc_settings_logout_scope_global_info#:#Ако е разрешено, сесията OpenID Connect и сесията ILIAS ще бъдат прекратени при излизане от системата.
+auth#:#auth_oidc_settings_logout_scope_local#:#излизане само от ILIAS
 auth#:#auth_oidc_settings_logout_scope_local_info#:#Ако е активирано, при излизане от системата се прекратява само сесията на ILIAS.
 auth#:#auth_oidc_settings_provider#:#Provider-Url
 auth#:#auth_oidc_settings_secret#:#Клиентски ключ
-auth#:#auth_oidc_settings_section_user_sync#:#Настройки за синхронизиране на потребители
-auth#:#auth_oidc_settings_session_duration#:#Продължителност
-auth#:#auth_oidc_settings_title#:#Конфигуриране на удостоверяването на OpenID Connect
-auth#:#auth_oidc_settings_txt#:#Текст
-auth#:#auth_oidc_settings_txt_val_info#:#Въведете текст, който да се показва на страницата за вход. Текстът автоматично се свързва със скрипта за влизане в OpenId Connect.
-auth#:#auth_oidc_settings_user_attr#:#Име на атрибута, до който има достъп потребителят
-auth#:#auth_oidc_settings_user_sync#:#Автоматично синхронизиране
-auth#:#auth_oidc_settings_user_sync_info#:#Ако е активирано, автоматично се създава нов потребителски акаунт за потребители, които успешно са се удостоверили в Open ID Connect, но нямат потребителски акаунт в ILIAS.
+auth#:#auth_oidc_settings_section_user_sync#:#Настройки за синхронизация на потребителите
+auth#:#auth_oidc_settings_session_duration#:#Duration
+auth#:#auth_oidc_settings_title#:#Конфигуриране на удостоверяването чрез OpenID Connect
+auth#:#auth_oidc_settings_txt#:#Text
+auth#:#auth_oidc_settings_txt_val_info#:#Въведете текст, който да се показва на страницата за вход. Текстът автоматично се свързва със скрипта за влизане в OpenID Connect.
+auth#:#auth_oidc_settings_user_attr#:#Име на атрибута, до който има достъп потребителят.
+auth#:#auth_oidc_settings_user_sync#:#Автоматична синхронизация
+auth#:#auth_oidc_settings_user_sync_info#:#Ако е разрешено, автоматично се създава нов потребителски акаунт за потребители, които успешно са се удостоверили срещу Open ID Connect, но нямат потребителски акаунт в ILIAS.
 auth#:#auth_oidc_settings_validate_scope_custom#:#Use custom OpenID Connect Discovery url###16 03 2023 new variable
 auth#:#auth_oidc_settings_validate_scope_default#:#Use :Provider-URL:/.well-known/openid-configuration###16 03 2023 new variable
 auth#:#auth_oidc_settings_validate_scope_none#:#Do not validate Scopes on saving###16 03 2023 new variable
@@ -13201,8 +13201,6 @@ rbac#:#iass_read_learning_progress#:# Преглед на информация �
 rbac#:#iass_visible#:#Индивидуалната оценка е видима
 rbac#:#iass_write#:#Редактиране на индивидуална оценка
 rbac#:#il_lti_global_role#:#LTI потребител###08 12 2021 new variable
-rbac#:#il_orgu_employee#:#Служител на организационната единица
-rbac#:#il_orgu_superior#:#Висшестояща организационна единица
 rbac#:#il_sess_participant#:#Участник в сесията
 rbac#:#il_sess_status_closed#:#Закрито заседание без участници
 rbac#:#ilias_id#:#ILIAS-ID
@@ -13333,8 +13331,10 @@ rbac#:#orgu_cat_administrate_users#:#Потребителят може да съ
 rbac#:#orgu_copy#:#Copy Организационна единица
 rbac#:#orgu_delete#:#Потребителят може да премести или изтрие организационна единица
 rbac#:#orgu_edit_permission#:#Потребителят може да променя настройките на разрешението
+rbac#:#orgu_employee#:#Служител на организационната единица
 rbac#:#orgu_read#:#Потребителят има достъп за четене до организационната единица
 rbac#:#orgu_read_users#:#Потребителят може да чете локални потребителски акаунти, създадени в тази организационна единица
+rbac#:#orgu_superior#:#Висшестояща организационна единица
 rbac#:#orgu_view_learning_progress#:#Преглед на напредъка в обучението
 rbac#:#orgu_view_learning_progress_rec#:#Преглед на напредъка в обучението на единицата, вкл. подединиците
 rbac#:#orgu_visible#:#Организационната единица е видима
