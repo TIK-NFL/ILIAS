@@ -1053,10 +1053,9 @@ class ilObjUserFolderGUI extends ilObjectGUI
 
         $user_ids = $this->getActionUserIds();
         if (!$user_ids) {
-            $this->ilias->raiseError(
-                $this->lng->txt("no_checkbox"),
-                $this->ilias->error_obj->MESSAGE
-            );
+            $this->tpl->setOnScreenMessage('failure', $this->lng->txt('no_checkbox'));
+            $this->viewObject();
+            return;
         }
 
         if (!$a_from_search) {
@@ -1146,6 +1145,11 @@ class ilObjUserFolderGUI extends ilObjectGUI
     public function deleteUsersObject()
     {
         $_POST["selectedAction"] = "delete";
+        if (in_array($this->user->getId(), $this->getActionUserIds())) {
+            $this->tpl->setOnScreenMessage('failure', $this->lng->txt('msg_no_delete_yourself'));
+            $this->viewObject();
+            return;
+        }
         $this->showActionConfirmation($_POST["selectedAction"]);
     }
 
@@ -1164,6 +1168,11 @@ class ilObjUserFolderGUI extends ilObjectGUI
     public function deactivateUsersObject()
     {
         $_POST["selectedAction"] = "deactivate";
+        if (in_array($this->user->getId(), $this->getActionUserIds())) {
+            $this->tpl->setOnScreenMessage('failure', $this->lng->txt('no_deactivate_yourself'));
+            $this->viewObject();
+            return;
+        }
         $this->showActionConfirmation($_POST["selectedAction"]);
     }
 
@@ -1214,7 +1223,8 @@ class ilObjUserFolderGUI extends ilObjectGUI
             !$rbacsystem->checkAccess('create_usr', $this->object->getRefId()) &&
             !$access->checkAccess('cat_administrate_users', '', $this->object->getRefId())
         ) {
-            $this->ilias->raiseError($this->lng->txt("permission_denied"), $this->ilias->error_obj->MESSAGE);
+            $this->tpl->setOnScreenMessage('failure', $this->lng->txt("permission_denied"));
+            return;
         }
         $this->initUserImportForm();
         $tpl->setContent($this->form->getHTML());
@@ -1237,25 +1247,23 @@ class ilObjUserFolderGUI extends ilObjectGUI
         // Import File
         include_once("./Services/Form/classes/class.ilFileInputGUI.php");
         $fi = new ilFileInputGUI(
-            $lng->txt("import_file"),
-            "importFile"
+            $lng->txt('import_file'),
+            'importFile'
         );
-        $fi->setSuffixes(array("xml", "zip"));
+        $fi->setSuffixes(['xml']);
         $fi->setRequired(true);
-        //$fi->enableFileNameSelection();
-        //$fi->setInfo($lng->txt(""));
         $this->form->addItem($fi);
 
         $this->form->addCommandButton(
-            "importUserRoleAssignment",
-            $lng->txt("import")
+            'importUserRoleAssignment',
+            $lng->txt('import')
         );
         $this->form->addCommandButton(
-            "importCancelled",
-            $lng->txt("cancel")
+            'importCancelled',
+            $lng->txt('cancel')
         );
 
-        $this->form->setTitle($lng->txt("import_users"));
+        $this->form->setTitle($lng->txt('import_users'));
         $this->form->setFormAction($ilCtrl->getFormAction($this));
     }
 
