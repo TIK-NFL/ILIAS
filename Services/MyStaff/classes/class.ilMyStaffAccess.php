@@ -116,6 +116,11 @@ class ilMyStaffAccess extends ilObjectAccess
             return false;
         }
 
+        $cert_set = new \ilSetting("certificate");
+        if (!$cert_set->get("active")) {
+            return false;
+        }
+
         if ($this->countOrgusOfUserWithOperationAndContext($DIC->user()->getId(), ilOrgUnitOperation::OP_VIEW_CERTIFICATES, self::COURSE_CONTEXT)
             > 0
         ) {
@@ -146,6 +151,11 @@ class ilMyStaffAccess extends ilObjectAccess
         global $DIC;
 
         if (!$DIC->settings()->get("enable_my_staff")) {
+            return false;
+        }
+
+        $skmg_set = new \ilSkillManagementSettings();
+        if (!$skmg_set->isActivated()) {
             return false;
         }
 
