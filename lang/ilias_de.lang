@@ -946,6 +946,7 @@ assessment#:#new_category#:#Neue Einheiten-Kategorie
 assessment#:#new_unit#:#Neue Einheit
 assessment#:#next_question#:#Weiter
 assessment#:#next_question_rows#:#Fragen %d - %d von %d >>
+assessment#:#no_manual_feedback_export_info#:#Manuelle Rückmeldungen werden nicht exportiert.
 assessment#:#no_passed_mark#:#Sie müssen wenigstens einen Notenschritt als BESTANDEN markieren! Das Notenschema wurde nicht gespeichert!
 assessment#:#no_question_selected_for_move#:#Bitte wählen Sie mindestens eine Frage aus, um sie zu verschieben!
 assessment#:#no_questions_available#:#Es sind keine Fragen verfügbar!
@@ -5739,7 +5740,6 @@ common#:#udf_delete_sure#:#Sind Sie sicher, dass Sie diese Feld und alle zugehö
 common#:#udf_duplicate_entries#:#Die Werte müssen eindeutig sein.
 common#:#udf_field_deleted#:#Das Feld wurde gelöscht.
 common#:#udf_name_already_exists#:#Ein Feld mit diesem Namen existiert bereits. Bitte wählen Sie einen anderen Feldnamen.
-common#:#udf_required_and_visible_requires_changeable#:#Wenn die Einstellungen "Erforderliche Angabe" und "Sichtbar in den persönlichen Daten" aktiviert sind, muss auch "Kann durch Benutzer selbst im Profil geändert werden" aktiviert sein
 common#:#udf_required_requires_visib_reg#:#Die Einstellung "Erforderliche Angabe" erfordert die Einstellung "Sichtbar im Registrierungsformular"
 common#:#udf_type_date#:#Datum
 common#:#udf_type_datetime#:#Datum und Uhrzeit
@@ -5814,7 +5814,7 @@ common#:#user_not_found#:#Der Benutzer wurde nicht gefunden
 common#:#user_not_found_to_delete#:#Ein Benutzer, der gelöscht werden sollte, konnte nicht gefunden werden.
 common#:#user_not_known#:#Bitte geben Sie einen gültigen Benutzernamen ein.
 common#:#user_profile_other#:#Weitere Informationen
-common#:#user_send_new_account_mail#:#Sende
+common#:#user_send_new_account_mail#:#Begrüssungsmail versenden
 common#:#user_status#:#Benutzerstatus
 common#:#user_toggle_noti#:#Mitglied darf Benachrichtigung nicht deaktivieren
 common#:#userdata#:#Benutzerdaten
@@ -5866,6 +5866,7 @@ common#:#usrimport_no_insert_ext_account_exists#:#Import nicht möglich. Externe
 common#:#usrimport_no_update_ext_account_exists#:#Update nicht möglich. Externes Benutzerkonto existiert bereits.
 common#:#usrimport_with_specified_role_not_permitted#:#Sie haben keine Berechtigung zum Importieren von Benutzern mit der angegebenen Rolle.
 common#:#usrimport_wrong_file_count#:#Zu viele Dateien im Import-Ordner. Bitte versuchen Sie es erneut.
+common#:#usrimport_xml_anonymous_or_root_not_allowed#:#Weder das Systemkonto noch das anonyme Konto können mit dem Import geändert werden.
 common#:#usrimport_xml_attribute_missing#:#Attribut "%2$s" fehlt in Element "%1$s".
 common#:#usrimport_xml_attribute_value_illegal#:#Wert "%3$s" des Attributs "%2$s" in Element "%1$s" ist ungültig.
 common#:#usrimport_xml_attribute_value_inapplicable#:#Wert "%3$s" des Attributs "%2$s" in Element "%1$s" ist nicht anwendbar bei Aktion "%4$s".
@@ -10640,7 +10641,7 @@ mail#:#link_check_affected_links#:#Betroffene Links
 mail#:#link_check_introduction#:#die folgenden Externen Links sind ungültig:
 mail#:#link_check_perma_link#:#Permanent Link
 mail#:#link_check_reason#:#Sie erhalten diese Benachrichtigung, da Sie die Benachrichtigung über ungültige Externe Links aktiviert haben.
-mail#:#mail_account_mail#:#Benutzerkonten-Mail
+mail#:#mail_account_mail#:#Über neues Konto informieren
 mail#:#mail_add_folder#:#Neuen Ordner erstellen
 mail#:#mail_add_recipient#:#Bitte geben Sie einen Empfänger ein
 mail#:#mail_add_subfolder#:#Unterordner hinzufügen
@@ -16394,7 +16395,7 @@ user#:#user_profile_info_std#:#Standard Infotext Benutzerprofil
 user#:#user_profile_info_text_info#:#Dieser Text erscheint über dem Eingabeformular der persönlichen Daten.
 user#:#user_profile_portfolio#:#Wenn Sie ein Portfolio als Ihr Profil nutzen möchten, setzen Sie im Portfolio-Bereich das Attribut "Mein Profil".
 user#:#user_profile_portfolio_selected#:#Sie benutzen momentan ein Portfolio als Ihr Profil. Die Aktivierung erfolgt dort über den Reiter "Freigabe".
-user#:#user_profile_preview#:#Vorschau
+user#:#user_profile_preview#:#Vorschau des Profils
 user#:#user_profile_prompt_text_info#:#Dieser Text ersetzt den "Standard Infotext Benutzerprofil", falls der Benutzer zur Veröffentlichung des Profils aufgefordert wird.
 user#:#user_prompt_incomplete#:#Nie
 user#:#user_prompt_incomplete_info#:#Der Benutzer wird niemals zur Veröffentlichung seines Profils aufgefordert.
