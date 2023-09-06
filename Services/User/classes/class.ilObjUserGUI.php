@@ -424,7 +424,6 @@ class ilObjUserGUI extends ilObjectGUI
 
             // checks passed. save user
             $userObj = $this->loadValuesFromForm();
-
             $userObj->setPasswd($this->form_gui->getInput('passwd'), IL_PASSWD_PLAIN);
             $userObj->setTitle($userObj->getFullname());
             $userObj->setDescription($userObj->getEmail());
@@ -813,7 +812,11 @@ class ilObjUserGUI extends ilObjectGUI
             // @todo: external account; time limit
             // if not allowed or empty -> do no change password
             if (ilAuthUtils::_allowPasswordModificationByAuthMode(ilAuthUtils::_getAuthMode($_POST['auth_mode']))
-                && trim($_POST['passwd']) != "") {
+                && trim($_POST['passwd']) != ""
+                && ($this->user->getId() === (int) SYSTEM_USER_ID
+                    || !in_array(SYSTEM_ROLE_ID, $this->rbacreview->assignedRoles($this->object->getId()))
+                    || in_array(SYSTEM_ROLE_ID, $this->rbacreview->assignedRoles($this->user->getId())))
+                ) {
                 $this->object->setPasswd($_POST['passwd'], IL_PASSWD_PLAIN);
             }
 
@@ -929,6 +932,7 @@ class ilObjUserGUI extends ilObjectGUI
             }
         } else {
             $this->form_gui->setValuesByPost();
+            $this->tabs_gui->activateTab('properties');
             $tpl->setContent($this->form_gui->getHtml());
         }
     }
@@ -1113,18 +1117,21 @@ class ilObjUserGUI extends ilObjectGUI
         // passwords
         // @todo: do not show passwords, if there is not a single auth, that
         // allows password setting
-        {
-            $pw = new ilPasswordInputGUI($lng->txt("passwd"), "passwd");
-            $pw->setUseStripSlashes(false);
-            $pw->setSize(32);
-            $pw->setMaxLength(80); // #17221
-            $pw->setValidateAuthPost("auth_mode");
-            if ($a_mode == "create") {
-                $pw->setRequiredOnAuth(true);
-            }
-            $pw->setInfo(ilUtil::getPasswordRequirementsInfo());
-            $this->form_gui->addItem($pw);
+        $pw = new ilPasswordInputGUI($lng->txt("passwd"), "passwd");
+        $pw->setUseStripSlashes(false);
+        $pw->setSize(32);
+        $pw->setMaxLength(80); // #17221
+        $pw->setValidateAuthPost("auth_mode");
+        if ($a_mode == "create") {
+            $pw->setRequiredOnAuth(true);
         }
+        if ($this->user->getId() !== (int) SYSTEM_USER_ID
+            && in_array(SYSTEM_ROLE_ID, $this->rbacreview->assignedRoles($this->object->getId()))
+            && !in_array(SYSTEM_ROLE_ID, $this->rbacreview->assignedRoles($this->user->getId()))) {
+            $pw->setDisabled(true);
+        }
+        $pw->setInfo(ilUtil::getPasswordRequirementsInfo());
+        $this->form_gui->addItem($pw);
         // @todo: invisible/hidden passwords
 
         // external account
@@ -1765,21 +1772,36 @@ class ilObjUserGUI extends ilObjectGUI
         $assigned_roles = array_intersect($assigned_roles_all, $posted_roles);
         $assigned_global_roles_all = array_intersect($assigned_roles_all, $global_roles_all);
         $assigned_global_roles = array_intersect($assigned_global_roles_all, $posted_roles);
+
+        $user_not_allowed_to_change_admin_role_assginements =
+            !in_array(SYSTEM_ROLE_ID, $rbacreview->assignedRoles($this->user->getId()));
+
+        if ($user_not_allowed_to_change_admin_role_assginements
+            && in_array(SYSTEM_ROLE_ID, $assigned_roles_all)) {
+            $selected_roles[] = SYSTEM_ROLE_ID;
+        }
+
         $posted_global_roles = array_intersect($selected_roles, $global_roles_all);
 
-        if ((empty($selected_roles) and count($assigned_roles_all) == count($assigned_roles))
-             or (empty($posted_global_roles) and count($assigned_global_roles_all) == count($assigned_global_roles))) {
-            //$this->ilias->raiseError($this->lng->txt("msg_min_one_role")."<br/>".$this->lng->txt("action_aborted"),$this->ilias->error_obj->MESSAGE);
-            // workaround. sometimes jumps back to wrong page
+        if (empty($selected_roles) && count($assigned_roles_all) === count($assigned_roles)
+             || empty($posted_global_roles) && count($assigned_global_roles_all) === count($assigned_global_roles)) {
             ilUtil::sendFailure($this->lng->txt("msg_min_one_role") . "<br/>" . $this->lng->txt("action_aborted"), true);
             $this->ctrl->redirect($this, 'roleassignment');
         }
 
         foreach (array_diff($assigned_roles, $selected_roles) as $role) {
+            if ($this->object->getId() === (int) SYSTEM_USER_ID && $role === SYSTEM_ROLE_ID
+                || $user_not_allowed_to_change_admin_role_assginements && $role === SYSTEM_ROLE_ID) {
+                continue;
+            }
             $rbacadmin->deassignUser($role, $this->object->getId());
         }
 
         foreach (array_diff($selected_roles, $assigned_roles) as $role) {
+            if ($this->object->getId() === (int) SYSTEM_USER_ID && $role === SYSTEM_ROLE_ID
+                || $user_not_allowed_to_change_admin_role_assginements && $role === SYSTEM_ROLE_ID) {
+                continue;
+            }
             $rbacadmin->assignUser($role, $this->object->getId(), false);
         }
 
@@ -1814,8 +1836,9 @@ class ilObjUserGUI extends ilObjectGUI
 
         $ilTabs->activateTab("role_assignment");
 
-        if (!$rbacsystem->checkAccess("edit_roleassignment", $this->usrf_ref_id) &&
-            !$access->isCurrentUserBasedOnPositionsAllowedTo("read_users", array($this->object->getId()))
+        if ($this->object->getId() === (int) ANONYMOUS_USER_ID
+            || !$rbacsystem->checkAccess("edit_roleassignment", $this->usrf_ref_id)
+                && !$access->isCurrentUserBasedOnPositionsAllowedTo("read_users", array($this->object->getId()))
         ) {
             $this->ilias->raiseError($this->lng->txt("msg_no_perm_assign_role_to_user"), $this->ilias->error_obj->MESSAGE);
         }
@@ -2148,7 +2171,7 @@ class ilObjUserGUI extends ilObjectGUI
      */
     protected function handleIgnoredRequiredFields()
     {
-        $profileMaybeIncomplete = false;
+        $profile_maybe_incomplete = false;
 
         require_once 'Services/User/classes/class.ilUserProfile.php';
 
@@ -2160,7 +2183,7 @@ class ilObjUserGUI extends ilObjectGUI
             }
 
             if ($elm->getRequired()) {
-                $profileMaybeIncomplete = true;
+                $profile_maybe_incomplete = true;
 
                 // Flag as optional
                 $elm->setRequired(false);
@@ -2175,16 +2198,15 @@ class ilObjUserGUI extends ilObjectGUI
             if (!$elm) {
                 continue;
             }
-
-            if ($elm->getRequired() && $definition['changeable'] && $definition['required'] && $definition['visible']) {
-                $profileMaybeIncomplete = true;
+            if ($elm->getRequired() && $definition['required']) {
+                $profile_maybe_incomplete = true;
 
                 // Flag as optional
                 $elm->setRequired(false);
             }
         }
 
-        return $profileMaybeIncomplete;
+        return $profile_maybe_incomplete;
     }
 
     /**
