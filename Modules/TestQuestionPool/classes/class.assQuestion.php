@@ -3786,9 +3786,20 @@ abstract class assQuestion
     public function setQuestion($question = "")
     {
         $this->question = $question;
-        if (!is_null($question) && $question !== '') {
-            $this->question = $this->getHtmlQuestionContentPurifier()->purify($question);
+    }
+
+    public function getQuestionForHTMLOutput() : string
+    {
+        $question_text = $this->getHtmlQuestionContentPurifier()->purify($this->question);
+        if ($this->isAdditionalContentEditingModePageObject()
+            || !(new ilSetting('advanced_editing'))->get('advanced_editing_javascript_editor') === 'tinymce') {
+            $question_text = nl2br($question_text);
         }
+        return $this->prepareTextareaOutput(
+            $question_text,
+            true,
+            true
+        );
     }
 
     /**
