@@ -555,7 +555,12 @@ class ilUserProfile
                             $val->setValue($a_user->getLogin());
                         }
                     }
-                    $a_form->addItem($val);
+                    // BEGIN Patch hide username in registration forms
+                    // $a_form->addItem($val);
+                    if(!self::$mode == self::MODE_REGISTRATION) {
+                        $a_form->addItem($val);
+                    }
+                    //END Patch
                     break;
 
                 case "text":
