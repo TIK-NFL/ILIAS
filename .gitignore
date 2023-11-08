@@ -59,3 +59,4 @@ override.php
 
 # Uni Stuttgart
 /opcache.php
+/google*.html
