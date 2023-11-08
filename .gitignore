@@ -56,3 +56,6 @@ phpstan-baseline.neon
 
 # File Delivery
 override.php
+
+# Uni Stuttgart
+/opcache.php
