@@ -3980,6 +3980,7 @@ common#:#err_auth_mode_inactive#:#Zur Zeit ist leider keine Anmeldung möglich.
 common#:#err_auth_soap_no_ilias_user#:#Anmeldung fehlgeschlagen! Die SOAP-Authentifizierung war erfolgreich, aber es existiert kein entsprechender ILIAS-Benutzer. Bitte kontaktieren Sie Ihren Systemadministrator.
 common#:#err_check_input#:#Die Einstellungen konnten nicht gespeichert werden. Bitte überprüfen Sie Ihre Eingaben.
 common#:#err_count_param#:#Grund: Falsche Parameteranzahl
+common#:#err_double_entries#:#Grund: Doppelte Einträge
 common#:#err_in_line#:#Fehler in Zeile
 common#:#err_inactive#:#Dieses ILIAS-Konto ist nicht aktiv bzw. noch nicht aktiviert worden. Bitte kontaktieren Sie den Technischen Support (siehe Link unten) für weitere Unterstützung.
 common#:#err_inactive_login_attempts#:#Ihr ILIAS-Konto wurde wegen falscher Login-Versuche deaktiviert. Klicken Sie auf „Technische Betreuung kontaktieren“ am Fuße dieser Seite, um die Administratoren zu informieren, dass diese Ihr ILIAS-Konto wieder aktivieren sollen.
@@ -4282,7 +4283,7 @@ common#:#icon_settings#:#Icon
 common#:#id#:#ID
 common#:#identifier#:#Identifier
 common#:#if_no_title_then_filename#:#Geben Sie keinen Titel ein, wird stattdessen der Dateiname angezeigt
-common#:#ignore_on_conflict#:#Ignoriere bei Konflikt
+common#:#ignore_on_conflict#:#Insert/Update Aktion wird strikt befolgt
 common#:#ignore_required_fields#:#Benutzerpflichtfelder ignorieren
 common#:#ignore_required_fields_info#:#Falls aktiviert, werden Pflichtangaben beim Absenden dieses Formulars nicht mehr überprüft (sofern möglich). Auswirkung dessen ist, dass der Benutzer nach der nächsten Anmeldung sein Profil vervollständigen muss.
 common#:#il_astpl_loc_initial#:#Einstiegstest
@@ -5136,6 +5137,7 @@ common#:#objs_rtst#:#ECS-Tests
 common#:#objs_rwik#:#ECS-Wikis
 common#:#objs_sahs#:#SCORM-Lernmodule
 common#:#objs_sess#:#Sitzungen
+common#:#objs_skee#:#Kompetenzbäume
 common#:#objs_spl#:#Fragenpools für Umfragen
 common#:#objs_st#:#Kapitel
 common#:#objs_svy#:#Umfragen
@@ -5775,7 +5777,7 @@ common#:#up#:#Hoch
 common#:#update#:#Übernehmen
 common#:#update_applied#:#Datenbankupdate erfolgreich
 common#:#update_language#:#Sprache aktualisieren
-common#:#update_on_conflict#:#Aktualisiere bei Konflikt
+common#:#update_on_conflict#:#Insert/Update Aktion wird automatisch ermittelt
 common#:#update_orgunits#:#Benutzerfeld 'Organisationseinheiten' aktualisieren
 common#:#update_orgunits_desc#:#Wenn eingeschaltet, werden bei allen Benutzern das Feld 'Organisationseinheiten' aktualisiert und so allfällige Fehler behoben.
 common#:#upload#:#Hochladen
@@ -5865,7 +5867,7 @@ common#:#usrimport_action_replaced#:#Aktion %1$s durch %2$s ersetzt.
 common#:#usrimport_cant_delete#:#Kann „Delete“ Aktion nicht ausführen. Kein passendes ILIAS-Konto in der Datenbank vorhanden.
 common#:#usrimport_cant_insert#:#Kann „Insert“ Aktion nicht ausführen. ILIAS-Konto ist bereits in der Datenbank vorhanden.
 common#:#usrimport_cant_update#:#Kann „Update“ Aktion nicht ausführen. Kein passendes ILIAS-Konto in der Datenbank vorhanden.
-common#:#usrimport_conflict_handling_info#:#Bei „Ignoriere bei Konflikt“ überspringt ILIAS alle Daten, die nicht problemlos importiert werden können. In diesem Fall würde zum Beispiel eine „Insert“-Aktion nicht ausgeführt, wenn bereits ein Konto mit dem gleichen Anmeldenamen in der Datenbank vorhanden ist. Sie erhalten einen Fehlerbericht, um Ihre Importdatei zu korrigieren. <br>Bei „Aktualisieren bei Konflikt“ überschreibt ILIAS bei Problemen die Inhalte auf der Datenbank. Hierbei kann es zu einem Datenverlust kommen. Nutzen Sie diese Option nur, wenn Sie sicher sind, dass Ihre Importdatei fehlerfrei ist.
+common#:#usrimport_conflict_handling_info#:#Bei der Option „Aktualisieren bei Konflikt“ überschreibt ILIAS bei Problemen die Inhalte auf der Datenbank. Hierbei kann es zu einem Datenverlust kommen. Nutzen Sie diese Option nur, wenn Sie sicher sind, dass Ihre Importdatei fehlerfrei ist.
 common#:#usrimport_form_not_evaluabe#:#Das Formular konnte nicht ausgelesen werden.
 common#:#usrimport_global_role_for_action_required#:#Für die "%1$s" Aktion muss mindestens eine globale Rolle angegeben werden.
 common#:#usrimport_ignore_role#:#Rolle ignorieren
@@ -10345,7 +10347,9 @@ lm#:#lm_edit_chapters#:#Kapitel bearbeiten
 lm#:#lm_edit_lm_settings#:#Lernmoduleinstellungen bearbeiten
 lm#:#lm_est_reading_time#:#Geschätzte Lesedauer
 lm#:#lm_est_reading_time_info#:#In Lernmodulen kann eine geschätzte Lesezeit ermittelt und angezeigt werden.
+lm#:#lm_page_added#:#Eine Seite wurde hinzugefügt.
 lm#:#lm_page_type_lm#:#Lernmodulseite
+lm#:#lm_pages_added#:#Die Seiten wurden hinzugefügt.
 lm#:#lm_save_titles#:#Titel wurden gespeichert.
 lng#:#language_detection#:#Automatische Spracherkennung
 lng#:#lng_disable_language_detection#:#Automatische Spracherkennung deaktivieren
@@ -13754,6 +13758,7 @@ rbac#:#rbac_create_role#:#Rolle anlegen
 rbac#:#rbac_create_rolt#:#Rollenvorlage anlegen
 rbac#:#rbac_create_sahs#:#SCORM-Lernmodul anlegen
 rbac#:#rbac_create_sess#:#Sitzung anlegen
+rbac#:#rbac_create_skee#:#Kompetenzbaum anlegen
 rbac#:#rbac_create_spl#:#Fragenpool für Umfragen anlegen
 rbac#:#rbac_create_svy#:#Umfrage anlegen
 rbac#:#rbac_create_tst#:#Test anlegen
@@ -13846,10 +13851,10 @@ rbac#:#rcrs_edit_permission#:#Rechteeinstellungen ändern
 rbac#:#rcrs_read#:#Lesezugriff auf ECS-Kurs
 rbac#:#rcrs_visible#:#ECS-Kurs ist sichtbar
 rbac#:#rcrs_write#:#ECS-Kurs bearbeiten
-rbac#:#read_comp#:#Lesezugriff auf Kompetenzen und Kompetenzvorlagen
+rbac#:#read_comp#:#Lesezugriff Kompetenzen
 rbac#:#read_learning_progress#:#Lernfortschritt anderer Benutzer einsehen
 rbac#:#read_outcomes#:#Lernerfahrungen anderer Benutzer anzeigen
-rbac#:#read_profiles#:#Lesezugriff auf Kompetenzprofile
+rbac#:#read_profiles#:#Lesezugriff Kompetenzprofile
 rbac#:#read_results#:#Umfrageergebnisse
 rbac#:#read_users#:#Lokale Anmeldekonten einsehen
 rbac#:#recf_edit_permission#:#Rechteeinstellungen in der Verwaltung wiederhergestellter Objekte ändern
@@ -13929,6 +13934,17 @@ rbac#:#sess_read#:#Lesezugriff auf Sitzungen
 rbac#:#sess_read_learning_progress#:#Benutzer kann Lernfortschritt anderer Benutzer einsehen
 rbac#:#sess_visible#:#Sitzungen sind sichtbar
 rbac#:#sess_write#:#Sitzungen bearbeiten
+rbac#:#skee_copy#:#Kompetenzbaum kopieren (derzeit nicht verfügbar)
+rbac#:#skee_delete#:#Kompetenzbaum löschen
+rbac#:#skee_edit_permission#:#Rechteeinstellungen der Kompetenzbaum-Administration ändern
+rbac#:#skee_manage_comp#:#Kompetenzen in Kompetenzbaum bearbeiten
+rbac#:#skee_manage_comp_temp#:#Kompetenzvorlagen in Kompetenzbaum bearbeiten
+rbac#:#skee_manage_profiles#:#Kompetenzprofile in Kompetenzbaum bearbeiten
+rbac#:#skee_read#:#Lesezugriff auf Administration für Kompetenzbaum
+rbac#:#skee_read_comp#:#Lesezugriff auf Kompetenzen und Kompetenzvorlagen in Kompetenzbaum
+rbac#:#skee_read_profiles#:#Lesezugriff auf Kompetenzprofile in Kompetenzbaum
+rbac#:#skee_visible#:#Kompetenzbaum ist sichtbar
+rbac#:#skee_write#:#Einstellungen für Kompetenzbaum bearbeiten
 rbac#:#skmg_edit_permission#:#Rechteeinstellungen für die Verwaltung des Kompetenzmanagements ändern
 rbac#:#skmg_read#:#Lesezugriff auf Kompetenzmanagement
 rbac#:#skmg_visible#:#Kompetenzmanagement ist sichtbar
@@ -16057,6 +16073,7 @@ survey#:#svy_mail_send_confirmation#:#Teilnahmebestätigung senden
 survey#:#svy_matrix_layout_percentages_sum_invalid#:#Die Spalten-Einstellungen summieren sich nicht auf 100%.
 survey#:#svy_max_sum_score#:#Maximale Skalenpunktesumme
 survey#:#svy_neutral_answer#:#Text für eine neutrale Antwort ("Nicht definiert", "Ich weiß nicht", "Keine Angabe" etc.)
+survey#:#svy_no_appraisees_found#:#Es liegen keine Feedback-Nehmer mit abgegebenen Feedbacks vor.
 survey#:#svy_notification_tutor_results#:#Eine E-Mail mit den Umfrageergebnissen
 survey#:#svy_notification_tutor_results_alert#:#Diese Funktion erfordert ein Enddatum.
 survey#:#svy_notification_tutor_results_info#:#Nach dem Ablauf des Enddatum wird eine E-Mail mit den detailierten Umfrageergebnissen versendet.

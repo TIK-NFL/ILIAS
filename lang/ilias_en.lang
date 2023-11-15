@@ -3980,6 +3980,7 @@ common#:#err_auth_mode_inactive#:#Your authentication method is deactivated.
 common#:#err_auth_soap_no_ilias_user#:#Login failed. SOAP authentication successful, but no corresponding ILIAS user exists. Please contact your system administrator.
 common#:#err_check_input#:#The settings could not be saved. Please check your input.
 common#:#err_count_param#:#Reason: Wrong parameter count
+common#:#err_double_entries#:#Reason: Duplicate Entries
 common#:#err_in_line#:#Error in line
 common#:#err_inactive#:#This account has not been activated. Please contact the system administrator for access.
 common#:#err_inactive_login_attempts#:#Your user account has been deactivated due too many failed login attempts. Click 'Contact Technical Support' at the footer of this page to notify the administrator about the need to re-activate your account.
@@ -4282,7 +4283,7 @@ common#:#icon_settings#:#Custom Icons
 common#:#id#:#ID
 common#:#identifier#:#identifier
 common#:#if_no_title_then_filename#:#Leave blank to use file name as title.
-common#:#ignore_on_conflict#:#Ignore on conflict
+common#:#ignore_on_conflict#:#Insert/Update action will be followed strictly
 common#:#ignore_required_fields#:#Ignore required fields
 common#:#ignore_required_fields_info#:#If activated, you can submit this form without filling out all mandatory fields. The new user has to add the missing information on the personal profile after the next login.
 common#:#il_astpl_loc_initial#:#Initial Test
@@ -5136,6 +5137,7 @@ common#:#objs_rtst#:#ECS Tests
 common#:#objs_rwik#:#ECS Wikis
 common#:#objs_sahs#:#SCORM Learning Modules
 common#:#objs_sess#:#Sessions
+common#:#objs_skee#:#Competence Trees
 common#:#objs_spl#:#Question Pools Survey
 common#:#objs_st#:#Chapters
 common#:#objs_svy#:#Surveys
@@ -5775,7 +5777,7 @@ common#:#up#:#Up
 common#:#update#:#Edit
 common#:#update_applied#:#Update Applied
 common#:#update_language#:#Update Language
-common#:#update_on_conflict#:#Update on conflict
+common#:#update_on_conflict#:#Insert/Update action will be detected automatically
 common#:#update_orgunits#:#Update assigned organisational units
 common#:#update_orgunits_desc#:#If enabled, the field 'Organisational Units' will be updated for all user accounts.
 common#:#upload#:#Upload
@@ -5865,7 +5867,7 @@ common#:#usrimport_action_replaced#:#Replaced action %1$s by %2$s.
 common#:#usrimport_cant_delete#:#Can't perform ‘Delete’ action. No such user in database.
 common#:#usrimport_cant_insert#:#Can't perform ‘Insert’ action. User is already in database.
 common#:#usrimport_cant_update#:#Can't perform ‘Update’ action. No such user in database.
-common#:#usrimport_conflict_handling_info#:#When ‘Ignore on conflict’ is selected, ILIAS ignores an action, if it can not be performed (e. g. an ‘Insert’ action is not done, if there is already a user with the same login in the database.) When ‘Update on conflict’ is selected, ILIAS updates the database if an action can not be performed. (e. g. an ‘Insert’ action is replaced by an ‘Update’ action and the other way around, if a user with the same login exists in the database).
+common#:#usrimport_conflict_handling_info#:#When ‘Ignore on conflict’ is selected, ILIAS ignores an action, if it can not be performed (e. g. an ‘Insert’ action is not done, if there already is a user with the same login in the database.) When ‘Update on conflict’ is selected, ILIAS updates the database if an action can not be performed. (e. g. an ‘Insert’ action is replaced by an ‘Update’ action and the other way around, if a user with the same login exists in the database).
 common#:#usrimport_form_not_evaluabe#:#The form data couldn't be read.
 common#:#usrimport_global_role_for_action_required#:#At least one global role must be specified for "%1$s" action.
 common#:#usrimport_ignore_role#:#Ignore role
@@ -10345,7 +10347,9 @@ lm#:#lm_edit_chapters#:#Edit Chapters
 lm#:#lm_edit_lm_settings#:#Edit Learning Module Settings
 lm#:#lm_est_reading_time#:#Estimated Reading Time
 lm#:#lm_est_reading_time_info#:#In Learning Modules in the repository the estimated reading time can be determined and displayed.
+lm#:#lm_page_added#:#Page has been added.
 lm#:#lm_page_type_lm#:#LM Page
+lm#:#lm_pages_added#:#Pages have been added.
 lm#:#lm_save_titles#:#Titles saved.
 lng#:#language_detection#:#Language Detection
 lng#:#lng_disable_language_detection#:#Disable Language Detection
@@ -13558,10 +13562,10 @@ rbac#:#mail_smtp_mail#:#User can send e-mails per SMTP to external addresses
 rbac#:#mail_to_global_roles#:#Global Mails
 rbac#:#mail_visible#:#Mail administration is visible
 rbac#:#mail_write#:#User can edit settings in Mail administration
-rbac#:#manage_comp#:#User can edit Competences
-rbac#:#manage_comp_temp#:#User can edit Competence Templates
+rbac#:#manage_comp#:#Edit Competences
+rbac#:#manage_comp_temp#:#Edit Competence Templates
 rbac#:#manage_materials#:#Manage Materials
-rbac#:#manage_profiles#:#User can edit Competence Profiles
+rbac#:#manage_profiles#:#Edit Competence Profiles
 rbac#:#mcst_copy#:#User can copy mediacast
 rbac#:#mcst_delete#:#User can move or delete mediacast
 rbac#:#mcst_edit_learning_progress#:#User can edit learning progress settings
@@ -13754,6 +13758,7 @@ rbac#:#rbac_create_role#:#Create new Role
 rbac#:#rbac_create_rolt#:#Create new Role Template
 rbac#:#rbac_create_sahs#:#Create SCORM Learning Module
 rbac#:#rbac_create_sess#:#Create Session
+rbac#:#rbac_create_skee#:#Create Competence Tree
 rbac#:#rbac_create_spl#:#Create Question Pool Survey
 rbac#:#rbac_create_svy#:#Create Survey
 rbac#:#rbac_create_tst#:#Create Test
@@ -13846,10 +13851,10 @@ rbac#:#rcrs_edit_permission#:#User can change permission settings
 rbac#:#rcrs_read#:#User can use ECS Course
 rbac#:#rcrs_visible#:#ECS Course is visible
 rbac#:#rcrs_write#:#User can edit settings of ECS Course
-rbac#:#read_comp#:#User has read access to Competences and Competence Templates
+rbac#:#read_comp#:#Read Competences
 rbac#:#read_learning_progress#:#View learning progress of other users
 rbac#:#read_outcomes#:#View learning experiences of other users
-rbac#:#read_profiles#:#User has read access to Competence Profiles
+rbac#:#read_profiles#:#Read Profiles
 rbac#:#read_results#:#Survey Results
 rbac#:#read_users#:#Read Access to User Accounts
 rbac#:#recf_edit_permission#:#User can change permission settings of Restored Objects administration
@@ -13929,6 +13934,17 @@ rbac#:#sess_read#:#User has read access to sessions
 rbac#:#sess_read_learning_progress#:#User can view learning progress of other users
 rbac#:#sess_visible#:#Sessions are visible
 rbac#:#sess_write#:#User can edit session content and settings
+rbac#:#skee_copy#:#User can copy Competence Tree (currently not available)
+rbac#:#skee_delete#:#User can delete Competence Tree
+rbac#:#skee_edit_permission#:#User can change permission settings of Competence Tree administration
+rbac#:#skee_manage_comp#:#User can edit Competences in Competence Tree
+rbac#:#skee_manage_comp_temp#:#User can edit Competence Templates in Competence Tree
+rbac#:#skee_manage_profiles#:#User can edit Competence Profiles in Competence Tree
+rbac#:#skee_read#:#User has read access to administration of Competence Tree
+rbac#:#skee_read_comp#:#User has read access to Competences and Competence Templates in Competence Tree
+rbac#:#skee_read_profiles#:#User has read access to Competence Profiles in Competence Tree
+rbac#:#skee_visible#:#Competence Tree is visible
+rbac#:#skee_write#:#User can edit settings of Competence Tree
 rbac#:#skmg_edit_permission#:#User can change permission settings of Competence Management administration
 rbac#:#skmg_read#:#User has read access to administration of Competence Management
 rbac#:#skmg_visible#:#Competence Management administration is visible
@@ -16057,6 +16073,7 @@ survey#:#svy_mail_send_confirmation#:#Send Participation Confirmation
 survey#:#svy_matrix_layout_percentages_sum_invalid#:#The column settings do not sum up to 100%.
 survey#:#svy_max_sum_score#:#Maximum Sum Score
 survey#:#svy_neutral_answer#:#Text for a Neutral Answer (‘Not Specified’, ‘I don't know’ etc.)
+survey#:#svy_no_appraisees_found#:#No appraisees with feedbacks found.
 survey#:#svy_notification_tutor_results#:#One E-Mail including Survey Results
 survey#:#svy_notification_tutor_results_alert#:#This requires an end date.
 survey#:#svy_notification_tutor_results_info#:#After reaching the end data a cron job will send an email with the detailed survey results attached to it.

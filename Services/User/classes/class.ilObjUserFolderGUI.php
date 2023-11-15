@@ -3708,6 +3708,7 @@ class ilObjUserFolderGUI extends ilObjectGUI
         $ilAccess = $DIC['ilAccess'];
         $ilErr = $DIC['ilErr'];
         $lng = $DIC['lng'];
+        $ctrl = $DIC['ilCtrl'];
 
         $a_target = USER_FOLDER_ID;
 
@@ -3716,7 +3717,7 @@ class ilObjUserFolderGUI extends ilObjectGUI
             "",
             $a_target
         )) {
-            $this->ctrl->redirectToURL("ilias.php?baseClass=ilAdministrationGUI&ref_id=" . $a_target . "&jmpToUser=" . $a_user);
+            $ctrl->redirectToURL("ilias.php?baseClass=ilAdministrationGUI&ref_id=" . $a_target . "&jmpToUser=" . $a_user);
             exit;
         } else {
             if ($ilAccess->checkAccess(
@@ -4018,16 +4019,9 @@ class ilObjUserFolderGUI extends ilObjectGUI
         }
 
         $umail = new ilFormatMail($ilUser->getId());
-        $mail_data = $umail->getSavedData();
+        $mail_data = $umail->retrieveFromStage();
 
-        if (!is_array($mail_data)) {
-            $mail_data = array("user_id" => $ilUser->getId());
-        }
-
-        // ???
-        // $mail_data = $umail->appendSearchResult(array('#il_ml_'.$list_id), 'to');
-
-        $umail->savePostData(
+        $umail->persistToStage(
             $mail_data['user_id'],
             $mail_data['attachments'],
             '#il_ml_' . $list_id,
