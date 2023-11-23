@@ -606,9 +606,6 @@ assessment#:#cloze_text#:#Doplňovaný text
 assessment#:#cloze_textgap_case_insensitive#:#Nerozlišuje velká/malá písmena
 assessment#:#cloze_textgap_case_sensitive#:#Rozlišuje velká/malá písmena
 assessment#:#cloze_textgap_levenshtein_of#:#Vzdálenost Levenshtein %s
-assessment#:#cloze_textgap_multiple_whitespace#:#Více prázdných míst
-assessment#:#cloze_textgap_whitespace_after#:#Prázdné místo za hodnotou
-assessment#:#cloze_textgap_whitespace_before#:#Prázdné místo před hodnotou
 assessment#:#code#:#Kód
 assessment#:#codebase#:#Databáze kódu
 assessment#:#concatenation#:#Sřetězení
@@ -1535,10 +1532,10 @@ assessment#:#tst_manscoring_question_section_header#:#Otázka: %s
 assessment#:#tst_manscoring_user_notification#:#Zaslat upozornění
 assessment#:#tst_mark#:#Známka
 assessment#:#tst_mark_create_new_mark_step#:#Vytvořit nový známkovací stupeň
-assessment#:#tst_mark_create_simple_mark_schema#:#Vytvořit jednoduché schéma známkování
 assessment#:#tst_mark_minimum_level#:#Minimální hladina (v %)
 assessment#:#tst_mark_official_form#:#Oficiální tvar
 assessment#:#tst_mark_passed#:#Prošel
+assessment#:#tst_mark_reset_to_simple_mark_schema#:#Vytvořit jednoduché schéma známkování
 assessment#:#tst_mark_short_form#:#Zkrácený tvar
 assessment#:#tst_max_allowed_users_heading#:#Dosažen maximální počet simultánních účastníků v tomto testu
 assessment#:#tst_max_allowed_users_message#:#Maximální počet simultánních účastníků v tomto testu byl dosažen. Zkuste začít nebo pokračovat znovu později. Pokud bude některý z aktivních účastníků nenaktivní déle než %s s., můžete namísto něj do testu vstoupit. Děkujeme za pochopení.
