@@ -8236,6 +8236,7 @@ dateplaner#:#cal_grp_others#:#Andere
 dateplaner#:#cal_grp_personal#:#Persönlich
 dateplaner#:#cal_ical_infoscreen#:#Abonnieren
 dateplaner#:#cal_ical_url#:#iCal-URL
+dateplaner#:#cal_ical_url_google#:#iCal-URL (Google Kalender)
 dateplaner#:#cal_import_appointments#:#Termine importieren
 dateplaner#:#cal_import_file#:#Importdatei
 dateplaner#:#cal_import_file_info#:#Wählen Sie die Datei aus, die Ihre Termine enthält.
@@ -15872,7 +15873,7 @@ survey#:#survey_block_hidden#:#nicht sichtbar
 survey#:#survey_block_visible#:#sichtbar
 survey#:#survey_calc_skills#:#Kompetenzstufen bestimmen
 survey#:#survey_calculate_sum_score#:#Skalenpunktesumme berechnen
-survey#:#survey_calculate_sum_score_info#:#Berechnet die Summe aller Skalenpunkt von Single Choice, Multiple Choice und Matrixfragen je Teilnehmer. Achtung: Wenn Teilnehmer solche Fragen überspringen, wird die gesammte Skalenpunktesumme nicht berechnet.
+survey#:#survey_calculate_sum_score_info#:#Berechnet die Summe aller Skalenpunkte von Single Choice, Multiple Choice und Matrixfragen je Teilnehmer. Achtung: Wenn Teilnehmer solche Fragen überspringen, wird die gesamte Skalenpunktesumme nicht berechnet.
 survey#:#survey_cancel_preview#:#Vorschau abbrechen
 survey#:#survey_cannot_preview_survey#:#Vorschau nicht verfügbar
 survey#:#survey_clipboard_notice#:#Es befinden sich Fragen in der Zwischenablage. Wählen Sie ein Ziel oder leeren Sie die Zwischenablage.
