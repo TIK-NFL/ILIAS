@@ -789,6 +789,22 @@ class ilObjectCopyGUI
         $this->tpl->addJavaScript('./Services/CopyWizard/js/ilContainer.js');
         $this->tpl->setVariable('BODY_ATTRIBUTES', 'onload="ilDisableChilds(\'cmd\');"');
 
+        $back_cmd = "";
+        switch ($this->getMode()) {
+            case self::SOURCE_SELECTION:
+                $back_cmd = 'adoptContent';
+                break;
+
+            case self::TARGET_SELECTION:
+                $back_cmd = 'showTargetSelectionTree';
+                break;
+
+            case self::SEARCH_SOURCE:
+                $back_cmd = 'searchSource';
+                break;
+        }
+
+        //$table = new ilObjectCopySelectionTableGUI($this, 'showItemSelection', $this->getType(), $back_cmd);
         $table = new ilObjectCopySelectionTableGUI($this, 'showItemSelection', $this->getType(), $copy_page);
         $table->parseSource($this->getFirstSource());
 
