@@ -984,7 +984,7 @@ assessment#:#parseQuestion#:#Frage analysieren
 assessment#:#part_received_a_of_b_points#:#Der Teilnehmer hat %s von %s möglichen Punkten erreicht.
 assessment#:#participants#:#Teilnehmer
 assessment#:#participants_invitation#:#Nur ausgewählte Teilnehmer
-assessment#:#participants_invitation_description#:#Der Test kann nur von den Benutzern durchgeführt werden, die im Reiter "Dashboard" hinzugefügt wurden.
+assessment#:#participants_invitation_description#:#Der Test kann nur von den Benutzern durchgeführt werden, die im Reiter "Teilnehmer" hinzugefügt wurden.
 assessment#:#participants_results_subtab#:#Alle Teilnehmer
 assessment#:#pass#:#Durchlauf
 assessment#:#pass_finished#:#%s Durchlauf
@@ -4210,7 +4210,7 @@ common#:#grp_deleted_export_files#:#Die ausgewählte Datei wurde gelöscht.
 common#:#grp_dismiss_member#:#Sie möchten folgende Mitglieder aus der Gruppe austragen?
 common#:#grp_dismiss_myself#:#Sind Sie sicher, dass Sie die Mitgliedschaft in dieser Gruppe beenden möchten?
 common#:#grp_edit#:#Einstellungen der Gruppe
-common#:#grp_err_administrator_required#:#Gruppenmitglied wurde nicht entfernt, es wird mindestens ein Administrator pro Gruppe benötigt.
+common#:#grp_err_administrator_required#:#Gruppenmitglied wurde nicht entfernt. Es wird mindestens ein Administrator pro Gruppe benötigt.
 common#:#grp_header_edit_members#:#Mitglieder bearbeiten
 common#:#grp_list_members#:#Teilnehmer auflisten
 common#:#grp_list_reg#:#Beitritt
@@ -4226,10 +4226,10 @@ common#:#grp_mem_send_mail#:#Mitglied eine Mail senden
 common#:#grp_members_gallery#:#Mitgliedergalerie
 common#:#grp_msg_applicants_assigned#:#Der/die Teilnehmende wurde in die Gruppe aufgenommen.
 common#:#grp_msg_member_assigned#:#Der/die Teilnehmende wurde in die Gruppe aufgenommen.
-common#:#grp_msg_membership_annulled#:#Die Mitgliedschaft wurde aufgehoben
+common#:#grp_msg_membership_annulled#:#Die Mitgliedschaft wurde aufgehoben.
 common#:#grp_new#:#Neue Gruppe anlegen
-common#:#grp_registration#:#Zur Gruppe beitreten
-common#:#grp_registration_completed#:#Sie sind zur Gruppe beigetreten
+common#:#grp_registration#:#Der Gruppe beitreten
+common#:#grp_registration_completed#:#Sie sind der Gruppe beigetreten.
 common#:#grp_removed_from_waiting_list#:#Sie wurden aus der Warteliste der Gruppe "%s" ausgetragen.
 common#:#grp_select_one_file#:#Bitte wählen Sie eine Datei aus.
 common#:#grp_wizard_page#:#Gruppe kopieren (Schritt 2/2)
@@ -7044,15 +7044,15 @@ content#:#cont_text_acc#:#Akzent:
 content#:#cont_text_code#:#Programmcode:
 content#:#cont_text_com#:#Kommentar:
 content#:#cont_text_editing#:#Text bearbeiten
-content#:#cont_text_emp#:#Betonter Text:
+content#:#cont_text_emp#:#Betont
 content#:#cont_text_fn#:#Fußnote:
 content#:#cont_text_iln_link#:#Interner Link
-content#:#cont_text_imp#:#Wichtig:
+content#:#cont_text_imp#:#Wichtig
 content#:#cont_text_keyword#:#Schlagwort
 content#:#cont_text_placeh#:#Klicken und bearbeiten, um einen Text einzufügen
 content#:#cont_text_placehl#:#Text-Platzhalter
 content#:#cont_text_quot#:#Zitat:
-content#:#cont_text_str#:#Stark betonter Text:
+content#:#cont_text_str#:#Stark betont
 content#:#cont_text_sub#:#Tiefgestellt
 content#:#cont_text_sup#:#Hochgestellt
 content#:#cont_text_tex#:#LaTeX-Code:
@@ -7256,17 +7256,21 @@ copg#:#copg_cron_keep_entries#:#Mindestanzahl Einträge
 copg#:#copg_cron_keep_entries_info#:#Diese Anzahl an Einträgen wird im Verlauf behalten, auch wenn diese älter als der angegebene Zeitraum sind.
 copg#:#copg_days#:#Tage
 copg#:#copg_details#:#Details
+copg#:#copg_edit_iframe_title#:#Text bearbeiten im Seiteneditor
 copg#:#copg_entries#:#Einträge
 copg#:#copg_error#:#Problem
 copg#:#copg_error_occured_modal#:#Es ist leider ein Fehler aufgetreten. Bitte drücken Sie "Seite neu laden" um zum zuletzt gespeicherten Inhalt zu gelangen.
 copg#:#copg_est_reading_time#:#Geschätzte Lesezeit
 copg#:#copg_history_cleanup_cron#:#Seiteneditor Verlaufsbereinigung
 copg#:#copg_history_cleanup_cron_info#:#Löscht ältere Einträge aus dem Seiteneditorverlauf.
+copg#:#copg_more_character_formats#:#Weitere Zeichenformate
 copg#:#copg_page_element_not_found#:#Unbekanntes Seitenelement.
 copg#:#copg_page_type_stys#:#Seitenlayout
+copg#:#copg_par_format_selection#:#Absatzformatauswahl
 copg#:#copg_pc_mob_does_not_exist#:#Das Medienobjekt wurde nicht gefunden.
 copg#:#copg_questions_not_supported_here#:#In diesem Kontext werden keine Fragen unterstützt.
 copg#:#copg_reload_page#:#Seite neu laden
+copg#:#copg_remove_formats#:#Zeichenformate entfernen
 copg#:#copg_sec_link_info#:#Wählen Sie ein Ziel für die Verlinkung des Blocks. Achtung: In diesem Fall darf der Inhalt des Blocks dann selbst keine weiteren Links enthalten!
 copg#:#copg_snippet_cannot_be_edited#:#Dies ist ein vordefinierter Inhaltsbaustein, der an dieser Stelle nicht editiert werden kann.
 copg#:#copg_x_minutes#:#%s Minute(n)
@@ -7409,7 +7413,7 @@ crs#:#crs_edit_timings#:#Zeitvorgaben bearbeiten
 crs#:#crs_enable_map#:#Karte zum Kurs aktivieren
 crs#:#crs_end#:#Ende
 crs#:#crs_export#:#Kursexport
-crs#:#crs_file#:#Datei
+crs#:#crs_file#:#Titel
 crs#:#crs_file_download#:#Dateien zum Herunterladen
 crs#:#crs_file_name#:#Dateiname
 crs#:#crs_file_size_info#:#Dateigröße
@@ -10060,7 +10064,7 @@ iass#:#iass_filter_finalized#:#Nur bestandene
 iass#:#iass_filter_not_finalized#:#Nur nicht abgeschlossene
 iass#:#iass_filter_not_started#:#Nur nicht bewertete
 iass#:#iass_finalize#:#Abschließen
-iass#:#iass_finalize_info#:#Die Individuellen Bewertung wird abgeschlossen.
+iass#:#iass_finalize_info#:#Die Individuelle Bewertung wird abgeschlossen.
 iass#:#iass_finalize_user_qst#:#Soll die Bewertung des Teilnehmers wirklich final abgeschlossen werden? Änderungen an der Bewertung sind hinterher nicht mehr möglich.
 iass#:#iass_further_field_headline#:#Detaillierte Informationen
 iass#:#iass_graded_by#:#Bewertet von
@@ -12541,6 +12545,7 @@ poll#:#poll_activation_online_info#:#Wählen Sie diese Einstellung, um die Absti
 poll#:#poll_add#:#Abstimmung anlegen
 poll#:#poll_anonymous_warning#:#Ihr Name wird in den Abstimmungsergebnissen nicht angezeigt.
 poll#:#poll_answer#:#Antwort
+poll#:#poll_answer_selected_alt_text#:#Ausgewählt
 poll#:#poll_answers#:#Mögliche Antworten
 poll#:#poll_barchart#:#Balkendiagramm
 poll#:#poll_block_message_already_voted#:#Sie haben bereits abgestimmt.
