@@ -34,6 +34,7 @@ class UserMetaBarProvider extends AbstractStaticMetaBarProvider
      */
     public function getMetaBarItems(): array
     {
+        global $ilUser;
         $access_checks = BasicAccessCheckClosuresSingleton::getInstance();
         $f = $this->dic->ui()->factory();
         $txt = function (string $id): string {
@@ -47,7 +48,7 @@ class UserMetaBarProvider extends AbstractStaticMetaBarProvider
         $children = array();
         $children[] = $mb->linkItem($id('personal_profile'))
             ->withAction("ilias.php?baseClass=ilDashboardGUI&cmd=jumpToProfile")
-            ->withTitle($txt("personal_profile"))
+            ->withTitle($txt("personal_profile")." &middot ". $ilUser->getFirstname() . " " .$ilUser->getLastname() . " [". $ilUser->getLogin(). "]")
             ->withPosition(1)
             ->withSymbol($f->symbol()->icon()->custom(ilUtil::getImagePath("icon_profile.svg"), $txt("personal_profile")));
 
