@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 /**
 * Storage of ECS imported objects.
-* This class stores the econent id and informations whether an object is imported or not.
+* This class stores the econtent id and informations whether an object is imported or not.
 *
 * @author Stefan Meyer <meyer@leifos.com>
 */
@@ -64,7 +64,7 @@ class ilECSImport
         $this->imported = $a_status;
     }
 
-    public function setSubId($a_id): void
+    public function setSubId(string $a_id): void
     {
         $this->sub_id = $a_id;
     }
