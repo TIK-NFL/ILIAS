@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -18,7 +16,10 @@ declare(strict_types=1);
  *
  *********************************************************************/
 
+declare(strict_types=1);
+
 use ILIAS\Repository\Clipboard\ClipboardManager;
+use ILIAS\Object\ImplementsCreationCallback;
 use ILIAS\HTTP\Wrapper\RequestWrapper;
 use ILIAS\Style\Content\Container\ContainerDBRepository;
 use Psr\Http\Message\ServerRequestInterface;
@@ -72,7 +73,7 @@ class ilObjectCopyGUI
 
     protected ContainerDBRepository $container_repo;
 
-    protected ?object $parent_obj = null;
+    protected ?ImplementsCreationCallback $parent_obj = null;
     protected ClipboardManager $clipboard;
 
     protected int $mode = 0;
@@ -84,7 +85,7 @@ class ilObjectCopyGUI
     protected ilPropertyFormGUI $form;
     private ilObjectRequestRetriever $retriever;
 
-    public function __construct(ilObjectGUI $parent_gui)
+    public function __construct(ImplementsCreationCallback $parent_gui)
     {
         /** @var ILIAS\DI\Container $DIC */
         global $DIC;
@@ -762,10 +763,10 @@ class ilObjectCopyGUI
         $input = [
             'copy_page' => $this->ui->factory()->input()->field()
                 ->radio(
-                    $this->lng->txt('cntr_adopt_content')
+                    $this->lng->txt('copy_container_page')
                 )
-                ->withOption('1', $this->lng->txt('copy_container_page_yes_label'), $this->lng->txt('copy_container_page_yes_byline'))
-                ->withOption('0', $this->lng->txt('copy_container_page_no_label'))
+                ->withOption('1', $this->lng->txt('yes'), $this->lng->txt('copy_container_page_yes_byline'))
+                ->withOption('0', $this->lng->txt('no'), $this->lng->txt('copy_container_page_no_byline'))
                 ->withValue('1')
                 ->withAdditionalTransformation($this->refinery->kindlyTo()->bool())
         ];
@@ -790,22 +791,6 @@ class ilObjectCopyGUI
         $this->tpl->addJavaScript('./Services/CopyWizard/js/ilContainer.js');
         $this->tpl->setVariable('BODY_ATTRIBUTES', 'onload="ilDisableChilds(\'cmd\');"');
 
-        $back_cmd = "";
-        switch ($this->getMode()) {
-            case self::SOURCE_SELECTION:
-                $back_cmd = 'adoptContent';
-                break;
-
-            case self::TARGET_SELECTION:
-                $back_cmd = 'showTargetSelectionTree';
-                break;
-
-            case self::SEARCH_SOURCE:
-                $back_cmd = 'searchSource';
-                break;
-        }
-
-        //$table = new ilObjectCopySelectionTableGUI($this, 'showItemSelection', $this->getType(), $back_cmd);
         $table = new ilObjectCopySelectionTableGUI($this, 'showItemSelection', $this->getType(), $copy_page);
         $table->parseSource($this->getFirstSource());
 
@@ -891,7 +876,11 @@ class ilObjectCopyGUI
 
                 // Delete wizard options
                 $wizard_options->deleteAll();
-                $this->parent_obj->callCreationCallback($new_obj);
+                $this->parent_obj->callCreationCallback(
+                    $new_obj,
+                    $this->obj_definition,
+                    $this->retriever->getMaybeInt('crtcb', 0)
+                );
 
                 // rbac log
                 if (ilRbacLog::isActive()) {
@@ -994,7 +983,7 @@ class ilObjectCopyGUI
         $progress = new ilObjectCopyProgressTableGUI(
             $this,
             'showCopyProgress',
-            $this->request_wrapper->retrieve("ref_id", $this->refinery->kindlyTo()->int())
+            $ref_id
         );
         $progress->setObjectInfo($this->targets_copy_id);
         $progress->parse();
@@ -1088,7 +1077,11 @@ class ilObjectCopyGUI
         if ($new_ref_id > 0) {
             $new_obj = ilObjectFactory::getInstanceByRefId((int) $result['ref_id'], false);
             if ($new_obj instanceof ilObject) {
-                $this->parent_obj->callCreationCallback($new_obj);
+                $this->parent_obj->callCreationCallback(
+                    $new_obj,
+                    $this->obj_definition,
+                    $this->retriever->getMaybeInt('crtcb', 0)
+                );
             }
         }
         return $result;
