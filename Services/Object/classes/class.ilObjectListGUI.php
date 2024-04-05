@@ -819,7 +819,10 @@ class ilObjectListGUI
     */
     public function setTitle($a_title)
     {
-        $this->title = $a_title;
+        $this->title = strip_tags(
+            $a_title,
+            ilObjectGUI::ALLOWED_TAGS_IN_TITLE_AND_DESCRIPTION
+        );
     }
 
     /**
@@ -838,7 +841,10 @@ class ilObjectListGUI
     */
     public function setDescription($a_description)
     {
-        $this->description = $a_description;
+        $this->description = strip_tags(
+            $a_description,
+            ilObjectGUI::ALLOWED_TAGS_IN_TITLE_AND_DESCRIPTION
+        );
     }
 
     /**
@@ -3062,7 +3068,7 @@ class ilObjectListGUI
             }
         }
 
-        $this->title = ilObject::_lookupTitle($this->obj_id);
+        $this->setTitle(ilObject::_lookupTitle($this->obj_id));
         $htpl->setVariable(
             "ACTION_DROP_DOWN",
             $this->insertCommands(false, false, "", true)
