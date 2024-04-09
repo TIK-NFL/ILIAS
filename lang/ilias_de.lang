@@ -3130,22 +3130,22 @@ cmix#:#conf_new_window_info#:#Der Inhalt wird in einem neuen Fenster geöffnet. 
 cmix#:#conf_own_window#:#Gleiches Fenster
 cmix#:#conf_own_window_info#:#Der Inhalt wird im gleichen Fenster geöffnet und ersetzt den ILIAS-Bildschirm. Beim Verlassen des Inhalts kehrt der Benutzer zu ILIAS zurück.
 cmix#:#conf_privacy_comment_default#:#Anzeige an den Benutzer
-cmix#:#conf_privacy_ident#:#Benutzeridentifikation
-cmix#:#conf_privacy_ident_il_uuid_ext_account#:#Externe Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-cmix#:#conf_privacy_ident_il_uuid_ext_account_info#:#Dies ist identisch mit jedem Aufruf, kann aber eine direkte Rückschlüsse auf den Benutzer zulassen.
+cmix#:#conf_privacy_ident#:#Identifikation der Person
+cmix#:#conf_privacy_ident_il_uuid_ext_account#:#Die externe Konten-ID wird kombiniert mit einer eindeutigen ID der ILIAS-Plattform und als E-Mail-Adresse formatiert.
+cmix#:#conf_privacy_ident_il_uuid_ext_account_info#:#Die Identifikation ist identisch bei jedem Aufruf und lässt direkte Rückschlüsse auf das ILIAS-Konto und die zugehörige Person zu.
 cmix#:#conf_privacy_ident_il_uuid_login#:#ILIAS-Login kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
 cmix#:#conf_privacy_ident_il_uuid_login_info#:#Sendet den Anmeldenamen. Dies ist identisch mit jedem Aufruf, kann aber eine direkte Rückschlüsse auf den ILIAS-Benutzer zulassen.
 cmix#:#conf_privacy_ident_il_uuid_random#:#Zufalls-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-cmix#:#conf_privacy_ident_il_uuid_random_info#:#Pro ILIAS-Objekt und ILIAS-Benutzer wird eine Zufalls-ID erzeugt, die bei jedem Aufruf identisch bleibt. Rückschlüsse auf einen Benutzer sind sehr eingeschränkt, da Objekt-übergreifende Nutzerprofile praktisch nicht erstellt werden können.
+cmix#:#conf_privacy_ident_il_uuid_random_info#:#Pro ILIAS-Objekt und ILIAS-Konto wird eine Zufalls-ID erzeugt, die bei jedem Aufruf identisch bleibt. Rückschlüsse auf eine Person sind sehr eingeschränkt, da Objekt-übergreifende Profile praktisch nicht erstellt werden können.
 cmix#:#conf_privacy_ident_il_uuid_sha256#:#Hash kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-cmix#:#conf_privacy_ident_il_uuid_sha256_info#:#Dies ist identisch mit jedem Aufruf, erlaubt aber keine direkten Rückschlüsse auf den ILIAS-Benutzer.
+cmix#:#conf_privacy_ident_il_uuid_sha256_info#:#Die Identifikation ist identisch bei jedem Aufruf, aber lässt keine direkten Rückschlüsse auf das ILIAS-Konto und die zugehörige Person zu.
 cmix#:#conf_privacy_ident_il_uuid_sha256url#:#Hash kombiniert mit der ILIAS-Domain, die als E-Mail-Adresse formatiert ist
-cmix#:#conf_privacy_ident_il_uuid_sha256url_info#:#Dies ist identisch mit jedem Aufruf, mit maximal 80 Zeichen deutlich kürzer als die Variante mit der ILIAS-Plattform-ID und ermöglicht nur sehr eingeschränkte Rückschlüsse auf den ILIAS-Benutzer.
-cmix#:#conf_privacy_ident_il_uuid_user_id#:#ILIAS-Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-cmix#:#conf_privacy_ident_il_uuid_user_id_info#:#Sendet die interne numerische Benutzer-Id. Dies ist identisch mit jedem Aufruf, ermöglicht aber Rückschlüsse auf den ILIAS-Benutzer.
+cmix#:#conf_privacy_ident_il_uuid_sha256url_info#:#Die Identifikation ist identisch bei jedem Aufruf. Mit maximal 80 Zeichen ist sie kürzer, als die Variante mit der ILIAS-Plattform-ID und ermöglicht nur sehr eingeschränkte Rückschlüsse das ILIAS-Konto und die zugehörige Person.
+cmix#:#conf_privacy_ident_il_uuid_user_id#:#Die ID des ILIAS-Kontos wird kombiniert mit einer eindeutigen ID der ILIAS-Plattform und als E-Mail-Adresse formatiert.
+cmix#:#conf_privacy_ident_il_uuid_user_id_info#:#Die interne numerische ID ist bei jedem Aufruf identisch und ermöglicht Rückschlüsse auf das ILIAS-Konto.
 cmix#:#conf_privacy_ident_info#:#Standard ist häufig die E-Mail-Adresse. Die eindeutige ILIAS-Plattform-ID lautet:
 cmix#:#conf_privacy_ident_real_email#:#E-Mail-Adresse
-cmix#:#conf_privacy_ident_real_email_info#:#Sendet die E-Mail-Adresse des Benutzers als Identifikation (Achtung: eine E-Mail-Adresse kann von mehreren Benutzern verwendet werden!)
+cmix#:#conf_privacy_ident_real_email_info#:#Sendet die E-Mail-Adresse des Profils als Identifikation. Achtung: Eine E-Mail-Adresse kann von mehreren Personen verwendet werden!
 cmix#:#conf_privacy_name#:#Anmeldenamen
 cmix#:#conf_privacy_name_firstname#:#Vorname
 cmix#:#conf_privacy_name_firstname_info#:#Sendet den Vornamen
@@ -3164,18 +3164,18 @@ cmix#:#conf_remarks#:#Interne Kommentare
 cmix#:#conf_switch_to_review#:#In den Review-Modus wechseln
 cmix#:#conf_switch_to_review_info#:#Nachdem das cmi5 Lernmodul erfolgreich bearbeitet wurde (Status satisfied), wird das Lernmodul beim nächsten Aufruf im Review-Modus gestartet.
 cmix#:#conf_title#:#Titel
-cmix#:#conf_user_ident#:#Benutzeridentifikation
-cmix#:#conf_user_ident_il_uuid_ext_account#:#Externe Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-cmix#:#conf_user_ident_il_uuid_ext_account_info#:#Dies ist identisch mit jedem Aufruf, kann aber eine direkte Rückschlüsse auf den Benutzer zulassen.
+cmix#:#conf_user_ident#:#Identifikation der Person
+cmix#:#conf_user_ident_il_uuid_ext_account#:#Die externe Konten-ID wird kombiniert mit einer eindeutigen ID der ILIAS-Plattform und als E-Mail-Adresse formatiert.
+cmix#:#conf_user_ident_il_uuid_ext_account_info#:#Die Identifikation ist identisch bei jedem Aufruf und lässt direkte Rückschlüsse auf das ILIAS-Konto und die zugehörige Person zu.
 cmix#:#conf_user_ident_il_uuid_login#:#ILIAS-Login kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
 cmix#:#conf_user_ident_il_uuid_login_info#:#Dies ist identisch mit jedem Aufruf, kann aber eine direkte Rückschlüsse auf den ILIAS-Benutzer zulassen.
 cmix#:#conf_user_ident_il_uuid_random#:#Zufalls-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-cmix#:#conf_user_ident_il_uuid_random_info#:#Pro ILIAS-Objekt und ILIAS-Benutzer wird eine Zufalls-ID erzeugt, die bei jedem Aufruf identisch bleibt. Rückschlüsse auf einen Benutzer sind sehr eingeschränkt, da Objekt-übergreifende Nutzerprofile praktisch nicht erstellt werden können.
-cmix#:#conf_user_ident_il_uuid_user_id#:#ILIAS-Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-cmix#:#conf_user_ident_il_uuid_user_id_info#:#Dies ist identisch mit jedem Aufruf, erlaubt aber keine direkte Rückschlüsse auf den ILIAS-Benutzer.
+cmix#:#conf_user_ident_il_uuid_random_info#:#Pro ILIAS-Objekt und ILIAS-Konto wird eine Zufalls-ID erzeugt, die bei jedem Aufruf identisch bleibt. Rückschlüsse auf eine Person sind sehr eingeschränkt, da Objekt-übergreifende Profile praktisch nicht erstellt werden können.
+cmix#:#conf_user_ident_il_uuid_user_id#:#Die ID des ILIAS-Kontos wird kombiniert mit einer eindeutigen ID der ILIAS-Plattform und als E-Mail-Adresse formatiert.
+cmix#:#conf_user_ident_il_uuid_user_id_info#:#Die Identifikation ist identisch bei jedem Aufruf, erlaubt aber keine direkten Rückschlüsse auf das ILIAS-Konto und die zugehörige Person.
 cmix#:#conf_user_ident_info#:#Standard ist häufig die E-Mail-Adresse. Die eindeutige ILIAS-Plattform-ID lautet:
 cmix#:#conf_user_ident_real_email#:#E-Mail-Adresse
-cmix#:#conf_user_ident_real_email_info#:#Sendet die E-Mail-Adresse des Benutzers als Identifikation (Achtung: eine E-Mail-Adresse kann von mehreren Benutzern verwendet werden!)
+cmix#:#conf_user_ident_real_email_info#:#Sendet die E-Mail-Adresse des Profils als Identifikation. Achtung: Eine E-Mail-Adresse kann von mehreren Personen verwendet werden!
 cmix#:#conf_user_name#:#Anmeldenamen
 cmix#:#conf_user_name_firstname#:#Vorname
 cmix#:#conf_user_name_firstname_info#:#Sendet den Vornamen
@@ -3187,7 +3187,7 @@ cmix#:#conf_user_name_lastname_info#:#Sendet Herr oder Frau (sofern nicht anders
 cmix#:#conf_user_name_none#:#Keiner
 cmix#:#conf_user_name_none_info#:#Sendet '-' anstelle eines Namens
 cmix#:#conf_user_registered_mail#:#Registrierte E-Mail-Adresse
-cmix#:#content_privacy_ident#:#Benutzeridentifikation
+cmix#:#content_privacy_ident#:#Identifikation der Person
 cmix#:#content_privacy_name#:#Anmeldenamen
 cmix#:#create_lrs_type_form#:#Neuer LRS-Typ
 cmix#:#create_registration#:#Registrieren Sie Ihre E-Mail-Adresse
@@ -6159,7 +6159,7 @@ content#:#cont_assign_std#:#Als Standardansicht
 content#:#cont_assign_to_parent#:#Dem übergordneten Knoten zuordnen
 content#:#cont_auto_glossaries#:#Automatisch verlinkte Glossare
 content#:#cont_auto_last_visited#:#Mit zuletzt besuchtem Abschnitt fortfahren
-content#:#cont_auto_last_visited_info#:#Dem Benutzer wird beim erneuten Aufrufen des SCORM-Lernmoduls das zuletzt besuchte SCO oder Asset angezeigt.
+content#:#cont_auto_last_visited_info#:#Beim erneuten Aufrufen des SCORM-Lernmoduls wird das zuletzt besuchte SCO oder Asset angezeigt.
 content#:#cont_auto_suspend#:#Abruf vorhandener Lernstandsdaten sicherstellen
 content#:#cont_auto_suspend_info#:#Diese Option ist für SCORM-Lernmodule, die SCORM in unzureichender Weise unterstützen, indem sie keine geeigneten Werte für cmi.exit senden.
 content#:#cont_auto_time#:#Wartezeit Animation
@@ -6240,7 +6240,7 @@ content#:#cont_col_ordering#:#Spaltenanordnung
 content#:#cont_colspan#:#Verbund Spalte
 content#:#cont_commented_by#:#Kommentiert von
 content#:#cont_comments#:#Kommentare erlauben
-content#:#cont_comments_info#:#SCORM 2004-Lernmodule erlauben Benutzern, im Lernmodul Kommentare zu verfassen. Diese Option aktiviert das Eingeben und Speichern der Kommentare (comments).
+content#:#cont_comments_info#:#Im SCORM 2004-Lernmodul können Kommentare (comments) eingegeben und gespeichert werden.
 content#:#cont_confirm_delete#:#Wollen Sie diese Inhalte wirklich löschen?
 content#:#cont_constrain_proportions#:#Proportionen erhalten
 content#:#cont_content#:#Inhalt
@@ -6738,12 +6738,9 @@ content#:#cont_numbered_list#:#Nummerierte Liste
 content#:#cont_obj_removed#:#Objekte entfernt
 content#:#cont_objectives#:#Ergebnisse zu Lernzielen speichern
 content#:#cont_objectives_info#:#Deaktivieren Sie diese Option nur, wenn Sie sicher sind, dass der korrekte Ablauf dieses Lernmoduls gewährleistet ist. Damit reduzieren Sie die Speicherung von personenbezogenen Daten und erhöhen die Performanz.
-content#:#cont_offline_mode_allow#:#Offline-Modus erlauben
-content#:#cont_offline_mode_allow_info#:#Erlaubt die Nutzung des Lernmoduls ohne Internet-Anbindung im SCORM-Offline-Player. Dazu wird das Lernmodul über das &#x25bc;-Menü  heruntergeladen und mit einem Add-on des Browsers Firefox dargestellt. Nach dem Bearbeiten des Lernmoduls müssen Benutzer über die Option 'Offline-Modus' ihre Lernstandsdaten in ILIAS importieren.
-content#:#cont_offline_mode_disable_not_allowed_info#:#Da das Lernmodul von Nutzern aktuell im Offline-Modus genutzt wird, kann der Offline-Modus nicht deaktiviert werden.
 content#:#cont_online#:#Online
 content#:#cont_online_help_ids#:#Screen-IDs
-content#:#cont_online_info#:#Nur wenn das SCORM-Lernmodul online geschaltet ist, können Benutzer auf das Lernmodul zugreifen. Wenn nicht, ist das SCORM-Lernmodul nur für Personen mit dem Recht „Einstellungen bearbeiten“ verfügbar.
+content#:#cont_online_info#:#Personen mit Leserecht können auf das Lernmodul zugreifen.
 content#:#cont_open#:#Anzeige des Lernmoduls
 content#:#cont_open_clipboard#:#Medien-Clipboard öffnen
 content#:#cont_open_iframe#:#Öffnet im selben Fenster (iFrame) unterhalb des ILIAS-Hauptmenüs
@@ -6940,7 +6937,7 @@ content#:#cont_sc_stat_running#:#Aktiv
 content#:#cont_sc_store_if_previous_score_was_lower#:#nicht speichern wenn der zuvor erzielte Punktestand höher oder gleich war
 content#:#cont_sc_title#:#Titel
 content#:#cont_sc_usession#:#Automatische Abmeldung aus ILIAS verhindern
-content#:#cont_sc_usession_info#:#Es werden regelmäßig Anfragen an ILIAS gesendet, damit der Benutzer in der Plattform weiter eingeloggt bleibt. ILIAS würde sonst die Bearbeitung des SCORM-Lernmoduls nicht als Aktivität werten und die ILIAS-Sitzung beenden. Dadurch gingen Bearbeitungsdaten verloren.
+content#:#cont_sc_usession_info#:#Um das automatische Ausloggen und den Verlust von Bearbeitungsdaten zu verhindern, sendet das Lernmodul regelmäßig Anfragen an ILIAS. Die Bearbeitung des SCORM-Lernmoduls würde ansonsten nicht als Aktivität gewertet und die ILIAS-Sitzung beendet werden.
 content#:#cont_sc_version#:#Version des Lernmoduls
 content#:#cont_sc_version_info#:#Die laufende Nummer wird automatisch aus dem Versionsmanagement des Lernmoduls gelesen.
 content#:#cont_scheduled_activation#:#Zeitliche Aktivierung
@@ -6971,7 +6968,7 @@ content#:#cont_selected_topic#:#Ausgewähltes Thema
 content#:#cont_selection#:#Auswahl
 content#:#cont_self_assessment#:#Selbsttests
 content#:#cont_sequencing#:#Sequencing & Navigation
-content#:#cont_sequencing_info#:#Aktiviert die Vorgaben des Lernmoduls zur interaktiven Steuerung der Navigationsmöglichkeiten von Benutzern innerhalb des Lernmoduls in Abhängigkeit von Ereignissen oder Ergebnissen. <br />Prüfen Sie zunächst, ob Ihr Lernmodul solche Angaben zu 'Sequencing & Navigation' überhaupt enthält. Dies ist nur selten der Fall.
+content#:#cont_sequencing_info#:#Bei Lernmodulen mit Angaben zu „Sequencing & Navigation“ aktiviert diese Einstellung die Vorgaben zur interaktiven Steuerung der Navigationsmöglichkeiten innerhalb des Lernmoduls in Abhängigkeit von Ereignissen oder Ergebnissen.
 content#:#cont_set_alignment#:#Ausrichtung setzen
 content#:#cont_set_layout#:#Layout setzen
 content#:#cont_set_link#:#Verweis ändern
@@ -10532,22 +10529,22 @@ lti#:#act_lti_for_obj_type#:#LTI für diese Objekttypen aktivieren
 lti#:#activity_id#:#Activity-ID
 lti#:#activity_id_info#:#Diese Activity-ID wird vom LTI-Provider bzw. -Tool verwendet, um Statements zu identifizieren.
 lti#:#auth_lti#:#LTI Auth
-lti#:#conf_privacy_ident#:#Benutzeridentifikation
-lti#:#conf_privacy_ident_il_uuid_ext_account#:#Externe Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-lti#:#conf_privacy_ident_il_uuid_ext_account_info#:#Dies ist identisch mit jedem Aufruf, kann aber direkte Rückschlüsse auf den Benutzer zulassen.
+lti#:#conf_privacy_ident#:#Identifikation der Person
+lti#:#conf_privacy_ident_il_uuid_ext_account#:#Die externe Konten-ID wird kombiniert mit einer eindeutigen ID der ILIAS-Plattform und als E-Mail-Adresse formatiert.
+lti#:#conf_privacy_ident_il_uuid_ext_account_info#:#Die Identifikation ist identisch bei jedem Aufruf und lässt direkte Rückschlüsse auf das ILIAS-Konto und die zugehörige Person zu.
 lti#:#conf_privacy_ident_il_uuid_login#:#ILIAS-Login als E-Mail-Adresse, bei Bedarf kombiniert mit einer eindeutigen ILIAS-Plattform-ID
-lti#:#conf_privacy_ident_il_uuid_login_info#:#Sendet den Anmeldenamen. Dies ist identisch mit jedem Aufruf, kann aber direkte Rückschlüsse auf den ILIAS-Benutzer zulassen.
+lti#:#conf_privacy_ident_il_uuid_login_info#:#Sendet den Anmeldenamen. Diese Identifikation ist identisch bei jedem Aufruf und lässt direkte Rückschlüsse aufs ILIAS-Konto und die zugehörige Person zu.
 lti#:#conf_privacy_ident_il_uuid_random#:#Zufalls-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-lti#:#conf_privacy_ident_il_uuid_random_info#:#Pro ILIAS-Objekt und ILIAS-Benutzer wird eine Zufalls-ID erzeugt, die bei jedem Aufruf identisch bleibt. Rückschlüsse auf einen Benutzer sind sehr eingeschränkt, da Objekt-übergreifende Nutzerprofile praktisch nicht erstellt werden können.
+lti#:#conf_privacy_ident_il_uuid_random_info#:#Pro ILIAS-Objekt und ILIAS-Konto wird eine Zufalls-ID erzeugt, die bei jedem Aufruf identisch bleibt. Rückschlüsse auf eine Person sind sehr eingeschränkt, da Objekt-übergreifende Profile praktisch nicht erstellt werden können.
 lti#:#conf_privacy_ident_il_uuid_sha256#:#Hash kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-lti#:#conf_privacy_ident_il_uuid_sha256_info#:#Dies ist identisch mit jedem Aufruf, erlaubt aber keine direkten Rückschlüsse auf den ILIAS-Benutzer.
+lti#:#conf_privacy_ident_il_uuid_sha256_info#:#Die Identifikation ist identisch bei jedem Aufruf, aber lässt keine direkten Rückschlüsse auf das ILIAS-Konto und die zugehörige Person zu.
 lti#:#conf_privacy_ident_il_uuid_sha256url#:#Hash kombiniert mit der ILIAS-Domain, die als E-Mail-Adresse formatiert ist
-lti#:#conf_privacy_ident_il_uuid_sha256url_info#:#Dies ist identisch mit jedem Aufruf, mit maximal 80 Zeichen deutlich kürzer als die Variante mit der ILIAS-Plattform-ID und ermöglicht nur sehr eingeschränkte Rückschlüsse auf den ILIAS-Benutzer.
+lti#:#conf_privacy_ident_il_uuid_sha256url_info#:#Die Identifikation ist identisch bei jedem Aufruf. Mit maximal 80 Zeichen ist sie kürzer, als die Variante mit der ILIAS-Plattform-ID und ermöglicht nur sehr eingeschränkte Rückschlüsse das ILIAS-Konto und die zugehörige Person.
 lti#:#conf_privacy_ident_il_uuid_user_id#:#ID des ILIAS-Kontos kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
-lti#:#conf_privacy_ident_il_uuid_user_id_info#:#Sendet die interne numerische Benutzer-Id. Dies ist identisch mit jedem Aufruf, ermöglicht aber Rückschlüsse auf den ILIAS-Benutzer.
+lti#:#conf_privacy_ident_il_uuid_user_id_info#:#Die interne numerische ID ist bei jedem Aufruf identisch und ermöglicht Rückschlüsse auf das ILIAS-Konto.
 lti#:#conf_privacy_ident_info#:#Standard ist häufig die E-Mail-Adresse. Die eindeutige ILIAS-Plattform-ID lautet:
 lti#:#conf_privacy_ident_real_email#:#E-Mail-Adresse
-lti#:#conf_privacy_ident_real_email_info#:#Sendet die E-Mail-Adresse des Benutzers als Identifikation (Achtung: eine E-Mail-Adresse kann von mehreren Benutzern verwendet werden!)
+lti#:#conf_privacy_ident_real_email_info#:#Sendet die E-Mail-Adresse des Profils als Identifikation. Achtung: Eine E-Mail-Adresse kann von mehreren Personen verwendet werden!
 lti#:#conf_privacy_name#:#Anmeldename
 lti#:#conf_privacy_name_firstname#:#Vorname
 lti#:#conf_privacy_name_firstname_info#:#Sendet den Vornamen.
@@ -10558,16 +10555,16 @@ lti#:#conf_privacy_name_lastname#:#Titel und Nachname
 lti#:#conf_privacy_name_lastname_info#:#Sendet Herr oder Frau (sofern nicht anders angegeben) und den Nachnamen.
 lti#:#conf_privacy_name_none#:#Keiner
 lti#:#conf_privacy_name_none_info#:#Sendet '-' anstelle eines Namens
-lti#:#conf_user_ident#:#Benutzeridentifikation
-lti#:#conf_user_ident_il_uuid_ext_account#:#Externe Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist.
-lti#:#conf_user_ident_il_uuid_ext_account_info#:#Dies ist identisch mit jedem Aufruf, kann aber direkte Rückschlüsse auf den Benutzer zulassen.
+lti#:#conf_user_ident#:#Identifikation der Person
+lti#:#conf_user_ident_il_uuid_ext_account#:#Die externe Konten-ID wird kombiniert mit einer eindeutigen ID der ILIAS-Plattform und als E-Mail-Adresse formatiert.
+lti#:#conf_user_ident_il_uuid_ext_account_info#:#Die Identifikation ist identisch bei jedem Aufruf und lässt direkte Rückschlüsse auf das ILIAS-Konto und die zugehörige Person zu.
 lti#:#conf_user_ident_il_uuid_login#:#ILIAS-Login als E-Mail-Adresse, bei Bedarf kombiniert mit einer eindeutigen ILIAS-Plattform-ID
 lti#:#conf_user_ident_il_uuid_login_info#:#Dies ist identisch mit jedem Aufruf, kann aber direkte Rückschlüsse auf den ILIAS-Benutzer zulassen.
-lti#:#conf_user_ident_il_uuid_user_id#:#ILIAS-Benutzer-ID kombiniert mit einer eindeutigen ILIAS-Plattform-ID, die als E-Mail-Adresse formatiert ist
+lti#:#conf_user_ident_il_uuid_user_id#:#Die ID des ILIAS-Kontos wird kombiniert mit einer eindeutigen ID der ILIAS-Plattform und als E-Mail-Adresse formatiert.
 lti#:#conf_user_ident_il_uuid_user_id_info#:#Dies ist identisch mit jedem Aufruf, erlaubt aber keine direkte Rückschlüsse auf den ILIAS-Benutzer.
 lti#:#conf_user_ident_info#:#Standard ist häufig die E-Mail-Adresse. Die eindeutige ILIAS-Plattform-ID lautet:
 lti#:#conf_user_ident_real_email#:#E-Mail-Adresse
-lti#:#conf_user_ident_real_email_info#:#Sendet die E-Mail-Adresse des Benutzers als Identifikation (Achtung: eine E-Mail-Adresse kann von mehreren Benutzern verwendet werden!)
+lti#:#conf_user_ident_real_email_info#:#Sendet die E-Mail-Adresse des Profils als Identifikation. Achtung: Eine E-Mail-Adresse kann von mehreren Personen verwendet werden!
 lti#:#conf_user_name#:#Anmeldename
 lti#:#conf_user_name_firstname#:#Vorname
 lti#:#conf_user_name_firstname_info#:#Sendet den Vornamen.
@@ -10642,8 +10639,8 @@ lti#:#lti_action_accept_provider_as_global#:#Provider bzw. Tool global für alle
 lti#:#lti_action_accept_providers_as_global#:#Provider bzw. Tool als globalen Provider bzw. globales Tool übernehmen
 lti#:#lti_action_delete_providers#:#Provider bzw. Tool löschen
 lti#:#lti_action_edit_provider#:#Provider bzw. Tool bearbeiten
-lti#:#lti_action_reset_provider_to_user_scope#:#Provider bzw. Tool als benutzerdefiniert zurücksetzen
-lti#:#lti_action_reset_providers_to_user_scope#:#Provider bzw. Tool als benutzerdefinierten Provider bzw. benutzerdefiniertes Tool zurücksetzen
+lti#:#lti_action_reset_provider_to_user_scope#:#Globalen Provider bzw. Tool zu lokalem Provider bzw. Tool ändern
+lti#:#lti_action_reset_providers_to_user_scope#:#Globale Provider bzw. Tools zu lokalen Providern bzw. Tools ändern
 lti#:#lti_add_global_provider#:#Provider bzw. Tool global für alle Benutzer hinzufügen
 lti#:#lti_add_own_provider#:#Einstellungen für Provider bzw. Tool anlegen
 lti#:#lti_admin#:#LTI-Rolle Administrator
@@ -10660,7 +10657,7 @@ lti#:#lti_con_key_type_jwk_url#:#URL
 lti#:#lti_con_key_type_rsa#:#RSA-Schlüssel
 lti#:#lti_con_key_type_rsa_public_key#:#Öffentlicher Schlüssel
 lti#:#lti_con_key_type_rsa_public_key_info#:#Tragen Sie den vom Tool (Provider) bereitgestellten Schlüssel im PEM-Format hier ein.
-lti#:#lti_con_prov_always_learner#:#LTI-Benutzer ist immer Lernender
+lti#:#lti_con_prov_always_learner#:#Eingeschränkte Rechte
 lti#:#lti_con_prov_always_learner_info#:#In der Regel wird die Rolle in ILIAS auf eine LTI-Rolle abgebildet. Kursadministratoren könnten im Provider bzw. Tool mehr Rechte haben, z.B. um das Objekt zu manipulieren. Aktivieren Sie diese Option, um das Rollen-Mapping zu vermeiden.
 lti#:#lti_con_prov_authentication#:#Authentifizierung
 lti#:#lti_con_prov_availability#:#Verfügbarkeit
@@ -10677,14 +10674,14 @@ lti#:#lti_con_prov_dyn_reg_params_info#:#Hier können z.B. Verweise auf Zielobje
 lti#:#lti_con_prov_dyn_reg_url#:#Registrierungs-URL des Tools
 lti#:#lti_con_prov_dyn_reg_url_info#:#Hinweis: Nicht jedes Tool unterstützt die dynamische Registrierung.
 lti#:#lti_con_prov_external_provider#:#Externer Provider bzw. Externes Tool
-lti#:#lti_con_prov_external_provider_info#:#Bei der Zusammenarbeit mit einem externen Provider bzw. externem Tool wird den Nutzern ein Hinweis angezeigt. Externe Provider bzw. Tools sind gekennzeichnet durch einen unzureichenden Einfluss des Betreibers der ILIAS-Installation auf den Provider bzw. das Tool. Dies ist der Fall, wenn es keine Rechte zum Löschen gibt.
+lti#:#lti_con_prov_external_provider_info#:#Bei der Zusammenarbeit mit einem externen Provider bzw. Tool wird ein Hinweis angezeigt. Die Rechte zum Löschen persönlicher Daten durch die ILIAS-Administration sind bei externen Providern in der Regel nicht gegeben.
 lti#:#lti_con_prov_group_options#:#Optionen zum Gruppieren und Filtern von Providern bzw. Tools
 lti#:#lti_con_prov_has_outcome_service#:#Provider bzw. Tool unterstützt Outcome Service
 lti#:#lti_con_prov_has_outcome_service_info#:#Wenn der LTI Outcome Service unterstützt wird, kann der Lernfortschritt aktiviert werden. Ein Provider bzw. Tool gibt einen Wert zwischen 0 und 1 zurück, um den Lernfortschritt anzuzeigen.
 lti#:#lti_con_prov_hints#:#Hinweise
 lti#:#lti_con_prov_icon#:#Icon
-lti#:#lti_con_prov_inc_usr_pic#:#Benutzerbild senden
-lti#:#lti_con_prov_inc_usr_pic_info#:#Links zu ILIAS-Benutzerbildern sind beim Start des LTI-Konsumenten enthalten.
+lti#:#lti_con_prov_inc_usr_pic#:#Profilbild senden
+lti#:#lti_con_prov_inc_usr_pic_info#:#Links zu ILIAS-Profilbildern sind beim Start des LTI-Konsumenten enthalten.
 lti#:#lti_con_prov_instructor_email#:#E-Mail von Lehrenden
 lti#:#lti_con_prov_instructor_email_info#:#Abweichend von den zuvor gewählten Einstellungen kann für Lehrende die E-Mail-Adresse übertragen werden. Dazu müssen sie Kurs- oder GruppenadministratorInnen sein.
 lti#:#lti_con_prov_instructor_name#:#Name von Lehrenden
@@ -10702,7 +10699,7 @@ lti#:#lti_con_prov_privacy_setting_force#:#Die Einstellungen sind für Objekte n
 lti#:#lti_con_prov_privacy_setting_info#:#Konfigurationsoptionen für die Datenschutzeinstellungen
 lti#:#lti_con_prov_privacy_settings#:#Datenschutzeinstellungen
 lti#:#lti_con_prov_provider_key_global#:#Vordefinierter Key und Secret
-lti#:#lti_con_prov_provider_key_global_info#:#Wenn nicht gesetzt, müssen Benutzer Key und Secret hinzufügen, um den Provider zu nutzen.
+lti#:#lti_con_prov_provider_key_global_info#:#Das Objekt kann ohne weitere Anmeldung direkt genutzt werden.
 lti#:#lti_con_prov_remarks#:#Interne Bemerkungen
 lti#:#lti_con_prov_secret#:#Secret
 lti#:#lti_con_prov_title#:#Titel
@@ -10783,8 +10780,8 @@ lti#:#lti_settings_form#:#Objekteinstellungen
 lti#:#lti_success_accept_as_global#:#Erfolgreich als Global-Provider bzw. -Tool für alle Anwender übernommen
 lti#:#lti_success_accept_as_global_multi#:#Erfolgreich als Global-Provider bzw. -Tools für alle Anwender übernommen
 lti#:#lti_success_delete_provider#:#Erfolgreich gelöscht
-lti#:#lti_success_reset_to_usr_def#:#Erfolgreich zurückgesetzt als benutzerdefinierter Provider bzw. Tool
-lti#:#lti_success_reset_to_usr_def_multi#:#Erfolgreich zurückgesetzt als benutzerdefinierte Provider bzw. Tools
+lti#:#lti_success_reset_to_usr_def#:#Erfolgreich geändert zu lokalem Provider bzw. Tool
+lti#:#lti_success_reset_to_usr_def_multi#:#Erfolgreich geändert zu lokalen Providern bzw. Tools
 lti#:#lti_tutor#:#LTI-Rolle Tutor
 lti#:#lti_user_role_created#:#Die empfohlene globale Rolle für LTI-User wurde angelegt.
 lti#:#lti_user_role_info#:#In dieser Installation wurde die empfohlene globale Rolle für LTI-User noch nicht angelegt. Diese spezielle globale Rolle enthält nur Lese-Rechte für Magazin und Kategorien.
@@ -10838,8 +10835,8 @@ lti#:#title_info#:#Geben Sie dem Objekt einen Titel!
 lti#:#usage_subtab#:#Verwendung
 lti#:#use_xapi#:#xAPI-Unterstützung verwenden
 lti#:#use_xapi_info#:#LTI-Provider bzw. -Tool unterstützt die Abfrage von xAPI-Statements.
-lti#:#user_lng#:#Benutzersprache
-lti#:#user_provider_subtab#:#Von Benutzern definierte Provider bzw. Tools
+lti#:#user_lng#:#Sprache
+lti#:#user_provider_subtab#:#Lokal definierte Provider bzw. Tools
 ltiv#:#ltiv_create#:#Zertifikat für LTI-Konsument-Objekt erstellen
 ltiv#:#ltiv_create_info#:#Wählen Sie ein abgeschlossenes LTI-Konsument-Objekt aus, um ein Zertifikat dafür zu generieren.
 mail#:#back_to_folder#:#Zurück zum Ordner
@@ -11360,7 +11357,7 @@ meta#:#md_adv_record_lng_table_lng#:#Sprache
 meta#:#md_adv_records#:#Enthaltene Datensätze
 meta#:#md_adv_records_exported#:#Eine neue Exportdatei wurde angelegt.
 meta#:#md_adv_scope#:#Gültigkeitsbereich
-meta#:#md_adv_scope_info#:#Die Nutzung dieses benutzerdefinierten Metadatensatzes wird auf Teilbereiche des Magazins beschränkt.
+meta#:#md_adv_scope_info#:#Die Nutzung dieses Metadatensatzes auf Teilbereiche des Magazins beschränken.
 meta#:#md_adv_scope_list_header#:#Beschränkt auf:
 meta#:#md_adv_scope_objects#:#Datensatz wirksam ab
 meta#:#md_adv_searchable#:#Durchsuchbar
@@ -12871,7 +12868,7 @@ prg#:#prg_type#:#Studienprogrammtyp
 prg#:#prg_type_add#:#Studienprogrammtyp hinzufügen
 prg#:#prg_type_assign_amd_sets#:#Erweiterten Metadatensatz zuweisen
 prg#:#prg_type_available_amd_sets#:#Verfügbare benutzerdefinierte Metadatensätze
-prg#:#prg_type_byline#:#Legen Sie einen Typ fest, um bestimmte benutzerdefinierte Metadatensätze oder Symbole zu verwenden.
+prg#:#prg_type_byline#:#Legen Sie einen Typ fest, um bestimmte vordefinierte Metadatensätze oder Symbole zu verwenden.
 prg#:#prg_type_custom_icon#:#Individuelles Icon
 prg#:#prg_type_custom_icon_info#:#Info für Individuelles Icon
 prg#:#prg_type_edit#:#Typ editieren
