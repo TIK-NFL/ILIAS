@@ -592,7 +592,6 @@ assessment#:#backtocallingtest#:#Zurück zum Test
 assessment#:#baseunit#:#Basiseinheit
 assessment#:#button_request_next_question_hint#:#Fordere nächsten Lösungshinweis an
 assessment#:#button_request_question_hint#:#Lösungshinweis anfordern
-assessment#:#button_show_requested_question_hints#:#Zeige angeforderte Lösungshinweise
 assessment#:#by#:#nach
 assessment#:#cancel_test#:#Test unterbrechen
 assessment#:#cannot_edit_marks#:#Der Test wurde bereits von Teilnehmern durchgeführt. Sie können die Bewertung nur ändern, wenn ein Datum für die Ergebnisausgabe eingestellt wurde, das aktuell noch in der Zukunft liegt.
@@ -1219,6 +1218,7 @@ assessment#:#show_detailed_results#:#Detaillierte Testergebnisse (bewerteter Tes
 assessment#:#show_examview_html#:#Am Bildschirm
 assessment#:#show_examview_pdf#:#PDF-Download
 assessment#:#show_pass_overview#:#Ergebnisübersicht (bewerteter Testdurchlauf)
+assessment#:#show_requested_question_hints#:#Zeige angeforderte Lösungshinweise
 assessment#:#show_user_answers#:#Antworten (bewerteter Testdurchlauf)
 assessment#:#showinfo#:#Testeigenschaften anzeigen
 assessment#:#showinfo_desc#:#Den Benutzern werden auf dem 'Info'-Reiter alle Testeigenschaften angezeigt, z.B. Reihenfolge, Bewertung oder Ergebnisausgabe.
@@ -5869,7 +5869,7 @@ common#:#usrimport_action_replaced#:#Aktion %1$s durch %2$s ersetzt.
 common#:#usrimport_cant_delete#:#Kann „Delete“ Aktion nicht ausführen. Kein passendes ILIAS-Konto in der Datenbank vorhanden.
 common#:#usrimport_cant_insert#:#Kann „Insert“ Aktion nicht ausführen. ILIAS-Konto ist bereits in der Datenbank vorhanden.
 common#:#usrimport_cant_update#:#Kann „Update“ Aktion nicht ausführen. Kein passendes ILIAS-Konto in der Datenbank vorhanden.
-common#:#usrimport_conflict_handling_info#:#Bei der Option „Aktualisieren bei Konflikt“ überschreibt ILIAS bei Problemen die Inhalte auf der Datenbank. Hierbei kann es zu einem Datenverlust kommen. Nutzen Sie diese Option nur, wenn Sie sicher sind, dass Ihre Importdatei fehlerfrei ist.
+common#:#usrimport_conflict_handling_info#:#Bei der Option „Insert/Update Aktion wird automatisch ermittelt“ überschreibt ILIAS bei Problemen die Inhalte auf der Datenbank möglicherweise. Hierbei kann es zu einem Datenverlust kommen. Nutzen Sie diese Option nur, wenn Sie sicher sind, dass Ihre Importdatei fehlerfrei ist.
 common#:#usrimport_form_not_evaluabe#:#Das Formular konnte nicht ausgelesen werden.
 common#:#usrimport_global_role_for_action_required#:#Für die "%1$s" Aktion muss mindestens eine globale Rolle angegeben werden.
 common#:#usrimport_ignore_role#:#Rolle ignorieren

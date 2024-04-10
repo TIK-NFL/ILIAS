@@ -42,8 +42,8 @@ use ILIAS\UI\Component\Image\Image;
 class ilTestPlayerLayoutProvider extends AbstractModificationProvider implements ModificationProvider
 {
     public const TEST_PLAYER_KIOSK_MODE_ENABLED = 'test_player_kiosk_mode_enabled';
-    public const TEST_PLAYER_TITLE = 'test_player_kiosk_mode_title';
-    public const TEST_PLAYER_SHORT_TITLE = 'test_player_kiosk_mode_instance_name';
+    public const TEST_PLAYER_TITLE = 'test_player_title';
+    public const TEST_PLAYER_SHORT_TITLE = 'test_player_instance_name';
 
 
     public function isInterestedInContexts(): ContextCollection
@@ -153,7 +153,7 @@ class ilTestPlayerLayoutProvider extends AbstractModificationProvider implements
 
     public function getViewTitleModification(CalledContexts $called_contexts): ?ViewTitleModification
     {
-        if ($this->isKioskModeEnabled($called_contexts)) {
+        if ($called_contexts->current()->getAdditionalData()->exists(self::TEST_PLAYER_TITLE)) {
             $title = $called_contexts->current()->getAdditionalData()->get(self::TEST_PLAYER_TITLE);
             if($title == null) {
                 $title = '';
