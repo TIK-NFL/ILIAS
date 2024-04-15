@@ -1149,7 +1149,7 @@ assessment#:#rating_value#:#Rate Value
 assessment#:#rectangle#:#Rectangle
 assessment#:#rectangle_click_br_corner#:#Please click on the bottom right corner of the desired area.
 assessment#:#rectangle_click_tl_corner#:#Please click on the top left corner of the desired area.
-assessment#:#redirectAfterSave#:#The maximum working time has been reached and your last question has been saved automatically. In a few seconds you will be redirected...
+assessment#:#redirectAfterSave#:#The maximum working time has been reached. In a few seconds you will be redirected...
 assessment#:#redirect_after_finishing_rule#:#Redirect
 assessment#:#redirect_after_finishing_tst#:#Redirect
 assessment#:#redirect_after_finishing_tst_desc#:#After completing the test, each participant is automatically redirected to a specific webpage of your choosing. This will only happen if participants do not have direct access to their test results. When entering the address of an external webpage, use the complete URL (including ‘https://’). When redirecting to an Object in ILIAS, use the permalink that can be found in the footer of the Object in question.
@@ -1405,7 +1405,7 @@ assessment#:#tst_edit_competence_assign#:#Edit Assignment Properties
 assessment#:#tst_edit_scoring#:#Edit Scoring
 assessment#:#tst_ending_time#:#End
 assessment#:#tst_ending_time_before_starting_time#:#Please enter a date for the end of the test that is after the start date.
-assessment#:#tst_ending_time_desc#:#Time from which participants can no longer submit answers. <b>Important</b>: Do <b>not</b> use this option for e-exams/distance exams. Instead, use the function 'Limit Duration of Test' (see below). Only then will the test be ended on the server side and each participant's last entry automatically saved as an authorised answer.
+assessment#:#tst_ending_time_desc#:#Time from which participants can no longer submit answers. <b>Important</b>: Do <b>not</b> use this option for e-exams/distance exams. Instead, use the function 'Limit Duration of Test' (see below). Only then will the test be ended on the server side and each participant's last entry on Essay-Questions automatically saved as auto-save-content.
 assessment#:#tst_enter_questionpool#:#Please enter a question pool name where the new question will be stored
 assessment#:#tst_eval_question_points#:#Question Results for Pass %s
 assessment#:#tst_eval_results_by_pass#:#List of Answers for Pass %s
@@ -2184,6 +2184,7 @@ badge#:#badge_backpack_no_groups#:#The Mozilla Backpack is empty or non-public.
 badge#:#badge_badge#:#Badge
 badge#:#badge_course_lp#:#Course LP
 badge#:#badge_course_lp_invalid#:#The following objects have a LP mode which is not supported: %s.
+badge#:#badge_create_image_processing_failed#:#The badge could not be created, an error occurred while processing the image.
 badge#:#badge_criteria#:#Criteria
 badge#:#badge_crs_merit#:#Merit
 badge#:#badge_deletion_confirmation#:#Are you sure you want to delete the following badges and all their respective assignments?
@@ -2232,6 +2233,8 @@ badge#:#badge_template_types#:#Valid Types
 badge#:#badge_template_types_all#:#All
 badge#:#badge_template_types_specific#:#Specific
 badge#:#badge_types#:#Types
+badge#:#badge_update_image_processing_failed#:#The badge could not be updated, an error occurred while processing the image.
+badge#:#badge_uploaded_image_file_not_found#:#No uploaded image for the badge could be found.
 badge#:#badge_user_profile#:#User Profil
 badge#:#badge_valid#:#Valid until
 bgtask#:#bgtask_blocked#:#Concurrent download
@@ -12553,7 +12556,7 @@ pdfgen#:#header_type#:#Header
 pdfgen#:#html#:#Html
 pdfgen#:#image_scale#:#Image scale
 pdfgen#:#javascript_delay#:#Javascript delay
-pdfgen#:#javascript_delay_info#:#If JavaScript is used to render page content, add a delay to make sure the content appears in the PDF. The standard delay of 200ms should suffice in most cases.
+pdfgen#:#javascript_delay_info#:#If JavaScript is used to render page content, add a delay to make sure the content appears in the PDF. The standard delay of 500ms should suffice in most cases.
 pdfgen#:#low_quality#:#Low quality
 pdfgen#:#low_quality_info#:#Generates lower quality pdf/ps. Useful to shrink the result document space
 pdfgen#:#margin#:#Margin 345
