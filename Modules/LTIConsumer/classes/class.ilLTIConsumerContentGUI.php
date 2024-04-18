@@ -215,7 +215,7 @@ class ilLTIConsumerContentGUI
             return "";
         }
         $this->initCmixUser();
-        $user_ident = $this->cmixUser->getUsrIdent();
+        $user_ident = ilCmiXapiUser::getIdentAsId($this->object->getProvider()->getPrivacyIdent(), $this->dic->user());//$this->cmixUser->getUsrIdent();
         $ilLTIConsumerLaunch = new ilLTIConsumerLaunch($this->object->getRefId());
         $context = $ilLTIConsumerLaunch->getContext();
         $contextType = $ilLTIConsumerLaunch::getLTIContextType($context["type"]);
@@ -261,7 +261,7 @@ class ilLTIConsumerContentGUI
     protected function getEmbeddedAutoStartFormular(): string
     {
         $this->initCmixUser();
-        $user_ident = $this->cmixUser->getUsrIdent();
+        $user_ident = ilCmiXapiUser::getIdentAsId($this->object->getProvider()->getPrivacyIdent(), $this->dic->user());//$this->cmixUser->getUsrIdent();
         $ilLTIConsumerLaunch = new ilLTIConsumerLaunch($this->object->getRefId());
         $context = $ilLTIConsumerLaunch->getContext();
         $contextType = $ilLTIConsumerLaunch::getLTIContextType($context["type"]);
@@ -411,6 +411,8 @@ class ilLTIConsumerContentGUI
         $nonce = $loginData['nonce'];
         $prompt = $loginData['prompt'];
 
+        $desc = '';
+
         $ok = !empty($scope) && !empty($responsetype) && !empty($clientid) &&
             !empty($redirecturi) && !empty($loginhint) &&
             !empty($nonce) && (ilSession::get('lti_message_hint') != null);
@@ -444,13 +446,13 @@ class ilLTIConsumerContentGUI
                 $this->user->getId(),
                 $this->object->getProvider()->getPrivacyIdent()
             );
-            $user_ident = $cmixUser->getUsrIdent();
+            $user_ident = ilCmiXapiUser::getIdentAsId($this->object->getProvider()->getPrivacyIdent(), $this->dic->user());//$cmixUser->getUsrIdent();
             // required?
-            if ($user_ident == '' || $user_ident == null) {
-                $user_ident = ilCmiXapiUser::getIdent($this->object->getProvider()->getPrivacyIdent(), $this->dic->user());
-                $cmixUser->setUsrIdent($user_ident);
-                $cmixUser->save();
-            }
+            //            if ($user_ident == '' || $user_ident == null) {
+            //                $user_ident = ilCmiXapiUser::getIdent($this->object->getProvider()->getPrivacyIdent(), $this->dic->user());
+            //                $cmixUser->setUsrIdent($user_ident);
+            //                $cmixUser->save();
+            //            }
 
             if ((string) $loginhint !== $user_ident) {
                 $ok = false;
@@ -482,8 +484,15 @@ class ilLTIConsumerContentGUI
             $desc = 'Invalid prompt';
         }
         if ($ok) {
+            ilObjLTIConsumer::getLogger()->debug("no error");
             return null;
         } else {
+            $err = "error '" . $error . "'";
+            if ($desc != '') {
+                $err .= " with description: " . $desc;
+            }
+            ilObjLTIConsumer::getLogger()->error($err);
+            ilObjLTIConsumer::getLogger()->dump($loginData);
             return $error;
         }
     }

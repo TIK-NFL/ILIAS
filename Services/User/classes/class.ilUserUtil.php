@@ -334,9 +334,13 @@ class ilUserUtil
     {
         global $DIC;
 
+        $tpl = $DIC['tpl'];
+        $lng = $DIC['lng'];
         $tree = $DIC['tree'];
         $ilUser = $DIC['ilUser'];
+        $ilSetting = $DIC['ilSetting'];
         $rbacreview = $DIC['rbacreview'];
+        $rbacsystem = $DIC['rbacsystem'];
 
         $ref_id = 1;
         $by_default = true;
@@ -392,6 +396,41 @@ class ilUserUtil
             $calendar_string = "&cal_view=" . $cal_view . "&cal_agenda_per=" . $cal_period;
         }
 
+        if ($current === self::START_REPOSITORY_OBJ
+            && (
+                $ref_id === null
+                    || !$rbacsystem->checkAccessOfUser(
+                        $ilUser->getId(),
+                        'read',
+                        $ref_id
+                    )
+            )
+        ) {
+            $tpl->setOnScreenMessage('failure', $lng->txt('permission_denied'), true);
+            $current = self::START_REPOSITORY;
+        }
+
+        if ($current === self::START_REPOSITORY
+                && !$rbacsystem->checkAccessOfUser(
+                    $ilUser->getId(),
+                    'read',
+                    $tree->getRootId()
+                )
+            || $current === self::START_PD_CALENDAR
+                && !ilCalendarSettings::_getInstance()->isEnabled()
+        ) {
+            $current = self::START_PD_OVERVIEW;
+
+            // #10715 - if 1 is disabled overview will display the current default
+            if ($ilSetting->get('disable_my_offers') == 0 &&
+                $ilSetting->get('disable_my_memberships') == 0 &&
+                $ilSetting->get('personal_items_default_view') == 1) {
+                $current = self::START_PD_SUBSCRIPTION;
+            }
+
+            $tpl->setOnScreenMessage('failure', $lng->txt('permission_denied'), true);
+        }
+
         switch ($current) {
             case self::START_REPOSITORY:
                 $ref_id = $tree->readRootId();
@@ -423,7 +462,7 @@ class ilUserUtil
     /**
      * Get ref id of starting object
      */
-    public static function getStartingObject(): int
+    public static function getStartingObject(): ?int
     {
         global $DIC;
 
@@ -549,7 +588,7 @@ class ilUserUtil
     /**
      * Get ref id of personal starting object
      */
-    public static function getPersonalStartingObject(): int
+    public static function getPersonalStartingObject(): ?int
     {
         global $DIC;
 
