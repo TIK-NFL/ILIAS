@@ -71,39 +71,45 @@ class ilLTIConsumerContentGUI
      */
     protected function launch(): void
     {
-        if ($this->object->getProvider()->getLtiVersion() == "LTI-1p0") {
-            if ($this->object->isLaunchMethodEmbedded()) {
-                $tpl = new ilTemplate('tpl.lti_content.html', true, true, 'Modules/LTIConsumer');
-                $tpl->setVariable("EMBEDDED_IFRAME_SRC", $this->dic->ctrl()->getLinkTarget(
-                    $this,
-                    self::CMD_SHOW_EMBEDDED
-                ));
-                $this->dic->ui()->mainTemplate()->setContent($tpl->get());
-            } else {
-                $this->dic->toolbar()->addText($this->getStartButtonTxt11());
-            }
-        } else {
-            if ($this->object->isLaunchMethodEmbedded() && (ilSession::get('lti13_login_data') == null)) {
-                $tpl = new ilTemplate('tpl.lti_content.html', true, true, 'Modules/LTIConsumer');
-                $tpl->setVariable("EMBEDDED_IFRAME_SRC", $this->dic->ctrl()->getLinkTarget(
-                    $this,
-                    self::CMD_SHOW_EMBEDDED
-                ));
-                $this->dic->ui()->mainTemplate()->setContent($tpl->get());
-            } else {
-                if (ilSession::get('lti13_login_data') != null) {
-                    $form = $this->getLoginLTI13Form();
-                    if ($form == null) {
-                        //                        $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', 'initialLogin Error: ' . $err, true);
-                        $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', 'initialLogin Error: ', true);
-                    } else {
-                        $response = $this->dic->http()->response()->withBody(ILIAS\Filesystem\Stream\Streams::ofString($form));
-                        $this->dic->http()->saveResponse($response);
-                        $this->dic->http()->sendResponse();
-                        $this->dic->http()->close();
-                    }
+        if ($this->dic->access()->checkAccess('read', '', $this->object->getRefId())) {
+            if ($this->object->getProvider()->getLtiVersion() == "LTI-1p0") {
+                if ($this->object->isLaunchMethodEmbedded()) {
+                    $tpl = new ilTemplate('tpl.lti_content.html', true, true, 'Modules/LTIConsumer');
+                    $tpl->setVariable("EMBEDDED_IFRAME_SRC", $this->dic->ctrl()->getLinkTarget(
+                        $this,
+                        self::CMD_SHOW_EMBEDDED
+                    ));
+                    $this->dic->ui()->mainTemplate()->setContent($tpl->get());
                 } else {
-                    $this->dic->toolbar()->addText($this->getStartButtonTxt13());
+                    $this->dic->toolbar()->addText($this->getStartButtonTxt11());
+                }
+            } else {
+                if ($this->object->isLaunchMethodEmbedded() && (ilSession::get('lti13_login_data') == null)) {
+                    $tpl = new ilTemplate('tpl.lti_content.html', true, true, 'Modules/LTIConsumer');
+                    $tpl->setVariable("EMBEDDED_IFRAME_SRC", $this->dic->ctrl()->getLinkTarget(
+                        $this,
+                        self::CMD_SHOW_EMBEDDED
+                    ));
+                    $this->dic->ui()->mainTemplate()->setContent($tpl->get());
+                } else {
+                    if (ilSession::get('lti13_login_data') != null) {
+                        $form = $this->getLoginLTI13Form();
+                        if ($form == null) {
+                            //                        $this->dic->ui()->mainTemplate()->setOnScreenMessage('failure', 'initialLogin Error: ' . $err, true);
+                            $this->dic->ui()->mainTemplate()->setOnScreenMessage(
+                                'failure',
+                                'initialLogin Error: ',
+                                true
+                            );
+                        } else {
+                            $response = $this->dic->http()->response()->withBody(ILIAS\Filesystem\Stream\Streams::ofString($form));
+                            $this->dic->http()->saveResponse($response);
+                            $this->dic->http()->sendResponse();
+                            $this->dic->http()->close();
+                        }
+                    } else {
+                        $this->dic->toolbar()->addText($this->getStartButtonTxt13());
+                    }
                 }
             }
         }
@@ -359,6 +365,12 @@ class ilLTIConsumerContentGUI
         $launchContextId = $launchContext["id"];
         $launchContextTitle = $launchContext["title"];
 
+        $returnUrl = !$this->object->isLaunchMethodOwnWin() ? '' : str_replace(
+            '&amp;',
+            '&',
+            ilObjLTIConsumer::getIliasHttpPath() . "/" . $this->dic->ctrl()->getLinkTarget($this, "", "", false)
+        );
+
         $cmixUser = $this->cmixUser;
         return $this->object->buildLaunchParametersLTI13(
             $cmixUser,
@@ -368,7 +380,8 @@ class ilLTIConsumerContentGUI
             $nonce,
             $launchContextType,
             $launchContextId,
-            $launchContextTitle
+            $launchContextTitle,
+            $returnUrl
         );
     }
 

@@ -332,9 +332,10 @@ class ilUserUtil
 
     public static function getStartingPointAsUrl(): string
     {
+        /** @var ILIAS\DI\Container $DIC */
         global $DIC;
 
-        $tpl = $DIC['tpl'];
+        $log = $DIC->logger()->root();
         $lng = $DIC['lng'];
         $tree = $DIC['tree'];
         $ilUser = $DIC['ilUser'];
@@ -354,32 +355,31 @@ class ilUserUtil
                 $ref_id = self::getPersonalStartingObject();
             }
         } else {
-            if (ilStartingPoint::ROLE_BASED) {
-                //getting all roles with starting points and store them in array
-                $roles = ilStartingPoint::getRolesWithStartingPoint();
+            //getting all roles with starting points and store them in array
+            $roles = ilStartingPoint::getRolesWithStartingPoint();
 
-                $roles_ids = array_keys($roles);
-                $gr = array();
-                foreach ($roles_ids as $role_id) {
-                    if ($rbacreview->isAssigned($ilUser->getId(), $role_id)) {
-                        $gr[$roles[$role_id]['position']] = array(
-                            "point" => $roles[$role_id]['starting_point'],
-                            "object" => $roles[$role_id]['starting_object'],
-                            "cal_view" => $roles[$role_id]['calendar_view'],
-                            "cal_period" => $roles[$role_id]['calendar_period']
-                        );
-                    }
-                }
-                if (!empty($gr)) {
-                    krsort($gr);	// ak: if we use array_pop (last element) we need to reverse sort, since we want the one with the smallest number
-                    $role_point = array_pop($gr);
-                    $current = $role_point['point'];
-                    $ref_id = $role_point['object'];
-                    $cal_view = $role_point['cal_view'];
-                    $cal_period = $role_point['cal_period'];
-                    $by_default = false;
+            $roles_ids = array_keys($roles);
+            $gr = array();
+            foreach ($roles_ids as $role_id) {
+                if ($rbacreview->isAssigned($ilUser->getId(), $role_id)) {
+                    $gr[$roles[$role_id]['position']] = array(
+                        "point" => $roles[$role_id]['starting_point'],
+                        "object" => $roles[$role_id]['starting_object'],
+                        "cal_view" => $roles[$role_id]['calendar_view'],
+                        "cal_period" => $roles[$role_id]['calendar_period']
+                    );
                 }
             }
+            if (!empty($gr)) {
+                krsort($gr);	// ak: if we use array_pop (last element) we need to reverse sort, since we want the one with the smallest number
+                $role_point = array_pop($gr);
+                $current = $role_point['point'];
+                $ref_id = $role_point['object'];
+                $cal_view = $role_point['cal_view'];
+                $cal_period = $role_point['cal_period'];
+                $by_default = false;
+            }
+
             if ($by_default) {
                 $current = self::getStartingPoint();
 
@@ -406,7 +406,7 @@ class ilUserUtil
                     )
             )
         ) {
-            $tpl->setOnScreenMessage('failure', $lng->txt('permission_denied'), true);
+            $log->warning(sprintf('Permission to Starting Point Denied. Starting Point Type: %s.', $current));
             $current = self::START_REPOSITORY;
         }
 
@@ -419,16 +419,16 @@ class ilUserUtil
             || $current === self::START_PD_CALENDAR
                 && !ilCalendarSettings::_getInstance()->isEnabled()
         ) {
+            $log->warning(sprintf('Permission to Starting Point Denied. Starting Point Type: %s.', $current));
             $current = self::START_PD_OVERVIEW;
 
             // #10715 - if 1 is disabled overview will display the current default
             if ($ilSetting->get('disable_my_offers') == 0 &&
                 $ilSetting->get('disable_my_memberships') == 0 &&
                 $ilSetting->get('personal_items_default_view') == 1) {
+                $log->warning(sprintf('Permission to Starting Point Denied. Starting Point Type: %s.', $current));
                 $current = self::START_PD_SUBSCRIPTION;
             }
-
-            $tpl->setOnScreenMessage('failure', $lng->txt('permission_denied'), true);
         }
 
         switch ($current) {
