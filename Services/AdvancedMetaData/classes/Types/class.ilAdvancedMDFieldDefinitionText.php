@@ -256,7 +256,7 @@ class ilAdvancedMDFieldDefinitionText extends ilAdvancedMDFieldDefinitionGroupBa
                 break;
         }
 
-        if (trim($value)) {
+        if (trim((string)$value)) {
             $this->getADT()->setText($value);
             return true;
         }
