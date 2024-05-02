@@ -1268,10 +1268,11 @@ class ilObjMediaObject extends ilObject
         //$height = 360;
         $info = "";
 
+        /*
         if ($a_format == "audio/mpeg") {
             $width = 300;
             $height = 20;
-        }
+        }*/
 
         if (ilUtil::deducibleSize($a_format)) {
             if ($a_type == "File") {
