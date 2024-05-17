@@ -49,7 +49,7 @@ class Radio extends FormInput implements C\Input\Field\Radio
     /**
      * @inheritdoc
      */
-    public function isClientSideValueOk($value): bool
+    protected function isClientSideValueOk($value): bool
     {
         return ($value === '' || array_key_exists($value, $this->getOptions()));
     }
@@ -99,7 +99,7 @@ class Radio extends FormInput implements C\Input\Field\Radio
     /**
      * @inheritdoc
      */
-    public function withInput(InputData $input): self
+    public function withInput(InputData $input): C\Input\Field\Input
     {
         if ($this->getName() === null) {
             throw new LogicException("Can only collect if input has a name.");

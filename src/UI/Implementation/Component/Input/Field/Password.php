@@ -61,7 +61,7 @@ class Password extends FormInput implements C\Input\Field\Password, Triggerable
     /**
      * @inheritdoc
      */
-    public function isClientSideValueOk($value): bool
+    protected function isClientSideValueOk($value): bool
     {
         return is_string($value);
     }
@@ -87,7 +87,7 @@ class Password extends FormInput implements C\Input\Field\Password, Triggerable
         bool $upper = true,
         bool $numbers = true,
         bool $special = true
-    ): self {
+    ): C\Input\Field\Input {
         $pw_validation = $this->refinery->password();
         $constraints = [
             $this->refinery->string()->hasMinLength($min_length),
