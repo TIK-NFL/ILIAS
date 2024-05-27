@@ -18,17 +18,30 @@
 
 declare(strict_types=1);
 
-/**
- * Class ilExternalAuthUserUpdateAttributeMappingFilter
- * @author Michael Jansen <mjansen@databay.de>
- */
-class ilExternalAuthUserUpdateAttributeMappingFilter extends FilterIterator
-{
-    public function accept(): bool
-    {
-        /** @var $current ilExternalAuthUserAttributeMappingRule */
-        $current = $this->current();
+namespace ILIAS\Repository\HTML;
 
-        return $current->isAutomaticallyUpdated();
+use ILIAS\Filesystem\Stream\Streams;
+use ILIAS\HTTP;
+use ILIAS\FileDelivery\Delivery;
+
+class HTMLUtil
+{
+    public function __construct()
+    {
+    }
+
+    public function escape(string $input): string
+    {
+        return htmlentities($input);
+    }
+
+    public function strip(string $input): string
+    {
+        // see https://www.ilias.de/mantis/view.php?id=19727
+        $str = \ilUtil::stripSlashes($input);
+        if ($str !== $input) {
+            $str = \ilUtil::stripSlashes(str_replace("<", "< ", $input));
+        }
+        return $str;
     }
 }
