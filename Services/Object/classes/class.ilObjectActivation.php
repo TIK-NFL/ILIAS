@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -17,6 +15,8 @@ declare(strict_types=1);
  * https://github.com/ILIAS-eLearning
  *
  *********************************************************************/
+
+declare(strict_types=1);
 
 /**
  * Class ilObjectActivation
@@ -537,7 +537,7 @@ class ilObjectActivation
             }
             // #7571: when node is removed from system, e.g. inactive trashcan, an empty array is returned
             $node = $tree->getNodeData($item_ref_id);
-            if ((int) $node["ref_id"] !== $item_ref_id) {
+            if (!isset($node["ref_id"]) || (int) $node["ref_id"] !== $item_ref_id) {
                 continue;
             }
             $res[$item_ref_id] = $node;
