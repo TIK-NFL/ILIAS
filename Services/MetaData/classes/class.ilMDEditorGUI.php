@@ -492,7 +492,7 @@ class ilMDEditorGUI
         // language(s)
         $first = true;
         $options = ilMDLanguageItem::_getLanguages();
-        $first_lang = '';
+        $first_lang = 'en';
         foreach ($ids = $this->md_section->getLanguageIds() as $id) {
             $md_lan = $this->md_section->getLanguage($id);
             $first_lang = $md_lan->getLanguageCode();
