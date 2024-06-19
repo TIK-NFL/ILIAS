@@ -929,7 +929,7 @@ class ilObjCourseGUI extends ilContainerGUI
                 $this->lng->txt('crs_msg_no_self_registration_period_if_self_enrolment_disabled'),
                 true
             );
-            $this->editObject();
+            $this->ctrl->redirect($this, "edit");
             return;
         }
 
@@ -1212,7 +1212,7 @@ class ilObjCourseGUI extends ilContainerGUI
         $form = $obj_service->commonSettings()->legacyForm($form, $this->object)->addTopActionsVisibility();
 
         // breadcrumbs
-        if ($setting->get("rep_breadcr_crs_overwrite")) {
+        if ($setting->get("rep_breadcr_crs") && $setting->get("rep_breadcr_crs_overwrite")) {
             $add = $setting->get("rep_breadcr_crs_default")
                 ? " (" . $this->lng->txt("crs_breadcrumb_crs_only") . ")"
                 : " (" . $this->lng->txt("crs_breadcrumb_full_path") . ")";
