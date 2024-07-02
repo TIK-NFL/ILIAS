@@ -21,6 +21,8 @@ namespace ILIAS\Exercise;
 use ILIAS\DI\UIServices;
 use ILIAS\HTTP;
 use ILIAS\Refinery;
+use ILIAS\Repository\GlobalDICGUIServices;
+use ILIAS\DI\Container;
 
 /**
  * Exercise UI frontend presentation service class
@@ -29,6 +31,9 @@ use ILIAS\Refinery;
  */
 class InternalGUIService
 {
+    use GlobalDICGUIServices;
+    protected \ILIAS\Exercise\InternalDataService $data_service;
+    protected \ILIAS\Exercise\InternalDomainService $domain_service;
     protected \ilLanguage $lng;
     protected \ilCtrl $ctrl;
     protected \ilToolbarGUI $toolbar;
@@ -38,34 +43,18 @@ class InternalGUIService
 
     protected InternalService $service;
 
-    protected GUIRequest $request;
+    protected ?GUIRequest $request = null;
     protected \ilExSubmissionGUI $submission_gui;
     protected \ilObjExercise $exc;
 
     public function __construct(
-        InternalService $service,
-        HTTP\Services $http,
-        Refinery\Factory $refinery,
-        array $query_params = null,
-        array $post_data = null
+        Container $DIC,
+        InternalDataService $data_service,
+        InternalDomainService $domain_service
     ) {
-        global $DIC;
-
-        $this->ui = $DIC->ui();
-
-        $this->toolbar = $DIC->toolbar();
-        $this->lng = $DIC->language();
-        $this->ctrl = $DIC->ctrl();
-        $this->http = $http;
-        $this->refinery = $refinery;
-
-        $this->service = $service;
-        $this->request = new GUIRequest(
-            $this->http,
-            $this->refinery,
-            $query_params,
-            $post_data
-        );
+        $this->data_service = $data_service;
+        $this->domain_service = $domain_service;
+        $this->initGUIServices($DIC);
     }
 
     /**
@@ -73,9 +62,23 @@ class InternalGUIService
      * not be used.
      * @return GUIRequest
      */
-    public function request(): GUIRequest
-    {
-        return $this->request;
+    public function request(
+        ?array $query_params = null,
+        ?array $post_data = null
+    ): GUIRequest {
+        if (is_null($query_params) && is_null($post_data) && !is_null($this->request)) {
+            return $this->request;
+        }
+        $request = new GUIRequest(
+            $this->http(),
+            $this->domain_service->refinery(),
+            $query_params,
+            $post_data
+        );
+        if (is_null($query_params) && is_null($post_data)) {
+            $this->request = $request;
+        }
+        return $request;
     }
 
     /**
@@ -84,7 +87,7 @@ class InternalGUIService
     public function getExerciseGUI(?int $ref_id = null): \ilObjExerciseGUI
     {
         if ($ref_id === null) {
-            $ref_id = $this->request->getRefId();
+            $ref_id = $this->request()->getRefId();
         }
         return new \ilObjExerciseGUI([], $ref_id, true);
     }
@@ -92,7 +95,7 @@ class InternalGUIService
     public function getRandomAssignmentGUI(\ilObjExercise $exc = null): \ilExcRandomAssignmentGUI
     {
         if ($exc === null) {
-            $exc = $this->request->getExercise();
+            $exc = $this->request()->getExercise();
         }
         return new \ilExcRandomAssignmentGUI(
             $this->ui,
@@ -109,13 +112,13 @@ class InternalGUIService
         $member_id = null
     ): \ilExSubmissionGUI {
         if ($exc === null) {
-            $exc = $this->request->getExercise();
+            $exc = $this->request()->getExercise();
         }
         if ($ass === null) {
-            $ass = $this->request->getAssignment();
+            $ass = $this->request()->getAssignment();
         }
         if ($member_id === null) {
-            $member_id = $this->request->getMemberId();
+            $member_id = $this->request()->getMemberId();
         }
         return new \ilExSubmissionGUI(
             $exc,

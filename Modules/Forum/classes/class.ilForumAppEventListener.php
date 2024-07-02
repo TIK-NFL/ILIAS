@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -17,6 +15,8 @@ declare(strict_types=1);
  * https://github.com/ILIAS-eLearning
  *
  *********************************************************************/
+
+declare(strict_types=1);
 
 /**
  * Forum listener. Listens to events of other components.
@@ -479,7 +479,8 @@ class ilForumAppEventListener implements ilAppEventListener
             case 'Services/User':
                 switch ($a_event) {
                     case 'deleteUser':
-                        ilForumPostDraft::deleteDraftsByUserId($a_parameter['usr_id']);
+                        ilForumPostDraft::deleteDraftsByUserId((int) $a_parameter['usr_id']);
+                        ilObjForum::_deleteUser((int) $a_parameter['usr_id']);
                         break;
                 }
                 break;

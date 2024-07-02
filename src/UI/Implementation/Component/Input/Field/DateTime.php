@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -18,6 +16,8 @@ declare(strict_types=1);
  *
  *********************************************************************/
 
+declare(strict_types=1);
+
 namespace ILIAS\UI\Implementation\Component\Input\Field;
 
 use ILIAS\UI\Component as C;
@@ -33,7 +33,7 @@ use Closure;
 /**
  * This implements the date input.
  */
-class DateTime extends Input implements C\Input\Field\DateTime
+class DateTime extends FormInput implements C\Input\Field\DateTime
 {
     use ComponentHelper;
     use JavaScriptBindable;
@@ -117,9 +117,6 @@ class DateTime extends Input implements C\Input\Field\DateTime
         $clone->timezone = $tz;
 
         $trafo = $this->getOptionalNullTransformation($timezone_trafo);
-        /**
-         * @var $clone C\Input\Field\DateTime
-         */
         $clone = $clone->withAdditionalTransformation($trafo);
         return $clone;
     }
@@ -184,6 +181,10 @@ class DateTime extends Input implements C\Input\Field\DateTime
 
     protected function getConstraintForRequirement(): ?Constraint
     {
+        if ($this->requirement_constraint !== null) {
+            return $this->requirement_constraint;
+        }
+
         return $this->refinery->string()->hasMinLength(1)
             ->withProblemBuilder(fn ($txt, $value) => $txt("datetime_required"));
     }

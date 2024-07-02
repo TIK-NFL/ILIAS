@@ -16,6 +16,8 @@
  *
  *********************************************************************/
 
+use ILIAS\FileUpload\Exception\IllegalStateException;
+
 require_once './Modules/Test/classes/inc.AssessmentConstants.php';
 
 /**
@@ -45,6 +47,8 @@ class assFileUpload extends assQuestion implements ilObjQuestionScoringAdjustabl
     /** @var boolean Indicates whether completion by submission is enabled or not */
     protected $completion_by_submission = false;
 
+    private \ILIAS\FileUpload\FileUpload $file_upload;
+
     /**
      * assFileUpload constructor
      *
@@ -66,6 +70,8 @@ class assFileUpload extends assQuestion implements ilObjQuestionScoringAdjustabl
         $question = ""
     ) {
         parent::__construct($title, $comment, $author, $owner, $question);
+        global $DIC;
+        $this->file_upload = $DIC->upload();
     }
 
     /**
@@ -680,7 +686,12 @@ class assFileUpload extends assQuestion implements ilObjQuestionScoringAdjustabl
         $pass = $this->ensureCurrentTestPass($active_id, $pass);
         $test_id = $this->lookupTestId($active_id);
 
-        $upload_handling_required = $this->isFileUploadAvailable() && $this->checkUpload();
+        try {
+            $upload_handling_required = $this->isFileUploadAvailable() && $this->checkUpload();
+        } catch (IllegalStateException $e) {
+            $this->tpl->setOnScreenMessage('failure', $e->getMessage(), true);
+            return false;
+        }
         $upload_file_data = [];
 
         if ($upload_handling_required) {
@@ -694,11 +705,16 @@ class assFileUpload extends assQuestion implements ilObjQuestionScoringAdjustabl
             $new_file_name = "file_" . $active_id . "_" . $pass . "_" . $upload_file_data ['solution_file_versioning_upload_ts'] . "." . $extension;
             $upload_file_data['new_file_name'] = ilFileUtils::getValidFilename($new_file_name);
 
-            ilFileUtils::moveUploadedFile(
-                $_FILES["upload"]["tmp_name"],
-                $_FILES["upload"]["name"],
-                $this->getFileUploadPath($test_id, $active_id) . $upload_file_data['new_file_name']
-            );
+            try {
+                ilFileUtils::moveUploadedFile(
+                    $_FILES["upload"]["tmp_name"],
+                    $_FILES["upload"]["name"],
+                    $this->getFileUploadPath($test_id, $active_id) . $upload_file_data['new_file_name']
+                );
+            } catch (ilException $e) {
+                $this->tpl->setOnScreenMessage('failure', $e->getMessage(), true);
+                return false;
+            }
         }
 
         $entered_values = false;
@@ -835,8 +851,14 @@ class assFileUpload extends assQuestion implements ilObjQuestionScoringAdjustabl
                 $this->tpl->setOnScreenMessage('info', $this->lng->txt('no_checkbox'), true);
             }
         } else {
+            try {
+                $fileUploadAvailable = $this->isFileUploadAvailable();
+            } catch (IllegalStateException $e) {
+                $this->tpl->setOnScreenMessage('failure', $e->getMessage(), true);
+                return;
+            }
             // hey: prevPassSolutions - readability spree - get a chance to understand the code
-            if ($this->isFileUploadAvailable()) {
+            if ($fileUploadAvailable) {
                 // hey.
                 if ($this->checkUpload()) {
                     if (!@file_exists($this->getPreviewFileUploadPath($previewSession->getUserId()))) {
@@ -847,11 +869,17 @@ class assFileUpload extends assQuestion implements ilObjQuestionScoringAdjustabl
                     $filename_arr = pathinfo($_FILES["upload"]["name"]);
                     $extension = $filename_arr["extension"];
                     $newfile = "file_" . md5($_FILES["upload"]["name"]) . "_" . $version . "." . $extension;
-                    ilFileUtils::moveUploadedFile(
-                        $_FILES["upload"]["tmp_name"],
-                        $_FILES["upload"]["name"],
-                        $this->getPreviewFileUploadPath($previewSession->getUserId()) . $newfile
-                    );
+                    try {
+                        ilFileUtils::moveUploadedFile(
+                            $_FILES["upload"]["tmp_name"],
+                            $_FILES["upload"]["name"],
+                            $this->getPreviewFileUploadPath($previewSession->getUserId()) . $newfile
+                        );
+                    } catch (ilException $e) {
+                        $this->tpl->setOnScreenMessage('failure', $e->getMessage(), true);
+                        return;
+                    }
+
 
                     $userSolution[$newfile] = array(
                         'solution_id' => $newfile,
@@ -1144,6 +1172,9 @@ class assFileUpload extends assQuestion implements ilObjQuestionScoringAdjustabl
         return true;
     }
 
+    /**
+     * @throws IllegalStateException
+     */
     protected function isFileUploadAvailable(): bool
     {
         if (!isset($_FILES['upload'])) {
@@ -1152,6 +1183,10 @@ class assFileUpload extends assQuestion implements ilObjQuestionScoringAdjustabl
 
         if (!isset($_FILES['upload']['tmp_name'])) {
             return false;
+        }
+
+        if (!$this->file_upload->hasBeenProcessed()) {
+            $this->file_upload->process();
         }
 
         return strlen($_FILES['upload']['tmp_name']) > 0;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -13,8 +14,8 @@
  * https://www.ilias.de
  * https://github.com/ILIAS-eLearning
  *
- ********************************************************************
- */
+ *********************************************************************/
+
 /**
  * Class ilDclMobRecordRepresentation
  * @author  Michael Herren <mh@studer-raimann.ch>
@@ -60,7 +61,7 @@ class ilDclMobRecordRepresentation extends ilDclFileuploadRecordRepresentation
 
         $field = $this->getRecordField()->getField();
 
-        $is_linked_field = $field->getProperty(ilDclBaseFieldModel::PROP_LINK_DETAIL_PAGE_TEXT);
+        $is_linked_field = $field->getProperty(ilDclBaseFieldModel::PROP_LINK_DETAIL_PAGE_MOB);
         $has_view = false;
         if ($this->http->wrapper()->query()->has("tableview_id")) {
             $tableview_id = $this->http->wrapper()->query()->retrieve(
@@ -114,10 +115,10 @@ class ilDclMobRecordRepresentation extends ilDclFileuploadRecordRepresentation
         $width = "200px";
         $height = "auto";
         if ($field->getProperty(ilDclBaseFieldModel::PROP_WIDTH) > 0) {
-            $width = $field->getProperty(ilDclBaseFieldModel::PROP_WIDTH)."px";
+            $width = $field->getProperty(ilDclBaseFieldModel::PROP_WIDTH) . "px";
         }
         if ($field->getProperty(ilDclBaseFieldModel::PROP_HEIGHT) > 0) {
-            $height = $field->getProperty(ilDclBaseFieldModel::PROP_HEIGHT)."px";
+            $height = $field->getProperty(ilDclBaseFieldModel::PROP_HEIGHT) . "px";
         }
         $content = $this->renderer->render($components);
         $fixed_size_div = "<div style='width:$width; height:$height;'>$content</div>";

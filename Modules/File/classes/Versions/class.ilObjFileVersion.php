@@ -63,6 +63,11 @@ class ilObjFileVersion extends ArrayObject
     protected string $rollback_user_id = '';
     protected int $size = 0;
 
+    public function offsetExists($key): bool
+    {
+        return property_exists($this, $key);
+    }
+
     public function offsetGet($index)
     {
         return $this->{$index};

@@ -289,7 +289,7 @@ abstract class ilObjPortfolioBaseGUI extends ilObject2GUI
 
         $prfa_set = new ilSetting("prfa");
 
-        if ($_FILES["banner"]["tmp_name"]) {
+        if (isset($_FILES["banner"]) && $_FILES["banner"]["tmp_name"]) {
             $this->object->uploadImage($_FILES["banner"]);
         } elseif ($prfa_set->get('banner') && $form->getItemByPostVar("banner")->getDeletionFlag()) {
             $this->object->deleteImage();
@@ -384,6 +384,8 @@ abstract class ilObjPortfolioBaseGUI extends ilObject2GUI
     public function getPrintView(): \ILIAS\Export\PrintProcessGUI
     {
         $obj_ids = $this->port_request->getObjIds();
+        $signature = $this->port_request->getSignature();
+        $declaration = $this->port_request->getIncludeDeclaration();
         if (count($obj_ids) === 0) {
             $obj_ids = null;
         }
@@ -393,8 +395,9 @@ abstract class ilObjPortfolioBaseGUI extends ilObject2GUI
             $this->lng,
             $this->ctrl,
             $port,
-            false,
-            $obj_ids
+            $signature,
+            $obj_ids,
+            $declaration
         );
         $provider = $provider->withDeclarationOfAuthorship(
             new ilPortfolioDeclarationOfAuthorship(),

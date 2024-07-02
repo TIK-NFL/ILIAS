@@ -4366,7 +4366,7 @@ common#:#info_remark_interrupted#:#Rolle wurde an dieser Position unterbrochen. 
 common#:#info_remove_sure#:#Sind Sie sicher, dass folgende Objekte entfernt werden sollen?
 common#:#info_short#:#Info
 common#:#info_status_info#:#Wer hat hier welche Rechte?
-common#:#info_view_of_user#:#Benutzer
+common#:#info_view_of_user#:#Benutzermenü
 common#:#inform_user_mail#:#Benutzer per Mail über Änderungen informieren
 common#:#inline_file_extensions#:#Im Browser anzeigbare Dateien
 common#:#inline_file_extensions_info#:#Dateien mit diesen Endungen werden direkt im Browser angezeigt.<br/>Zum Beispiel: <b>gif jpg jpeg mp3 pdf png</b><br/> Alle übrigen Dateien werden zum Herunterladen angeboten.
@@ -5514,7 +5514,7 @@ common#:#selected_items_back#:#Zurück zu Angeboten
 common#:#selected_languages_updated#:#Die ausgewählten Sprachen wurden aktualisiert (sofern installiert):
 common#:#send#:#Abschicken
 common#:#send_mail#:#Mail versenden
-common#:#sender#:#Absender
+common#:#sender#:#Von
 common#:#sent#:#Gesendet
 common#:#sequence#:#Sequenz
 common#:#sequences#:#Sequenzen
@@ -5568,7 +5568,7 @@ common#:#shib_email#:#Attribut für E-Mail-Adresse
 common#:#shib_federation_name#:#Name der Shibboleth-Föderation
 common#:#shib_firstname#:#Attribut für Vornamen
 common#:#shib_gender#:#Attribut für Anrede (muss 'n', 'm' oder 'f' sein)
-common#:#shib_general_login_instructions#:#Um sich über %s anzumelden, klicken Sie bitte auf den Anmelde-Button und wählen Sie auf der folgenden Seite Ihre Organisation aus.<br />Bei Fragen dazu, wenden Sie sich bitte an den %s
+common#:#shib_general_login_instructions#:#Um sich über %s anzumelden, klicken Sie bitte auf den Anmelde-Button und wählen auf der folgenden Seite Ihre Organisation aus. Bei Fragen dazu wenden Sie sich bitte an den %s
 common#:#shib_general_wayf_login_instructions#:#Falls Sie keiner der angegebenen Organisationen angehören und Zugang zu einem Kurs auf diesem Server benötigen, wenden Sie sich bitte an den %s
 common#:#shib_idp_list#:#Bitte geben Sie eine Liste von Identity-Providern an, aus denen der Benutzer auf der ILIAS-Anmeldeseite auswählen kann.<br />In jeder Zeile muss ein Komma-getrenntes Tupel sein, welches aus der<strong>providerID eines IdP</strong> (schauen Sie dazu die Shibboleth-Metadaten an) und dem <strong>Namen eines IdP</strong> besteht, so wie er in der Drop-Down Liste angezeigt werden soll.<br />Als optionaler dritter Parameter kann die <strong>Location eines Shibboleth Session Initiators</strong> angegeben werden, welcher benutzt werden kann falls Ihre ILIAS-Installation Teil von mehreren Föderationen ist.
 common#:#shib_institution#:#Attribut für Institution
@@ -5791,6 +5791,10 @@ common#:#upload_files#:#Dateien hochladen
 common#:#upload_files_title#:#Dateien hochladen
 common#:#upload_pending#:#Ausstehend
 common#:#upload_settings#:#Upload-Einstellungen
+common#:#upload_svg_rejection_message#:#Eine hochgeladene SVG-Datei enthält möglicherweise bösartigen Code und kann nicht verarbeitet werden.
+common#:#upload_svg_rejection_message_base64#:#Die Datei enthält base64 kodierten Inhalt.
+common#:#upload_svg_rejection_message_elements#:#Die Datei enthält Elemente oder Attribute, die nicht erlaubt oder bekannt sind.
+common#:#upload_svg_rejection_message_script#:#Die Datei enthält Skript-Elemente.
 common#:#uploaded_and_checked#:#Die Datei wurde hochgeladen und überprüft, Sie können sie nun importieren.
 common#:#uploading#:#Hochladen...
 common#:#uri#:#URI
@@ -6213,6 +6217,7 @@ content#:#cont_char_style_code#:#Code
 content#:#cont_char_style_com#:#Kommentar
 content#:#cont_char_style_quot#:#Zitat
 content#:#cont_characteristic#:#Absatzformat
+content#:#cont_characteristic_table#:#Style Tabelle
 content#:#cont_check_values#:#Vom SCO geschickte Werte prüfen
 content#:#cont_check_values_info#:#Das Testwerkzeug prüft die vom SCO geschickten Werte auf Standard-Kompatibilität.<br />Der SCORM-Standard ist sehr genau, was die zu speichernden Daten angeht. Nicht jedes SCORM-Lernmodul ist in seiner Datenausgabe so präzise wie der Standard es eigentlich erfordert. Daher kann das Überprüfen der Werte deaktiviert werden, wenn Sie etwa nur prüfen wollen, ob das Lernmodul in ILIAS lauffähig ist und nicht, ob es genau dem SCORM-Standard entspricht.<br />
 content#:#cont_choose_characteristic#:#Absatzformat auswählen
@@ -6311,6 +6316,7 @@ content#:#cont_dir_file#:#Verzeichnis/Datei
 content#:#cont_dir_renamed#:#Das Verzeichnis wurde umbenannt.
 content#:#cont_disable_def_feedback#:#Standard-Feedback deaktivieren
 content#:#cont_disable_def_feedback_info#:#Das Standard-Feedback zu einer Frage wird nach Beantwortung einer Frage nicht angezeigt.
+content#:#cont_double_click_to_delete#:#Mit einem Doppel-Klick auf ein Content-Element wählen Sie dieses für die De-/Aktivierung und für das Löschen aus.
 content#:#cont_download#:#Download
 content#:#cont_download_no_download#:#Die Download-Funktion ist zur Zeit deaktiviert. Daher wird die Datei den Lernenden nicht angeboten.
 content#:#cont_download_no_menu#:#Das Lernmodulmenü ist zur Zeit deaktiviert. Daher wird die Datei den Lernenden nicht angeboten.
@@ -6461,7 +6467,7 @@ content#:#cont_files#:#Dateien
 content#:#cont_finish_editing#:#Bearbeitung beenden
 content#:#cont_first_open#:#Erstes Fach geöffnet
 content#:#cont_first_page#:#Erste Seite
-content#:#cont_first_row_style#:#Stil der ersten Zeile
+content#:#cont_first_row_style#:#Style erste Zeile
 content#:#cont_fix_tree#:#Struktur reparieren
 content#:#cont_fix_tree_confirm#:#Bitte führen Sie diese Funktion nur aus, wenn die Struktur des Lernmoduls beschädigt ist, z.B. leere Einträge in der Kapitelstruktur auftauchen.
 content#:#cont_fn#:#Fußnote
@@ -7268,6 +7274,7 @@ copg#:#copg_est_reading_time#:#Geschätzte Lesezeit
 copg#:#copg_history_cleanup_cron#:#Verlaufsbereinigung
 copg#:#copg_history_cleanup_cron_info#:#Löscht ältere Einträge aus dem Verlauf des Seiteneditors.
 copg#:#copg_more_character_formats#:#Weitere Zeichenformate
+copg#:#copg_obj_types#:#Objekttypen
 copg#:#copg_page_element_not_found#:#Unbekanntes Seitenelement.
 copg#:#copg_page_type_stys#:#Seitenlayout
 copg#:#copg_par_format_selection#:#Absatzformatauswahl
@@ -7408,6 +7415,7 @@ crs#:#crs_course_status_of_users#:#Bestehen des Kurses
 crs#:#crs_create_date#:#Erstellungsdatum
 crs#:#crs_custom_user_fields#:#Personenbezogene Angaben
 crs#:#crs_custom_user_fields_infobox#:#Legen Sie weitere Datenfelder an, welche Kursmitglieder beim Beitritt ausfüllen. Die Angaben können Sie im Reiter „Mitglieder“ als zusätzliche Spalte einblenden.
+crs#:#crs_custom_user_fields_table_title#:#Personenbezogene Angaben zu diesem Kurs
 crs#:#crs_dates#:#Termine
 crs#:#crs_deactivate_notification#:#Benachrichtigung deaktivieren
 crs#:#crs_delete_objectve_sure#:#Sind Sie sicher, dass die ausgewählten Lernziele entfernt werden sollen?
@@ -7602,7 +7610,7 @@ crs#:#crs_members_groups#:#Gruppenmitgliedschaften
 crs#:#crs_members_map#:#Karte Kursmitglieder
 crs#:#crs_members_print_title#:#Kursmitglieder
 crs#:#crs_min_one_admin#:#Diesem Kurs muss mindestens ein Administrator zugeordnet bleiben.
-crs#:#crs_msg_no_self_registration_period_if_self_enrolment_disabled#:#Der Zeitraum für den zeitlich begrenzten Beitritt kann nicht bestimmt werden, wenn die Einstellung "Kein selbständiger Beitritt" aktiviert ist.
+crs#:#crs_msg_no_self_registration_period_if_self_enrolment_disabled#:#Änderungen gespeichert. Der Zeitraum für den zeitlich begrenzten Beitritt wurde zurückgesetzt, weil die Einstellung "Kein selbständiger Beitritt" aktiviert ist.
 crs#:#crs_my_courses_groups_enabled#:#Meine Kurse und Gruppen
 crs#:#crs_my_courses_groups_enabled_info#:#Wenn Sie diese Option aktivieren, wird die Option 'Meine Kurse und Gruppen' im Magazin angezeigt.
 crs#:#crs_new_status#:#Ihr Status:
@@ -9515,6 +9523,7 @@ exp#:#exp_scorm#:#SCORM
 exp#:#exp_show_print_view#:#Druckansicht anzeigen
 exp#:#exp_xml#:#XML
 exp#:#export_created#:#Eine neue Exportdatei wurde erstellt.
+exp#:#export_files_deleted#:#Die ausgewählten Exportdateien wurden gelöscht.
 export#:#export_create#:#Neu erstellen
 export#:#export_create_new_file#:#Neue Exportdatei erstellen
 export#:#export_existing#:#Wiederverwenden
@@ -9897,6 +9906,7 @@ grp#:#grp_create_or_use_existing#:#Wollen Sie den Benutzer zu einer bestehenden 
 grp#:#grp_created_and_user_been_added#:#Die Gruppe wurde erstellt und der Benutzer hinzugefügt.
 grp#:#grp_custom_user_fields#:#Personenbezogene Angaben
 grp#:#grp_custom_user_fields_infobox#:#Legen Sie weitere Datenfelder an, welche Gruppenmitglieder beim Beitritt ausfüllen. Die Angaben können Sie im Reiter "Mitglieder" als zusätzliche Spalte einblenden.
+grp#:#grp_custom_user_fields_table_title#:#Personenbezogene Angaben zu dieser Gruppe
 grp#:#grp_deactivate_notification#:#Benachrichtigung deaktivieren
 grp#:#grp_edit_members#:#Teilnehmerverwaltung
 grp#:#grp_enable_map#:#Gruppenkarte aktivieren
@@ -11132,9 +11142,8 @@ mathjax#:#mathjax_polyfill_url#:#Url eines Polyfills
 mathjax#:#mathjax_polyfill_url_desc_line1#:#Für MathJax 2 nicht benötigt
 mathjax#:#mathjax_polyfill_url_desc_line2#:#Für MathJax 3 in älteren Browsern, z.B. https://polyfill.io/v3/polyfill.min.js?features=es6
 mathjax#:#mathjax_script_url#:#URL des MathJax-Skripts
-mathjax#:#mathjax_script_url_desc_line1#:#Für MathJax 2 z.B. https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML,Safe
-mathjax#:#mathjax_script_url_desc_line2#:#Für MathJax 3 z.B. https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-mathjax#:#mathjax_script_url_desc_line3#:#Bitte verwenden Sie den Safe Mode, um XSS-Angriffe durch MathJax-Code mit Javascript zu vermeiden. Für MathJax 2 kann er an die CDN-Url als Parameter angefügt werden (s.o). Für MathJax 3 müssen Sie ein Skript einbinden, dass ihn konfiguriert, bevor MathJax geladen wird. Verwenden Sie z.B. https://ihre-domain/ihr-ilias/Services/MathJax/js/cdn-mathjax3-es5-tex-mml-chtml-safe.js
+mathjax#:#mathjax_script_url_desc_line1#:#Für MathJax 2 z.B. %s
+mathjax#:#mathjax_script_url_desc_line2#:#Bitte verwenden Sie den Safe Mode, um XSS-Angriffe durch MathJax-Code mit Javascript zu vermeiden. Für MathJax 2 kann er an die CDN-Url als Parameter angefügt werden (s.o). Für MathJax 3 müssen Sie ein Skript einbinden, dass ihn konfiguriert, bevor MathJax geladen wird. Verwenden Sie z.B. %s
 mathjax#:#mathjax_server_address#:#Server-Adresse
 mathjax#:#mathjax_server_address_info#:#z.B. http://localhost:8003
 mathjax#:#mathjax_server_cache_cleared#:#Der MathJax-Cache wurde geleert.
@@ -12087,6 +12096,7 @@ mme#:#type_separator#:#Trenner
 mme#:#type_separator_info#:#Der Titel des Trenners wird in einem grauen Bereich angezeigt. Sie erhalten eine Trennlinie, wenn Sie den Titel leer lassen.
 mme#:#type_top_link_item#:#Link
 mme#:#type_top_parent_item#:#Container
+mme#:#unable_to_render#:#Der Eintrag '%s' kann nicht in '%s' angezeigt werden.
 mob#:#mob_choose_from_pool#:#Aus Medienpool
 mob#:#mob_external_url#:#Externe URL
 mob#:#mob_file#:#Datei
@@ -16347,6 +16357,8 @@ tbl#:#tbl_template_deleted#:#Die gespeicherte Ansicht wurde gelöscht.
 tbl#:#tbl_templates#:#Ansicht
 tos#:#deleteDocument#:#Löschen
 tos#:#detachCriterionAssignment#:#Löschen
+tos#:#tos_accept_usr_agreement_anonymous#:#Nutzungsvereinbarung
+tos#:#tos_accept_usr_agreement_anonymous_intro#:#Bevor Sie zu ILIAS wechseln, akzeptieren Sie die folgenden Nutzungsvereinbarungen.
 tos#:#tos_acceptance_history#:#Zustimmungshistorie
 tos#:#tos_account_reg_not_possible#:#Eine Selbstregistrierung ist aktuell nicht möglich, da in dieser Installation keine Benutzervereinbarung angeboten wird. Bitte kontaktieren Sie Ihren <a href="%1$s">Systemadministrator</a> für weitere Informationen.
 tos#:#tos_add_document_btn_label#:#Dokument hinzufügen
@@ -16688,6 +16700,22 @@ ui#:#datetime_required#:#Zeit/Datum erforderlich
 ui#:#duration_default_label_end#:#Ende
 ui#:#duration_default_label_start#:#Beginn
 ui#:#duration_end_must_not_be_earlier_than_start#:#Der Beginn muss zeitlich vor dem Ende liegen.
+ui#:#label_fieldselection#:#Spaltenauswahl
+ui#:#label_fieldselection_refresh#:#Anwenden
+ui#:#label_pagination_limit#:#Pagination - Anzahl der Zeilen
+ui#:#label_pagination_offset#:#Pagination - Start
+ui#:#label_sortation#:#Sortierung
+ui#:#order_option_alphabetical_ascending#:#A bis Z
+ui#:#order_option_alphabetical_descending#:#Z bis A
+ui#:#order_option_chronological_ascending#:#Älteste zuerst
+ui#:#order_option_chronological_descending#:#Neueste zuerst
+ui#:#order_option_first#:#zuerst
+ui#:#order_option_generic_ascending#:#aufsteigend
+ui#:#order_option_generic_descending#:#absteigend
+ui#:#order_option_numerical_ascending#:#0 bis 9
+ui#:#order_option_numerical_descending#:#9 bis 0
+ui#:#presentation_table_collapse#:#alle minimieren
+ui#:#presentation_table_expand#:#alle zeigen
 ui#:#ui_chars_max#:#Maximum:
 ui#:#ui_chars_min#:#Minimum:
 ui#:#ui_chars_remaining#:#Verbleibende Buchstaben

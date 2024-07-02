@@ -140,7 +140,7 @@ class SurveySingleChoiceQuestion extends SurveyQuestion
             );
             if ($result->numRows() > 0) {
                 while ($data = $ilDB->fetchAssoc($result)) {
-                    $this->categories->addCategory($data["title"], $data["other"], $data["neutral"], null, ($data['scale']) ?: ($data['sequence'] + 1));
+                    $this->categories->addCategory((string) $data["title"], (int) $data["other"], (int) $data["neutral"], null, ($data['scale']) ?: ($data['sequence'] + 1));
                 }
             }
         }
@@ -529,10 +529,17 @@ class SurveySingleChoiceQuestion extends SurveyQuestion
         // #18136
         $category = $this->categories->getCategoryForScale((int) $value + 1);
 
+        $scale = "";
+        $title = "";
+        if ($category) {
+            $scale = $category->scale;
+            $title = $category->title;
+        }
+
         // #17895 - see getPreconditionOptions()
-        return $category->scale .
+        return $scale .
             " - " .
-            ((strlen($category->title)) ? $category->title : $this->lng->txt('other_answer'));
+            ((strlen($title)) ? $title : $this->lng->txt('other_answer'));
     }
 
     public function getCategories(): SurveyCategories

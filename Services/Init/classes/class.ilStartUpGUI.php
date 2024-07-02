@@ -142,7 +142,6 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
     {
         $cmd = $this->ctrl->getCmd("processIndexPHP");
         $next_class = $this->ctrl->getNextClass($this);
-
         switch ($next_class) {
             case 'ilLoginPageGUI':
                 break;
@@ -154,6 +153,9 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
             case "ilpasswordassistancegui":
                 require_once("Services/Init/classes/class.ilPasswordAssistanceGUI.php");
                 return $this->ctrl->forwardCommand(new ilPasswordAssistanceGUI());
+
+            case strtolower(ilAccessibilityControlConceptGUI::class):
+                return $this->ctrl->forwardCommand(new ilAccessibilityControlConceptGUI());
 
             default:
                 if (method_exists($this, $cmd)) {
@@ -1514,8 +1516,7 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
 
         $tpl = self::initStartUpTemplate('tpl.view_terms_of_service.html', $back_to_login, !$back_to_login);
 
-        $this->mainTemplate->setTitle($this->lng->txt('accept_usr_agreement'));
-        $this->mainTemplate->setOnScreenMessage('info', $this->lng->txt('accept_usr_agreement_intro'));
+        $is_read_only_view = true;
 
         $helper = new ilTermsOfServiceHelper();
         $handleDocument = $helper->isGloballyEnabled() && $this->termsOfServiceEvaluation->hasDocument();
@@ -1536,6 +1537,10 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
                         $this->ctrl->redirectToURL('index.php?target=' . $target . '&client_id=' . CLIENT_ID);
                     }
                 }
+
+                $this->mainTemplate->setTitle($this->lng->txt('accept_usr_agreement'));
+                $this->mainTemplate->setOnScreenMessage('info', $this->lng->txt('accept_usr_agreement_intro'));
+                $is_read_only_view = false;
 
                 $tpl->setVariable('FORM_ACTION', $this->ctrl->getFormAction($this, $this->ctrl->getCmd()));
                 $tpl->setVariable('ACCEPT_TERMS_OF_SERVICE', $this->lng->txt('accept_usr_agreement'));
@@ -1564,6 +1569,17 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
                     )
                 )
             );
+        }
+
+        if ($is_read_only_view) {
+            if ($this->user->isAnonymous()) {
+                $this->lng->loadLanguageModule('tos');
+                $this->mainTemplate->setTitle($this->lng->txt('tos_accept_usr_agreement_anonymous'));
+                $this->mainTemplate->setOnScreenMessage('info', $this->lng->txt('tos_accept_usr_agreement_anonymous_intro'));
+            } else {
+                $this->mainTemplate->setTitle($this->lng->txt('usr_agreement'));
+                $this->mainTemplate->setOnScreenMessage('info', $this->lng->txt('usr_agreement_footer_intro'));
+            }
         }
 
         self::printToGlobalTemplate($tpl);
@@ -1651,18 +1667,23 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
             global $tree, $rbacsystem, $ilAccess;
 
             // original type "pg" => pg_<page_id>[_<ref_id>]
+            $ref_id = 0;
             if ($t_arr[0] == "pg") {
                 if (isset($t_arr[2])) {
                     $ref_id = (int) $t_arr[2];
                 } else {
                     $lm_id = ilLMObject::_lookupContObjID($t_arr[1]);
-                    $ref_id = ilObject::_getAllReferences($lm_id);
-                    if ($ref_id) {
-                        $ref_id = array_shift($ref_id);
+                    $ref_ids = ilObject::_getAllReferences($lm_id);
+                    if ($ref_ids) {
+                        $ref_id = array_shift($ref_ids);
                     }
                 }
             } else {
                 $ref_id = (int) $t_arr[1];
+            }
+
+            if ($ref_id < 1) {
+                return false;
             }
 
             include_once "Services/Membership/classes/class.ilParticipants.php";

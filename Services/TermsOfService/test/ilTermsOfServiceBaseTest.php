@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -18,11 +16,14 @@ declare(strict_types=1);
  *
  *********************************************************************/
 
+declare(strict_types=1);
+
 use ILIAS\DI\Container;
 use ILIAS\UI\Component\Legacy\Legacy;
 use ILIAS\UI\Factory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use ILIAS\FileUpload\FileUpload;
 
 /**
  * Class ilTermsOfServiceBaseTest
@@ -41,6 +42,10 @@ abstract class ilTermsOfServiceBaseTest extends TestCase
         $this->setGlobalVariable(
             'ilCtrl',
             $this->getMockBuilder(ilCtrl::class)->disableOriginalConstructor()->getMock()
+        );
+        $this->setGlobalVariable(
+            'upload',
+            $this->getMockBuilder(FileUpload::class)->disableOriginalConstructor()->getMock()
         );
 
         parent::setUp();

@@ -4366,7 +4366,7 @@ common#:#info_remark_interrupted#:#Role is interrupted at this position. The rol
 common#:#info_remove_sure#:#Are you sure that you want to remove the following item(s)?
 common#:#info_short#:#Info
 common#:#info_status_info#:#Permissions of User
-common#:#info_view_of_user#:#User
+common#:#info_view_of_user#:#User Menu
 common#:#inform_user_mail#:#Send mail to inform user about changes
 common#:#inline_file_extensions#:#Web-enabled files
 common#:#inline_file_extensions_info#:#Files with these extensions are displayed in the browser window.<br/>For example: <b>gif jpg mp3 pdf png</b><br/> All other files are offered for downloading.
@@ -5791,6 +5791,10 @@ common#:#upload_files#:#Upload files
 common#:#upload_files_title#:#Upload files
 common#:#upload_pending#:#Pending
 common#:#upload_settings#:#Upload Settings
+common#:#upload_svg_rejection_message#:#An uploaded SVG file contains possibily malicious code and cannot be processed.
+common#:#upload_svg_rejection_message_base64#:#The file contains base64 encoded content.
+common#:#upload_svg_rejection_message_elements#:#The file contains elements or attributes which are not allowed or known.
+common#:#upload_svg_rejection_message_script#:#The file contains script-Elements.
 common#:#uploaded_and_checked#:#The file has been uploaded and checked, you can now start to import it.
 common#:#uploading#:#Uploading...
 common#:#uri#:#URI
@@ -6213,6 +6217,7 @@ content#:#cont_char_style_code#:#Code
 content#:#cont_char_style_com#:#Comment
 content#:#cont_char_style_quot#:#Quotation
 content#:#cont_characteristic#:#Style Class
+content#:#cont_characteristic_table#:#Style Class
 content#:#cont_check_values#:#Check Values sent from SCO
 content#:#cont_check_values_info#:#The Test Tool will check whether the values sent from the SCOs adhere to the SCORM standard. <br /> The SCORM Standard is very demanding concerning the saving of values. Not all learning modules meet the requirements of the standard. This Options allows checking if the module adheres to the Standard or not. Do not check this option if you just want to check if ILIAS can run this module or not.
 content#:#cont_choose_characteristic#:#Choose Characteristic
@@ -6311,6 +6316,7 @@ content#:#cont_dir_file#:#Directory/File
 content#:#cont_dir_renamed#:#Directory has been renamed.
 content#:#cont_disable_def_feedback#:#Disable Default Question Feedback
 content#:#cont_disable_def_feedback_info#:#The standard feedback for a question is not displayed after answering a question.
+content#:#cont_double_click_to_delete#:#Double-click on content elements to select them for (de-)activation or deletion.
 content#:#cont_download#:#Download
 content#:#cont_download_no_download#:#Download will not be available to users, since the download feature is not activated.
 content#:#cont_download_no_menu#:#Download will not be available to users since the learning module menu is not activated.
@@ -7268,6 +7274,7 @@ copg#:#copg_est_reading_time#:#Estimated Reading Time
 copg#:#copg_history_cleanup_cron#:#Page Editor History Cleanup
 copg#:#copg_history_cleanup_cron_info#:#Removes older entries from the page history.
 copg#:#copg_more_character_formats#:#More Styles for Characters
+copg#:#copg_obj_types#:#Object Types
 copg#:#copg_page_element_not_found#:#Page element not found.
 copg#:#copg_page_type_stys#:#Layout Page
 copg#:#copg_par_format_selection#:#Paragraph Format Selection
@@ -7408,6 +7415,7 @@ crs#:#crs_course_status_of_users#:#Passing the Course
 crs#:#crs_create_date#:#Create date
 crs#:#crs_custom_user_fields#:#Course Relevant User Data
 crs#:#crs_custom_user_fields_infobox#:#Create additional data fields for course members to fill in when joining. You can show this information as an additional column in the "Members" tab.
+crs#:#crs_custom_user_fields_table_title#:#Relevant User Data of This Course
 crs#:#crs_dates#:#Dates
 crs#:#crs_deactivate_notification#:#Deactivate Notification
 crs#:#crs_delete_objectve_sure#:#Are you sure, you want to delete the selected objectives?
@@ -7515,7 +7523,7 @@ crs#:#crs_loc_qst_resume_tst_itest#:#You have already started an initial test to
 crs#:#crs_loc_qst_resume_tst_qtest#:#You have already started a qualifying test to another learning objective. Either you finish the started test or you stop it and start this one. But running two qualifying tests at the same time is not supported.
 crs#:#crs_loc_qtest_info#:#Final Test
 crs#:#crs_loc_qtst_for_objective#:#Qualifying Test "%1$s"
-crs#:#crs_loc_rand_assign_qpl#:#Assignment form Question Pool
+crs#:#crs_loc_rand_assign_qpl#:#Assignment from Question Pool
 crs#:#crs_loc_rand_qpl#:#Available Question Pools
 crs#:#crs_loc_settings_err_qstart#:#The option "Final Test as Start Object" has been deactivated, since it can only be chosen for courses without initial test.
 crs#:#crs_loc_settings_it_start_object#:#Initial Test is Start Object
@@ -7602,7 +7610,7 @@ crs#:#crs_members_groups#:#Memberships in Groups
 crs#:#crs_members_map#:#Course Members Map
 crs#:#crs_members_print_title#:#Course members
 crs#:#crs_min_one_admin#:#There has to be at least one administrator assigned to this course.
-crs#:#crs_msg_no_self_registration_period_if_self_enrolment_disabled#:#The limited registration period can not be defined if the "No Self-enrolment" setting is active.
+crs#:#crs_msg_no_self_registration_period_if_self_enrolment_disabled#:#Modifications saved. The limited registration period could not be set, because the "No Self-enrolment" setting is active.
 crs#:#crs_my_courses_groups_enabled#:#My Courses and Groups
 crs#:#crs_my_courses_groups_enabled_info#:#If activated, the section 'My Courses and Groups' is visible.
 crs#:#crs_new_status#:#Your new status is:
@@ -9515,6 +9523,7 @@ exp#:#exp_scorm#:#SCORM
 exp#:#exp_show_print_view#:#Show Print View
 exp#:#exp_xml#:#XML
 exp#:#export_created#:#A new export file has been created.
+exp#:#export_files_deleted#:#The selected export files have been deleted.
 export#:#export_create#:#Create
 export#:#export_create_new_file#:#Create New Export File
 export#:#export_existing#:#Reuse
@@ -9897,6 +9906,7 @@ grp#:#grp_create_or_use_existing#:#Do you want to add the user to an existing gr
 grp#:#grp_created_and_user_been_added#:#Die Gruppe wurde erstellt und der Benutzer hinzugefügt.
 grp#:#grp_custom_user_fields#:#Group Relevant User Data
 grp#:#grp_custom_user_fields_infobox#:#Create additional data fields for group members to fill in when they join. You can show this information as an additional column in the "Members" tab.
+grp#:#grp_custom_user_fields_table_title#:#Relevant User Data of This Group
 grp#:#grp_deactivate_notification#:#Deactivate Notification
 grp#:#grp_edit_members#:#Edit Participants
 grp#:#grp_enable_map#:#Enable Group Map
@@ -11132,9 +11142,8 @@ mathjax#:#mathjax_polyfill_url#:#Url of a Polyfill
 mathjax#:#mathjax_polyfill_url_desc_line1#:#For MathJax 2 not needed
 mathjax#:#mathjax_polyfill_url_desc_line2#:#For MathJax 3 e.g. https://polyfill.io/v3/polyfill.min.js?features=es6
 mathjax#:#mathjax_script_url#:#URL of the MathJax Script
-mathjax#:#mathjax_script_url_desc_line1#:#For MathJax 2 e.g. https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML,Safe
-mathjax#:#mathjax_script_url_desc_line2#:#For MathJax 3 e.g. https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js
-mathjax#:#mathjax_script_url_desc_line3#:#Please activate the safe mode to avoid XSS attacks by MathJax code with javascript. For MathJax 2 it can be activated by adding the 'Safe' parameter to the CDN url. For MathJax 3 you need to include script that configures it before MathJax is loaded. Use for example https://your-domain/your-ilias/Services/MathJax/js/cdn-mathjax3-es5-tex-mml-chtml-safe.js
+mathjax#:#mathjax_script_url_desc_line1#:#For MathJax 2 e.g. %s
+mathjax#:#mathjax_script_url_desc_line2#:#Please activate the safe mode to avoid XSS attacks by MathJax code with javascript. For MathJax 2 it can be activated by adding the 'Safe' parameter to the CDN url. For MathJax 3 you need to include a script that configures it before MathJax is loaded. Use for example %s
 mathjax#:#mathjax_server_address#:#Server Address
 mathjax#:#mathjax_server_address_info#:#E.g. http://localhost:8003
 mathjax#:#mathjax_server_cache_cleared#:#The MathJax cache was cleared.
@@ -12087,6 +12096,7 @@ mme#:#type_separator#:#Separator
 mme#:#type_separator_info#:#The title of this item will be displayed in a grey banner. If you do not enter any title, a simple line will be shown.
 mme#:#type_top_link_item#:#Link
 mme#:#type_top_parent_item#:#Container
+mme#:#unable_to_render#:#Unable to show '%s' in '%s'.
 mob#:#mob_choose_from_pool#:#Choose from Media Pool
 mob#:#mob_external_url#:#External URL
 mob#:#mob_file#:#File
@@ -15701,7 +15711,7 @@ survey#:#mail_import_example3#:#kennethbirt@domain.tld;Kenneth;Birt
 survey#:#mail_sent_short#:#Sent
 survey#:#mail_survey_codes#:#Mail access codes or messages
 survey#:#mailaddresses#:#Recipient addresses
-survey#:#mailaddresses_info#:#Enter a comma separated list of recipients who will receive a notification on finished surveys.
+survey#:#mailaddresses_info#:#Enter a comma separated list of tutor account names who will receive a notification on finished surveys.
 survey#:#mailnotification#:#Seperate E-Mail for Each Finished Survey
 survey#:#mailparticipantdata#:#Additional participant data
 survey#:#mailparticipantdata_info#:#This information will be precede the automatically included results section of the notification mail.
@@ -16347,6 +16357,8 @@ tbl#:#tbl_template_deleted#:#The saved view has been deleted.
 tbl#:#tbl_templates#:#View
 tos#:#deleteDocument#:#Delete
 tos#:#detachCriterionAssignment#:#Delete
+tos#:#tos_accept_usr_agreement_anonymous#:#Terms of Service
+tos#:#tos_accept_usr_agreement_anonymous_intro#:#Before you proceed to ILIAS you accept the following Terms of Service.
 tos#:#tos_acceptance_history#:#Acceptance History
 tos#:#tos_account_reg_not_possible#:#Self-registration is currently not possible because there is no Terms of Service agreement available. Please contact your <a href="%1$s">system administrator</a> for further information.
 tos#:#tos_add_document_btn_label#:#Add Document
@@ -16688,6 +16700,22 @@ ui#:#datetime_required#:#Time/Date required
 ui#:#duration_default_label_end#:#end
 ui#:#duration_default_label_start#:#start
 ui#:#duration_end_must_not_be_earlier_than_start#:#Start must not be later than end.
+ui#:#label_fieldselection#:#Field Selection
+ui#:#label_fieldselection_refresh#:#Apply
+ui#:#label_pagination_limit#:#Pagination Number of Rows
+ui#:#label_pagination_offset#:#Pagination Offset
+ui#:#label_sortation#:#Sortation
+ui#:#order_option_alphabetical_ascending#:#A to Z
+ui#:#order_option_alphabetical_descending#:#Z to A
+ui#:#order_option_chronological_ascending#:#Earliest first
+ui#:#order_option_chronological_descending#:#Most Recent first
+ui#:#order_option_first#:#first
+ui#:#order_option_generic_ascending#:#ascending
+ui#:#order_option_generic_descending#:#descending
+ui#:#order_option_numerical_ascending#:#0 to 9
+ui#:#order_option_numerical_descending#:#9 to 0
+ui#:#presentation_table_collapse#:#collapse all
+ui#:#presentation_table_expand#:#expand all
 ui#:#ui_chars_max#:#Maximum:
 ui#:#ui_chars_min#:#Minimum:
 ui#:#ui_chars_remaining#:#Characters remaining:

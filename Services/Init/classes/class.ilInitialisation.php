@@ -358,7 +358,12 @@ class ilInitialisation
                 )
             );
             $fileUploadImpl->register(new InsecureFilenameSanitizerPreProcessor());
-            $fileUploadImpl->register(new SVGBlacklistPreProcessor());
+            $fileUploadImpl->register(new SVGBlacklistPreProcessor(
+                $c->language()->txt("upload_svg_rejection_message"),
+                $c->language()->txt("upload_svg_rejection_message_script"),
+                $c->language()->txt("upload_svg_rejection_message_base64"),
+                $c->language()->txt("upload_svg_rejection_message_elements")
+            ));
 
             return $fileUploadImpl;
         };
@@ -1717,6 +1722,13 @@ class ilInitialisation
             $requestBaseClass == strtolower(ilImprintGUI::class)
         ) {
             ilLoggerFactory::getLogger('auth')->debug('Blocked authentication for baseClass: ' . ($_GET['baseClass'] ?? ""));
+            return true;
+        }
+
+        if (
+            (strtolower($requestCmdClass ?? "") === strtolower(ilAccessibilityControlConceptGUI::class))
+        ) {
+            ilLoggerFactory::getLogger('auth')->debug('Blocked authentication for cmdClass: ' . $requestCmdClass);
             return true;
         }
 

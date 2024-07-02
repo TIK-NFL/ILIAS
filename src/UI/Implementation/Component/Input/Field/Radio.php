@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -18,6 +16,8 @@ declare(strict_types=1);
  *
  *********************************************************************/
 
+declare(strict_types=1);
+
 namespace ILIAS\UI\Implementation\Component\Input\Field;
 
 use ILIAS\UI\Component as C;
@@ -31,7 +31,7 @@ use Closure;
 /**
  * This implements the radio input.
  */
-class Radio extends Input implements C\Input\Field\Radio
+class Radio extends FormInput implements C\Input\Field\Radio
 {
     use JavaScriptBindable;
     use Triggerer;
@@ -59,6 +59,10 @@ class Radio extends Input implements C\Input\Field\Radio
      */
     protected function getConstraintForRequirement(): ?Constraint
     {
+        if ($this->requirement_constraint !== null) {
+            return $this->requirement_constraint;
+        }
+
         return null;
     }
 

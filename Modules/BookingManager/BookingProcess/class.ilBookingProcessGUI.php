@@ -206,9 +206,9 @@ class ilBookingProcessGUI
             $evening_aggr = $user_settings->getDayEnd();
             $hours = array();
             for ($i = $morning_aggr;$i <= $evening_aggr;$i++) {
+                $hours[$i] = "";
                 switch ($user_settings->getTimeFormat()) {
                     case ilCalendarSettings::TIME_FORMAT_24:
-                        $hours[$i] = "";
                         if ($morning_aggr > 0 && $i === $morning_aggr) {
                             $hours[$i] = sprintf('%02d:00', 0) . "-";
                         }
@@ -1019,13 +1019,11 @@ class ilBookingProcessGUI
         if (!$id) {
             return;
         }
-
         // placeholder
-
         $book_ids = ilBookingReservation::getObjectReservationForUser($id, $this->user_id_assigner);
         $tmp = array();
         foreach ($book_ids as $book_id) {
-            if (in_array($book_id, $this->rsv_ids)) {
+            if (in_array($book_id, $this->rsv_ids) || count($this->rsv_ids) === 0) {
                 $obj = new ilBookingReservation($book_id);
                 $from = $obj->getFrom();
                 $to = $obj->getTo();

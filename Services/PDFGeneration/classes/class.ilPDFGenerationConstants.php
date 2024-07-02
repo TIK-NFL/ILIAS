@@ -55,15 +55,23 @@ class ilPDFGenerationConstants
         ];
     }
 
-
     /**
      * @return array<string, string>
      */
     public static function getOrientations(): array
     {
         return [
-            'Portrait' => 'Portrait' ,
+            'Portrait' => 'Portrait',
             'Landscape' => 'Landscape'
         ];
+    }
+
+    public static function getFontStyles()
+    {
+        return array(
+            'serif' => 'serif',
+            'sans-serif' => 'sans-serif',
+            'monospace' => 'monospace'
+        );
     }
 }

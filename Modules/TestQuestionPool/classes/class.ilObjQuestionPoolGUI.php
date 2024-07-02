@@ -410,6 +410,7 @@ class ilObjQuestionPoolGUI extends ilObjectGUI implements ilCtrlBaseClassInterfa
                 $gui = new ilQuestionPoolSkillAdministrationGUI(
                     $ilias,
                     $ilCtrl,
+                    $this->refinery,
                     $ilAccess,
                     $ilTabs,
                     $tpl,
@@ -1489,7 +1490,7 @@ class ilObjQuestionPoolGUI extends ilObjectGUI implements ilCtrlBaseClassInterfa
             $q_gui = assQuestionGUI::_getQuestionGUI("", $this->qplrequest->getQuestionId());
             if ($q_gui->object instanceof assQuestion) {
                 $q_gui->object->setObjId($this->object->getId());
-                $title = $q_gui->object->getTitle();
+                $title = $this->object->getTitle() . ': ' . $q_gui->object->getTitle();
                 if (!$title) {
                     $title = $this->lng->txt('new') . ': ' . assQuestion::_getQuestionTypeName($q_gui->object->getQuestionType());
                 }

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -17,6 +15,8 @@ declare(strict_types=1);
  * https://github.com/ILIAS-eLearning
  *
  *********************************************************************/
+
+declare(strict_types=1);
 
 /**
  * @author Bjoern Heyser <bheyser@databay.de>
@@ -263,8 +263,8 @@ class ilSessionControl
         $ilSetting = $DIC['ilSetting'];
 
         $ts = time();
-        $min_idle = (int) $ilSetting->get('session_min_idle', self::DEFAULT_MIN_IDLE) * 60;
-        $max_idle = (int) $ilSetting->get('session_max_idle', self::DEFAULT_MAX_IDLE) * 60;
+        $min_idle = (int) $ilSetting->get('session_min_idle', (string) self::DEFAULT_MIN_IDLE) * 60;
+        $max_idle = (int) $ilSetting->get('session_max_idle', (string) self::DEFAULT_MAX_IDLE) * 60;
 
         $query = "SELECT session_id,expires FROM usr_session WHERE expires >= %s " .
                 "AND (expires - %s) < (%s - %s) " .

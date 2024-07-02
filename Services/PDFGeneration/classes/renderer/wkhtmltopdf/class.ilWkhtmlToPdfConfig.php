@@ -30,7 +30,6 @@ class ilWkhtmlToPdfConfig
     protected float $zoom = 1.0;
     protected bool $external_links = false;
     protected bool $enabled_forms = false;
-    protected string $user_stylesheet = '';
     protected bool $greyscale = false;
     protected bool $low_quality = false;
     protected string $orientation = 'Portrait';
@@ -85,7 +84,6 @@ class ilWkhtmlToPdfConfig
         $this->setKeyIfExists('setZoom', 'zoom', $config);
         $this->setKeyIfExists('setEnabledForms', 'enable_forms', $config);
         $this->setKeyIfExists('setExternalLinks', 'external_links', $config);
-        $this->setKeyIfExists('setUserStylesheet', 'user_stylesheet', $config);
         $this->setKeyIfExists('setLowQuality', 'low_quality', $config);
         $this->setKeyIfExists('setGreyscale', 'greyscale', $config);
         $this->setKeyIfExists('setOrientation', 'orientation', $config);
@@ -122,8 +120,8 @@ class ilWkhtmlToPdfConfig
     }
 
     /**
-     * @param string $function
-     * @param string $key
+     * @param string               $function
+     * @param string               $key
      * @param array<string, mixed> $config
      * @return void
      */
@@ -150,7 +148,6 @@ class ilWkhtmlToPdfConfig
         $this->setZoom($config->getZoom());
         $this->setEnabledForms($config->getEnabledForms());
         $this->setExternalLinks($config->getExternalLinks());
-        $this->setUserStylesheet($config->getUserStylesheet());
         $this->setLowQuality($config->getLowQuality());
         $this->setGreyscale($config->getGreyscale());
         $this->setOrientation($config->getOrientation());
@@ -215,16 +212,6 @@ class ilWkhtmlToPdfConfig
     public function setExternalLinks(bool $external_links): void
     {
         $this->external_links = $external_links;
-    }
-
-    public function getUserStylesheet(): string
-    {
-        return $this->user_stylesheet;
-    }
-
-    public function setUserStylesheet(string $user_stylesheet): void
-    {
-        $this->user_stylesheet = $user_stylesheet;
     }
 
     public function getLowQuality(): bool
@@ -599,7 +586,6 @@ class ilWkhtmlToPdfConfig
         $this->getZoomArgument();
         $this->getExternalLinksArgument();
         $this->getEnabledFormsArgument();
-        $this->getUserStylesheetArgument();
         $this->getGreyscaleArgument();
         $this->getLowQualityArgument();
         $this->getOrientationArgument();
@@ -642,14 +628,6 @@ class ilWkhtmlToPdfConfig
         }
     }
 
-    protected function getUserStylesheetArgument(): void
-    {
-        $stylesheet = $this->getUserStylesheet();
-        if ($stylesheet !== '') {
-            $this->config[] = 'user-style-sheet "' . $stylesheet . '"';
-        }
-    }
-
     protected function getGreyscaleArgument(): void
     {
         if ($this->getGreyscale()) {
@@ -684,7 +662,7 @@ class ilWkhtmlToPdfConfig
     protected function getPageSizeArgument(): void
     {
         if ($this->getPageSize() !== '') {
-            $this->config[] = 'page-size ' . $this->getPageSize();
+            $this->config[] = 'page-size ' . ilShellUtil::escapeShellArg($this->getPageSize());
         }
     }
 
@@ -699,7 +677,7 @@ class ilWkhtmlToPdfConfig
     {
         $checkbox_svg = $this->getCheckboxSvg();
         if ($checkbox_svg !== '') {
-            $this->config[] = 'checkbox-svg "' . $checkbox_svg . '"';
+            $this->config[] = 'checkbox-svg ' . ilShellUtil::escapeShellArg($checkbox_svg);
         }
     }
 
@@ -707,7 +685,7 @@ class ilWkhtmlToPdfConfig
     {
         $checkbox_svg = $this->getCheckboxCheckedSvg();
         if ($checkbox_svg !== '') {
-            $this->config[] = 'checkbox-checked-svg "' . $checkbox_svg . '"';
+            $this->config[] = 'checkbox-checked-svg ' . ilShellUtil::escapeShellArg($checkbox_svg);
         }
     }
 
@@ -715,7 +693,7 @@ class ilWkhtmlToPdfConfig
     {
         $radio_button_svg = $this->getRadioButtonSvg();
         if ($radio_button_svg !== '') {
-            $this->config[] = 'radiobutton-svg "' . $radio_button_svg . '"';
+            $this->config[] = 'radiobutton-svg ' . ilShellUtil::escapeShellArg($radio_button_svg);
         }
     }
 
@@ -723,23 +701,23 @@ class ilWkhtmlToPdfConfig
     {
         $radio_button_svg = $this->getRadioButtonCheckedSvg();
         if ($radio_button_svg !== '') {
-            $this->config[] = 'radiobutton-checked-svg "' . $radio_button_svg . '"';
+            $this->config[] = 'radiobutton-checked-svg ' . ilShellUtil::escapeShellArg($radio_button_svg);
         }
     }
 
     protected function getMarginArgument(): void
     {
         if ($this->getMarginBottom() !== '') {
-            $this->config[] = 'margin-bottom ' . $this->getMarginBottom();
+            $this->config[] = 'margin-bottom ' . ilShellUtil::escapeShellArg($this->getMarginBottom());
         }
         if ($this->getMarginLeft() !== '') {
-            $this->config[] = 'margin-left ' . $this->getMarginLeft();
+            $this->config[] = 'margin-left ' . ilShellUtil::escapeShellArg($this->getMarginLeft());
         }
         if ($this->getMarginRight() !== '') {
-            $this->config[] = 'margin-right ' . $this->getMarginRight();
+            $this->config[] = 'margin-right ' . ilShellUtil::escapeShellArg($this->getMarginRight());
         }
         if ($this->getMarginTop() !== '') {
-            $this->config[] = 'margin-top ' . $this->getMarginTop();
+            $this->config[] = 'margin-top ' . ilShellUtil::escapeShellArg($this->getMarginTop());
         }
     }
 
@@ -747,9 +725,9 @@ class ilWkhtmlToPdfConfig
     {
         $header_value = $this->getHeaderType();
         if ($header_value === ilPDFGenerationConstants::HEADER_TEXT) {
-            $this->config[] = 'header-left "' . $this->getHeaderTextLeft() . '"';
-            $this->config[] = 'header-center "' . $this->getHeaderTextCenter() . '"';
-            $this->config[] = 'header-right "' . $this->getHeaderTextRight() . '"';
+            $this->config[] = 'header-left ' . ilShellUtil::escapeShellArg($this->getHeaderTextLeft());
+            $this->config[] = 'header-center ' . ilShellUtil::escapeShellArg($this->getHeaderTextCenter());
+            $this->config[] = 'header-right ' . ilShellUtil::escapeShellArg($this->getHeaderTextRight());
             if ($this->getHeaderTextSpacing() > 0) {
                 $this->config[] = 'header-spacing ' . $this->getHeaderTextSpacing();
             }
@@ -758,7 +736,7 @@ class ilWkhtmlToPdfConfig
                 $this->config[] = 'header-line';
             }
         } elseif ($header_value === ilPDFGenerationConstants::HEADER_HTML) {
-            $this->config[] = 'header-html "' . $this->getHeaderHtml() . '"';
+            $this->config[] = 'header-html ' . ilShellUtil::escapeShellArg($this->getHeaderHtml());
 
             if ($this->getHeaderHtmlSpacing() > 0) {
                 $this->config[] = 'header-spacing ' . $this->getHeaderHtmlSpacing();
@@ -803,9 +781,9 @@ class ilWkhtmlToPdfConfig
     {
         $footer_value = $this->getFooterType();
         if ($footer_value === ilPDFGenerationConstants::FOOTER_TEXT) {
-            $this->config[] = 'footer-left "' . $this->getFooterTextLeft() . '"';
-            $this->config[] = 'footer-center "' . $this->getFooterTextCenter() . '"';
-            $this->config[] = 'footer-right "' . $this->getFooterTextRight() . '"';
+            $this->config[] = 'footer-left ' . ilShellUtil::escapeShellArg($this->getFooterTextLeft());
+            $this->config[] = 'footer-center ' . ilShellUtil::escapeShellArg($this->getFooterTextCenter());
+            $this->config[] = 'footer-right ' . ilShellUtil::escapeShellArg($this->getFooterTextRight());
             if ($this->getFooterTextSpacing() > 0) {
                 $this->config[] = 'footer-spacing ' . $this->getFooterTextSpacing();
             }
@@ -814,7 +792,7 @@ class ilWkhtmlToPdfConfig
                 $this->config[] = 'footer-line';
             }
         } elseif ($footer_value === ilPDFGenerationConstants::FOOTER_HTML) {
-            $this->config[] = 'footer-html "' . $this->getFooterHtml() . '"';
+            $this->config[] = 'footer-html ' . ilShellUtil::escapeShellArg($this->getFooterHtml());
 
             if ($this->getFooterHtmlSpacing() > 0) {
                 $this->config[] = 'footer-spacing ' . $this->getFooterHtmlSpacing();

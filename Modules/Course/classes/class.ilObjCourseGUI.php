@@ -925,13 +925,11 @@ class ilObjCourseGUI extends ilContainerGUI
             )
         ) {
             $this->tpl->setOnScreenMessage(
-                'failure',
+                'info',
                 $this->lng->txt('crs_msg_no_self_registration_period_if_self_enrolment_disabled'),
                 true
             );
-            $form->setValuesByPost();
-            $this->tpl->setOnScreenMessage('failure', $GLOBALS['DIC']->language()->txt('err_check_input'));
-            $this->editObject($form);
+            $this->ctrl->redirect($this, "edit");
             return;
         }
 
@@ -1214,7 +1212,7 @@ class ilObjCourseGUI extends ilContainerGUI
         $form = $obj_service->commonSettings()->legacyForm($form, $this->object)->addTopActionsVisibility();
 
         // breadcrumbs
-        if ($setting->get("rep_breadcr_crs_overwrite")) {
+        if ($setting->get("rep_breadcr_crs") && $setting->get("rep_breadcr_crs_overwrite")) {
             $add = $setting->get("rep_breadcr_crs_default")
                 ? " (" . $this->lng->txt("crs_breadcrumb_crs_only") . ")"
                 : " (" . $this->lng->txt("crs_breadcrumb_full_path") . ")";
@@ -2340,6 +2338,9 @@ class ilObjCourseGUI extends ilContainerGUI
                 break;
 
             case "ilnewstimelinegui":
+                if (!$this->__checkStartObjects()) {    // see #37236
+                    $this->ctrl->redirectByClass(self::class, "view");
+                }
                 $this->tabs_gui->setTabActive('news_timeline');
                 $t = ilNewsTimelineGUI::getInstance(
                     $this->object->getRefId(),

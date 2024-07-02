@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -18,6 +16,8 @@ declare(strict_types=1);
  *
  *********************************************************************/
 
+declare(strict_types=1);
+
 namespace ILIAS\UI\Implementation\Component\Input\Field;
 
 use ILIAS\UI\Component as C;
@@ -32,7 +32,7 @@ use InvalidArgumentException;
 /**
  * This implements the checkbox input.
  */
-class Checkbox extends Input implements C\Input\Field\Checkbox, C\Changeable, C\Onloadable
+class Checkbox extends FormInput implements C\Input\Field\Checkbox, C\Changeable, C\Onloadable
 {
     use JavaScriptBindable;
 
@@ -41,6 +41,10 @@ class Checkbox extends Input implements C\Input\Field\Checkbox, C\Changeable, C\
      */
     protected function getConstraintForRequirement(): ?Constraint
     {
+        if ($this->requirement_constraint !== null) {
+            return $this->requirement_constraint;
+        }
+
         return null;
     }
 

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -17,6 +15,8 @@ declare(strict_types=1);
  * https://github.com/ILIAS-eLearning
  *
  *********************************************************************/
+
+declare(strict_types=1);
 
 /**
  *
@@ -332,8 +332,10 @@ class ilAuthFrontend
         }
         $user->refreshLogin();
 
-        // reset counter for failed logins
-        ilObjUser::_resetLoginAttempts($user->getId());
+        if ($user->getLoginAttempts() > 0) {
+            $user->setLoginAttempts(0);
+            $user->update();
+        }
 
 
         $this->logger->info('Successfully authenticated: ' . ilObjUser::_lookupLogin($this->getStatus()->getAuthenticatedUserId()));
@@ -346,7 +348,7 @@ class ilAuthFrontend
 
 
         // --- anonymous/registered user
-        if (PHP_SAPI !=="cli") {
+        if (PHP_SAPI !== "cli") {
             $this->logger->info(
                 'logged in as ' . $user->getLogin() .
             ', remote:' . $_SERVER['REMOTE_ADDR'] . ':' . $_SERVER['REMOTE_PORT'] .

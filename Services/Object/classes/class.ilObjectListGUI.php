@@ -1359,6 +1359,7 @@ class ilObjectListGUI
                 ];
                 $nl = false;
             }
+
             $cnt_tags = self::$cnt_tags[$note_obj_id] ?? 0;
             if ($this->tags_enabled && ($cnt_tags > 0 || isset(self::$tags[$note_obj_id]))) {
                 $tags_set = new ilSetting("tags");
@@ -3342,6 +3343,21 @@ class ilObjectListGUI
             ->icon()
             ->standard($type, $this->lng->txt('obj_' . $type))
         ;
+
+
+
+        if ($this->obj_definition->isActivePluginType($type)) {
+            $class_name = 'il' . $this->obj_definition->getClassName($type) . 'Plugin';
+            if ($class_name !== 'ilPlugin'
+            && method_exists($class_name, '_getIcon')) {
+                $pl = ilObjectPlugin::getPluginObjectByType($type);
+                $icon = $this->ui
+                    ->factory()
+                    ->symbol()
+                    ->icon()
+                    ->custom(call_user_func([$class_name, '_getIcon'], $type, 'small', $obj_id), $pl->txt('obj_' . $type));
+            }
+        }
 
         // card title action
         $card_title_action = "";
