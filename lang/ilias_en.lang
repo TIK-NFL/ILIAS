@@ -6021,6 +6021,7 @@ cont#:#cont_news_timeline_info#:#Activate News Timeline Tab
 cont#:#cont_news_timeline_landing_page#:#Landing Page
 cont#:#cont_news_timeline_landing_page_info#:#Set the Timeline tab as the group’s landing page.
 cont#:#cont_news_timeline_tab#:#Timeline
+cont#:#cont_no_title#:#Empty Title
 cont#:#cont_page_type_cont#:#Repository Page (Cours, Group, ...)
 cont#:#cont_page_type_cstr#:#Course Start Page (Learning Objectives View)
 cont#:#cont_path#:#Path
@@ -16754,6 +16755,7 @@ user#:#enable_local_user_administration#:#Enable Local User Administration
 user#:#enable_local_user_administration_info#:#Allow local user accounts to be administrated in categories and organisational units.
 user#:#feedhash#:#Newsfeedhash
 user#:#has_role#:#Role
+user#:#info_accessFree_sure#:#Are you sure you want to remove the valid until date from the following accounts?
 user#:#inform_user_mail_info#:#If activated, an e-mail will be sent to the user. Its content can be defined in 'Administration » Users and Roles » User Management', tab 'Settings : New Account Mail'.
 user#:#interests#:#Interests
 user#:#interests_general#:#General Interests

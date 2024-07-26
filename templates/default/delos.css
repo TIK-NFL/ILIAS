@@ -8868,6 +8868,22 @@ fieldset[disabled] .il-table-presentation-viewcontrols .btn-default.engaged.focu
   position: relative;
   white-space: nowrap;
 }
+.il-table-presentation-row.expanded .il-table-presentation-row-expanded,
+.il-table-presentation-row.expanded .il-table-presentation-row-controls-collapser {
+  display: block;
+}
+.il-table-presentation-row.expanded .il-table-presentation-row-header-fields,
+.il-table-presentation-row.expanded .il-table-presentation-row-controls-expander {
+  display: none;
+}
+.il-table-presentation-row.collapsed .il-table-presentation-row-expanded,
+.il-table-presentation-row.collapsed .il-table-presentation-row-controls-collapser {
+  display: none;
+}
+.il-table-presentation-row.collapsed .il-table-presentation-row-header-fields,
+.il-table-presentation-row.collapsed .il-table-presentation-row-controls-expander {
+  display: block;
+}
 .il-table-presentation-row .il-table-presentation-actions {
   right: 10px;
   position: absolute;
@@ -8880,14 +8896,6 @@ fieldset[disabled] .il-table-presentation-viewcontrols .btn-default.engaged.focu
 .il-table-presentation-row .il-table-presentation-row-controls {
   width: 5%;
   padding-left: 6px;
-}
-.il-table-presentation-row .il-table-presentation-row-controls .il-table-presentation-row-controls-collapser {
-  display: none;
-  /*initially hidden*/
-}
-.il-table-presentation-row .il-table-presentation-row-controls .il-table-presentation-row-controls-expander {
-  display: block;
-  /*initially visible*/
 }
 .il-table-presentation-row .il-table-presentation-row-contents {
   white-space: normal;
@@ -8909,15 +8917,9 @@ fieldset[disabled] .il-table-presentation-viewcontrols .btn-default.engaged.focu
   margin: 0;
   cursor: pointer;
 }
-.il-table-presentation-row .il-table-presentation-row-header .il-table-presentation-row-header-fields {
-  display: block;
-  /*initially visible*/
-}
 .il-table-presentation-row .il-table-presentation-row-expanded {
   margin-right: -15px;
   margin-left: -15px;
-  display: none;
-  /*initially hidden*/
   margin-top: 6px;
   margin-left: 0;
   margin-right: 0;
@@ -16307,6 +16309,50 @@ span.bibl_text_inline_Emph {
   top: 50%;
   width: 100px;
   cursor: pointer;
+}
+.mejs__overlay-button:focus-visible,
+.mejs__container:focus-visible,
+.ilPlayerPreviewPlayButton:focus-visible,
+.mejs__time-total:focus-visible {
+  position: relative;
+  outline: 2px solid #FFFFFF;
+  outline-offset: 4px;
+}
+.mejs__overlay-button:focus-visible::after,
+.mejs__container:focus-visible::after,
+.ilPlayerPreviewPlayButton:focus-visible::after,
+.mejs__time-total:focus-visible::after {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid #FFFFFF;
+  outline: 3px solid #0078D7;
+}
+.mejs__overlay-button:active,
+.mejs__container:active,
+.ilPlayerPreviewPlayButton:active,
+.mejs__time-total:active,
+.mejs__overlay-button.engaged,
+.mejs__container.engaged,
+.ilPlayerPreviewPlayButton.engaged,
+.mejs__time-total.engaged {
+  outline: none;
+}
+.mejs__button button:focus-visible,
+.ilPageVideo button:focus-visible {
+  outline: none;
+  border: 3px solid #0078D7;
+  box-shadow: inset 0px 0px 0px 2px #FFFFFF, 0px 0px 0px 2px #FFFFFF;
+  outline-offset: initial;
+}
+.mejs__button button::after,
+.ilPageVideo button::after,
+.mejs__button button:focus:focus-visible::after,
+.ilPageVideo button:focus:focus-visible::after {
+  content: none;
 }
 .ilPlayerPreviewOverlay:hover .ilPlayerPreviewPlayButton {
   background-position: 0 -100px;
