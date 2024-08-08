@@ -30,9 +30,14 @@ trait SecureString
 {
     protected function secure(string $string): string
     {
+        $preg_replace = preg_replace('#\p{C}+#u', '', $string);
+        if (empty($preg_replace)) {
+            throw new \RuntimeException('Failed to remove control characters from string.'. preg_last_error_msg());
+        }
+
         return htmlspecialchars(
             strip_tags(
-                preg_replace('#\p{C}+#u', '', $string)
+                $preg_replace
             ),
             ENT_QUOTES,
             'UTF-8',
