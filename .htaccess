@@ -13,6 +13,7 @@
 	RewriteCond %{HTTP_USER_AGENT} ^(DavClnt)$
 	RewriteCond %{REQUEST_METHOD} ^(OPTIONS)$
 	RewriteRule .* "-" [R=401,L]
+	RewriteRule ^/?vote(/\w*)? /Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/pin.php?xlvo_pin=$1 [L]
 </IfModule>
 <IfModule mod_alias.c>
 	RedirectMatch 404 /\.git
