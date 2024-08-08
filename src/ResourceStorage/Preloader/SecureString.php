@@ -28,20 +28,26 @@ namespace ILIAS\ResourceStorage\Preloader;
  */
 trait SecureString
 {
-    protected function secure(string $string): string
-    {
-        $preg_replace = preg_replace('#\p{C}+#u', '', $string);
-        if (empty($preg_replace)) {
-            throw new \RuntimeException('Failed to remove control characters from string.'. preg_last_error_msg());
-        }
-
-        return htmlspecialchars(
-            strip_tags(
-                $preg_replace
-            ),
-            ENT_QUOTES,
-            'UTF-8',
-            false
-        );
-    }
+	protected function secure(string $string): string
+	{
+		// Normalize UTF-8 string, remove any invalid sequences
+		$string = mb_convert_encoding($string, 'UTF-8', 'UTF-8');
+	
+		// Remove invalid UTF-8 sequences that could be 4-byte UTF-8 (utf8mb4)
+		$string = preg_replace('/[\x{10000}-\x{10FFFF}]/u', '', $string);
+	
+		// Remove control characters
+		$string = preg_replace('#\p{C}+#u', '', $string);
+		if ($string === null) {
+			throw new \RuntimeException('Failed to remove control characters from string. ' . preg_last_error_msg());
+		}
+	
+		// Sanitize by stripping HTML tags and encoding special characters
+		return htmlspecialchars(
+			strip_tags($string),
+			ENT_QUOTES,
+			'UTF-8',
+			false
+		);
+	}
 }
