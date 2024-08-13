@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /register.php*
+Disallow: /pwassist.php*
+Disallow: /goto_Uni_Stuttgart_usr_nameassist.html*
+Disallow: /goto_Uni_Stuttgart_usr_pwassist.html*
+Disallow: /goto_UniStuttgartFG_usr_nameassist.html*
+Disallow: /goto_UniStuttgartFG_usr_pwassist.html*
