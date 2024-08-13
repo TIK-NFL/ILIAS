@@ -2651,8 +2651,8 @@ buddysystem#:#buddy_notification_contact_request_ignore#:#Ignore Request
 buddysystem#:#buddy_notification_contact_request_ignore_osd#:#Ignore Request
 buddysystem#:#buddy_notification_contact_request_link#:#Approve Request
 buddysystem#:#buddy_notification_contact_request_link_osd#:#Approve Request
-buddysystem#:#buddy_notification_contact_request_long#:#[SALUTATION][BR][BR]"[REQUESTING_USER]" wants to add you to his friends list.[BR][BR]Personal Profile Link: [PERSONAL_PROFILE_LINK][BR][BR][APPROVE_REQUEST_TXT] [APPROVE_REQUEST][BR][IGNORE_REQUEST_TXT] [IGNORE_REQUEST]
-buddysystem#:#buddy_notification_contact_request_short#:#The user "[REQUESTING_USER]" wants to add you to his friends list.
+buddysystem#:#buddy_notification_contact_request_long#:#[SALUTATION][BR][BR]"[REQUESTING_USER]" wants to add you to their friends list.[BR][BR]Personal Profile Link: [PERSONAL_PROFILE_LINK][BR][BR][APPROVE_REQUEST_TXT] [APPROVE_REQUEST][BR][IGNORE_REQUEST_TXT] [IGNORE_REQUEST]
+buddysystem#:#buddy_notification_contact_request_short#:#The user "[REQUESTING_USER]" wants to add you to their friends list.
 buddysystem#:#buddy_relation_requested#:#A request has been sent to the user.
 buddysystem#:#buddy_request_approved#:#You successfully approved the contact.
 buddysystem#:#buddy_request_ignored#:#You ignored the user.
@@ -14174,6 +14174,8 @@ registration#:#reg_direct#:#Direct Registration
 registration#:#reg_direct_info#:#New user registration requests are automatically approved.
 registration#:#reg_disabled#:#No Registration Possible
 registration#:#reg_domain#:#Domain
+registration#:#reg_domain_already_assigned_p#:#The domains '%s' were already entered for another role.
+registration#:#reg_domain_already_assigned_s#:#The domain '%s' was already entered for another role. 
 registration#:#reg_email#:#Automatic Role Assignment
 registration#:#reg_email_domains#:#The following e-mail address domains are valid: %s
 registration#:#reg_email_domains_code#:#With a registration code any E-Mail-Address is valid.
