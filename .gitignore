@@ -13,6 +13,9 @@
 /nbproject
 /templates/default/delos.css.map
 
+# Betrieb
+/opcache.php
+
 # General Patterns
 *.bak
 .DS_Store
