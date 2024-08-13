@@ -15,6 +15,7 @@
 
 # Betrieb
 /opcache.php
+/google*.html
 
 # General Patterns
 *.bak
