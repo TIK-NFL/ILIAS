@@ -2781,7 +2781,7 @@ certificate#:#certificate_settings#:#Certificate Settings
 certificate#:#certificate_short_name#:#Certificate file short title
 certificate#:#certificate_short_name_description#:#Please enter a short title for the certificate name. The short title will be part of the certificate name: YYMMDD_[surname]_[SHORT_TITLE]_certificate.pdf.
 certificate#:#certificate_text#:#Certificate Text
-certificate#:#certificate_text_info#:#Please enter the certificate text. If the WYSIWYG editor is disabled in the ILIAS administration, you can still use valid XHTML to format the text.
+certificate#:#certificate_text_info#:#Please enter the certificate text. If the WYSIWYG editor is disabled in the ILIAS administration, you can still use valid XHTML to format the text.<br><br>
 certificate#:#certificate_unit_description#:#Enter units of measure as VALUE[cm|mm|in|pt|pc|px|em], e.g. 10mm or 3in
 certificate#:#certificate_usage#:#Please note that the usage of certificates is only available if the ILIAS Java-Server is running. The configuration for Java-Server is available in Administration » General Settings » Server, sub-tab Java-Server.
 certificate#:#certificate_var_max_points#:#46
@@ -3461,6 +3461,7 @@ common#:#adve_assessment_settings#:#Test and Assessment Settings
 common#:#adve_frm_post_settings#:#Forum Posts
 common#:#adve_general_settings#:#General Settings
 common#:#adve_survey_settings#:#Survey Settings
+common#:#agree_date#:#Agreed on
 common#:#all#:#All
 common#:#all_global_roles#:#Global Roles
 common#:#all_local_roles#:#Local Roles (all)
@@ -9218,7 +9219,7 @@ exc#:#exc_create_blog_select_info#:#Please select the resources folder in which 
 exc#:#exc_create_portfolio#:#Create Portfolio
 exc#:#exc_create_portfolio_no_template#:#Do not use template
 exc#:#exc_create_team#:#Create Team
-exc#:#exc_create_team_times_up_warning#:#You cannot create a team anymore - please contact your tutor.
+exc#:#exc_create_team_times_up_warning#:#You cannot create or join a team anymore.
 exc#:#exc_create_wiki#:#Create Wiki
 exc#:#exc_crit_cat_protected_assignment#:#Active Peer Feedback
 exc#:#exc_crit_cat_protected_assignment_info#:#Criteria catalogues of assignments with active peer feedback cannot be edited anymore.
@@ -17329,8 +17330,8 @@ user#:#usr_public_profile_global#:#WWW / Accessible for all Users on the Interne
 user#:#usr_public_profile_logged_in#:#Visible for logged in Users
 usr#:#user_action#:#User Action
 usr#:#user_actions#:#User Actions
-usr#:#user_actions_activation_info#:#Actions will only be listet for users, if the corresponding services are activated and all preconditions are given (e.g. permissions requirements).
-validation#:#datetime_required#:#Time/Date required
+usr#:#user_actions_activation_info#:#Actions will only be listed for users if the corresponding services have been activated and all preconditions are met (e.g. permissions requirements).
+validation#:#datetime_required#:#Time/date required
 validation#:#no_array#:#Given value is not an array
 validation#:#not_a_null#:#Value of type '%s' is not a null.
 validation#:#not_a_string#:#Value of type '%s' is not a string.
