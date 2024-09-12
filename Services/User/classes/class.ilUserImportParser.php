@@ -187,23 +187,13 @@ class ilUserImportParser extends ilSaxParser
      */
     public array $parentRolesCache;
 
-    public string $skin;
-    public string $style;
+    public string $skin = '';
+    public string $style = '';
 
     /**
      * User assigned styles
      */
     public array $userStyles; // Missing array type.
-
-    /**
-     * Indicates if the skins are hidden
-     */
-    public bool $hideSkin;
-
-    /**
-     * Indicates if the skins are enabled
-     */
-    public bool $disableSkin;
 
     public int $user_id;
 
@@ -256,9 +246,6 @@ class ilUserImportParser extends ilSaxParser
                 }
             }
         }
-
-        $this->hideSkin = (!$this->user_settings_config->isVisible("skin_style"));
-        $this->disableSkin = (!$this->user_settings_config->isChangeable("skin_style"));
 
         $this->acc_mail = new ilAccountMail();
         $this->acc_mail->setAttachConfiguredFiles(true);
@@ -438,7 +425,7 @@ class ilUserImportParser extends ilSaxParser
                 if (isset($a_attribs["Id"]) && $this->getUserMappingMode() == IL_USER_MAPPING_ID) {
                     if (is_numeric($a_attribs["Id"])) {
                         $this->user_id = $a_attribs["Id"];
-                    } elseif ($id = ilUtil::__extractId($a_attribs["Id"], IL_INST_ID) > 0) {
+                    } elseif (($id = ilUtil::__extractId($a_attribs["Id"], IL_INST_ID)) > 0) {
                         $this->user_id = $id;
                     }
                 }
@@ -575,7 +562,7 @@ class ilUserImportParser extends ilSaxParser
                 $this->containedTags = [];
                 $this->userObj = new ilObjUser();
                 $this->userObj->setLanguage($a_attribs["Language"] ?? '');
-                $this->userObj->setImportId($a_attribs["Id"]);
+                $this->userObj->setImportId($a_attribs["Id"] ?? '');
                 $this->currentPrefKey = null;
                 // if we have an object id, store it
                 $this->user_id = -1;
@@ -1576,15 +1563,12 @@ class ilUserImportParser extends ilSaxParser
 
             case "Look":
                 $this->updateLookAndSkin = false;
-                if (!$this->hideSkin) {
-                    // TODO: what to do with disabled skins? is it possible to change the skin via import?
-                    if ((strlen($this->skin) > 0) && (strlen($this->style) > 0)) {
-                        if (is_array($this->userStyles)) {
-                            if (in_array($this->skin . ":" . $this->style, $this->userStyles)) {
-                                $this->userObj->setPref("skin", $this->skin);
-                                $this->userObj->setPref("style", $this->style);
-                                $this->updateLookAndSkin = true;
-                            }
+                if ($this->skin !== '' && $this->style !== '') {
+                    if (is_array($this->userStyles)) {
+                        if (in_array($this->skin . ':' . $this->style, $this->userStyles)) {
+                            $this->userObj->setPref('skin', $this->skin);
+                            $this->userObj->setPref('style', $this->style);
+                            $this->updateLookAndSkin = true;
                         }
                     }
                 }
