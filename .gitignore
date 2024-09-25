@@ -17,8 +17,8 @@
 /opcache.php
 /google*.html
 /apctest.php
-/Modules/Chatroom/chat/package-lock.json
-/package-lock.json
+#/Modules/Chatroom/chat/package-lock.json
+#/package-lock.json
 
 # General Patterns
 *.bak
