@@ -16,8 +16,9 @@
  *
  *********************************************************************/
 
-use ILIAS\FileUpload\MimeType;
-use ILIAS\Modules\File\Settings\General;
+use ILIAS\File\Capabilities\Capabilities;
+use ILIAS\File\Capabilities\CapabilityResolver;
+use ILIAS\File\Capabilities\Permissions;
 
 /**
  * Access class for file objects.
@@ -73,29 +74,39 @@ class ilObjFileAccess extends ilObjectAccess implements ilWACCheckingClass
     {
         return [
             [
-                "permission" => "read",
-                "cmd" => "sendfile",
+                "permission" => Permissions::READ->value,
+                "cmd" => Capabilities::DOWNLOAD->value,
                 "lang_var" => "download",
-                "default" => true,
+                // "default" => true, // we decide the best matching capability later in ListGUI
             ],
             [
-                "permission" => "write",
-                "cmd" => ilFileVersionsGUI::CMD_UNZIP_CURRENT_REVISION,
+                "permission" => Permissions::VISIBLE->value,
+                "cmd" => Capabilities::INFO_PAGE->value,
+                "lang_var" => "info",
+            ],
+            [
+                "permission" => Permissions::WRITE->value,
+                "cmd" => Capabilities::UNZIP->value,
                 "lang_var" => "unzip",
             ],
             [
-                "permission" => "edit_file",
-                "cmd" => 'editExternal',
+                "permission" => Permissions::EDIT_FILE->value,
+                "cmd" => Capabilities::EDIT_EXTERNAL->value,
                 "lang_var" => "open_external_editor",
             ],
             [
-                "permission" => "write",
-                "cmd" => "versions",
+                "permission" => Permissions::VIEW_CONTENT->value,
+                "cmd" => Capabilities::VIEW_EXTERNAL->value,
+                "lang_var" => "open_external_viewer",
+            ],
+            [
+                "permission" => Permissions::WRITE->value,
+                "cmd" => Capabilities::MANAGE_VERSIONS->value,
                 "lang_var" => "versions",
             ],
             [
-                "permission" => "write",
-                "cmd" => "edit",
+                "permission" => Permissions::WRITE->value,
+                "cmd" => Capabilities::EDIT_SETTINGS->value,
                 "lang_var" => "settings"
             ]
         ];
@@ -127,7 +138,7 @@ class ilObjFileAccess extends ilObjectAccess implements ilWACCheckingClass
                 }
                 break;
                 // for permission query feature
-            case "infoScreen":
+            case Capabilities::INFO_PAGE->value:
                 if (!self::_lookupOnline($obj_id)) {
                     $ilAccess->addInfoItem(ilAccessInfo::IL_NO_OBJECT_ACCESS, $lng->txt("offline"));
                 } else {

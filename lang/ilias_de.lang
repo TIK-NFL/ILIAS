@@ -49,7 +49,7 @@ acc#:#acc_form_document#:#Dokument
 acc#:#acc_form_document_content_changed#:#Der Inhalt der hochgeladenen Datei wurde durch ILIAS bereinigt. Bitte prüfen Sie das Ergebnis und laden im Zweifel eine neue Datei hoch.
 acc#:#acc_form_document_info#:#Bitte wählen Sie eine entsprechende Datei von Ihrem lokalen Dateisystem. Sie können eine einfache Text-Datei oder eine HTML-Datei hochladen. Es wird nur ein Teil des HTML-Sprachumfangs unterstützt. Bitte beachten Sie, dass HTML-Dateien beim Hochladen bereinigt werden, und nur der Inhalt des body-Elements übernommen wird.
 acc#:#acc_form_document_new#:#Inhalt ändern
-acc#:#acc_form_document_new_info#:#Hier können Sie eine neue Datei von Ihrem lokalen Dateisystem wählen um das Dokument zu ändern. Sie können eine einfache Text-Datei oder eine HTML-Datei hochladen. Es wird nicht der komplette HTML-Sprachumfang unterstützt. Bitte beachten Sie, dass HTML-Dateien beim Hochladen bereinigt werden, und nur der Inhalt des body-Elements übernommen wird. Der bestehende Inhalt des Dokuments wird ausgetauscht.
+acc#:#acc_form_document_new_info#:#Hier können Sie eine neue Datei von Ihrem lokalen Dateisystem wählen, um das Dokument zu ändern. Sie können eine einfache Text-Datei oder eine HTML-Datei hochladen. Es wird nicht der komplette HTML-Sprachumfang unterstützt. Bitte beachten Sie, dass HTML-Dateien beim Hochladen bereinigt werden, und nur der Inhalt des body-Elements übernommen wird. Der bestehende Inhalt des Dokuments wird ausgetauscht.
 acc#:#acc_form_document_title#:#Titel
 acc#:#acc_form_document_title_info#:#Geben Sie hier einen Titel für das Dokument ein.
 acc#:#acc_form_edit_criterion_head#:#Vorlagekriterium bearbeiten
