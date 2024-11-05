@@ -104,20 +104,16 @@ class ilObjNotificationAdminGUI extends ilObjectGUI
         $form = $this->getForm()->withRequest($this->dic->http()->request());
         $data = $form->getData();
         if (isset($data['osd']) && is_array($data['osd'])) {
-            if (!isset($data['osd']['enable_osd'])) {
-                global $DIC;
-                $DIC->notifications()->system()->clear('osd');
-                $settings->set('enable_osd', '0');
-                $settings->delete('osd_interval');
-                $settings->delete('osd_vanish');
-                $settings->delete('osd_delay');
-                $settings->delete('osd_play_sound');
-            } else {
+            if (isset($data['osd']['enable_osd'])) {
                 $settings->set('enable_osd', '1');
                 $settings->set('osd_interval', ((string) $data['osd']['enable_osd']['osd_interval']));
                 $settings->set('osd_vanish', ((string) $data['osd']['enable_osd']['osd_vanish']));
                 $settings->set('osd_delay', ((string) $data['osd']['enable_osd']['osd_delay']));
                 $settings->set('osd_play_sound', ($data['osd']['enable_osd']['osd_play_sound']) ? '1' : '0');
+            } else {
+                global $DIC;
+                $DIC->notifications()->system()->clear('osd');
+                $settings->set('enable_osd', '0');
             }
         }
         $this->showOSDSettings($form);
