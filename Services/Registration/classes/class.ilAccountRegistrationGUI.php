@@ -163,6 +163,9 @@ class ilAccountRegistrationGUI
         $this->lng->loadLanguageModule("user");
         // add fields to form
         $this->user_profile->addStandardFieldsToForm($this->form, null, $custom_fields);
+        // BEGIN Patch hide username in registration forms
+        $this->form->removeItemByPostVar("username");
+        // END Patch
         unset($custom_fields);
 
         // set language selection to current display language
@@ -315,25 +318,29 @@ class ilAccountRegistrationGUI
             $form_valid = false;
         }
 
+        // BEGIN Patch hide username in registration forms
         // validate username
-        $login_obj = $this->form->getItemByPostVar('username');
-        $login = $this->form->getInput("username");
+        // $login_obj = $this->form->getItemByPostVar('username');
+        // $login = $this->form->getInput("username");
+        $login = "registration_" . time();
+
         if (!ilUtil::isLogin($login)) {
-            $login_obj->setAlert($this->lng->txt("login_invalid"));
+            // $login_obj->setAlert($this->lng->txt("login_invalid"));
             $form_valid = false;
         }
 
         if ($form_valid) {
             if (ilObjUser::_loginExists($login)) {
-                $login_obj->setAlert($this->lng->txt("login_exists"));
+                // $login_obj->setAlert($this->lng->txt("login_exists"));
                 $form_valid = false;
             } elseif ((int) $this->settings->get('allow_change_loginname') &&
                 (int) $this->settings->get('reuse_of_loginnames') === 0 &&
                 ilObjUser::_doesLoginnameExistInHistory($login)) {
-                $login_obj->setAlert($this->lng->txt('login_exists'));
+                // $login_obj->setAlert($this->lng->txt('login_exists'));
                 $form_valid = false;
             }
         }
+        // END Patch
 
         if (!$form_valid) {
             $this->tpl->setOnScreenMessage('failure', $this->lng->txt('form_input_not_valid'));
@@ -378,6 +385,10 @@ class ilAccountRegistrationGUI
                 }
             }
         }
+
+        // BEGIN Patch hide username in registration forms
+        $this->userObj->setLogin('login_' . time());
+        // END Patch
 
         $this->userObj->setFullName();
 
