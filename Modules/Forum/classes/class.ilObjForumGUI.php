@@ -177,7 +177,7 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
         }
 
         if ($subtree_nodes !== [] && $this->objCurrentPost->getId() > 0) {
-            $isCurrentPostingInPage = array_filter($pagedPostings, fn(ilForumPost $posting): bool => (
+            $isCurrentPostingInPage = array_filter($pagedPostings, fn (ilForumPost $posting): bool => (
                 $posting->getId() === $this->objCurrentPost->getId()
             ));
 
@@ -805,14 +805,14 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
         }
 
         $found_threads = false;
-        if(count($top_group) > 0) {
+        if (count($top_group) > 0) {
             $top_threads = $this->factory->item()->group($this->lng->txt('top_thema'), $top_group);
             $found_threads = true;
         } else {
             $top_threads = $this->factory->item()->group('', $top_group);
         }
 
-        if(count($thread_group) > 0) {
+        if (count($thread_group) > 0) {
             $normal_threads = $this->factory->item()->group($this->lng->txt('thema'), $thread_group);
             $found_threads = true;
         } else {
@@ -1718,7 +1718,9 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
             );
         }
 
-        if ($this->settings->get('enable_fora_statistics', '0')) {
+        if ($this->settings->get('enable_fora_statistics', '0')
+            // Quickfix for 0034574 until a more permanent solutions arives
+            && !$this->objProperties->isAnonymized()) {
             $hasStatisticsAccess = $this->access->checkAccess('write', '', $this->ref_id);
             if (!$hasStatisticsAccess) {
                 $hasStatisticsAccess = (
