@@ -67,11 +67,6 @@ class ilUserProfile
                 in_array($f, $this->skip_fields)) {
                 continue;
             }
-            // BEGIN PATCH AutogenerateUsername
-            if ($f == 'username') {
-                continue;
-            }
-            // END PATCH AutogenerateUsernam
             $fields[$f] = $p;
         }
         return $fields;
@@ -460,13 +455,8 @@ class ilUserProfile
             $login_input->setSize(255);
             $login_input->setRequired(true);
         }
-        // BEGIN Patch hide username in registration forms
-        if (
-            $user !== null &&
-            !$this->mode == self::MODE_REGISTRATION
-        ) {
-        //if ($user !== null) {
-        // END Patch
+
+        if ($user !== null) {
             $login_input->setValue($user->getLogin());
         }
         return $login_input;
