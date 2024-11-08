@@ -16,13 +16,6 @@
  *
  *********************************************************************/
 
-use ILIAS\DI\Container;
-use ILIAS\Filesystem\Stream\FileStream;
-use ILIAS\FileUpload\DTO\UploadResult;
-use ILIAS\FileUpload\FileUpload;
-use ILIAS\ResourceStorage\Manager\Manager;
-use ILIAS\ResourceStorage\Revision\Revision;
-use ILIAS\ResourceStorage\Policy\FileNamePolicyException;
 use ILIAS\Data\DataSize;
 use ILIAS\FileUpload\MimeType;
 
@@ -63,15 +56,30 @@ class ilObjFileInfoRepository
         return array_map('strtolower', explode(' ', $settings->get('inline_file_extensions', '')));
     }
 
-    public function preloadData(array $object_ids): void
+    public function preloadData(array $ids, bool $are_ref_ids = false): void
     {
-        $res = $this->db->query(
-            "SELECT title, rid, file_id, page_count  FROM file_data JOIN object_data ON object_data.obj_id = file_data.file_id WHERE rid IS NOT NULL AND " . $this->db->in(
-                'file_id',
-                $object_ids,
+        if ($are_ref_ids) {
+            $query = "SELECT title, rid, file_id, page_count  
+                FROM file_data 
+                    JOIN object_data ON object_data.obj_id = file_data.file_id 
+                    JOIN object_reference ON object_reference.obj_id = object_data.obj_id  
+                WHERE rid IS NOT NULL AND " . $this->db->in(
+                'ref_id',
+                $ids,
                 false,
                 'integer'
-            )
+            );
+        } else {
+            $query = "SELECT title, rid, file_id, page_count  FROM file_data JOIN object_data ON object_data.obj_id = file_data.file_id WHERE rid IS NOT NULL AND " . $this->db->in(
+                'file_id',
+                $ids,
+                false,
+                'integer'
+            );
+        }
+
+        $res = $this->db->query(
+            $query
         );
         $rids = [];
         $page_counts = [];
@@ -113,7 +121,12 @@ class ilObjFileInfoRepository
 
     public function getByObjectId(int $object_id): ilObjFileInfo
     {
+        if (isset(self::$cache[$object_id])) {
+            return self::$cache[$object_id];
+        }
+
         $this->preloadData([$object_id]);
+
         return self::$cache[$object_id] ?? new ilObjFileInfo(
             'Unknown',
             null,
