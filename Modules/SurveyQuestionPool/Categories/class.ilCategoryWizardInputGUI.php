@@ -117,7 +117,15 @@ class ilCategoryWizardInputGUI extends ilTextInputGUI
         if (is_array($a_value)) {
             if (is_array($a_value['answer'])) {
                 foreach ($a_value['answer'] as $index => $value) {
-                    $this->values->addCategory($value, $a_value['other'][$index] ?? 0, 0, null, $a_value['scale'][$index] ?? null);
+                    $this->values->addCategory(
+                        $value,
+                        $a_value['other'][$index] ?? 0,
+                        0,
+                        null,
+                        isset($a_value['scale'][$index]) && (int) $a_value['scale'][$index] > 0
+                            ? (int) $a_value['scale'][$index]
+                            : null
+                    );
                 }
             }
         }
@@ -234,7 +242,7 @@ class ilCategoryWizardInputGUI extends ilTextInputGUI
 
             // check neutral column scale
             if ($neutral_scale != "") {
-                if (is_array($foundvalues['scale'])) {
+                if (isset($foundvalues['scale'])) {
                     if (in_array($neutral_scale, $foundvalues['scale'])) {
                         $this->setAlert($lng->txt("msg_duplicate_scale"));
                         return false;

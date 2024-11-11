@@ -193,7 +193,7 @@ class assSingleChoice extends assQuestion implements ilObjQuestionScoringAdjusta
             if ($data['thumb_size'] !== null && $data['thumb_size'] >= self::MINIMUM_THUMB_SIZE) {
                 $this->setThumbSize($data['thumb_size']);
             }
-            $this->isSingleline = ($data['allow_images']) ? false : true;
+            $this->isSingleline = $data['allow_images'] === null || $data['allow_images'] === '0';
             $this->lastChange = $data['tstamp'];
             $this->feedback_setting = $data['feedback_setting'];
 

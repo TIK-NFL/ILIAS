@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -18,6 +16,8 @@ declare(strict_types=1);
  *
  ********************************************************************
  */
+
+declare(strict_types=1);
 
 /**
  * class ilRbacReview
@@ -711,7 +711,7 @@ class ilRbacReview
      */
     public function getOperationsOnType(int $a_typ_id): array
     {
-        $query = 'SELECT ops_id FROM rbac_ta ta JOIN rbac_operations o ON ta.ops_id = o.ops_id ' .
+        $query = 'SELECT ta.ops_id FROM rbac_ta ta JOIN rbac_operations o ON ta.ops_id = o.ops_id ' .
             'WHERE typ_id = ' . $this->db->quote($a_typ_id, 'integer') . ' ' .
             'ORDER BY op_order';
 
@@ -874,7 +874,8 @@ class ilRbacReview
 
         $res = $this->db->query($query);
         while ($row = $this->db->fetchAssoc($res)) {
-            $prefix = substr($row["title"], 0, 3) == "il_";
+            $row['title'] = $row['title'] ?? '';
+            $prefix = substr($row['title'], 0, 3) == "il_";
 
             // all (assignable) internal local roles only
             if ($a_filter == 4 && !$prefix) {
@@ -886,8 +887,7 @@ class ilRbacReview
                 continue;
             }
 
-            $row['title'] = (string) $row['title'];
-            $row['description'] = (string) $row['description'];
+            $row['description'] = $row['description'] ?? '';
             $row["desc"] = $row["description"];
             $row["user_id"] = (int) $row["owner"];
             $row['obj_id'] = (int) $row['obj_id'];

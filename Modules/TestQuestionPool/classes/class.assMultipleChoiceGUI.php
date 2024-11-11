@@ -89,6 +89,10 @@ class assMultipleChoiceGUI extends assQuestionGUI implements ilGuiQuestionScorin
      */
     protected function getEditAnswersSingleLine($checkonly = false): bool
     {
+        if ($this->object->getSelfAssessmentEditingMode()) {
+            return $this->object->isSingleline();
+        }
+
         if ($checkonly) {
             $types = $_POST['types'] ?? '0';
             return $types === '0' ? true : false;
@@ -824,7 +828,6 @@ class assMultipleChoiceGUI extends assQuestionGUI implements ilGuiQuestionScorin
         if ($this->object->getSelfAssessmentEditingMode()) {
             $choices->setSize(40);
         }
-        $choices->setMaxLength(800);
         if ($this->object->getAnswerCount() == 0) {
             $this->object->addAnswer("", 0, 0, 0);
         }

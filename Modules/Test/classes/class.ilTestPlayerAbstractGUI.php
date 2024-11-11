@@ -1268,7 +1268,10 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
 
             $status = ILIAS\UI\Component\Listing\Workflow\Step::NOT_STARTED;
 
-            if ($row['worked_through'] || $row['isAnswered']) {
+            if (
+                ($row['worked_through'] || $row['isAnswered'])
+                && $row['has_authorized_answer']
+            ) {
                 $status = ILIAS\UI\Component\Listing\Workflow\Step::IN_PROGRESS;
             }
 
@@ -2445,6 +2448,7 @@ JS;
         $config['forcedInstantFeedback'] = $this->object->isForceInstantFeedbackEnabled();
         $config['questionLocked'] = $this->isParticipantsAnswerFixed($question_gui->object->getId());
         $config['nextQuestionLocks'] = $this->object->isFollowupQuestionAnswerFixationEnabled();
+        $config['autosaveFailureMessage'] = $this->lng->txt('autosave_failed');
 
         $this->tpl->addJavascript('./Modules/Test/js/ilTestPlayerQuestionEditControl.js');
         $this->tpl->addOnLoadCode('il.TestPlayerQuestionEditControl.init(' . json_encode($config) . ')');

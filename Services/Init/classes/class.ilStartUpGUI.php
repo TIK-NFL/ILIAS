@@ -98,7 +98,12 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
     private function saniziteArrayElementsTrafo(): ILIAS\Refinery\Transformation
     {
         return $this->refinery->custom()->transformation(static function (array $values): array {
-            return ilArrayUtil::stripSlashesRecursive($values);
+            $processed_values = array_merge(
+                ilArrayUtil::stripSlashesRecursive($values),
+                isset($values[self::PROP_PASSWORD]) ? [self::PROP_PASSWORD => $values[self::PROP_PASSWORD]] : []
+            );
+
+            return $processed_values;
         });
     }
 
@@ -1046,7 +1051,7 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
     {
         return str_replace(
             [
-                '[list-language-selection] ',
+                '[list-language-selection]',
                 '[list-registration-link]',
                 '[list-user-agreement]',
                 '[list-dpro-agreement]',
@@ -1309,10 +1314,11 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
             );
         }
 
-        $client_id = CLIENT_ID;
-        ilUtil::setCookie('ilClientId', '');
+        // reset cookie
+        ilUtil::setCookie("ilClientId", "");
 
-        $this->ctrl->setParameter($this, 'client_id', $client_id);
+        // redirect and show logout information
+        $this->ctrl->setParameter($this, 'client_id', CLIENT_ID);
         $this->ctrl->setParameter($this, 'lang', $user_language);
         $this->ctrl->redirect($this, 'showLogout');
     }

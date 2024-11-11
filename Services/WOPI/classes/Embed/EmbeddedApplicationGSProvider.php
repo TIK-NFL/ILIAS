@@ -58,15 +58,6 @@ class EmbeddedApplicationGSProvider extends AbstractModificationProvider
         return $this->context_collection->repository();
     }
 
-    public function getMainBarModification(CalledContexts $screen_context_stack): ?MainBarModification
-    {
-        if ($screen_context_stack->current()->getAdditionalData()->exists(self::EMBEDDED_APPLICATION)) {
-            return $this->factory->mainbar()->withHighPriority()->withModification(
-                fn(?MainBar $main_bar): ?MainBar => null
-            );
-        }
-        return null;
-    }
 
     public function getPageBuilderDecorator(CalledContexts $screen_context_stack): ?PageBuilderModification
     {
@@ -84,10 +75,13 @@ class EmbeddedApplicationGSProvider extends AbstractModificationProvider
         }
 
         return $this->factory->page()->withHighPriority()->withModification(
-            function (PagePartProvider $page_part_provider): Page {
+            function (PagePartProvider $p) use ($embedded_application): Page {
                 $uif = $this->dic->ui()->factory();
                 $builder = new StandardPageBuilder();
-                $page_part_provider = new EmbeddedApplicationPagePartProvider($page_part_provider);
+                $page_part_provider = new EmbeddedApplicationPagePartProvider(
+                    $p,
+                    $embedded_application
+                );
 
                 $back_to = $this->dic->ctrl()->getLinkTargetByClass(
                     \ilWOPIEmbeddedApplicationGUI::class,
@@ -95,13 +89,17 @@ class EmbeddedApplicationGSProvider extends AbstractModificationProvider
                 );
                 $back_to = new URI(rtrim(ILIAS_HTTP_PATH, '/') . '/' . ltrim($back_to, './'));
 
-                return $builder->build($page_part_provider)
-                               ->withModeInfo(
-                                   $uif->mainControls()->modeInfo(
-                                       $this->dic->language()->txt('close_wopi_editor'),
-                                       $back_to
-                                   )
-                               );
+                $page = $builder->build($page_part_provider);
+                if (!$embedded_application->isInline()) {
+                    $page = $page->withModeInfo(
+                        $uif->mainControls()->modeInfo(
+                            $this->dic->language()->txt('close_wopi_editor'),
+                            $back_to
+                        )
+                    );
+                }
+
+                return $page;
             }
         );
     }
@@ -119,6 +117,10 @@ class EmbeddedApplicationGSProvider extends AbstractModificationProvider
             self::EMBEDDED_APPLICATION
         );
         if (!$embedded_application instanceof EmbeddedApplication) {
+            return null;
+        }
+
+        if ($embedded_application->isInline()) {
             return null;
         }
 

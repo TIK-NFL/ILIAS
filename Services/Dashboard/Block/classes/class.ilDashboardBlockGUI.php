@@ -61,7 +61,6 @@ abstract class ilDashboardBlockGUI extends ilBlockGUI implements ilDesktopItemHa
         $this->object_cache = $DIC['ilObjDataCache'];
         $this->tree = $DIC->repositoryTree();
         $this->objDefinition = $DIC['objDefinition'];
-        $this->new_rendering = true;
         $this->rbacsystem = $DIC->rbac()->system();
         $this->favourites_manager = new ilFavouritesManager();
         $this->parent = $this->ctrl->getCurrentClassPath()[0] ?? '';
@@ -148,7 +147,7 @@ abstract class ilDashboardBlockGUI extends ilBlockGUI implements ilDesktopItemHa
             $cards = array_filter(array_map($this->getCardForData(...), $group));
             if ($cards) {
                 $groupedCards[] = $this->ui->factory()->panel()->sub(
-                    $title,
+                    (string) $title,
                     $this->factory->deck($cards)->withNormalCardsSize()
                 );
             }
@@ -220,7 +219,7 @@ abstract class ilDashboardBlockGUI extends ilBlockGUI implements ilDesktopItemHa
         $this->addCommandActions();
         $this->setData($this->getItemGroups());
 
-        return parent::getHTMLNew();
+        return parent::getHTML();
     }
 
     /**

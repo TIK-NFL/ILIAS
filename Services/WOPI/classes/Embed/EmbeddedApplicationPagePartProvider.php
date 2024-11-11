@@ -35,7 +35,8 @@ use ILIAS\UI\Component\Toast\Container;
 class EmbeddedApplicationPagePartProvider implements PagePartProvider
 {
     public function __construct(
-        private PagePartProvider $page_part_provider
+        private PagePartProvider $page_part_provider,
+        private EmbeddedApplication $embedded_application
     ) {
     }
 
@@ -46,16 +47,26 @@ class EmbeddedApplicationPagePartProvider implements PagePartProvider
 
     public function getMetaBar(): ?MetaBar
     {
+        if ($this->embedded_application->isInline()) {
+            return $this->page_part_provider->getMetaBar();
+        }
+
         return null;
     }
 
     public function getMainBar(): ?MainBar
     {
+        if ($this->embedded_application->isInline()) {
+            return $this->page_part_provider->getMainBar();
+        }
         return null;
     }
 
     public function getBreadCrumbs(): ?Breadcrumbs
     {
+        if ($this->embedded_application->isInline()) {
+            return $this->page_part_provider->getBreadCrumbs();
+        }
         return null;
     }
 

@@ -17,6 +17,10 @@
  *********************************************************************/
 
 use ILIAS\BookingManager\Reservation\ReservationTableSessionRepository;
+use ILIAS\BookingManager\InternalGUIService;
+use ILIAS\BookingManager\InternalDomainService;
+use ILIAS\BookingManager\Schedule\ScheduleManager;
+use ILIAS\BookingManager\Reservations\ReservationDBRepository;
 
 /**
  * List booking objects
@@ -24,10 +28,11 @@ use ILIAS\BookingManager\Reservation\ReservationTableSessionRepository;
  */
 class ilBookingReservationsTableGUI extends ilTable2GUI
 {
-    protected \ILIAS\BookingManager\InternalGUIService $gui;
+    protected InternalDomainService $domain;
+    protected InternalGUIService $gui;
     protected ilObjBookingPool $pool;
-    protected \ILIAS\BookingManager\Schedule\ScheduleManager $schedule_manager;
-    protected \ILIAS\BookingManager\Reservations\ReservationDBRepository $reservation_repo;
+    protected ScheduleManager $schedule_manager;
+    protected ReservationDBRepository $reservation_repo;
     protected ReservationTableSessionRepository $table_repo;
     protected ilObjUser $user;
     protected ilAccessHandler $access;
@@ -57,7 +62,9 @@ class ilBookingReservationsTableGUI extends ilTable2GUI
     ) {
         global $DIC;
 
-        $this->gui = $DIC->bookingManager()->internal()->gui();
+        $service = $DIC->bookingManager()->internal();
+        $this->gui = $service->gui();
+        $this->domain = $service->domain();
         $this->pool = $pool;
         $a_pool_id = $pool->getId();
         $a_has_schedule = ($pool->getScheduleType() === ilObjBookingPool::TYPE_FIX_SCHEDULE);
@@ -101,6 +108,8 @@ class ilBookingReservationsTableGUI extends ilTable2GUI
 
         $this->addColumn("", "", 1);
         $this->addColumn($this->lng->txt("title"), "title");
+
+        $this->lng->loadLanguageModule("crs");
 
         $selected = $this->getSelectedColumns();
         $cols = $this->getSelectableColumns();
@@ -187,8 +196,6 @@ class ilBookingReservationsTableGUI extends ilTable2GUI
             }
             $this->setSelectAllCheckbox('mrsv');
         }
-
-
         ilDatePresentation::setUseRelativeDates(false);
     }
 
@@ -565,10 +572,11 @@ class ilBookingReservationsTableGUI extends ilTable2GUI
                     $user_ids = array_diff($user_ids, ilMemberAgreement::lookupAcceptedAgreements($parent_obj_id));
                 }
                 $odf_data = ilCourseUserData::_getValuesByObjId($parent_obj_id);
-
                 $usr_data = [];
                 foreach ($odf_data as $usr_id => $fields) {
-                    if (in_array($usr_id, $user_ids, true)) {
+                    // this currently does not with strict mode, since
+                    // $user_ids holds strings
+                    if (in_array($usr_id, $user_ids)) {
                         foreach ($fields as $field_id => $value) {
                             if (in_array($field_id, $odf_ids, true)) {
                                 $usr_data[$usr_id]['odf_' . $field_id] = $value;
@@ -641,9 +649,10 @@ class ilBookingReservationsTableGUI extends ilTable2GUI
         }
 
         // #11995
-        $uname = $a_set["user_name"];
-        if (!trim($uname)) {
-            $uname = "[" . $lng->txt("user_deleted") . "]";
+        $profile = $this->domain->profile();
+        $user_id = (int) $a_set['user_id'];
+        if (!$profile->exists($user_id)) {
+            $uname = $profile->getDeletedUserNamePresentation();
         } else {
             $uname = ilUserUtil::getNamePresentation($a_set['user_id'], false, true, "", true);
         }
@@ -701,7 +710,7 @@ class ilBookingReservationsTableGUI extends ilTable2GUI
         foreach ($this->getSelectedColumns() as $col) {
             if (isset($user_cols[$col])) {
                 $this->tpl->setCurrentBlock("user_col");
-                $this->tpl->setVariable("VALUE_USER_COL", $a_set[$col] . " ");
+                $this->tpl->setVariable("VALUE_USER_COL", ($a_set[$col] ?? "") . " ");
                 $this->tpl->parseCurrentBlock();
             }
         }

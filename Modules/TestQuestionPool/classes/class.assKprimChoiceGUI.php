@@ -249,8 +249,6 @@ class assKprimChoiceGUI extends assQuestionGUI implements ilGuiQuestionScoringAd
 
         if (!$this->object->getSelfAssessmentEditingMode()) {
             $this->object->setAnswerType($form->getItemByPostVar('answer_type')->getValue());
-        } else {
-            $this->object->setAnswerType(assKprimChoice::ANSWER_TYPE_MULTI_LINE);
         }
 
         if (!$this->object->getSelfAssessmentEditingMode() && $this->object->isSingleLineAnswerType($old_answer_type)) {
@@ -283,20 +281,15 @@ class assKprimChoiceGUI extends assQuestionGUI implements ilGuiQuestionScoringAd
      */
     public function populateAnswerSpecificFormPart(ilPropertyFormGUI $form): ilPropertyFormGUI
     {
-        $kprimAnswers = new ilKprimChoiceWizardInputGUI($this->lng->txt('answers'), 'kprimanswers');
-        $kprimAnswers->setInfo($this->lng->txt('kprim_answers_info'));
-        $kprimAnswers->setSize(64);
-        $kprimAnswers->setMaxLength(1000);
-        $kprimAnswers->setRequired(true);
-        $kprimAnswers->setAllowMove(true);
-        $kprimAnswers->setQuestionObject($this->object);
-        if (!$this->object->getSelfAssessmentEditingMode()) {
-            $kprimAnswers->setSingleline($this->object->isSingleLineAnswerType($this->object->getAnswerType()));
-        } else {
-            $kprimAnswers->setSingleline(false);
-        }
-        $kprimAnswers->setValues($this->object->getAnswers());
-        $form->addItem($kprimAnswers);
+        $answers = new ilKprimChoiceWizardInputGUI($this->lng->txt('answers'), 'kprimanswers');
+        $answers->setInfo($this->lng->txt('kprim_answers_info'));
+        $answers->setSize(64);
+        $answers->setRequired(true);
+        $answers->setAllowMove(true);
+        $answers->setQuestionObject($this->object);
+        $answers->setSingleline($this->object->isSingleLineAnswerType($this->object->getAnswerType()));
+        $answers->setValues($this->object->getAnswers());
+        $form->addItem($answers);
 
         return $form;
     }

@@ -3996,6 +3996,7 @@ hr.il-divider-with-label {
   border: none;
   box-shadow: none;
   outline: none;
+  height: auto;
   line-height: 1.428571429;
   font-weight: 600 !important;
 }
