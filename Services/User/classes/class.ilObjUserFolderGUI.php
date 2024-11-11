@@ -2314,6 +2314,9 @@ class ilObjUserFolderGUI extends ilObjectGUI
             'login_max_attempts'
         );
         $text->setInfo($this->lng->txt('ps_login_max_attempts_info'));
+        $text->allowDecimals(false);
+        $text->setMinValue(1);
+        $text->setMaxValue(ilSecuritySettings::MAX_LOGIN_ATTEMPTS);
         $text->setSize(1);
         $text->setMaxLength(2);
         $this->form->addItem($text);
