@@ -356,4 +356,20 @@ class assQuestionImport
         return $result;
     }
 
+    protected function deduceThumbSizeFromImportValue(?int $size): int
+    {
+        if ($size === null) {
+            return $this->object->getThumbSize();
+        }
+
+        if ($size < $this->object->getMaximumThumbSize()) {
+            return $this->object->getMaximumThumbSize();
+        }
+
+        if ($size > $this->object->getMaximumThumbSize()) {
+            return $this->object->getMaximumThumbSize();
+        }
+
+        return $size;
+    }
 }

@@ -47,8 +47,9 @@ abstract class assQuestion
 {
     protected const HAS_SPECIFIC_FEEDBACK = true;
 
-    protected const DEFAULT_THUMB_SIZE = 150;
-    protected const MINIMUM_THUMB_SIZE = 20;
+    private const DEFAULT_THUMB_SIZE = 150;
+    private const MINIMUM_THUMB_SIZE = 20;
+    private const MAXIMUM_THUMB_SIZE = 8192;
     public const TRIM_PATTERN = '/^[\p{C}\p{Z}]+|[\p{C}\p{Z}]+$/u';
 
     protected \ILIAS\TestQuestionPool\QuestionInfoService $questioninfo;
@@ -433,6 +434,11 @@ abstract class assQuestion
     public function getMinimumThumbSize(): int
     {
         return self::MINIMUM_THUMB_SIZE;
+    }
+
+    public function getMaximumThumbSize(): int
+    {
+        return self::MAXIMUM_THUMB_SIZE;
     }
 
     public function getAuthor(): string
@@ -1437,7 +1443,7 @@ abstract class assQuestion
             fn($n) => $n->getContext()->getSubObjId() === $source_id
         );
 
-        foreach($notes as $note) {
+        foreach ($notes as $note) {
             $new_context = $data_service->context(
                 $parent_target_id,
                 $target_id,
@@ -1467,7 +1473,7 @@ abstract class assQuestion
             $notes,
             fn($n) => $n->getContext()->getSubObjId() === $source_id
         );
-        foreach($notes as $note) {
+        foreach ($notes as $note) {
             $repo->deleteNote($note->getId());
         }
     }
@@ -1593,7 +1599,7 @@ abstract class assQuestion
     protected function copySuggestedSolutions(int $target_question_id): void
     {
         $update = [];
-        foreach($this->getSuggestedSolutions() as $index => $solution) {
+        foreach ($this->getSuggestedSolutions() as $index => $solution) {
             $solution = $solution->withQuestionId($target_question_id);
             $update[] = $solution;
         }
