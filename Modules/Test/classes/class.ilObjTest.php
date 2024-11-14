@@ -750,14 +750,40 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
         return $this->getMainSettings()->getIntroductionSettings()->getIntroductionText();
     }
 
+    private function cloneIntroduction(): ?int
+    {
+        $page_id = $this->getMainSettings()->getIntroductionSettings()->getIntroductionPageId();
+        if ($page_id === null) {
+            return null;
+        }
+        return $this->clonePage($page_id);
+    }
+
     public function getFinalStatement(): string
     {
         $page_id = $this->getMainSettings()->getFinishingSettings()->getConcludingRemarksPageId();
         if ($page_id !== null) {
             return (new ilTestPageGUI('tst', $page_id))->showPage();
         }
-
         return $this->getMainSettings()->getFinishingSettings()->getConcludingRemarksText();
+    }
+
+    private function cloneConcludingRemarks(): ?int
+    {
+        $page_id = $this->getMainSettings()->getFinishingSettings()->getConcludingRemarksPageId();
+        if ($page_id === null) {
+            return null;
+        }
+        return $this->clonePage($page_id);
+    }
+
+    private function clonePage(int $source_page_id): int
+    {
+        $page_object = new ilTestPage();
+        $page_object->setParentId($this->getId());
+        $new_page_id = $page_object->createPageWithNextId();
+        (new ilTestPage($source_page_id))->copy($new_page_id);
+        return $new_page_id;
     }
 
     /**
@@ -4581,6 +4607,15 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
         $new_obj->addToNewsOnOnline(false, $new_obj->getObjectProperties()->getPropertyIsOnline()->getIsOnline());
         $this->getMainSettingsRepository()->store(
             $this->getMainSettings()->withTestId($new_obj->getTestId())
+                ->withIntroductionSettings(
+                    $this->getMainSettings()->getIntroductionSettings()->withIntroductionPageId(
+                        $this->cloneIntroduction()
+                    )->withTestId($new_obj->getTestId())
+                )->withFinishingSettings(
+                    $this->getMainSettings()->getFinishingSettings()->withConcludingRemarksPageId(
+                        $this->cloneConcludingRemarks()
+                    )->withTestId($new_obj->getTestId())
+                )
         );
         $this->getScoreSettingsRepository()->store(
             $this->getScoreSettings()->withTestId($new_obj->getTestId())

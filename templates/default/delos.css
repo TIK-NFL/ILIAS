@@ -13840,6 +13840,15 @@ span.ilIcalIcon .btn {
   padding-right: 4px;
 }
 
+.calrecurrenceinput.form-inline label {
+  padding-right: unset;
+  vertical-align: unset;
+}
+
+.calrecurrenceinput.form-inline .form-control {
+  vertical-align: middle;
+}
+
 /* Services/Chart */
 td.legendColorBox, td.legendLabel {
   padding: 3px;

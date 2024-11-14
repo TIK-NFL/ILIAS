@@ -480,7 +480,7 @@ class assTextQuestionGUI extends assQuestionGUI implements ilGuiQuestionScoringA
                 $user_solution = htmlentities($user_solution);
             }
 
-            $user_solution = str_replace(['{', '}', '\\'], ['&#123', '&#125', '&#92'], $user_solution);
+            $user_solution = str_replace(['{', '}', '\\'], ['&#123;', '&#125;', '&#92;'], $user_solution);
         }
 
         $template = new ilTemplate("tpl.il_as_qpl_text_question_output.html", true, true, "Modules/TestQuestionPool");
