@@ -17,7 +17,6 @@
  *********************************************************************/
 
 use ILIAS\File\Capabilities\Capabilities;
-use ILIAS\File\Capabilities\CapabilityResolver;
 use ILIAS\File\Capabilities\Permissions;
 
 /**
@@ -85,12 +84,17 @@ class ilObjFileAccess extends ilObjectAccess implements ilWACCheckingClass
                 "lang_var" => "info",
             ],
             [
+                "permission" => Permissions::VISIBLE->value,
+                "cmd" => Capabilities::FORCED_INFO_PAGE->value,
+                "lang_var" => "info",
+            ],
+            [
                 "permission" => Permissions::WRITE->value,
                 "cmd" => Capabilities::UNZIP->value,
                 "lang_var" => "unzip",
             ],
             [
-                "permission" => Permissions::EDIT_FILE->value,
+                "permission" => Permissions::EDIT_CONTENT->value,
                 "cmd" => Capabilities::EDIT_EXTERNAL->value,
                 "lang_var" => "open_external_editor",
             ],
@@ -173,10 +177,10 @@ class ilObjFileAccess extends ilObjectAccess implements ilWACCheckingClass
         $t_arr = explode("_", $a_target);
 
         // personal workspace context: do not force normal login
-        if (isset($t_arr[2]) && $t_arr[2] == "wsp") {
+        if (isset($t_arr[2]) && $t_arr[2] === "wsp") {
             return ilSharedResourceGUI::hasAccess($t_arr[1]);
         }
-        if ($t_arr[0] != "file") {
+        if ($t_arr[0] !== "file") {
             return false;
         }
         if (((int) $t_arr[1]) <= 0) {
@@ -214,14 +218,10 @@ class ilObjFileAccess extends ilObjectAccess implements ilWACCheckingClass
     {
         try {
             $info_repo = new ilObjFileInfoRepository();
-            if ($by_reference) {
-                $info = $info_repo->getByRefId($a_id);
-            } else {
-                $info = $info_repo->getByObjectId($a_id);
-            }
+            $info = $by_reference ? $info_repo->getByRefId($a_id) : $info_repo->getByObjectId($a_id);
 
             return (int) $info->getFileSize()->inBytes();
-        } catch (Throwable $t) {
+        } catch (Throwable) {
             return 0;
         }
     }
@@ -253,7 +253,7 @@ class ilObjFileAccess extends ilObjectAccess implements ilWACCheckingClass
     {
         return str_starts_with($a_file_name, '.') || str_ends_with($a_file_name, '~')
             || str_starts_with($a_file_name, '~$')
-            || $a_file_name == 'Thumbs.db';
+            || $a_file_name === 'Thumbs.db';
     }
 
     /**
@@ -295,20 +295,20 @@ class ilObjFileAccess extends ilObjectAccess implements ilWACCheckingClass
             ' '
             . $lng->txt('copy_n_of_suffix')
         );
-        $nthCopyRegex = '/' . preg_replace('/%1\\\\\$s/', '([0-9]+)', $nthCopyRegex) . '$/';
+        $nthCopyRegex = '/' . preg_replace('/%1\\\\\$s/', '(\d+)', $nthCopyRegex) . '$/';
 
         // Get the filename without any previously added number of copy.
         // Determine the number of copy, if it has not been specified.
-        if (preg_match($nthCopyRegex, $filenameWithoutExtension, $matches)) {
+        if (preg_match($nthCopyRegex, (string) $filenameWithoutExtension, $matches)) {
             // this is going to be at least the third copy of the filename
-            $filenameWithoutCopy = substr($filenameWithoutExtension, 0, -strlen($matches[0]));
+            $filenameWithoutCopy = substr((string) $filenameWithoutExtension, 0, -strlen($matches[0]));
             if ($nth_copy == null) {
                 $nth_copy = $matches[1] + 1;
             }
-        } elseif (str_ends_with($filenameWithoutExtension, ' ' . $lng->txt('copy_of_suffix'))) {
+        } elseif (str_ends_with((string) $filenameWithoutExtension, ' ' . $lng->txt('copy_of_suffix'))) {
             // this is going to be the second copy of the filename
             $filenameWithoutCopy = substr(
-                $filenameWithoutExtension,
+                (string) $filenameWithoutExtension,
                 0,
                 -strlen(
                     ' '

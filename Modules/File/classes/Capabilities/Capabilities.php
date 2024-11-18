@@ -26,6 +26,7 @@ enum Capabilities: string
 {
     case EDIT_EXTERNAL = 'editExternal';
     case INFO_PAGE = 'showSummary';
+    case FORCED_INFO_PAGE = 'showSummaryForced';
     case MANAGE_VERSIONS = 'versions';
     case EDIT_SETTINGS = 'edit';
     case UNZIP = 'unzipCurrentRevision';

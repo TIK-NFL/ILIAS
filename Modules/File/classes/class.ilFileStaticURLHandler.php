@@ -18,7 +18,6 @@
 
 use ILIAS\StaticURL\Handler\Handler;
 use ILIAS\StaticURL\Request\Request;
-use ILIAS\StaticURL\Handler\ilCtrlInterface;
 use ILIAS\StaticURL\Context;
 use ILIAS\StaticURL\Response\Response;
 use ILIAS\StaticURL\Response\Factory;
@@ -36,6 +35,9 @@ class ilFileStaticURLHandler extends BaseHandler implements Handler
     public const VERSIONS = 'versions';
     public const EDIT = 'edit';
     public const VIEW = 'view';
+    /**
+     * @readonly
+     */
     private CapabilityBuilder $capabilities;
 
     public function __construct()
@@ -46,7 +48,8 @@ class ilFileStaticURLHandler extends BaseHandler implements Handler
             new ilObjFileInfoRepository(),
             $DIC->access(),
             $DIC->ctrl(),
-            new ActionDBRepository($DIC->database())
+            new ActionDBRepository($DIC->database()),
+            $DIC->http()
         );
     }
 

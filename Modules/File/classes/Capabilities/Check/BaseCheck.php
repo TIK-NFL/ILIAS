@@ -30,6 +30,7 @@ abstract class BaseCheck implements Check
 {
     public function __construct()
     {
+
     }
 
     protected function hasPermission(

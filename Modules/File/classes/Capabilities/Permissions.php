@@ -34,6 +34,6 @@ enum Permissions: string
     case WRITE = 'write';
     case DELETE = 'delete';
     case COPY = 'copy';
-    case EDIT_FILE = 'edit_file';
+    case EDIT_CONTENT = 'edit_file';
 
 }

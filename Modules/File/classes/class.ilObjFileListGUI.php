@@ -16,12 +16,11 @@
  *
  *********************************************************************/
 
+use ILIAS\File\Capabilities\CapabilityCollection;
 use ILIAS\File\Icon\IconDatabaseRepository;
 use ILIAS\ResourceStorage\Services;
 use ILIAS\Services\WOPI\Discovery\ActionDBRepository;
-use ILIAS\File\Capabilities\CapabilityResolver;
 use ILIAS\File\Capabilities\Capabilities;
-use ILIAS\File\Capabilities\UnzipCapability;
 use ILIAS\File\Capabilities\CapabilityBuilder;
 
 /**
@@ -37,7 +36,7 @@ class ilObjFileListGUI extends ilObjectListGUI
 
     private ilObjFileInfoRepository $file_info;
     private CapabilityBuilder $capability_builder;
-    private ?\ILIAS\File\Capabilities\CapabilityCollection $capabilities = null;
+    private ?CapabilityCollection $capabilities = null;
     protected string $title;
     private IconDatabaseRepository $icon_repo;
     private Services $irss;
@@ -53,7 +52,8 @@ class ilObjFileListGUI extends ilObjectListGUI
             $this->file_info,
             $this->access,
             $this->ctrl,
-            new ActionDBRepository($DIC->database())
+            new ActionDBRepository($DIC->database()),
+            $DIC->http()
         );
 
     }

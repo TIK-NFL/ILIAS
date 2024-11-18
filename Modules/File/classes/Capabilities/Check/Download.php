@@ -23,20 +23,17 @@ namespace ILIAS\File\Capabilities\Check;
 use ILIAS\File\Capabilities\Capability;
 use ILIAS\File\Capabilities\Capabilities;
 use ILIAS\Data\ReferenceId;
-use ILIAS\StaticURL\Builder\URIBuilder;
 
 /**
  * @author Fabian Schmid <fabian@sr.solutions>
  */
 class Download extends BaseCheck implements Check
 {
-    private URIBuilder $static_url;
+    public $static_url;
     protected ?\ilObjFileInfo $info = null;
 
     public function __construct()
     {
-        global $DIC;
-        $this->static_url = $DIC['static_url.uri_builder'];
         parent::__construct();
     }
 
@@ -59,17 +56,6 @@ class Download extends BaseCheck implements Check
     {
         if (!$capability->isUnlocked()) {
             return $capability;
-        }
-
-        if (!$this->info->shouldDownloadDirectly()) {
-            return $capability->withURI(
-                $helpers->fromTarget(
-                    $helpers->ctrl->getLinkTargetByClass(
-                        [\ilRepositoryGUI::class, \ilObjFileGUI::class, \ilInfoScreenGUI::class],
-                        Capabilities::INFO_PAGE->value
-                    )
-                )
-            );
         }
 
         return $capability->withURI(

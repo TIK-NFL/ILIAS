@@ -20,11 +20,10 @@ declare(strict_types=1);
 
 namespace ILIAS\Services\WOPI\Embed;
 
+use ILIAS\UI\Component\Button\Bulky;
 use ILIAS\GlobalScreen\Scope\Layout\Provider\AbstractModificationProvider;
 use ILIAS\GlobalScreen\ScreenContext\Stack\ContextCollection;
 use ILIAS\GlobalScreen\ScreenContext\Stack\CalledContexts;
-use ILIAS\GlobalScreen\Scope\Layout\Factory\MainBarModification;
-use ILIAS\UI\Component\MainControls\MainBar;
 use ILIAS\GlobalScreen\Scope\Layout\Factory\MetaBarModification;
 use ILIAS\UI\Component\MainControls\MetaBar;
 use ILIAS\DI\Container;
@@ -34,6 +33,7 @@ use ILIAS\GlobalScreen\Scope\Layout\Provider\PagePart\PagePartProvider;
 use ILIAS\UI\Component\Layout\Page\Page;
 use ILIAS\GlobalScreen\Scope\Layout\Builder\StandardPageBuilder;
 use ILIAS\Data\URI;
+use ILIAS\UI\Component\Layout\Page\Standard;
 
 /**
  * @author Fabian Schmid <fabian@sr.solutions>
@@ -44,7 +44,7 @@ class EmbeddedApplicationGSProvider extends AbstractModificationProvider
     private const USE_MODE_INFO = 2;
     private int $display_mode = self::USE_MODE_INFO;
     public const EMBEDDED_APPLICATION = 'embedded_application';
-    private SignalGeneratorInterface $signal_generator;
+    private readonly SignalGeneratorInterface $signal_generator;
 
     public function __construct(Container $dic)
     {
@@ -88,7 +88,7 @@ class EmbeddedApplicationGSProvider extends AbstractModificationProvider
                     \ilWOPIEmbeddedApplicationGUI::CMD_RETURN
                 );
                 $back_to = new URI(rtrim(ILIAS_HTTP_PATH, '/') . '/' . ltrim($back_to, './'));
-
+                /** @var Standard $page */
                 $page = $builder->build($page_part_provider);
                 if (!$embedded_application->isInline()) {
                     $page = $page->withModeInfo(
@@ -97,6 +97,7 @@ class EmbeddedApplicationGSProvider extends AbstractModificationProvider
                             $back_to
                         )
                     );
+                    $page = $page->withSystemInfos([]);
                 }
 
                 return $page;
@@ -139,21 +140,17 @@ class EmbeddedApplicationGSProvider extends AbstractModificationProvider
 
     protected function buildCloseButton(
         EmbeddedApplication $embedded_application,
-    ): \ILIAS\UI\Component\Button\Bulky {
+    ): Bulky {
         $uif = $this->dic->ui()->factory();
         $back_target = $embedded_application->getBackTarget();
         $signal = $this->signal_generator->create();
         $signal->addOption('target_url', (string) $back_target);
-
-        $button = $uif->button()->bulky(
+        return $uif->button()->bulky(
             $uif->symbol()->glyph()->close(),
             $this->dic->language()->txt('close'),
             (string) $back_target
         )->withOnClick(
             $signal
-        )->withOnLoadCode(function ($id) use ($signal) {
-            return "il.WOPI.bindCloseSignal('$id', '{$signal->getId()}');";
-        });
-        return $button;
+        )->withOnLoadCode(fn($id): string => "il.WOPI.bindCloseSignal('$id', '{$signal->getId()}');");
     }
 }

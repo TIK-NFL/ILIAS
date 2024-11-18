@@ -1433,12 +1433,12 @@ class ilObjStyleSheet extends ilObject
 
                     if (in_array($cur_par, array("background-image", "list-style-image"))) {
                         if (is_int(strpos($cur_val, "/"))) {	// external
-                            $cur_val = "url(" . $cur_val . ")";
+                            $cur_val = "url('" . $cur_val . "')";
                         } else {		// internal
                             if ($a_image_dir == "") {
-                                $cur_val = "url(../sty/sty_" . $this->getId() . "/images/" . $cur_val . ")";
+                                $cur_val = "url('../sty/sty_" . $this->getId() . "/images/" . $cur_val . "')";
                             } else {
-                                $cur_val = "url(" . $a_image_dir . "/" . $cur_val . ")";
+                                $cur_val = "url('" . $a_image_dir . "/" . $cur_val . "')";
                             }
                         }
                     }

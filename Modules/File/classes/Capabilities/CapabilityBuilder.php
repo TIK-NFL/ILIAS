@@ -20,6 +20,7 @@ declare(strict_types=1);
 
 namespace ILIAS\File\Capabilities;
 
+use ILIAS\HTTP\Services;
 use ILIAS\Services\WOPI\Discovery\ActionRepository;
 use ILIAS\File\Capabilities\Check\Download;
 use ILIAS\File\Capabilities\Check\EditContent;
@@ -31,6 +32,7 @@ use ILIAS\File\Capabilities\Check\Info;
 use ILIAS\File\Capabilities\Check\Edit;
 use ILIAS\File\Capabilities\Check\Check;
 use ILIAS\File\Capabilities\Check\CheckHelpers;
+use ILIAS\File\Capabilities\Check\ForcedInfo;
 
 /**
  * @author Fabian Schmid <fabian@sr.solutions>
@@ -44,12 +46,14 @@ class CapabilityBuilder
     private array $checks = [];
 
     public function __construct(
-        private \ilObjFileInfoRepository $file_info_repository,
-        private \ilAccessHandler $access,
-        private \ilCtrlInterface $ctrl,
-        private ActionRepository $action_repository
+        private readonly \ilObjFileInfoRepository $file_info_repository,
+        private readonly \ilAccessHandler $access,
+        private readonly \ilCtrlInterface $ctrl,
+        private readonly ActionRepository $action_repository,
+        private readonly Services $http
     ) {
         $this->checks = [
+            new ForcedInfo(),
             new Download(),
             new Edit(),
             new EditContent(),
@@ -73,9 +77,10 @@ class CapabilityBuilder
          * which will return the first unlocked Capability
          */
         $capabilities = [
+            new Capability(Capabilities::FORCED_INFO_PAGE, Permissions::VISIBLE),
             new Capability(Capabilities::VIEW_EXTERNAL, Permissions::VIEW_CONTENT),
+            new Capability(Capabilities::EDIT_EXTERNAL, Permissions::EDIT_CONTENT),
             new Capability(Capabilities::DOWNLOAD, Permissions::READ),
-            new Capability(Capabilities::EDIT_EXTERNAL, Permissions::EDIT_FILE),
             new Capability(Capabilities::MANAGE_VERSIONS, Permissions::WRITE),
             new Capability(Capabilities::EDIT_SETTINGS, Permissions::WRITE),
             new Capability(Capabilities::INFO_PAGE, Permissions::VISIBLE),
@@ -89,7 +94,12 @@ class CapabilityBuilder
         }
 
         $info = $this->file_info_repository->getByRefId($ref_id);
-        $helpers = new CheckHelpers($this->access, $this->ctrl, $this->action_repository);
+        $helpers = new CheckHelpers(
+            $this->access,
+            $this->ctrl,
+            $this->action_repository,
+            $this->http
+        );
         $this->ctrl->setParameterByClass(\ilObjFileGUI::class, 'ref_id', $ref_id);
 
         foreach ($capabilities as $capability) {
