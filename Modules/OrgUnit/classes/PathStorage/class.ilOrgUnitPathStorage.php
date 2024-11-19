@@ -131,9 +131,9 @@ class ilOrgUnitPathStorage extends ActiveRecord
         return ilOrgUnitPathStorage::getArray('ref_id', 'path');
     }
 
-    public static function writePathByRefId(string $ref_id): void
+    public static function writePathByRefId(int $ref_id): void
     {
-        $original_ref_id = (int) $ref_id;
+        $original_ref_id = $ref_id;
         $names = self::getAllOrguNames();
         $root_ref_id = ilObjOrgUnit::getRootOrgRefId();
         $tree = ilObjOrgUnitTree::_getInstance();
