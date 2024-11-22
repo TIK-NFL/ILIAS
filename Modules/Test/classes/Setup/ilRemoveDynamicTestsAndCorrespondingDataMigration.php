@@ -85,8 +85,7 @@ class ilRemoveDynamicTestsAndCorrespondingDataMigration implements Setup\Migrati
         );
 
         $row_test = $this->db->fetchObject($tests_query);
-        $test = new \ilObjTest($row_test->ref_id, true);
-        $test->delete();
+        \ilRepUtil::removeObjectsFromSystem([$row_test->ref_id]);
     }
 
     public function getRemainingAmountOfSteps(): int
