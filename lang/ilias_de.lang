@@ -1364,7 +1364,7 @@ assessment#:#tst_enable_questionlist#:#Fragenliste
 assessment#:#tst_enable_questionlist_description#:#Teilnehmer können sich links neben den Testfragen eine Fragenliste anzeigen lassen.
 assessment#:#tst_ending_time#:#Ende
 assessment#:#tst_ending_time_before_starting_time#:#Bitte geben Sie für das Ende des Tests ein Datum ein, das nach dem Startdatum liegt.
-assessment#:#tst_ending_time_desc#:#Zeitpunkt, ab dem Teilnehmer keine Antworten mehr abgeben können. <b>Wichtig</b>: Benutzen Sie diese Option <b>nicht</b> für E-Klausuren/Fernklausuren. Verwenden Sie stattdessen die Funktion „Bearbeitungsdauer begrenzen“, siehe unten. Nur dann wird der Test serverseitig beendet und die letzte Eingabe bei Freitext-Fragen jedes Teilnehmers automatisch als Auto-Save-Inhalt gespeichert.
+assessment#:#tst_ending_time_desc#:#Zeitpunkt, ab dem Teilnehmer keine Antworten mehr abgeben können. <strong>Wichtig</strong>: Benutzen Sie diese Option <strong>nicht</strong> für E-Klausuren/Fernklausuren. Verwenden Sie stattdessen die Funktion „Bearbeitungsdauer begrenzen“, siehe unten. Nur dann wird der Test serverseitig beendet und die letzte Eingabe bei Freitext-Fragen jedes Teilnehmers automatisch als Auto-Save-Inhalt gespeichert.
 assessment#:#tst_enter_questionpool#:#Bitte geben Sie den Namen eines Fragenpools an, in dem die neue Frage abgelegt werden soll
 assessment#:#tst_eval_question_points#:#Fragenergebnisse für Testdurchlauf %s
 assessment#:#tst_eval_results_by_pass#:#Liste der Antworten für Testdurchlauf %s
@@ -2075,6 +2075,8 @@ auth#:#auth_oidc_update_field_info#:#Automatisch aktualisieren
 auth#:#auth_oidc_update_role_info#:#Nur bei Erstanmeldung (automatische Synchronisierung) anwenden
 auth#:#auth_oidconnect#:#OpenID Connect
 auth#:#auth_page_type_auth#:#Login-Seite
+auth#:#auth_required_password#:#Bitte geben Sie ein Passwort ein.
+auth#:#auth_required_username#:#Bitte geben Sie einen Anmeldenamen ein.
 auth#:#auth_saml#:#SAML
 auth#:#auth_saml_add_idp_btn#:#Identity - hinzufügen
 auth#:#auth_saml_add_idp_md_error#:#Der eingegeben Wert entsprach leider nicht einem wohlgeformten XML-Dokument. Bitte stellen Sie sicher, dass das XML einen gültigen Identity-Provider enthält.
@@ -8558,6 +8560,9 @@ dcl#:#dcl_confirm_delete_table#:#Wollen Sie diese Tabelle einschließlich Inhalt
 dcl#:#dcl_confirm_storing_records#:#Bitte überprüfen Sie die Angaben vor dem Speichern.
 dcl#:#dcl_confirm_storing_records_no_permission#:#Sie haben keine Rechte, den Datensatz später nochmals zu bearbeiten.
 dcl#:#dcl_copy#:#Datensammlung kopieren
+dcl#:#dcl_copy_field#:#Kopie
+dcl#:#dcl_copy_field_desc#:#Kopieren von Auswahloptionen, die in einem anderen Feld einer Tabelle gepflegt werden
+dcl#:#dcl_copy_title#:#Kopie von Tabelle und Feld
 dcl#:#dcl_create_date#:#Erstellungsdatum
 dcl#:#dcl_create_entry_rules#:#Eintragserstellung
 dcl#:#dcl_create_field#:#Feld hinzufügen
@@ -8582,6 +8587,7 @@ dcl#:#dcl_delete_tables_no_selection#:#Zum Löschen muss mindestens eine Tabelle
 dcl#:#dcl_delete_views#:#Ansichten löschen
 dcl#:#dcl_delete_views_no_selection#:#Zum Löschen muss mindestens eine Ansicht ausgewählt werden.
 dcl#:#dcl_deleted_records#:#Es wurden %s Datensätze gelöscht.
+dcl#:#dcl_deprecated_copy#:#(Veraltet)
 dcl#:#dcl_desc#:#Absteigende Reihenfolge (DESC)
 dcl#:#dcl_description#:#Beschreibung
 dcl#:#dcl_detailed_view#:#Einzelansicht
@@ -8700,6 +8706,7 @@ dcl#:#dcl_number#:#Ganze Zahlen
 dcl#:#dcl_number_desc#:#Eingabefeld für ganze Zahlen (maximal 9 Ziffern). Nicht erlaubt sind Brüche und Dezimalzahlen.
 dcl#:#dcl_online_info#:#Nur wenn die Datensammlung online geschaltet ist, können Benutzer die Datensammlung sehen und benutzen.
 dcl#:#dcl_order#:#Sortierung
+dcl#:#dcl_origin_not_found#:#Urprungsfeld konnte nicht gefunden werden!
 dcl#:#dcl_own_entries#:#Nur eigene Einträge
 dcl#:#dcl_owner#:#Eigener Eintrag von
 dcl#:#dcl_owner_description#:#Eigene Einträge bleiben stets sichtbar.

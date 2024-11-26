@@ -363,6 +363,7 @@ class ilUserProfile
         ?ilObjUser $user
     ): ilFormPropertyGUI {
         $text_input = new ilTextInputGUI($this->lng->txt($lang_var), 'usr_' . $field_id);
+        $text_input->setValue('');
         if ($user !== null) {
             $text_input->setValue($user->$method() ?? '');
         }
