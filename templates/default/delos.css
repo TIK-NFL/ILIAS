@@ -2066,7 +2066,7 @@ ul, ol, p {
 }
 
 ol, ul {
-  padding-left: 40px;
+  padding-left: 15px;
   list-style-image: none;
 }
 
@@ -14883,6 +14883,10 @@ p#copg-auto-save {
   text-align: center;
   color: #6f6f6f;
   padding: 20px;
+}
+.copg-new-content-placeholder .icon,
+.copg-content-placeholder-lso-curriculum .icon {
+  filter: invert(50%);
 }
 
 .il-copg-drag {

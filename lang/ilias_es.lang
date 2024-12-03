@@ -3530,7 +3530,7 @@ common#:#auth_allow_local#:#Permitir Autenticación Local
 common#:#auth_cas#:#CAS
 common#:#auth_cas_allow_local_desc#:#Esto le permite a los usuarios CAS autenticarse con su usuario local ILIAS y una contraseña local
 common#:#auth_cas_auth#:#Configurar autenticación CAS
-common#:#auth_cas_auth_desc#:#CAS requiere PHP 4.3.1 o superior con soporte CURL (7.5 o superior)
+common#:#auth_cas_auth_desc#:#Para que la autenticación CAS funcione, debe establecerse la configuración del servidor prevent_super_global_replacement en client.ini.php.
 common#:#auth_cas_port_desc#:#Ej. 443 si la URI del servidor CAS es https://auth.yourserver.com:443/cas/
 common#:#auth_cas_server_desc#:#Ej. auth.yourserver.com si la URI del servidor CAS es https://auth.yourserver.com:443/cas/
 common#:#auth_cas_uri_desc#:#Local URI, e.g. cas si la URI del servidor CAS https://auth.yourserver.com:443/cas/

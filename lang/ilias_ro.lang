@@ -3528,7 +3528,7 @@ common#:#auth_allow_local#:#Allow Local Authentication###10 Jul 2006 new variabl
 common#:#auth_cas#:#CAS###10 Jul 2006 new variable
 common#:#auth_cas_allow_local_desc#:#This allows CAS users to authenticate with their local ILIAS username and a local password.###10 Jul 2006 new variable
 common#:#auth_cas_auth#:#Configure CAS Authentication###10 Jul 2006 new variable
-common#:#auth_cas_auth_desc#:#CAS requires PHP 4.3.1 or higher with CURL support (7.5 or higher)###10 Jul 2006 new variable
+common#:#auth_cas_auth_desc#:#Pentru ca autentificarea CAS să funcționeze, setarea serverului prevent_super_global_replacement din client.ini.php trebuie să fie setată.
 common#:#auth_cas_port_desc#:#E.g. 443 if the full CAS server URI is https://auth.yourserver.com:443/cas/###10 Jul 2006 new variable
 common#:#auth_cas_server_desc#:#E.g. auth.yourserver.com if the full CAS server URI is https://auth.yourserver.com:443/cas/###10 Jul 2006 new variable
 common#:#auth_cas_uri_desc#:#Local URI, e.g. cas if the full CAS server URI is https://auth.yourserver.com:443/cas/###10 Jul 2006 new variable

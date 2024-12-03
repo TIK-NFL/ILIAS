@@ -101,6 +101,9 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
 
     protected bool $create_question_mode;
 
+    protected const INSERT_MODE_BEFORE = 0;
+    protected const INSERT_MODE_AFTER = 1;
+
     /**
      * Constructor
      * @access public
@@ -1903,22 +1906,7 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
     */
     public function insertQuestionsBeforeObject()
     {
-        // get all questions to move
-        $move_questions = ilSession::get('tst_qst_move_' . $this->object->getTestId());
-
-        if (!is_array($_POST['q_id']) || 0 === count($_POST['q_id'])) {
-            $this->tpl->setOnScreenMessage('failure', $this->lng->txt("no_target_selected_for_move"), true);
-            $this->ctrl->redirect($this, 'questions');
-        }
-        if (count($_POST['q_id']) > 1) {
-            $this->tpl->setOnScreenMessage('failure', $this->lng->txt("too_many_targets_selected_for_move"), true);
-            $this->ctrl->redirect($this, 'questions');
-        }
-        $insert_mode = 0;
-        $this->object->moveQuestions(ilSession::get('tst_qst_move_' . $this->object->getTestId()), $_POST['q_id'][0], $insert_mode);
-        $this->tpl->setOnScreenMessage('success', $this->lng->txt("msg_questions_moved"), true);
-        ilSession::clear('tst_qst_move_' . $this->object->getTestId());
-        $this->ctrl->redirect($this, "questions");
+        $this->insertQuestionsBeforeOrAfter(self::INSERT_MODE_BEFORE);
     }
 
     /**
@@ -1926,21 +1914,32 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
     */
     public function insertQuestionsAfterObject()
     {
-        // get all questions to move
-        $move_questions = ilSession::get('tst_qst_move_' . $this->object->getTestId());
-        if (!is_array($_POST['q_id']) || 0 === count($_POST['q_id'])) {
-            $this->tpl->setOnScreenMessage('failure', $this->lng->txt("no_target_selected_for_move"), true);
+        $this->insertQuestionsBeforeOrAfter(self::INSERT_MODE_AFTER);
+    }
+
+    /**
+     * @param integer $insert_mode 0, if insert before the target position, 1 if insert after the target position
+     */
+    protected function insertQuestionsBeforeOrAfter(int $insert_mode)
+    {
+        $target_questions = $this->testrequest->getQuestionIds();
+        $target_question = $this->testrequest->getQuestionId();
+        if ($target_questions === [] && $target_question !== 0) {
+            $target_questions = [$target_question];
+        }
+
+        if (count($target_questions) === 0) {
+            $this->tpl->setOnScreenMessage('failure', $this->lng->txt('no_target_selected_for_move'), true);
+            $this->ctrl->redirect($this, 'questions');
+        } elseif (count($target_questions) > 1) {
+            $this->tpl->setOnScreenMessage('failure', $this->lng->txt('too_many_targets_selected_for_move'), true);
             $this->ctrl->redirect($this, 'questions');
         }
-        if (count($_POST['q_id']) > 1) {
-            $this->tpl->setOnScreenMessage('failure', $this->lng->txt("too_many_targets_selected_for_move"), true);
-            $this->ctrl->redirect($this, 'questions');
-        }
-        $insert_mode = 1;
-        $this->object->moveQuestions(ilSession::get('tst_qst_move_' . $this->object->getTestId()), $_POST['q_id'][0], $insert_mode);
-        $this->tpl->setOnScreenMessage('success', $this->lng->txt("msg_questions_moved"), true);
+
+        $this->object->moveQuestions(ilSession::get('tst_qst_move_' . $this->object->getTestId()), $target_questions[0], $insert_mode);
+        $this->tpl->setOnScreenMessage('success', $this->lng->txt('msg_questions_moved'), true);
         ilSession::clear('tst_qst_move_' . $this->object->getTestId());
-        $this->ctrl->redirect($this, "questions");
+        $this->ctrl->redirect($this, 'questions');
     }
 
     /**
@@ -1950,27 +1949,31 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
     */
     public function insertQuestionsObject()
     {
-        $selected_array = (is_array($_POST['q_id'])) ? $_POST['q_id'] : [];
-        if (!count($selected_array)) {
-            $this->tpl->setOnScreenMessage('info', $this->lng->txt("tst_insert_missing_question"), true);
-            $this->ctrl->redirect($this, "browseForQuestions");
-        } else {
-            $manscoring = false;
-            foreach ($selected_array as $key => $value) {
-                $this->object->insertQuestion($this->test_question_set_config_factory->getQuestionSetConfig(), $value);
-                if (!$manscoring) {
-                    $manscoring = $manscoring | assQuestion::_needsManualScoring((int) $value);
-                }
-            }
-            $this->object->saveCompleteStatus($this->test_question_set_config_factory->getQuestionSetConfig());
-            if ($manscoring) {
-                $this->tpl->setOnScreenMessage('info', $this->lng->txt("manscoring_hint"), true);
-            } else {
-                $this->tpl->setOnScreenMessage('success', $this->lng->txt("tst_questions_inserted"), true);
-            }
-            $this->ctrl->redirect($this, "questions");
+        $selected_questions = $this->testrequest->getQuestionIds();
+        $selected_question = $this->testrequest->getQuestionId();
+        if ($selected_questions === [] && $selected_question !== 0) {
+            $selected_questions = [$selected_question];
+        }
+
+        if (count($selected_questions) === 0) {
+            $this->tpl->setOnScreenMessage('info', $this->lng->txt('tst_insert_missing_question'), true);
+            $this->ctrl->redirect($this, 'browseForQuestions');
             return;
         }
+
+        $man_scoring = false;
+        foreach ($selected_questions as $key => $value) {
+            $this->object->insertQuestion($this->test_question_set_config_factory->getQuestionSetConfig(), $value);
+            $man_scoring = $man_scoring || assQuestion::_needsManualScoring($value);
+        }
+
+        $this->object->saveCompleteStatus($this->test_question_set_config_factory->getQuestionSetConfig());
+        if ($man_scoring) {
+            $this->tpl->setOnScreenMessage('info', $this->lng->txt('manscoring_hint'), true);
+        } else {
+            $this->tpl->setOnScreenMessage('success', $this->lng->txt('tst_questions_inserted'), true);
+        }
+        $this->ctrl->redirect($this, 'questions');
     }
 
     public function addQuestionObject()

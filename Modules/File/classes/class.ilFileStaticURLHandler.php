@@ -79,7 +79,7 @@ class ilFileStaticURLHandler extends BaseHandler implements Handler
         };
 
         if (!$capability->isUnlocked() || $capability->getUri() === null) {
-            return $response_factory->cannot();
+            return $response_factory->loginFirst();
         }
 
         $uri = $capability->getUri();

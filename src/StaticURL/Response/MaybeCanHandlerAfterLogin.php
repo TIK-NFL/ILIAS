@@ -21,19 +21,16 @@ namespace ILIAS\StaticURL\Response;
 /**
  * @author Fabian Schmid <fabian@sr.solutions>
  */
-class Factory
+class MaybeCanHandlerAfterLogin implements Response
 {
-    public function cannot(): CannotHandle
+    public function getURIPath(): ?string
     {
-        return new CannotHandle();
-    }
-    public function loginFirst(): MaybeCanHandlerAfterLogin
-    {
-        return new MaybeCanHandlerAfterLogin();
+        return null;
     }
 
-    public function can(string $uri_path): CanHandleWithURIPath
+    public function targetCanBeReached(): bool
     {
-        return new CanHandleWithURIPath($uri_path);
+        return true;
     }
+
 }

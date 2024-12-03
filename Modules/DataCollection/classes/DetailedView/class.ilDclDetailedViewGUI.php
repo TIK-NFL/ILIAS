@@ -157,6 +157,8 @@ class ilDclDetailedViewGUI
     public function renderRecord(bool $editComments = false): void
     {
         global $DIC;
+        $x = $DIC->help();
+        $DIC->help()->setScreenId('dcl_record');
         $ilTabs = $DIC->tabs();
         $tpl = $DIC->ui()->mainTemplate();
         $ilCtrl = $DIC->ctrl();
@@ -171,6 +173,7 @@ class ilDclDetailedViewGUI
 
         // see ilObjDataCollectionGUI->executeCommand about instantiation
         $pageObj = new ilDclDetailedViewDefinitionGUI($this->tableview_id);
+        $pageObj->setOutputMode($pageObj::OFFLINE);
         $pageObj->setStyleId(
             $this->content_style_domain->getEffectiveStyleId()
         );

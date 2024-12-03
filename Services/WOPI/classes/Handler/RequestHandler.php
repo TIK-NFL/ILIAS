@@ -128,7 +128,11 @@ final class RequestHandler
                 $this->http->close();
             }
             $resource = $this->irss->manage()->getResource($resource_id);
-            $current_revision = $resource->getCurrentRevisionIncludingDraft();
+            if ($this->editable) {
+                $current_revision = $resource->getCurrentRevisionIncludingDraft();
+            } else {
+                $current_revision = $resource->getCurrentRevision();
+            }
 
             $method_override = $this->http->request()->getHeader(self::HEADER_X_WOPI_OVERRIDE)[0] ?? null;
             $is_file_convertion = (bool) ($this->http->request()->getHeader(

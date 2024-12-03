@@ -3528,7 +3528,7 @@ common#:#auth_allow_local#:#Tillad lokal autentificering
 common#:#auth_cas#:#CAS
 common#:#auth_cas_allow_local_desc#:#Tillader CAS brugere at authentisere ved brug af deres lokale ILIAS brugernavn og lokale password.
 common#:#auth_cas_auth#:#Konfigurer CAS autentificering
-common#:#auth_cas_auth_desc#:#CAS kræver PHP 4.3.1 eller senere med CURL support (7.5 eller senere)
+common#:#auth_cas_auth_desc#:#For at CAS-godkendelse kan fungere, skal serverindstillingen prevent_super_global_replacement i client.ini.php være indstillet.
 common#:#auth_cas_port_desc#:#E.g. 443 if the full CAS server URI is https://auth.yourserver.com:443/cas/
 common#:#auth_cas_server_desc#:#F.eks. auth.yourserver.com hvis den fulde CAS server URI er https://auth.yourserver.com:443/cas/
 common#:#auth_cas_uri_desc#:#Local URI, e.g. cas if the full CAS server URI is https://auth.yourserver.com:443/cas/

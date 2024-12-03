@@ -3528,7 +3528,7 @@ common#:#auth_allow_local#:#Autoriser l'Authentification Locale
 common#:#auth_cas#:#CAS
 common#:#auth_cas_allow_local_desc#:#Permet aux utilisateurs authentifiés par CAS de se connecter avec leur identifiant et leur mot de passe local.
 common#:#auth_cas_auth#:#Configurer l'Authentification CAS
-common#:#auth_cas_auth_desc#:#CAS requiert PHP 4.3.1 ou supérieur avec support de CURL (7.5 ou supérieur)
+common#:#auth_cas_auth_desc#:#Pour que l'authentification CAS fonctionne, le paramètre serveur prevent_super_global_replacement dans client.ini.php doit être défini.
 common#:#auth_cas_port_desc#:#Par ex. 443 si l'URI du serveur CAS est https://auth.yourserver.com:443/cas/
 common#:#auth_cas_server_desc#:#Par ex. auth.yourserver.com si l'URI du serveur CAS est https://auth.yourserver.com:443/cas/
 common#:#auth_cas_uri_desc#:#URI local, par ex. cas si l'URI du serveur CAS est https://auth.yourserver.com:443/cas/
