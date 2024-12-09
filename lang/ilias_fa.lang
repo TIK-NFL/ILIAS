@@ -1843,8 +1843,6 @@ assessment#:#tst_show_answer_sheet#:#Show Answers
 assessment#:#tst_show_cancel#:#نمایش گزینه امکان معوق گذاشتن تست
 assessment#:#tst_show_cancel_description#:#اگر انتخاب شده باشد، یک دکمه برای معوق کردن تست در طول اجرای تست نمایش داده می شود.
 assessment#:#tst_show_comp_results#:#Show Competence Results###26 09 2014 new variable
-assessment#:#tst_show_pass_details#:#نمایش جزئیات دوره های تست های در حال اجرا
-assessment#:#tst_show_pass_details_desc#:#If selected, the question titles and the reached points for every question in the test pass are available if the test is not finished.###07 11 2014 new variable
 assessment#:#tst_show_results#:#نمایش نتایج تست
 assessment#:#tst_show_side_list#:#Show question list aside
 assessment#:#tst_show_solution_answers_only#:#نمای چاپ نتایج - فقط پاسخ ها

@@ -1843,8 +1843,6 @@ assessment#:#tst_show_answer_sheet#:#Rodyti atsakymus
 assessment#:#tst_show_cancel#:#Rodyti Testo Sustabdymo Galimybę
 assessment#:#tst_show_cancel_description#:#Jei pasirinkta, testo metu matomas sustabdymo mygtumas
 assessment#:#tst_show_comp_results#:#Show Competence Results###26 09 2014 new variable
-assessment#:#tst_show_pass_details#:#Show Pass Details for running tests###30 05 2007 new variable
-assessment#:#tst_show_pass_details_desc#:#If selected, the question titles and the reached points for every question in the test pass are available if the test is not finished.###07 11 2014 new variable
 assessment#:#tst_show_results#:#Rodyti testo rezultatus
 assessment#:#tst_show_side_list#:#Show question list aside###24 07 2009 new variable
 assessment#:#tst_show_solution_answers_only#:#Rezultatai spausdinimo formatu (tik atsakymai)

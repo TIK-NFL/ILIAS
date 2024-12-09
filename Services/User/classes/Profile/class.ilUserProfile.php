@@ -711,7 +711,7 @@ class ilUserProfile
             }
 
             if ($this->settings->get('require_' . $field) && $definition['method']
-                && $user->{$definition['method']}() === '') {
+                && empty($user->{$definition['method']}())) {
                 return true;
             }
         }

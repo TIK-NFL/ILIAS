@@ -41,4 +41,14 @@ class ilDclCopyFieldModel extends ilDclBaseFieldModel
             ilDclBaseFieldModel::PROP_N_REFERENCE
         ];
     }
+
+    public function getPresentationTitle(): string
+    {
+        return $this->lng->txt('dcl_copy_field');
+    }
+
+    public function getPresentationDescription(): string
+    {
+        return $this->lng->txt('dcl_copy_field_desc');
+    }
 }

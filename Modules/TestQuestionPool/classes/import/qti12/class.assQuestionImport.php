@@ -333,7 +333,7 @@ class assQuestionImport
     public function QTIMaterialToString(ilQTIMaterial $a_material): string
     {
         $result = "";
-        $mobs = [];
+        $mobs = ilSession::get('import_mob_xhtml') ?? [];
         for ($i = 0; $i < $a_material->getMaterialCount(); $i++) {
             $material = $a_material->getMaterial($i);
             if (strcmp($material["type"], "mattext") === 0) {

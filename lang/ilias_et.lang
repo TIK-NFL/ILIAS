@@ -1843,8 +1843,6 @@ assessment#:#tst_show_answer_sheet#:#Näita vastuseid
 assessment#:#tst_show_cancel#:#Katkestamisnupu kuvamine
 assessment#:#tst_show_cancel_description#:#Märgistamise korral on katkestamise nupp näha kogu testisoorituse vältel
 assessment#:#tst_show_comp_results#:#Show Competence Results
-assessment#:#tst_show_pass_details#:#Näita jooksva testi tulemusi
-assessment#:#tst_show_pass_details_desc#:#If selected, the question titles and the reached points for every question in the test pass are available if the test is not finished.
 assessment#:#tst_show_results#:#Näita testitulemusi
 assessment#:#tst_show_side_list#:#Näita kõrval küsimuste loendit
 assessment#:#tst_show_solution_answers_only#:#Tulemuste printvaade (ainult vastused)

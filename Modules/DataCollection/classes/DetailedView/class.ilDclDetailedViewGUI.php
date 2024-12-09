@@ -19,7 +19,7 @@
 declare(strict_types=1);
 
 /**
- * @ilCtrl_Calls ilDclDetailedViewGUI: ilDclDetailedViewDefinitionGUI, ilEditClipboardGUI
+ * @ilCtrl_Calls ilDclDetailedViewGUI: ilDclDetailedViewDefinitionGUI, ilEditClipboardGUI, ilCommentGUI
  */
 class ilDclDetailedViewGUI
 {
@@ -27,7 +27,6 @@ class ilDclDetailedViewGUI
     protected \ILIAS\UI\Renderer $renderer;
     protected ILIAS\Style\Content\Object\ObjectFacade $content_style_domain;
     protected ilObjDataCollectionGUI $dcl_gui_object;
-    protected ilNoteGUI $notes_gui;
     protected ilDclTable $table;
     protected int $tableview_id;
     protected ilDclBaseRecordModel $record_obj;
@@ -43,7 +42,7 @@ class ilDclDetailedViewGUI
     protected ILIAS\HTTP\Services $http;
     protected ILIAS\Refinery\Factory $refinery;
     protected ?int $record_id;
-    protected ilNoteGUI $notesGUI;
+    protected ilCommentGUI $commentGUI;
     protected ilDclBaseFieldModel $currentField;
 
     public function __construct(ilObjDataCollectionGUI $a_dcl_object, int $tableview_id)
@@ -96,11 +95,11 @@ class ilDclDetailedViewGUI
         // Comments
         $repId = $this->dcl_gui_object->getDataCollectionObject()->getId();
         $objId = $this->record_id;
-        $this->notesGUI = new ilNoteGUI($repId, $objId);
-        $this->notesGUI->enablePublicNotes();
-        $this->notesGUI->enablePublicNotesDeletion();
-        $this->ctrl->setParameterByClass(ilNoteGUI::class, "record_id", $this->record_id);
-        $this->ctrl->setParameterByClass(ilNoteGUI::class, "rep_id", $repId);
+        $this->commentGUI = new ilCommentGUI($repId, $objId);
+        $this->commentGUI->enablePublicNotes();
+        $this->commentGUI->enablePublicNotesDeletion();
+        $this->ctrl->setParameterByClass(ilCommentGUI::class, "record_id", $this->record_id);
+        $this->ctrl->setParameterByClass(ilCommentGUI::class, "rep_id", $repId);
 
         $this->tableview_id = $tableview_id;
 
@@ -136,8 +135,8 @@ class ilDclDetailedViewGUI
         $cmd = $this->ctrl->getCmd();
         $cmdClass = $this->ctrl->getCmdClass();
         switch (strtolower($cmdClass)) {
-            case 'ilnotegui':
-                $this->notesGUI->executeCommand();
+            case 'ilcommentgui':
+                $this->commentGUI->executeCommand();
                 break;
             default:
                 $this->$cmd();
@@ -317,9 +316,9 @@ class ilDclDetailedViewGUI
     protected function renderComments(bool $edit = false): string
     {
         if (!$edit) {
-            return $this->notesGUI->getListHTML();
+            return $this->commentGUI->getListHTML();
         } else {
-            return $this->notesGUI->editNoteForm();
+            return $this->commentGUI->addNoteForm();
         }
     }
 

@@ -354,7 +354,7 @@ class ilObjStudyProgrammeMembersGUI
         foreach ($user_ids as $user_id) {
             $ass = $prg->assignUser((int) $user_id);
             $assignments[] = $ass;
-            if($prg->getCompletedCourses((int) $user_id)) {
+            if ($prg->getCompletedCourses((int) $user_id)) {
                 $with_courses[] = $ass;
             }
         }
@@ -366,7 +366,7 @@ class ilObjStudyProgrammeMembersGUI
             $this->tpl->setOnScreenMessage("success", $this->lng->txt("prg_added_members"), true);
         }
 
-        if($with_courses) {
+        if ($with_courses) {
             $this->tpl->setContent(
                 $this->ui_renderer->render(
                     $this->viewCompletedCourses($assignments)
@@ -397,8 +397,8 @@ class ilObjStudyProgrammeMembersGUI
                 $ass->getId()
             );
             $options = [];
-            foreach($completed_crss as $opt) {
-                $options[implode(';', [$ass->getId(), $opt['prg_obj_id'],$opt['crsr_id']])] = $opt['title'];
+            foreach ($completed_crss as $opt) {
+                $options[implode(';', [$ass->getId(), $opt['prg_obj_id'],$opt['crs_id']])] = $opt['title'];
             }
 
             $completed_courses[] = $this->ui_factory->input()->field()->multiselect($label, $options);
@@ -703,7 +703,7 @@ class ilObjStudyProgrammeMembersGUI
             $ass_ids[] = $ass->getId();
             $completed_crss = $prg->getCompletedCourses($ass->getUserId());
             $nodes = [];
-            foreach($completed_crss as $opt) {
+            foreach ($completed_crss as $opt) {
                 $nodes[] = [$opt['prg_obj_id'], $opt['crsr_id']];
             }
             $prg->acknowledgeCourses(
@@ -725,14 +725,14 @@ class ilObjStudyProgrammeMembersGUI
 
         $msgs = $this->getMessageCollection('msg_acknowledge_courses');
 
-        if($data) {
+        if ($data) {
             $acknowledge = [];
             foreach ($data as $ack) {
-                [$assignment_id, $node_obj_id, $courseref_obj_id] = $ack;
-                if(! array_key_exists($assignment_id, $acknowledge)) {
+                [$assignment_id, $node_obj_id, $course_obj_id] = $ack;
+                if (! array_key_exists($assignment_id, $acknowledge)) {
                     $acknowledge[$assignment_id] = [];
                 }
-                $acknowledge[$assignment_id][] = [(int) $node_obj_id, (int) $courseref_obj_id];
+                $acknowledge[$assignment_id][] = [(int) $node_obj_id, (int) $course_obj_id];
             }
             foreach ($acknowledge as $ass_id => $nodes) {
                 $this->object->acknowledgeCourses(
@@ -1083,7 +1083,7 @@ class ilObjStudyProgrammeMembersGUI
 
                 $assignment = $this->assignment_db->get($prgs_id->getAssignmentId());
                 $progress = $assignment->getProgressForNode($prgs_id->getNodeId());
-                if(!$progress->isSuccessful()) {
+                if (!$progress->isSuccessful()) {
                     $msgs->add(false, 'will_not_update_cert_for_unsuccessful_progress', (string) $prgs_id);
                     continue;
                 }

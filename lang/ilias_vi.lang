@@ -1845,8 +1845,6 @@ assessment#:#tst_show_answer_sheet#:#hiển thị câu trả lời
 assessment#:#tst_show_cancel#:#Show Suspend Test Option###25 02 2007 new variable
 assessment#:#tst_show_cancel_description#:#If checked, a button to suspend the test is shown during test execution###25 02 2007 new variable
 assessment#:#tst_show_comp_results#:#Show Competence Results###26 09 2014 new variable
-assessment#:#tst_show_pass_details#:#Show Pass Details for running tests###30 05 2007 new variable
-assessment#:#tst_show_pass_details_desc#:#If selected, the question titles and the reached points for every question in the test pass are available if the test is not finished.###07 11 2014 new variable
 assessment#:#tst_show_results#:#Hiện kết quả bài kiểm tra
 assessment#:#tst_show_side_list#:#Show question list aside###24 07 2009 new variable
 assessment#:#tst_show_solution_answers_only#:#Results print view (answers only)###14 11 2007 new variable

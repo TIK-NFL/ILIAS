@@ -1843,8 +1843,6 @@ assessment#:#tst_show_answer_sheet#:#Zobrazit odpovědi
 assessment#:#tst_show_cancel#:#Zobrazit volbu přerušení testu
 assessment#:#tst_show_cancel_description#:#Je-li vybráno, pak tlačítko k přerušení testu bude zobrazeno v průběhu vykonávání testu
 assessment#:#tst_show_comp_results#:#Show Competence Results###26 09 2014 new variable
-assessment#:#tst_show_pass_details#:#Zobrazit výsledky v průběhu testu
-assessment#:#tst_show_pass_details_desc#:#If selected, the question titles and the reached points for every question in the test pass are available if the test is not finished.###07 11 2014 new variable
 assessment#:#tst_show_results#:#Zobrazit výsledky testu
 assessment#:#tst_show_side_list#:#Zobrazit boční seznam otázek
 assessment#:#tst_show_solution_answers_only#:#Přehled výsledků (jen odpovědi)

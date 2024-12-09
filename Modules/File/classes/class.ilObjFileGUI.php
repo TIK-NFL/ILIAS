@@ -271,7 +271,7 @@ class ilObjFileGUI extends ilObject2GUI
                 $action = match ($capability->getCapability()) {
                     Capabilities::VIEW_EXTERNAL => $this->action_repo->getViewActionForSuffix($suffix),
                     Capabilities::EDIT_EXTERNAL => $this->action_repo->getEditActionForSuffix($suffix),
-                    default => null
+                    default => $this->action_repo->null()
                 };
 
                 $this->tabs_gui->activateTab('content');

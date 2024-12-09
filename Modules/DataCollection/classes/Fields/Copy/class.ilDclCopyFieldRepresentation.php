@@ -99,12 +99,9 @@ class ilDclCopyFieldRepresentation extends ilDclBaseFieldRepresentation
 
     protected function buildFieldCreationInput(ilObjDataCollection $dcl, string $mode = 'create'): ilRadioOption
     {
-        $datetype_title = $this->getField()->getDatatype()->getTitle();
-        if ($datetype_title === 'copy') {
-            $datetype_title = 'copy_field';
-        }
-        $opt = new ilRadioOption($this->lng->txt('dcl_' . $datetype_title), $this->getField()->getDatatypeId());
-        $opt->setInfo($this->lng->txt('dcl_' . $datetype_title . '_desc'));
+        $datetype_title = $this->getField()->getPresentationTitle();
+        $opt = new ilRadioOption($this->getField()->getPresentationTitle(), $this->getField()->getDatatypeId());
+        $opt->setInfo($this->getField()->getPresentationDescription());
 
         $options = [];
         $tables = $dcl->getTables();

@@ -1841,8 +1841,6 @@ assessment#:#tst_show_answer_sheet#:#Prikaži pregled odgovorov
 assessment#:#tst_show_cancel#:#Prikaži "Prekini test"
 assessment#:#tst_show_cancel_description#:#Med izvedbo testa se udeležencem prikaže gumb za prekinitev testa. Pozor: Prekinitev testa ne ustavi odštevanja časa obdelave, ki je naveden kot 'Najdaljše trajanje obdelave‘.
 assessment#:#tst_show_comp_results#:#Rezultati kompetenc
-assessment#:#tst_show_pass_details#:#Prikaži 'Tabelo s podrobnimi rezultati testov' za vsako opravljanje testa ob izbranem času.
-assessment#:#tst_show_pass_details_desc#:#V zgoraj izbranem trenutku se objava rezultata dopolni z dodatno tabelo. <br>Ta tabela za vsako opravljanje testa prikaže naslov vprašanj in dosežene točke. <br> V nasprotnem primeru se ta tabela prikaže le po zadnjem dovoljenem opravljanju testa (nastaviti v podzavihku ‚Splošne nastavitve‘, možnost ‚Omejite število opravljanj testa') ali po zaključku testa (nastaviti v podzavihku ‚Splošne nastavitve', oddelek  ‚Zaključek'). <br>Vsebina tabele se v oddelku ‚Podrobnosti o rezultatih testa' lahko še naprej dopolnjuje.
 assessment#:#tst_show_results#:#Rezultati testa
 assessment#:#tst_show_side_list#:#Seznam vprašanj za
 assessment#:#tst_show_solution_answers_only#:#Tiskana različica rezultatov (samo odgovori)

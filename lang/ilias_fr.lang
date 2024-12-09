@@ -1843,8 +1843,6 @@ assessment#:#tst_show_answer_sheet#:#Afficher les Réponses
 assessment#:#tst_show_cancel#:#Afficher l'Option de Suspension de Test
 assessment#:#tst_show_cancel_description#:#Si cochée, un bouton permettant de suspendre le test est affiché pendant le test.
 assessment#:#tst_show_comp_results#:#Montrer les résultats de compétence
-assessment#:#tst_show_pass_details#:#Afficher les Critères de Réussite du Test
-assessment#:#tst_show_pass_details_desc#:#Si cochée, les titres des questions et les points atteints pour chaque question du test sont affichés même si le test n'est pas terminé.
 assessment#:#tst_show_results#:#Afficher les Résultats du Test
 assessment#:#tst_show_side_list#:#Afficher la liste de question sur le côté
 assessment#:#tst_show_solution_answers_only#:#Impression des Résultats (Réponses Seulement)

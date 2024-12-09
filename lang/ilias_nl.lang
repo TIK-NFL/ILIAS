@@ -1843,8 +1843,6 @@ assessment#:#tst_show_answer_sheet#:#Toon antwoorden
 assessment#:#tst_show_cancel#:#Toon toetsopties
 assessment#:#tst_show_cancel_description#:#Indien aangevinkt, wordt een knop om de toets op te schorten getoond tijdens de maken van de toets
 assessment#:#tst_show_comp_results#:#Tonen competentieresultaten
-assessment#:#tst_show_pass_details#:#Toon aflopen toetsdetails
-assessment#:#tst_show_pass_details_desc#:#Als geselecteerd zijn de toetstitels en het aantal behaalde punten per vraag beschikbaar, als de toets nog niet is voltooid.
 assessment#:#tst_show_results#:#Laat toetsresultaten zien
 assessment#:#tst_show_side_list#:#Tonen vragenlijst aan zijkant
 assessment#:#tst_show_solution_answers_only#:#Resultaten overzicht (alleen de antwoorden)

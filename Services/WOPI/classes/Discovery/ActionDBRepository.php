@@ -47,6 +47,15 @@ class ActionDBRepository implements ActionRepository
         );
     }
 
+    /**
+     * @description this is only for cases where you need an action (for compatibility), this action cannot be used
+     * for any WOPI capability
+     */
+    public function null(): NullAction
+    {
+        return new NullAction();
+    }
+
     public function hasActionForSuffix(
         string $suffix,
         ActionTarget ...$action_target

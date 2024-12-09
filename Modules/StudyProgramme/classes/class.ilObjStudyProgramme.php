@@ -429,7 +429,7 @@ class ilObjStudyProgramme extends ilContainer
     {
         $global_settings = new ilSetting('certificate');
         $global_active = (bool) $global_settings->get('active', '0');
-        if(!$global_active) {
+        if (!$global_active) {
             return false;
         }
         $certificate_template_repository = new ilCertificateTemplateDatabaseRepository($this->db);
@@ -778,6 +778,9 @@ class ilObjStudyProgramme extends ilContainer
                         , "prg_obj_id" => $containing_prg->getId()
                         , "crsr_ref_id" => (int) $ref["child"]
                         , "crsr_id" => (int) $ref["obj_id"]
+                        , "crs_ref_id" => (int) $crs_ref_id
+                        , "crs_id" => (int) $crs_id
+
                         , "title" => ilContainerReference::_lookupTitle((int) $ref["obj_id"])
                     ];
                 }
@@ -1804,12 +1807,13 @@ class ilObjStudyProgramme extends ilContainer
     ): void {
         $acting_usr_id = $this->getLoggedInUserId();
         $assignment = $this->assignment_repository->get($assignment_id);
-        foreach($nodes as $nodeinfo) {
-            [$node_obj_id, $courseref_obj_id] = $nodeinfo;
+        foreach ($nodes as $nodeinfo) {
+            [$node_obj_id, $course_obj_id] = $nodeinfo;
+
             $assignment = $assignment->succeed(
                 $this->settings_repository,
                 $node_obj_id,
-                $courseref_obj_id
+                $course_obj_id
             );
 
             $msg = sprintf(

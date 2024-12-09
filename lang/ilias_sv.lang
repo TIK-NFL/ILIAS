@@ -1843,8 +1843,6 @@ assessment#:#tst_show_answer_sheet#:#Visa översikt över svar
 assessment#:#tst_show_cancel#:#Display "Avbrottstest
 assessment#:#tst_show_cancel_description#:#Visar en knapp under testet som kan användas för att avbryta testet. Uppmärksamhet
 assessment#:#tst_show_comp_results#:#Kompetensresultat
-assessment#:#tst_show_pass_details#:#Visa 'Tabell över detaljerade testresultat' för varje godkänt test vid vald tidpunkt###31 03 2023 ny variabel
-assessment#:#tst_show_pass_details_desc#:#Sammanfattningen av resultaten kommer att bifogas vid den tidpunkt som anges i inställningen ovan
 assessment#:#tst_show_results#:#Testresultat
 assessment#:#tst_show_side_list#:#Frågelista till
 assessment#:#tst_show_solution_answers_only#:#Skriv ut resultaten (endast svar)

@@ -1843,8 +1843,6 @@ assessment#:#tst_show_answer_sheet#:#Cevapları Göster
 assessment#:#tst_show_cancel#:#Testi Askıya Alma Seçeneğini Göster
 assessment#:#tst_show_cancel_description#:#Seçilirse, testi askıya almak için bir buton çıkar.
 assessment#:#tst_show_comp_results#:#Show Competence Results###26 09 2014 new variable
-assessment#:#tst_show_pass_details#:#Geçiş Detaylarını Göster
-assessment#:#tst_show_pass_details_desc#:#If selected, the question titles and the reached points for every question in the test pass are available if the test is not finished.###07 11 2014 new variable
 assessment#:#tst_show_results#:#Test Sonuçlarını Göster
 assessment#:#tst_show_side_list#:#Soru listesini göster
 assessment#:#tst_show_solution_answers_only#:#Sonuçları Yazdır (Sadece Yanıtlar)

@@ -1838,8 +1838,8 @@ class ilObjStyleSheet extends ilObject
 
         // open file
         if (!($fp = fopen($file, 'wb'))) {
-            die("<b>Error</b>: Could not open \"" . $file . "\" for writing" .
-                    " in <b>" . __FILE__ . "</b> on line <b>" . __LINE__ . "</b><br />");
+            die("<strong>Error</strong>: Could not open \"" . $file . "\" for writing" .
+                    " in <strong>" . __FILE__ . "</strong> on line <strong>" . __LINE__ . "</strong><br />");
         }
 
         // set file permissions

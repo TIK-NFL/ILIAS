@@ -1842,8 +1842,6 @@ assessment#:#tst_show_answer_sheet#:#Mostra le risposte
 assessment#:#tst_show_cancel#:#Mostra le opzioni di sospensione del test
 assessment#:#tst_show_cancel_description#:#Se selezionato, un pulsante per sospendere il test è mostrato durante l'esecuzione.
 assessment#:#tst_show_comp_results#:#Mostra risultati di competenze
-assessment#:#tst_show_pass_details#:#Mostra i dettagli del test in corso
-assessment#:#tst_show_pass_details_desc#:#Se selezionato, i titoli delle domande e i punti raggiunti per ogni domanda nel test pass sono disponibili se il test non è terminato.
 assessment#:#tst_show_results#:#Mostra i risultati del test
 assessment#:#tst_show_side_list#:#Mostra la lista delle domande a lato
 assessment#:#tst_show_solution_answers_only#:#Stampa dei risultati (solo le risposte)

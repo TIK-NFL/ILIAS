@@ -1843,8 +1843,6 @@ assessment#:#tst_show_answer_sheet#:#Показать ответы
 assessment#:#tst_show_cancel#:#Отображать опцию "Приостановить тест"
 assessment#:#tst_show_cancel_description#:#Если включено, то кнопка паузы отображается для участников при прохождения теста. Не используйте это опцию для тестов с ограниченным временем прохождения. Приостановка теста не останавливает таймер теста.
 assessment#:#tst_show_comp_results#:#Show Competence Results###26 09 2014 new variable
-assessment#:#tst_show_pass_details#:#Показать подробности прохождния для запущенных тестов
-assessment#:#tst_show_pass_details_desc#:#If selected, the question titles and the reached points for every question in the test pass are available if the test is not finished.###07 11 2014 new variable
 assessment#:#tst_show_results#:#Просмотреть результаты теста
 assessment#:#tst_show_side_list#:#Показать список вопросов сбоку
 assessment#:#tst_show_solution_answers_only#:#Печатный вид результатов (только ответы)

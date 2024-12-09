@@ -2903,7 +2903,7 @@
 	<xsl:if test="$mode = 'edit'">
 		<xsl:attribute name="style">border: 1px solid #000000; padding: 20px; margin-bottom:10px;</xsl:attribute>
 		<div style="margin-bottom:20px;">
-			<i><b><xsl:value-of select="@Title" /></b></i>
+			<i><strong><xsl:value-of select="@Title" /></strong></i>
 			<xsl:comment>Break</xsl:comment>
 		</div>
 	</xsl:if>

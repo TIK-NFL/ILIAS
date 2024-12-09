@@ -1845,8 +1845,6 @@ assessment#:#tst_show_answer_sheet#:#mostrar respuestas
 assessment#:#tst_show_cancel#:#Mostrar la opción de suspender el test
 assessment#:#tst_show_cancel_description#:#Si se activa, se mostrará un botón para suspender el test durante la ejecución del mismo
 assessment#:#tst_show_comp_results#:#Mostrar resultados de competencias
-assessment#:#tst_show_pass_details#:#Mostrar detalles para los tests en ejecución
-assessment#:#tst_show_pass_details_desc#:#Si se selecciona esta opción los títulos de las preguntas y los resultados alcanzados en cada pregunta en la ejecución del test estarán disponibles aunque el test no haya finalizado
 assessment#:#tst_show_results#:#Mostrar resultados del test
 assessment#:#tst_show_side_list#:#Mostrar lista de preguntas en el lateral
 assessment#:#tst_show_solution_answers_only#:#Vista de impresión de resultados (respuestas sólo)

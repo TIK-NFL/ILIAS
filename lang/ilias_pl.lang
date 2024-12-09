@@ -1843,8 +1843,6 @@ assessment#:#tst_show_answer_sheet#:#Pokaż odpowiedzi
 assessment#:#tst_show_cancel#:#Pokaż opcję zawieszenia testu
 assessment#:#tst_show_cancel_description#:#Jeśli wybrane, to jest widoczny przycisk zawieszenia testu podczas wykonywania testu.   Uwaga: przerwanie testu nie powoduje zatrzymanie czasu przetwarzania określonego w opcji 'Maksymalny czas przetwarzania'.
 assessment#:#tst_show_comp_results#:#Pokaż wyniki kompetencji
-assessment#:#tst_show_pass_details#:#Pokaż szczegóły wykonania uruchomionych testów
-assessment#:#tst_show_pass_details_desc#:#W wybranym wyżej terminie przedstawione wyniki zostaną uzupełnione o kolejną tabelę. <br>W tej tabeli wyświetlane są dla każdego przebiegu testu tytuły pytań oraz otrzymana liczba punktów. <br>W przeciwnym razie tabela wyświetli się tylko po ostatnim dozwolonym przebiegu testu (należy to ustawić w zakładce 'Właściwości ogólne', opcja 'Ogranicz liczbę przebiegów testu') lub po zakończeniu testu (należy to ustawić w zakładce 'Właściwości ogólne', punkt 'Czas ukończenia'). <br>Treść tabeli można uzupełnić w punkcie 'Dane szczegółowe dotyczące wyników testu'.
 assessment#:#tst_show_results#:#Pokaż wyniki testu
 assessment#:#tst_show_side_list#:#Lista pytań do
 assessment#:#tst_show_solution_answers_only#:#Wydruk wyników (tylko odpowiedzi)

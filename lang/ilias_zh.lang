@@ -1842,8 +1842,6 @@ assessment#:#tst_show_answer_sheet#:#展示答案
 assessment#:#tst_show_cancel#:#展示暂停测试选项
 assessment#:#tst_show_cancel_description#:#如果勾选，将在测试过程中显示一个暂停测试的按钮
 assessment#:#tst_show_comp_results#:#Show Competence Results###26 09 2014 new variable
-assessment#:#tst_show_pass_details#:#显示正在进行的测试过程细节
-assessment#:#tst_show_pass_details_desc#:#If selected, the question titles and the reached points for every question in the test pass are available if the test is not finished.###07 11 2014 new variable
 assessment#:#tst_show_results#:#显示测试成绩
 assessment#:#tst_show_side_list#:#在旁边显示题目列表
 assessment#:#tst_show_solution_answers_only#:#成绩打印视图(仅答案)
