@@ -1313,6 +1313,16 @@ class ilDclTable
             $total_record_ids = $sort_query_object->applyCustomSorting($sort_field, $total_record_ids, $direction);
         }
 
+        if ($sort === 'n_comments') {
+            global $DIC;
+            $comments_nr = [];
+            foreach ($total_record_ids as $id) {
+                $comments_nr[$id] = $DIC->notes()->domain()->getNrOfCommentsForContext($DIC->notes()->data()->context($this->getObjId(), $id, 'dcl'));
+            }
+            uasort($comments_nr, static fn($a, $b) => ($direction === 'asc' ? 1 : -1) * ($a <=> $b));
+            $total_record_ids = array_keys($comments_nr);
+        }
+
         // Now slice the array to load only the needed records in memory
         $record_ids = array_slice($total_record_ids, $offset, $limit);
 
