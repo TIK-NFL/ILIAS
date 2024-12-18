@@ -15311,7 +15311,7 @@ sess#:#sess_material_not_assigned#:#Nicht zugeordnet
 sess#:#sess_max_members_needed#:#Für die Warteliste wird eine maximale Anzahl Mitglieder benötigt.
 sess#:#sess_mem_contacts#:#Kontaktperson
 sess#:#sess_mem_send_mail#:#Mail verschicken
-sess#:#sess_mem_tbl_header#:#Teilnahmen in Sitzung
+sess#:#sess_mem_tbl_header#:#Mitglieder aus %s
 sess#:#sess_member_administration#:#Verwalten
 sess#:#sess_members#:#Teilnahmen
 sess#:#sess_members_gallery#:#Galerie

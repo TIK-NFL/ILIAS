@@ -4,7 +4,8 @@
 			{TXT_BROWSE}<input type="file" id="{ID}" name="{POST_VAR}" data-maxsize="{MAX_SIZE}" data-maxsize-warning="{MAX_SIZE_WARNING}"{DISABLED}/>
 		</span>
 	</span>
-	<input tabindex="-1" type="text" class="form-control" readonly="readonly"{DISABLED}>
+    <label class='sr-only' for="{POST_VAR}_file_display">{LABEL_SELECTED_FILES_INPUT}</label>
+	<input tabindex="-1" id="{POST_VAR}_file_display" type="text" class="form-control" readonly="readonly"{DISABLED}>
 </div>
 
 <!--<input type="file" id="{ID}" name="{POST_VAR}" size="30" {DISABLED}/>-->

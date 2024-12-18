@@ -253,7 +253,7 @@ class assFormulaQuestion extends assQuestion implements iQuestionCondition, ilAs
             $active_id,
             $pass
         );
-        if(is_null($values)) {
+        if (is_null($values)) {
             $values = $this->getInitialVariableSolutionValues();
             $this->pass_presented_variables_repo->store(
                 $question_id,
@@ -340,8 +340,11 @@ class assFormulaQuestion extends assQuestion implements iQuestionCondition, ilAs
                 if (is_array($userdata) &&
                     isset($userdata[$result]) &&
                     isset($userdata[$result]["value"])) {
-
-                    $input = $this->generateResultInputHTML($result, $userdata[$result]["value"], $forsolution);
+                    $value = $userdata[$result]["value"];
+                    if (is_array($value)) {
+                        $value = $value['value'];
+                    }
+                    $input = $this->generateResultInputHTML($result, $value, $forsolution);
                 } elseif ($forsolution) {
                     $value = '';
                     if (!is_array($userdata)) {
@@ -1501,6 +1504,29 @@ class assFormulaQuestion extends assQuestion implements iQuestionCondition, ilAs
         } else {
             return $this->getResults();
         }
+    }
+
+
+    public function getSolutionValues($active_id, $pass = null, bool $authorized = true): array
+    {
+        $solutions = parent::getSolutionValues($active_id, $pass, $authorized);
+        $user_solution = [];
+        foreach ($solutions as $idx => $solution_value) {
+            if (preg_match("/^(\\\$v\\d+)$/", $solution_value["value1"], $matches)) {
+                $user_solution[$matches[1]] = $solution_value["value2"];
+            } elseif (preg_match("/^(\\\$r\\d+)$/", $solution_value["value1"], $matches)) {
+                if (!array_key_exists($matches[1], $user_solution)) {
+                    $user_solution[$matches[1]] = array();
+                }
+                $user_solution[$matches[1]]["value"] = $solution_value["value2"];
+            } elseif (preg_match("/^(\\\$r\\d+)_unit$/", $solution_value["value1"], $matches)) {
+                if (!array_key_exists($matches[1], $user_solution)) {
+                    $user_solution[$matches[1]] = array();
+                }
+                $user_solution[$matches[1]]["unit"] = $solution_value["value2"];
+            }
+        }
+        return $user_solution;
     }
 
 }
