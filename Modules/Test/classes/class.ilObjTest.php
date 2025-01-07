@@ -6345,7 +6345,7 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
                 ->withUsePreviousAnswerAllowed((bool) $testsettings['use_previous_answers'])
                 ->withSuspendTestAllowed((bool) $testsettings['ShowCancel'])
                 ->withPostponedQuestionsMoveToEnd((bool) $testsettings['SequenceSettings'])
-                ->withUsrPassOverviewMode($testsettings['ListOfQuestionsSettings'])
+                ->withUsrPassOverviewMode((int) $testsettings['ListOfQuestionsSettings'])
                 ->withQuestionMarkingEnabled((bool) $testsettings['ShowMarker'])
             )
             ->withFinishingSettings(

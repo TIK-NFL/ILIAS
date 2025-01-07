@@ -36,7 +36,7 @@ class ilTestEvaluationFactory
         return $this->test_obj->isRandomTest();
     }
 
-    protected function getTestQuestionCount(): bool
+    protected function getTestQuestionCount(): int
     {
         return $this->test_obj->getQuestionCountWithoutReloading();
     }

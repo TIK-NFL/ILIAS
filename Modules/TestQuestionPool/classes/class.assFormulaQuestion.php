@@ -883,12 +883,8 @@ class assFormulaQuestion extends assQuestion implements iQuestionCondition, ilAs
     }
 
     /**
-     * Returns the points, a learner has reached answering the question
+     * Returns the points a learner has reached by answering the question
      * The points are calculated from the given answers.
-     *
-     * @param integer $user_id The database ID of the learner
-     * @param integer $test_id The database Id of the test containing the question
-     * @access public
      */
     public function calculateReachedPoints($active_id, $pass = null, $authorizedSolution = true, $returndetails = false): float
     {
@@ -896,33 +892,27 @@ class assFormulaQuestion extends assQuestion implements iQuestionCondition, ilAs
             $pass = $this->getSolutionMaxPass($active_id);
         }
         $solutions = $this->getSolutionValues($active_id, $pass, $authorizedSolution);
-        $user_solution = array();
-        foreach ($solutions as $idx => $solution_value) {
-            if (preg_match("/^(\\\$v\\d+)$/", $solution_value["value1"], $matches)) {
-                $user_solution[$matches[1]] = $solution_value["value2"];
-                $varObj = $this->getVariable($solution_value["value1"]);
-                $varObj->setValue($solution_value["value2"]);
-            } elseif (preg_match("/^(\\\$r\\d+)$/", $solution_value["value1"], $matches)) {
-                if (!array_key_exists($matches[1], $user_solution)) {
-                    $user_solution[$matches[1]] = array();
+
+        foreach ($solutions as $key => $value) {
+            if (preg_match("/^(\\\$v\\d+)$/", $key, $matches)) {
+                $varObj = $this->getVariable($key);
+                $varObj->setValue($value);
+            }
+            if (preg_match("/^(\\\$r\\d+)_unit$/", $key, $matches)) {
+                if (!array_key_exists($matches[1], $solutions)) {
+                    $solutions[$matches[1]] = [];
                 }
-                $user_solution[$matches[1]]["value"] = $solution_value["value2"];
-            } elseif (preg_match("/^(\\\$r\\d+)_unit$/", $solution_value["value1"], $matches)) {
-                if (!array_key_exists($matches[1], $user_solution)) {
-                    $user_solution[$matches[1]] = array();
-                }
-                $user_solution[$matches[1]]["unit"] = $solution_value["value2"];
+                $solutions[$matches[1]]["unit"] = $value;
             }
         }
-        //vd($this->getResults());
+
         $points = 0;
         foreach ($this->getResults() as $result) {
-            //vd($user_solution[$result->getResult()]["value"]);
             $points += $result->getReachedPoints(
                 $this->getVariables(),
                 $this->getResults(),
-                $user_solution[$result->getResult()]["value"] ?? '',
-                $user_solution[$result->getResult()]["unit"] ?? '',
+                $solutions[$result->getResult()]["value"] ?? '',
+                $solutions[$result->getResult()]["unit"] ?? '',
                 $this->unitrepository->getUnits()
             );
         }
@@ -1277,7 +1267,7 @@ class assFormulaQuestion extends assQuestion implements iQuestionCondition, ilAs
      */
     public function getBestSolution($solutions): array
     {
-        $user_solution = array();
+        $user_solution = [];
 
         foreach ($solutions as $idx => $solution_value) {
             if (preg_match("/^(\\\$v\\d+)$/", $solution_value["value1"], $matches)) {
@@ -1296,6 +1286,7 @@ class assFormulaQuestion extends assQuestion implements iQuestionCondition, ilAs
                 $user_solution[$matches[1]]["unit"] = $solution_value["value2"];
             }
         }
+
         foreach ($this->getResults() as $result) {
             $resVal = $result->calculateFormula($this->getVariables(), $this->getResults(), parent::getId(), false);
 
@@ -1312,12 +1303,12 @@ class assFormulaQuestion extends assQuestion implements iQuestionCondition, ilAs
                 $check_unit = false;
                 if (array_key_exists($result_name, $available_units) &&
                     $available_units[$result_name] !== null) {
-                    $check_unit = in_array($user_solution[$result_name]['unit'], $available_units[$result_name]);
+                    $check_unit = in_array($user_solution[$result_name]['value']['unit'], $available_units[$result_name]);
                 }
 
                 if ($check_unit == true) {
                     //get unit-factor
-                    $unit_factor = assFormulaQuestionUnit::lookupUnitFactor($user_solution[$result_name]['unit']);
+                    $unit_factor = assFormulaQuestionUnit::lookupUnitFactor($user_solution[$result_name]['value']['unit']);
                 }
 
                 try {
