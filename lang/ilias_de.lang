@@ -10770,6 +10770,7 @@ ldoc#:#ldoc_form_edit_doc_head#:#Dokument bearbeiten
 ldoc#:#ldoc_form_new_doc_head#:#Dokument erstellen
 ldoc#:#ldoc_last_modified#:#Letzte Änderung
 ldoc#:#ldoc_ldoc_settings#:#Einstellungen
+ldoc#:#ldoc_order_invalid#:#Bitte geben Sie eine Zahl für die Sortierung ein
 ldoc#:#ldoc_period#:#Zeitraum
 ldoc#:#ldoc_period_from#:#Von
 ldoc#:#ldoc_period_until#:#Bis
