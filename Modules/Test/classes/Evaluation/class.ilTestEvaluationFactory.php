@@ -106,15 +106,15 @@ class ilTestEvaluationFactory
 
         FROM        tst_active
 
-        LEFT JOIN tst_test_result ON tst_active.active_id = tst_test_result.active_fi
         LEFT JOIN tst_pass_result ON tst_active.active_id = tst_pass_result.active_fi
+        LEFT JOIN tst_test_result ON tst_active.active_id = tst_test_result.active_fi AND tst_test_result.pass = tst_pass_result.pass
         LEFT JOIN qpl_questions ON qpl_questions.question_id = tst_test_result.question_fi
         LEFT JOIN usr_data ON tst_active.user_fi = usr_data.usr_id
 
         WHERE       tst_active.test_fi = %s
         AND         %s
 
-        ORDER BY    tst_active.active_id ASC, tst_test_result.pass ASC, tst_test_result.tstamp DESC
+        ORDER BY    tst_active.active_id ASC, tst_pass_result.pass ASC, tst_test_result.tstamp DESC
         ';
 
         $result = $this->db->query(
@@ -165,6 +165,7 @@ class ilTestEvaluationFactory
             }
 
             if ($current_attempt !== $row['pass']) {
+                $current_attempt = $row['pass'];
                 $attempt = new \ilTestEvaluationPassData();
                 $attempt->setPass($row['pass']);
                 $attempt->setReachedPoints($row['points']);
