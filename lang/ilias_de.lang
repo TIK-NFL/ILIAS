@@ -14181,6 +14181,7 @@ rbac#:#moderate_frm#:#Moderieren
 rbac#:#msg_anonymous_cannot_be_assigned#:#Der anonyme Benutzer darf keiner Rolle zugewiesen werden.
 rbac#:#msg_no_roles_of_type#:#Keine Rollen vorhanden mit der gewählten Filtereinstellung
 rbac#:#news_add_news#:#Neuigkeiten erstellen
+rbac#:#no_corresponding_roles#:#Es sind keine passenden Rollen vorhanden.
 rbac#:#nots_edit_permissions#:#Rechteeinstellungen der Administration für Notizen ändern
 rbac#:#nots_read#:#Lesezugriff auf Administration für Notizen
 rbac#:#nots_visible#:#Administration für Notizen ist sichtbar.

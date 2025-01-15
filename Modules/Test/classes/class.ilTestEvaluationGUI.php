@@ -243,7 +243,6 @@ class ilTestEvaluationGUI extends ilTestServiceGUI
                     if ($userdata->getUserID() !== null) {
                         $userfields = ilObjUser::_lookupFields($userdata->getUserID());
                     }
-                    $evaluationrow['gender'] = $userfields['gender'] ?? '';
                     $evaluationrow['email'] = $userfields['email'] ?? '';
                     $evaluationrow['institution'] = $userfields['institution'] ?? '';
                     $evaluationrow['street'] = $userfields['street'] ?? '';
