@@ -211,7 +211,7 @@ class ilObjSAHSLearningModule extends ilObject
         );
         $obj_rec = $ilDB->fetchAssoc($obj_set);
 
-        return $obj_rec["c_type"];
+        return $obj_rec["c_type"] ?? '';
     }
 
     //    /**
