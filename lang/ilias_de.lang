@@ -9783,6 +9783,8 @@ file#:#preview_caption#:#Vorschau %svon %s
 file#:#preview_image_size_info#:#Die Vorschauversionen der Bilder werden je nach Bedarf verkleinert oder vergrößert, so dass ihre längste Seite der hier eingegebenen Länge (in px) entspricht.
 file#:#preview_persisting#:#Vorschaubilder speichern
 file#:#preview_persisting_info#:#Vorschaubilder werden generiert und gespeichert. Sie müssen nicht mehr bei jedem Aufruf neu erzeugt werden. Das verbessert die Performanz.
+file#:#previews_for_tiles#:#Kachelbilder
+file#:#previews_for_tiles_info#:#Verwende Vorschaubilder für Kacheln.
 file#:#publish_before_delete#:#Version(en) konnte(n) nicht gelöscht werden, da ein noch unveröffentlichter Entwurf existiert.
 file#:#replace_file_info#:#Alle früheren Dateiversionen werden gelöscht.
 file#:#resource_id#:#Ressourcen ID

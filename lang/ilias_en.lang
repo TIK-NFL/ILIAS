@@ -9783,6 +9783,8 @@ file#:#preview_caption#:#Preview %sof %s
 file#:#preview_image_size_info#:#The preview versions of images will be downscaled or upscaled as appropriate, so that their longest side is the length (in px) entered here.
 file#:#preview_persisting#:#Persistent Preview Images
 file#:#preview_persisting_info#:#Generated preview images will be stored by ILIAS and used from then on each time the preview icon for that file is clicked on. If deactivated, previews will be generated anew each time.
+file#:#previews_for_tiles#:#Tiles
+file#:#previews_for_tiles_info#:#Use Preview for Tiles where possible.
 file#:#publish_before_delete#:#It was not possible to delete any of the existing versions because an unpublished draft exists.
 file#:#replace_file_info#:#All previous file versions will be deleted.
 file#:#resource_id#:#Resource ID

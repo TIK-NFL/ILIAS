@@ -15,20 +15,26 @@
 
 namespace ILIAS\Style\Content\Setup;
 
-use ILIAS\Setup;
-
-/**
- * @author Alexander Killing <killing@leifos.de>
- */
-class ContentStyleAgent extends Setup\Agent\NullAgent
+class ilStyle9HotfixDBUpdateSteps implements \ilDatabaseUpdateSteps
 {
-    public function getUpdateObjective(Setup\Config $config = null): Setup\Objective
+    protected \ilDBInterface $db;
+
+    public function prepare(\ilDBInterface $db): void
     {
-        return new Setup\ObjectiveCollection(
-            'Content Style Update',
-            true,
-            new \ilDatabaseUpdateStepsExecutedObjective(new ilStyleDBUpdateSteps()),
-            new \ilDatabaseUpdateStepsExecutedObjective(new ilStyle9HotfixDBUpdateSteps())
+        $this->db = $db;
+    }
+
+    public function step_1()
+    {
+        $this->db->update(
+            "style_data",
+            [
+                "uptodate" => ["integer", 0]
+            ],
+            [    // where
+                 "uptodate" => ["integer", 1]
+            ]
         );
     }
+
 }
