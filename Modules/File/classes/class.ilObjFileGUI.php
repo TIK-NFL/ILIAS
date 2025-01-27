@@ -37,6 +37,7 @@ use ILIAS\Data\URI;
 use ILIAS\File\Capabilities\Capabilities;
 use ILIAS\File\Capabilities\CapabilityBuilder;
 use ILIAS\File\Capabilities\CapabilityCollection;
+use ILIAS\File\Capabilities\Context;
 
 /**
  * GUI class for file objects.
@@ -131,7 +132,14 @@ class ilObjFileGUI extends ilObject2GUI
             $this->action_repo,
             $DIC->http()
         );
-        $this->capabilities = $capability_builder->get($a_id);
+
+        $capability_context = new Context(
+            $this->object_id,
+            $this->ref_id,
+            ($a_id_type === self::WORKSPACE_NODE_ID) ? Context::CONTEXT_WORKSPACDE : Context::CONTEXT_REPO
+        );
+
+        $this->capabilities = $capability_builder->get($capability_context);
     }
 
     public function getType(): string
@@ -208,7 +216,7 @@ class ilObjFileGUI extends ilObject2GUI
             case "ilexportgui":
                 $ilTabs->activateTab("export");
                 $exp_gui = new ilExportGUI($this);
-                $exp_gui->addFormat();
+                $exp_gui->addFormat('xml');
                 $this->ctrl->forwardCommand($exp_gui);
                 break;
 

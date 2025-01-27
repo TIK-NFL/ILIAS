@@ -16,30 +16,16 @@
  *
  *********************************************************************/
 
+declare(strict_types=1);
+
+namespace ILIAS\File\Capabilities;
+
 /**
  * @author Fabian Schmid <fabian@sr.solutions>
  */
-
-namespace ILIAS\File\Capabilities\Check;
-
-use ILIAS\HTTP\Services;
-use ILIAS\Services\WOPI\Discovery\ActionRepository;
-use ILIAS\Data\URI;
-
-class CheckHelpers
+interface TypeResolver
 {
-    public function __construct(
-        public \ilAccessHandler $access,
-        public \ilCtrlInterface $ctrl,
-        public ActionRepository $action_repository,
-        public Services $http,
-        public \ilWorkspaceAccessHandler $workspace_access_handler
-    ) {
-    }
-
-    public function fromTarget(string $target): URI
-    {
-        return (new URI(rtrim(ILIAS_HTTP_PATH, '/') . '/' . $target));
-    }
+    public function resolveType(int $ref_id): string;
+    public function resolveTypeByObjectId(int $object_id): string;
 
 }

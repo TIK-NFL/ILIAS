@@ -3463,7 +3463,7 @@ common#:#adve_assessment_settings#:#Test und Assessment-Einstellungen
 common#:#adve_frm_post_settings#:#Forenbeiträge
 common#:#adve_general_settings#:#Allgemeine Einstellungen
 common#:#adve_survey_settings#:#Umfrage-Einstellungen
-common#:#agree_date#:#Zugestimmt am
+common#:#agree_date#:#NV zugestimmt am
 common#:#all#:#Alle
 common#:#all_global_roles#:#Globale Rollen
 common#:#all_local_roles#:#Lokale Rollen (alle)
@@ -3918,6 +3918,7 @@ common#:#download_selected_items#:#Herunterladen
 common#:#downloading_settings#:#Einstellungen
 common#:#dpro_accept_usr_agreement#:#Datenschutzerklärung akzeptieren?
 common#:#dpro_accept_usr_agreement_intro#:#Es liegt eine neue Datenschutzerklärung vor. Sie müssen diese akzeptieren, bevor Sie mit der Nutzung von ILIAS fortfahren können. Lesen Sie das folgende Dokument sorgfältig durch und geben Sie unten auf der Seite Ihre Zustimmung oder Ablehnung.
+common#:#dpro_agreed_on#:#DS zugestimmt am
 common#:#dpro_force_accept_usr_agreement#:#Sie müssen die Datenschutzerklärung akzeptieren!
 common#:#dpro_no_agreement_description#:#Aktuell wird in dieser Installation keine Datenschutzerklärung angeboten. Bitte kontaktieren Sie die <a href="%1$s">ILIAS-Administration</a>.
 common#:#dpro_refuse_acceptance#:#Wiederruf der Akzeptanz der Datenschutzerklärung
@@ -12819,6 +12820,7 @@ obj#:#copy_container_page_yes_label#:#Seitengestaltung übernehmen
 obj#:#custom_icon#:#Angepasstes Icon
 obj#:#edit_availability_period#:#Zeitliche Verfügbarkeit
 obj#:#edit_questions#:#Fragen bearbeiten
+obj#:#multiple_reference_deletion_info#:#Für die folgenden Objekte existieren weitere Referenzen.
 obj#:#no_objects_selected#:#Es muss mindestens ein Objekt ausgewählt werden.
 obj#:#obj_activate_content_lang#:#Mehrsprachigkeit für die Bearbeitung aktivieren
 obj#:#obj_activate_multilang#:#Mehrsprachigkeit aktivieren

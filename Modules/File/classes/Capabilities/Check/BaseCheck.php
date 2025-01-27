@@ -21,7 +21,8 @@ declare(strict_types=1);
 namespace ILIAS\File\Capabilities\Check;
 
 use ILIAS\File\Capabilities\Permissions;
-use ILIAS\Services\WOPI\Discovery\ActionTarget;
+use ILIAS\components\WOPI\Discovery\ActionTarget;
+use ILIAS\File\Capabilities\Context;
 
 /**
  * @author Fabian Schmid <fabian@sr.solutions>
@@ -30,20 +31,27 @@ abstract class BaseCheck implements Check
 {
     public function __construct()
     {
-
     }
 
     protected function hasPermission(
         CheckHelpers $helpers,
-        int $ref_id,
+        Context $context,
         Permissions ...$permission
     ): bool {
         $permission_string = implode(
             ',',
             array_map(static fn(Permissions $permission) => $permission->value, $permission)
         );
+        if ($context->getContext() === Context::CONTEXT_WORKSPACDE) {
+            return $helpers->workspace_access_handler->checkAccess(
+                $permission_string,
+                '',
+                $context->getCallingId(),
+                'file'
+            );
+        }
 
-        return $helpers->access->checkAccess($permission_string, '', $ref_id, 'file');
+        return $helpers->access->checkAccess($permission_string, '', $context->getCallingId(), 'file');
     }
 
     protected function hasWopiAction(CheckHelpers $helpers, string $suffix, ActionTarget ...$action): bool
@@ -59,6 +67,14 @@ abstract class BaseCheck implements Check
     public function hasWopiViewAction(CheckHelpers $helpers, string $suffix): bool
     {
         return $helpers->action_repository->hasViewActionForSuffix($suffix);
+    }
+
+    protected function baseClass(Context $context): string
+    {
+        if ($context->getContext() === Context::CONTEXT_WORKSPACDE) {
+            return \ilPersonalWorkspaceGUI::class;
+        }
+        return \ilRepositoryGUI::class;
     }
 
 }

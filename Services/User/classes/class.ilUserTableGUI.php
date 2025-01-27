@@ -209,7 +209,9 @@ class ilUserTableGUI extends ilTable2GUI
             "txt" => $lng->txt("approve_date")];
         $cols["agree_date"] = [
             "txt" => $lng->txt("agree_date")];
-        if ($this->getMode() === self::MODE_LOCAL_USER) {
+        $cols['dpro_agreed_on'] = [
+            'txt' => $lng->txt('dpro_agreed_on')];
+        if ($this->getMode() === self::MODE_USER_FOLDER) {
             $ufs = $up->getStandardFields();
         } else {
             $ufs = $up->getLocalUserAdministrationFields();
@@ -654,6 +656,9 @@ class ilUserTableGUI extends ilTable2GUI
                         case "approve_date":
                             // $val = ilDatePresentation::formatDate(new ilDateTime($val,IL_CAL_DATETIME));
                             $val = ilDatePresentation::formatDate(new ilDate($val, IL_CAL_DATE));
+                            break;
+                        case 'dpro_agreed_on':
+                            $val = ilDatePresentation::formatDate(new ilDate($val, IL_CAL_UNIX));
                             break;
                     }
                 }
