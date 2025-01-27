@@ -34,6 +34,7 @@ class ilECSCourseConnector extends ilECSConnector
             $this->path_postfix .= '/details';
         }
 
+        $this->logger->debug('before preparing');
         try {
             $this->prepareConnection();
             $this->setHeader([]);
@@ -43,7 +44,9 @@ class ilECSCourseConnector extends ilECSConnector
                 $this->addHeader('Accept', 'text/uri-list');
             }
             $this->curl->setOpt(CURLOPT_HTTPHEADER, $this->getHeader());
+        $this->logger->debug('before call');
             $res = $this->call();
+        $this->logger->debug('after call get result');
 
             if (strpos($res, 'http') === 0) {
                 $json = file_get_contents($res);
@@ -52,13 +55,16 @@ class ilECSCourseConnector extends ilECSConnector
                 $ecs_result = new ilECSResult($res);
             }
 
+            $this->logger->debug('got result');
             // Return ECSEContentDetails for details switch
             if ($a_details) {
                 $details = new ilECSEContentDetails();
                 $details->loadFromJson($ecs_result->getResult());
+                $this->logger->debug('returning details');
                 return $details;
             }
             // Return json result
+            $this->logger->debug('returning result');
             return $ecs_result->getResult();
         } catch (ilCurlConnectionException $e) {
             $this->logger->error('Error calling ECS service: ' . $e->getMessage());

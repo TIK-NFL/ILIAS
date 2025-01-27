@@ -156,11 +156,13 @@ class ilECSCmsCourseMemberCommandQueueHandler implements ilECSCommandQueueHandle
         //$crs_obj_id = ilECSImportManager::getInstance()->_lookupObjId($this->getServer()->getServerId(), $course_id, $this->mid);
         $crs_obj_id = ilECSImportManager::getInstance()->lookupObjIdByContentId($this->getServer()->getServerId(), $this->mid, $course_id);
 
+        $this->log->debug('got course object, reading course');
         if (!$crs_obj_id) {
             $this->log->info('No main course created. Group scenario >= 3 ?');
         }
 
         $course = $this->readCourse($course_member);
+        $this->log->debug('read course object, reading assignments');
         if (is_null($course)) {
             $this->log->info('No course found, skip processing' . print_r($course_member, true));
             return true;
@@ -483,7 +485,10 @@ class ilECSCmsCourseMemberCommandQueueHandler implements ilECSCommandQueueHandle
         );
         if (0 === $ecs_id) {
             return null;
-        }
-        return (new ilECSCourseConnector($this->getServer()))->getCourse($ecs_id);
+	}
+        $this->log->debug('calling course connector');
+	$retval = (new ilECSCourseConnector($this->getServer()))->getCourse($ecs_id);
+	$this->log->debug('finished calling course connector');
+	return $retval;
     }
 }

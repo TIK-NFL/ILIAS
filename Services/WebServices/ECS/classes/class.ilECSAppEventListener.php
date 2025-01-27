@@ -177,7 +177,9 @@ class ilECSAppEventListener implements ilAppEventListener
                         break;
                 }
                 break;
-        }
+	}
+        $this->logger->debug('Finished event from: ' . $a_component . ' ' . $a_event);
+
     }
 
     /**
