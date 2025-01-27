@@ -51,8 +51,8 @@ class CapabilityBuilder
         private \ilCtrlInterface $ctrl,
         private ActionRepository $action_repository,
         private Services $http,
-        private TypeResolver $type_resolver = new CoreTypeResolver(),
-        private \ilWorkspaceAccessHandler $workspace_access_handler = new \ilWorkspaceAccessHandler()
+        private ?TypeResolver $type_resolver = null,
+        private ?\ilWorkspaceAccessHandler $workspace_access_handler = null
     ) {
         $this->checks = [
             new ForcedInfo(),
@@ -65,6 +65,8 @@ class CapabilityBuilder
             new Unzip(),
             new ViewContent(),
         ];
+        $this->type_resolver = $this->type_resolver ?? new CoreTypeResolver();
+        $this->workspace_access_handler = $this->workspace_access_handler ?? new \ilWorkspaceAccessHandler();
     }
 
     public function get(Context $context): CapabilityCollection

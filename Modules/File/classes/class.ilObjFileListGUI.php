@@ -68,6 +68,13 @@ class ilObjFileListGUI extends ilObjectListGUI
 
     }
 
+    protected function updateContext(): void
+    {
+        $this->capability_context = $this->capability_context
+            ->withCallingId($this->ref_id ?? 0)
+            ->withObjectId($this->obj_id ?? 0);
+    }
+
     /**
      * initialisation
      */
@@ -89,15 +96,12 @@ class ilObjFileListGUI extends ilObjectListGUI
         }
 
         $this->commands = ilObjFileAccess::_getCommands();
-        $this->capability_context = $this->capability_context
-            ->withCallingId($this->ref_id ?? 0)
-            ->withObjectId(
-                $this->obj_id ?? 0
-            );
+        $this->updateContext();
     }
 
     public function getCommands(): array
     {
+        $this->updateContext();
         $this->capabilities = $this->capability_builder->get($this->capability_context);
 
         $best = $this->capabilities->getBest();
@@ -114,6 +118,7 @@ class ilObjFileListGUI extends ilObjectListGUI
 
     public function getCommandLink(string $cmd): string
     {
+        $this->updateContext();
         $info = $this->file_info->getByObjectId($this->obj_id);
         $this->capabilities = $this->capability_builder->get($this->capability_context);
 
@@ -158,6 +163,7 @@ class ilObjFileListGUI extends ilObjectListGUI
      */
     public function getCommandFrame(string $cmd): string
     {
+        $this->updateContext();
         $info = $this->file_info->getByObjectId($this->obj_id);
 
         $frame = "";
@@ -168,10 +174,9 @@ class ilObjFileListGUI extends ilObjectListGUI
                 }
                 break;
             case "":
+            default:
                 $frame = ilFrameTargetInfo::_getFrame("RepositoryContent");
                 break;
-
-            default:
         }
 
         return $frame;
@@ -279,10 +284,11 @@ class ilObjFileListGUI extends ilObjectListGUI
         string $type,
         ?int $obj_id = null
     ): bool {
+        $this->updateContext();
 
         $this->capability_context = $this->capability_context
             ->withCallingId($ref_id)
-            ->withObjectId($obj_id ?? 0);
+            ->withObjectId($obj_id ?? $this->capability_context->getObjectId());
 
         // LP settings only in repository
         if ($this->context !== self::CONTEXT_REPOSITORY && $permission === "edit_learning_progress") {

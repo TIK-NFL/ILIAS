@@ -51,7 +51,13 @@ abstract class BaseCheck implements Check
             );
         }
 
-        return $helpers->access->checkAccess($permission_string, '', $context->getCallingId(), 'file');
+        foreach ($permission as $p) {
+            if ($helpers->access->checkAccess($p->value, '', $context->getCallingId(), 'file')) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     protected function hasWopiAction(CheckHelpers $helpers, string $suffix, ActionTarget ...$action): bool
