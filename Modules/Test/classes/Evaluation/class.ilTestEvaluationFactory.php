@@ -58,15 +58,6 @@ class ilTestEvaluationFactory
         return ilObjTest::_getQuestionCountAndPointsForPassOfParticipant($active_id, $pass);
     }
 
-    protected function buildName(
-        int $usr_id,
-        string $firstname,
-        string $lastname,
-        string $title
-    ): string {
-        return $this->test_obj->buildName($usr_id, $firstname, $lastname, $title);
-    }
-
     /**
      * @return int[]
      */
@@ -147,7 +138,7 @@ class ilTestEvaluationFactory
                 $user_eval_data = new ilTestEvaluationUserData($scoring_settings);
 
                 $user_eval_data->setName(
-                    $this->buildName($row['usr_id'], $row['firstname'], $row['lastname'], $row['title'] ?? '')
+                    $this->test_obj->buildName($row['usr_id'], $row['firstname'], $row['lastname'])
                 );
 
                 if ($row['login'] !== null) {
