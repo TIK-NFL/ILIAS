@@ -158,28 +158,16 @@ class ilObjFileListGUI extends ilObjectListGUI
         return $this->secure(preg_replace('/\.[^.]*$/', '', $a_title));
     }
 
-    /**
-     * Get command target frame
-     */
     public function getCommandFrame(string $cmd): string
     {
         $this->updateContext();
         $info = $this->file_info->getByObjectId($this->obj_id);
 
-        $frame = "";
-        switch ($cmd) {
-            case Capabilities::DOWNLOAD->value:
-                if ($info->shouldDeliverInline()) {
-                    $frame = '_blank';
-                }
-                break;
-            case "":
-            default:
-                $frame = ilFrameTargetInfo::_getFrame("RepositoryContent");
-                break;
+        if ($cmd === Capabilities::DOWNLOAD->value) {
+            return $info->shouldDeliverInline() ? '_blank' : '';
         }
 
-        return $frame;
+        return '';
     }
 
     /**
