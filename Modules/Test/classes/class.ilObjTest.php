@@ -4287,14 +4287,18 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
     public function canEditMarks(): bool
     {
         $total = $this->evalTotalPersons();
-        if ($total > 0) {
-            $reporting_date = $this->getScoreSettings()->getResultSummarySettings()->getReportingDate();
-            if ($reporting_date !== null) {
-                return $reporting_date <= new DateTimeImmutable('now', new DateTimeZone('UTC'));
-            }
-            return false;
+        $results_summary_settings = $this->getScoreSettings()->getResultSummarySettings();
+        if ($total === 0
+            || $results_summary_settings->getScoreReportingEnabled() === false) {
+            return true;
         }
-        return true;
+
+        if ($results_summary_settings->getScoreReporting() === ilObjTestSettingsResultSummary::SCORE_REPORTING_DATE) {
+            return $results_summary_settings->getReportingDate()
+                >= new DateTimeImmutable('now', new DateTimeZone('UTC'));
+        }
+
+        return false;
     }
 
     /**
