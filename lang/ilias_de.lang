@@ -8721,7 +8721,7 @@ dcl#:#dcl_plugin_hooks#:#Verfügbare Erweiterungen
 dcl#:#dcl_plugin_no_hooks_available#:#Keine aktiven Field-Type Plugins gefunden.
 dcl#:#dcl_prev_record#:#Vorheriger Eintrag
 dcl#:#dcl_prop_expression#:#Ausdruck
-dcl#:#dcl_prop_expression_info#:#Gültige Operatoren: <b>%s</b><br>Unterstützte Funktionen: <b>%s</b><br>Verwenden Sie Klammern <b>"(", ")"</b> zum Gruppieren von Ausdrücken.<br>Zeichenketten und Platzhalter verbinden mit &: <b>"Das Resultat ist " & [[Int 1]] * [[Int 2]]</b><br>Verwenden der Funktionen: <b>SUM([[Int 1]];[[Int 2]])</b><br><br>Gültige Felder (auf den Titel klicken um als Platzhalter in Ausdruck einzufügen):<br>%s<br><b>(Erlaubte Felder sind Checkbox, Zahl, Text und Datum die keine Formular-sensitiven Zeichen im Titel enthalten)<b>
+dcl#:#dcl_prop_expression_info#:#Gültige Operatoren: <b>%s</b><br>Unterstützte Funktionen: <b>%s</b><br>Verwenden Sie Klammern <b>"(", ")"</b> zum Gruppieren von Ausdrücken.<br>Zeichenketten und Platzhalter verbinden mit &: <b>"Das Resultat ist " & [[Int 1]] * [[Int 2]]</b><br>Verwenden der Funktionen: <b>SUM([[Int 1]];[[Int 2]])</b><br><br>Gültige Felder (auf den Titel klicken um als Platzhalter in Ausdruck einzufügen):<br>%s<br><b>(Erlaubte Felder sind Checkbox, Zahl, Text und Datum die keine Formular-sensitiven Zeichen im Titel enthalten)</b>
 dcl#:#dcl_public_comments#:#Kommentare
 dcl#:#dcl_public_comments_desc#:#Benutzer können Datensätze dieser Tabelle kommentieren.
 dcl#:#dcl_rating#:#Bewertung
@@ -9497,7 +9497,7 @@ exc#:#exc_reminder_feedback_start#:#Start vor Peer-Feedback-Termin
 exc#:#exc_reminder_frequency#:#Häufigkeit
 exc#:#exc_reminder_grade_body#:#Die folgende Übungseinheit wurde noch nicht bewertet
 exc#:#exc_reminder_grade_setting#:#Erinnerung an notwendige Bewertung
-exc#:#exc_reminder_grade_subject#:#Übungseinheit „%s“ wurde nicht berwertet
+exc#:#exc_reminder_grade_subject#:#Übungseinheit „%s“ wurde nicht bewertet
 exc#:#exc_reminder_link#:#URL
 exc#:#exc_reminder_mail_no_tpl#:#Keine Mail-Vorlage verwenden
 exc#:#exc_reminder_mail_template#:#Mail-Vorlage
