@@ -1748,7 +1748,7 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
             return (int) $row['active_id'];
         }
 
-        return 0;
+        return null;
     }
 
     public static function _getActiveIdOfUser($user_id = "", $test_id = "")
