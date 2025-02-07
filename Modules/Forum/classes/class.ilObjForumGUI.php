@@ -76,6 +76,7 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
     protected \ILIAS\Style\Content\Object\ObjectFacade $content_style_domain;
     protected \ILIAS\Style\Content\GUIService $content_style_gui;
     private array $modal_collection = [];
+    private readonly bool $in_page_editor_style_context;
 
     public function __construct($data, int $id = 0, bool $call_by_reference = true, bool $prepare_output = true)
     {
@@ -120,6 +121,8 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
         if (is_object($this->object)) {
             $this->content_style_domain = $cs->domain()->styleForRefId($this->object->getRefId());
         }
+        $this->in_page_editor_style_context = $this->http->wrapper()->query()->has('page_editor_style');
+        $this->ctrl->saveParameterByClass(ilObjectContentStyleSettingsGUI::class, 'page_editor_style');
     }
 
     protected function initSessionStorage(): void
@@ -411,8 +414,16 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
                 break;
 
             case strtolower(ilObjectContentStyleSettingsGUI::class):
-                $forum_settings_gui = new ilForumSettingsGUI($this);
-                $forum_settings_gui->settingsTabs();
+                if ($this->in_page_editor_style_context) {
+                    $this->tabs_gui->setBackTarget(
+                        $this->lng->txt('back'),
+                        $this->ctrl->getLinkTarget(new ilForumPageGUI($this->object->getId()), 'edit')
+                    );
+                } else {
+                    $forum_settings_gui = new ilForumSettingsGUI($this);
+                    $forum_settings_gui->settingsTabs();
+                }
+
                 $settings_gui = $this->content_style_gui
                     ->objectSettingsGUIForRefId(
                         null,
@@ -570,13 +581,12 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
                 break;
         }
 
-        if (
+        if (!$this->in_page_editor_style_context &&
             $cmd !== 'viewThreadObject' && $cmd !== 'showUserObject' && !in_array(
                 strtolower($next_class),
                 array_map('strtolower', [ilForumPageGUI::class]),
                 true
-            )
-        ) {
+            )) {
             $this->addHeaderAction();
         }
     }
@@ -1165,6 +1175,11 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
         $this->tpl->parseCurrentBlock();
     }
 
+    private function editStylePropertiesObject(): void
+    {
+        $this->content_style_gui->redirectToObjectSettings();
+    }
+
     /**
      * @param list<ilForumPostDraft> $drafts
      */
@@ -1631,6 +1646,10 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
 
     protected function getTabs(): void
     {
+        if ($this->in_page_editor_style_context) {
+            return;
+        }
+
         $this->ilHelp->setScreenIdComponent('frm');
 
         $this->ctrl->setParameter($this, 'ref_id', $this->ref_id);
