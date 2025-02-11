@@ -85,6 +85,7 @@ class ilTestEvaluationFactory
                     qpl_questions.title questiontitle,
                     qpl_questions.points qpl_maxpoints,
 
+                    tst_active.active_id,
                     tst_active.submitted,
                     tst_active.last_finished_pass,
                     tst_pass_result.*,
@@ -131,8 +132,8 @@ class ilTestEvaluationFactory
         $current_attempt = null;
 
         foreach ($eval_data_rows as $row) {
-            if ($current_user !== $row['active_fi']) {
-                $current_user = $row['active_fi'];
+            if ($current_user !== $row['active_id']) {
+                $current_user = $row['active_id'];
                 $current_attempt = null;
 
                 $user_eval_data = new ilTestEvaluationUserData($scoring_settings);
@@ -150,7 +151,7 @@ class ilTestEvaluationFactory
                 $user_eval_data->setSubmitted((bool) $row['submitted']);
                 $user_eval_data->setLastFinishedPass($row['last_finished_pass']);
 
-                $visitingTime = $this->getVisitTimeOfParticipant($row['active_fi']);
+                $visitingTime = $this->getVisitTimeOfParticipant($row['active_id']);
                 $user_eval_data->setFirstVisit($visitingTime['firstvisit']);
                 $user_eval_data->setLastVisit($visitingTime['lastvisit']);
             }
@@ -164,7 +165,7 @@ class ilTestEvaluationFactory
 
                 if ($row['questioncount'] == 0) {
                     list($count, $points) = array_values(
-                        $this->getQuestionCountAndPointsForPassOfParticipant($row['active_fi'], $row['pass'])
+                        $this->getQuestionCountAndPointsForPassOfParticipant($row['active_id'], $row['pass'])
                     );
                     $attempt->setMaxPoints($points);
                     $attempt->setQuestionCount($count);
@@ -193,7 +194,7 @@ class ilTestEvaluationFactory
 
             $user_eval_data->addPass($row['pass'], $attempt);
 
-            $participants[$row['active_fi']] = $user_eval_data;
+            $participants[$row['active_id']] = $user_eval_data;
         }
 
         $evaluation_data = $this->addQuestionsToParticipantPasses(

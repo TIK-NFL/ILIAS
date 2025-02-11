@@ -221,20 +221,15 @@ class assMultipleChoiceGUI extends assQuestionGUI implements ilGuiQuestionScorin
         $show_question_text = true,
         bool $show_inline_feedback = true
     ): string {
-        // shuffle output
-        $user_solution = [];
-
         if ($active_id > 0 && !$show_correct_solution) {
-            $solutions = $this->object->getSolutionValues($active_id, $pass);
+            $user_solution = $this->object->getSolutionValues($active_id, $pass);
         } else {
-            // take the correct solution instead of the user solution
+            $user_solution = [];
             foreach ($this->object->answers as $index => $answer) {
                 $points_checked = $answer->getPointsChecked();
                 $points_unchecked = $answer->getPointsUnchecked();
-                if ($points_checked > $points_unchecked) {
-                    if ($points_checked > 0) {
-                        $user_solution[] = ['value1' => $index];
-                    }
+                if ($points_checked > $points_unchecked && $points_checked > 0) {
+                    $user_solution[] = ['value1' => $index];
                 }
             }
         }
