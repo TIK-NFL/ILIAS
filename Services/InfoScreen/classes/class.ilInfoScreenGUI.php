@@ -346,8 +346,6 @@ class ilInfoScreenGUI
         $md_data_helper = $this->metadata->dataHelper();
 
         // general
-        $description = $md_reader->firstData($md_paths->descriptions())->value();
-
         $lang_data = $md_reader->allData($md_paths->languages());
         $langs = $md_data_helper->makePresentableAsList(', ', ...$lang_data);
 
@@ -371,12 +369,6 @@ class ilInfoScreenGUI
         $learning_time = $md_data_helper->makePresentable($learning_time_data);
 
         // output
-
-        // description
-        if ($description != "") {
-            $this->addSection($lng->txt("description"));
-            $this->addProperty("", nl2br($description));
-        }
 
         // general section
         $this->addSection($lng->txt("meta_general"));

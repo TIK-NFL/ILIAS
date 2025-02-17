@@ -3768,7 +3768,7 @@ common#:#copyPage#:#Copia
 common#:#copy_all#:#Copia tutto
 common#:#copy_n_of_suffix#:#- Copia (%1$s)
 common#:#copy_of#:#Copia di
-common#:#copy_of_suffix#:#Copia del suffisso
+common#:#copy_of_suffix#:#- Copia
 common#:#copy_perma_link#:#Copy link to clipboard###10 12 2024 new variable
 common#:#copy_selected_items#:#Copia
 common#:#count#:#Conta

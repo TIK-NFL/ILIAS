@@ -313,7 +313,7 @@ class ilTestScoringGUI extends ilTestServiceGUI
 
         $scorer = new ilTestScoring($this->object, $this->db);
         $scorer->setPreserveManualScores(true);
-        $scorer->recalculateSolutions();
+        $scorer->recalculateSolution($activeId, $pass);
 
         if ($this->object->getAnonymity() == 0) {
             $user_name = ilObjUser::_lookupName(ilObjTestAccess::_getParticipantId($active_id));
