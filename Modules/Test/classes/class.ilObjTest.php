@@ -4444,8 +4444,11 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
         $new_obj->setTmpCopyWizardCopyId($copy_id);
         $this->cloneMetaData($new_obj);
 
+        $new_obj->mark_schema = clone $this->mark_schema;
+        $new_obj->setTemplate($this->getTemplate());
         $new_obj->saveToDb();
         $new_obj->addToNewsOnOnline(false, $new_obj->getObjectProperties()->getPropertyIsOnline()->getIsOnline());
+
         $this->getMainSettingsRepository()->store(
             $this->getMainSettings()->withTestId($new_obj->getTestId())
                 ->withIntroductionSettings(
@@ -4461,9 +4464,6 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
         $this->getScoreSettingsRepository()->store(
             $this->getScoreSettings()->withTestId($new_obj->getTestId())
         );
-
-        $new_obj->mark_schema = clone $this->mark_schema;
-        $new_obj->setTemplate($this->getTemplate());
 
         // clone certificate
         $pathFactory = new ilCertificatePathFactory();

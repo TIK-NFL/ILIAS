@@ -697,11 +697,6 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
             ilSession::set('tst_pass_finish', 1);
         }
 
-        $this->sendNewPassFinishedNotificationEmailIfActivated(
-            $this->test_session->getActiveId(),
-            $this->test_session->getPass()
-        );
-
         $this->performTestPassFinishedTasks();
 
         $this->ctrl->redirect($this, ilTestPlayerCommands::AFTER_TEST_PASS_FINISHED);
@@ -714,6 +709,11 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
             $this->object->getId()
         );
         $finishTasks->performFinishTasks($this->processLocker);
+
+        $this->sendNewPassFinishedNotificationEmailIfActivated(
+            $this->test_session->getActiveId(),
+            $this->test_session->getPass()
+        );
     }
 
     protected function sendNewPassFinishedNotificationEmailIfActivated(int $active_id, int $pass)
