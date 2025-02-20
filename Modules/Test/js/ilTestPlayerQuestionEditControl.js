@@ -690,7 +690,6 @@ il.TestPlayerQuestionEditControl = new function() {
         // get and compare the current form data
         var newData = $(FORM_SELECTOR).serialize();
         if (autoSavedData != newData) {
-
             $.ajax({
                     type: 'POST',
                     url: url,
@@ -716,7 +715,6 @@ il.TestPlayerQuestionEditControl = new function() {
      * @param  responseText
      */
     function autoSaveSuccess(responseText) {
-
         if (typeof responseText !== 'undefined' && responseText != '-IGNORE-') {
             $('#autosavemessage').text(responseText)
                 .fadeIn(500, function(){

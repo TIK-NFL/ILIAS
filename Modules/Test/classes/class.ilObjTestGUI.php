@@ -449,7 +449,7 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
                 break;
 
             case "illearningprogressgui":
-                if ((!$this->access->checkAccess("read", "", $this->testrequest->getRefId()))) {
+                if (!$this->access->checkAccess("read", "", $this->testrequest->getRefId())) {
                     $this->redirectAfterMissingRead();
                 }
 
@@ -463,7 +463,8 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
                 }
 
                 $test_session = $this->test_session_factory->getSessionByUserId($this->user->getId());
-                if (!$test_object->canShowTestResults($test_session)) {
+                if (!$this->checkPermissionBool('write')
+                    && !$test_object->canShowTestResults($test_session)) {
                     $this->tpl->setOnScreenMessage(
                         'info',
                         $this->lng->txt('tst_res_tab_msg_no_lp_access'),
