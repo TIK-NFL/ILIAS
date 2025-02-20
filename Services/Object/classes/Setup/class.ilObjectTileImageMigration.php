@@ -107,7 +107,7 @@ class ilObjectTileImageMigration implements Migration
         $this->deleteTileImageInfoFromContainerSettings($next_record->id);
     }
 
-    private function getFullPath(int $object_id, string $extension): string
+    private function getFullPath(int $object_id, ?string $extension): string
     {
         return implode(
             DIRECTORY_SEPARATOR,

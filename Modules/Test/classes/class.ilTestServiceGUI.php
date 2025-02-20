@@ -973,15 +973,15 @@ class ilTestServiceGUI
 
     protected function isGradingMessageRequired(): bool
     {
-        if ($this->getObjectiveOrientedContainer()->isObjectiveOrientedPresentationRequired()) {
+        $session = $this->testSessionFactory->getSession();
+        if ($this->getObjectiveOrientedContainer()->isObjectiveOrientedPresentationRequired()
+            || $this->object->getScoreSettings()->getScoringSettings()->getPassScoring() === SCORE_LAST_PASS
+                && $session->getLastFinishedPass() < $session->getPass()) {
             return false;
         }
 
-        if ($this->object->isShowGradingStatusEnabled()) {
-            return true;
-        }
-
-        if ($this->object->isShowGradingMarkEnabled()) {
+        if ($this->object->isShowGradingStatusEnabled()
+            || $this->object->isShowGradingMarkEnabled()) {
             return true;
         }
 

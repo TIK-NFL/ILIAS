@@ -241,7 +241,7 @@ class ilTestScreenGUI
             ;
         }
 
-        if (!$this->hasUserPassedAlreadyAndCanRetake()) {
+        if ($this->blockUserAfterHavingPassed()) {
             return $launcher
                 ->inline($this->data_factory->link('', $this->data_factory->uri($this->http->request()->getUri()->__toString())))
                 ->withButtonLabel($this->lng->txt('tst_already_passed_cannot_retake'), false)
@@ -475,13 +475,13 @@ class ilTestScreenGUI
             );
     }
 
-    private function hasUserPassedAlreadyAndCanRetake(): bool
+    private function blockUserAfterHavingPassed(): bool
     {
         if ($this->main_settings->getTestBehaviourSettings()->getBlockAfterPassedEnabled()) {
-            return !$this->test_passes_selector->hasTestPassedOnce($this->test_session->getActiveId());
+            return $this->test_passes_selector->hasTestPassedOnce($this->test_session->getActiveId());
         }
 
-        return true;
+        return false;
     }
 
     private function hasAvailablePasses(): bool
