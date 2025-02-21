@@ -866,7 +866,6 @@ class ilTestEvaluationGUI extends ilTestServiceGUI
     public function outParticipantsPassDetails()
     {
         $ilTabs = $this->tabs;
-        $ilObjDataCache = $this->obj_cache;
 
         $active_id = (int) $this->testrequest->raw("active_id");
 

@@ -42,12 +42,19 @@ abstract class ilTestOutputGUI extends ilTestPlayerAbstractGUI
      */
     public function executeCommand()
     {
-        $this->checkReadAccess();
-
         $this->tabs->clearTargets();
 
         $cmd = $this->ctrl->getCmd();
         $next_class = $this->ctrl->getNextClass($this);
+
+        if (($read_access = $this->checkReadAccess()) !== true) {
+            if ($cmd === 'autosave') {
+                echo $this->lng->txt('autosave_failed') . ': ' . $read_access;
+                exit;
+            }
+            $this->tpl->setOnScreenMessage('failure', $read_access, true);
+            $this->ctrl->redirectByClass([ilRepositoryGUI::class, ilObjTestGUI::class, TestScreenGUI::class]);
+        }
 
         $this->ctrl->saveParameter($this, "sequence");
         $this->ctrl->saveParameter($this, "pmode");

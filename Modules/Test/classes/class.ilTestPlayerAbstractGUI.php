@@ -62,15 +62,17 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
         $this->passwordChecker = new ilTestPasswordChecker($this->rbac_system, $this->user, $this->object, $this->lng);
     }
 
-    protected function checkReadAccess()
+    protected function checkReadAccess(): bool|string
     {
         if (!$this->rbac_system->checkAccess('read', $this->object->getRefId())) {
-            $this->ilias->raiseError($this->lng->txt('cannot_execute_test'), $this->ilias->error_obj->MESSAGE);
+            return $this->lng->txt('cannot_execute_test');
         }
 
         if (ilObjTestAccess::_lookupOnlineTestAccess($this->getObject()->getId(), $this->user->getId()) !== true) {
-            $this->ilias->raiseError($this->lng->txt('user_wrong_clientip'), $this->ilias->error_obj->MESSAGE);
+            return $this->lng->txt('user_wrong_clientip');
         }
+
+        return true;
     }
 
     protected function checkTestExecutable()

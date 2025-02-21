@@ -14074,6 +14074,10 @@ rbac#:#il_lti_global_role#:#LTI User
 rbac#:#il_sess_participant#:#Sitzungsteilnahme
 rbac#:#il_sess_status_closed#:#Keine Teilnahme an geschlossener Sitzung
 rbac#:#ilias_id#:#ILIAS-ID
+rbac#:#impr_edit_permission#:#Rechteeinstellungen der Impressumsverwaltung ändern
+rbac#:#impr_read#:#Lesezugriff auf Impressumsverwaltung
+rbac#:#impr_visible#:#Impressumsverwaltung ist sichtbar
+rbac#:#impr_write#:#Inhalt und Einstellungen des Impressums bearbeiten
 rbac#:#info_user_view_changed#:#Benutzersicht gewechselt
 rbac#:#internal_mail#:#Internes Mail-System
 rbac#:#invite#:#Zu Umfrage einladen
