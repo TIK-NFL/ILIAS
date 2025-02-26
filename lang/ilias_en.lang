@@ -2018,7 +2018,6 @@ auth#:#auth_cron_destroy_expired_sessions_desc#:#This job deletes expires sessio
 auth#:#auth_err_expired#:#Your session has been deactivated due to inactivity.
 auth#:#auth_err_invalid_user_account#:#Authentication failed due to an internal failure.
 auth#:#auth_err_ldap_exception#:#Authentication failed due to an internal authentication failure (LDAP).
-auth#:#auth_err_login_attempts_deactivation#:#This user account has been deactivated due to too many incorrect login attempts.
 auth#:#auth_info_add#:#Choose this option if you have never registered to ILIAS. A new account will be created.
 auth#:#auth_info_migrate#:#If you have already an ILIAS account, enter username and password to migrate your personal data (mail, test results...).
 auth#:#auth_ldap_server_ds#:#LDAP-Server
@@ -2890,8 +2889,6 @@ chatroom#:#chat_osc_accepts_messages_yes#:#Receives Chat Messages
 chatroom#:#chat_osc_add_user#:#Add Further Users
 chatroom#:#chat_osc_conversations#:#Conversations
 chatroom#:#chat_osc_doesnt_accept_msg#:#Conversations not possible
-chatroom#:#chat_osc_dont_accept_msg#:#You currently cannot be invited to conversations. If desired you can change this in your %s.
-chatroom#:#chat_osc_dont_accept_msg_link_txt#:#'Personal Settings'
 chatroom#:#chat_osc_head_grp_x_persons#:#%s Users
 chatroom#:#chat_osc_invite_to_conversation#:#Add to Conversation
 chatroom#:#chat_osc_leave_grp_conv#:#Leave Conversation
@@ -5635,7 +5632,6 @@ common#:#show_users_online#:#Show active users
 common#:#show_who_is_online#:#Show who is online
 common#:#side_frame#:#Side Frame
 common#:#signature#:#Signature
-common#:#simultaneous_login_detected#:#Your access is denied because of a simultaneous login with the same account.
 common#:#size#:#Size
 common#:#skills#:#Competences
 common#:#skin_style#:#Default Skin / Style
@@ -6012,7 +6008,6 @@ common#:#withdrawal_sure_account_no_consent_yet#:#Are you sure that you do not w
 common#:#wizard_search_list#:#Your search produced the following hits. Please select one of them.
 common#:#wizard_title_info#:#Search for the object you want to duplicate. Please enter the object's title or a part of it and click on 'Continue' to get matching search results.
 common#:#write#:#Write
-common#:#wrong_ip_detected#:#Your access is denied because of a wrong client ip.<br>You are currently using this IP address: %s<br>Please contact the system administrator.
 common#:#year#:#Year
 common#:#yearly#:#yearly
 common#:#years#:#Years
@@ -13854,7 +13849,7 @@ rbac#:#chtr_moderate#:#User can moderate discussion in chat room
 rbac#:#chtr_read#:#User can join and participate at chat room
 rbac#:#chtr_visible#:#Chat Room is visible
 rbac#:#chtr_write#:#User can edit settings of chat room and ban users
-rbac#:#cmis_edit_permissions#:#User can change permission settings of xAPI/cmi5 administration.
+rbac#:#cmis_edit_permission#:#User can change permission settings of xAPI/cmi5 administration.
 rbac#:#cmis_read#:#User has read access to xAPI/cmi5 administration.
 rbac#:#cmis_visible#:#Administration of xAPI/cmi5 is visible.
 rbac#:#cmis_write#:#User can edit settings of xAPI/cmi5 administration.
@@ -13926,6 +13921,10 @@ rbac#:#dcl_write#:#User can edit settings and content of data collection
 rbac#:#delete_files#:#Delete Files
 rbac#:#delete_folders#:#Delete Folders
 rbac#:#delete_wiki_pages#:#Delete Pages
+rbac#:#dpro_edit_permission#:#User can change permission settings in the Declaration of Data Protected administration
+rbac#:#dpro_read#:#User has read access to the Declaration of Data Protection administration
+rbac#:#dpro_visible#:#Declaration of Data Protection administration is visible
+rbac#:#dpro_write#:#Edit settings in the Declaration of Data Protection
 rbac#:#dshs_change_presentation#:#Change presentation of dashboard view
 rbac#:#dshs_edit_permission#:#User can change permission settings of Dashboard administration
 rbac#:#dshs_read#:#User has read access to Dashboard administration
@@ -14125,7 +14124,7 @@ rbac#:#lso_read_learning_progress#:#User can view learning progress of other use
 rbac#:#lso_unparticipate#:#User can unsubscribe from a Learning Sequence
 rbac#:#lso_visible#:#Learning Sequence is visible
 rbac#:#lso_write#:#User can edit settings of Learning Sequence
-rbac#:#lsos_edit_permissions#:#User can change permission settings of Learning Sequences administration.
+rbac#:#lsos_edit_permission#:#User can change permission settings of Learning Sequences administration.
 rbac#:#lsos_read#:#User has read access to Learning Sequences administration.
 rbac#:#lsos_visible#:#Administration of Learning Sequences is visible.
 rbac#:#lsos_write#:#User can edit settings of Learning Sequences administration.
@@ -14191,7 +14190,7 @@ rbac#:#msg_anonymous_cannot_be_assigned#:#Anonymous cannot be assigned to a role
 rbac#:#msg_no_roles_of_type#:#No Roles available with selected filter setting
 rbac#:#news_add_news#:#Add News
 rbac#:#no_corresponding_roles#:#No corresponding roles could be found.
-rbac#:#nots_edit_permissions#:#User can change permission settings of Notes administration.
+rbac#:#nots_edit_permission#:#User can change permission settings of Notes administration.
 rbac#:#nots_read#:#User has read access to Notes administration.
 rbac#:#nots_visible#:#Administration of Notes is visible.
 rbac#:#nots_write#:#User can edit settings of Notes administration.
@@ -14268,7 +14267,7 @@ rbac#:#prgs_edit_permission#:#Change permission settings in Study Programme admi
 rbac#:#prgs_read#:#User has read access to Study Programme administration
 rbac#:#prgs_visible#:#Study Programme administration is visible
 rbac#:#prgs_write#:#Edit settings in Study Programme administration
-rbac#:#prss_edit_permissions#:#User can change permission settings of Personal Resources administration.
+rbac#:#prss_edit_permission#:#User can change permission settings of Personal Resources administration.
 rbac#:#prss_read#:#User has read access to Personal Resources administration.
 rbac#:#prss_visible#:#Administration of Personal Resources is visible.
 rbac#:#prss_write#:#User can edit settings of Personal Resources administration.
@@ -14617,7 +14616,7 @@ rbac#:#usrf_read#:#User has read access to User administration
 rbac#:#usrf_read_users#:#User has read access to local user accounts (local administrators)
 rbac#:#usrf_visible#:#User administration is visible
 rbac#:#usrf_write#:#Edit settings in User administration
-rbac#:#wbdv_edit_permissions#:#User can change permission settings of WebDAV administration.
+rbac#:#wbdv_edit_permission#:#User can change permission settings of WebDAV administration.
 rbac#:#wbdv_read#:#User has read access to WebDAV administration.
 rbac#:#wbdv_visible#:#Administration of WebDAV is visible.
 rbac#:#wbdv_write#:#User can edit settings of WebDAV administration.
