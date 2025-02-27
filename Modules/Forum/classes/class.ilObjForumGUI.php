@@ -414,6 +414,8 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
                 break;
 
             case strtolower(ilObjectContentStyleSettingsGUI::class):
+                $this->checkPermission('write');
+
                 if ($this->in_page_editor_style_context) {
                     $this->tabs_gui->setBackTarget(
                         $this->lng->txt('back'),
@@ -546,6 +548,8 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
                 break;
 
             case strtolower(ilContainerNewsSettingsGUI::class):
+                $this->checkPermission('write');
+
                 $forum_settings_gui = new ilForumSettingsGUI($this);
                 $forum_settings_gui->settingsTabs();
 

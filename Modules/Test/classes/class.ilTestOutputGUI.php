@@ -349,7 +349,12 @@ abstract class ilTestOutputGUI extends ilTestPlayerAbstractGUI
         // fau: testNav - always use edit mode, except for fixed answer
         if ($this->isParticipantsAnswerFixed($questionId)) {
             $presentationMode = ilTestPlayerAbstractGUI::PRESENTATION_MODE_VIEW;
-            $instantResponse = true;
+            if ($s->getInstantFeedbackGenericEnabled()
+                || $s->getInstantFeedbackPointsEnabled()
+                || $s->getInstantFeedbackSolutionEnabled()
+                || $s->getInstantFeedbackSpecificEnabled()) {
+                $instantResponse = true;
+            }
         } else {
             $presentationMode = ilTestPlayerAbstractGUI::PRESENTATION_MODE_EDIT;
             // #37025 don't show instant response if a request for it should fix the answer and answer is not yet fixed
