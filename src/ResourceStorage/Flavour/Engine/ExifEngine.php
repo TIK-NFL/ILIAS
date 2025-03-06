@@ -18,11 +18,28 @@
 
 declare(strict_types=1);
 
-use PHPUnit\Framework\TestCase;
+namespace ILIAS\ResourceStorage\Flavour\Engine;
 
-class ilWebDAVAccessChildrenFunctionsTraitTest extends TestCase
+/**
+ * @author Fabian Schmid <fabian@sr.solutions>
+ */
+class ExifEngine implements Engine
 {
-    public function setUp(): void
+    use PHPMemoryLimit;
+
+
+    public function __construct()
     {
     }
+
+    public function supports(string $suffix): bool
+    {
+        return true;
+    }
+
+    public function isRunning(): bool
+    {
+        return extension_loaded('exif');
+    }
+
 }
