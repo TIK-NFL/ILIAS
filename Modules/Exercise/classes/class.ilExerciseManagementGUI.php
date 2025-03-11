@@ -1816,7 +1816,7 @@ class ilExerciseManagementGUI
                 "rc_id",
                 "",
                 1,
-                ["application/zip", "application/x-compressed", "application/x-zip-compressed"]
+                ["application/zip"]
             );
         return $form;
     }
