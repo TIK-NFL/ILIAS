@@ -18,22 +18,21 @@
 
 declare(strict_types=1);
 
-require_once 'tests/UI/AbstractFactoryTest.php';
+namespace ILIAS\Filesystem\Stream;
 
-class TableFactoryTest extends AbstractFactoryTest
+/**
+ * @author                 Fabian Schmid <fabian@sr.solutions>
+ */
+class ReattachableStream extends Stream
 {
-    public array $kitchensink_info_settings = [
-        "presentation" => [
-            "context" => false,
-            "rules" => true
-        ],
-        "data" => [
-            "context" => false
-        ],
-        "ordering" => [
-            "context" => false
-        ]
-    ];
-
-    public string $factory_title = 'ILIAS\\UI\\Component\\Table\\Factory';
+    /**
+     * Checks if the stream is attached to the wrapper.
+     * If not, the stream is reattached.
+     */
+    protected function assertStreamAttached(): void
+    {
+        if ($this->stream === null) {
+            $this->stream = fopen($this->uri, $this->_mode);
+        }
+    }
 }

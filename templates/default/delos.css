@@ -8956,6 +8956,10 @@ div.alert ul > li:before {
   }
 }
 
+.c-table-data__selection_none {
+  display: none;
+}
+
 th.c-table-data__cell {
   padding: 0;
 }
@@ -9044,6 +9048,16 @@ th.c-table-data__cell {
   position: sticky;
   left: -1px;
   z-index: 2;
+}
+
+.c-table-data__positioninput .c-input[data-il-ui-component] {
+  grid-template-columns: 0% 100%;
+}
+.c-table-data__positioninput .c-input[data-il-ui-component] > label {
+  display: none;
+}
+.c-table-data__positioninput .c-input[data-il-ui-component] input {
+  width: 65px;
 }
 
 .c-table-data__multiaction-triggerer {

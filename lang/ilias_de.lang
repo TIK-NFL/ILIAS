@@ -17203,6 +17203,7 @@ ui#:#order_option_numerical_ascending#:#0 bis 9
 ui#:#order_option_numerical_descending#:#9 bis 0
 ui#:#presentation_table_collapse#:#alle minimieren
 ui#:#presentation_table_expand#:#alle zeigen
+ui#:#table_posinput_col_title#:#Position
 ui#:#ui_chars_max#:#Maximum:
 ui#:#ui_chars_min#:#Minimum:
 ui#:#ui_chars_remaining#:#Verbleibende Buchstaben

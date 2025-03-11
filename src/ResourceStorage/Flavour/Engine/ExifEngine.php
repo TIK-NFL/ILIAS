@@ -27,7 +27,6 @@ class ExifEngine implements Engine
 {
     use PHPMemoryLimit;
 
-
     public function __construct()
     {
     }
@@ -40,6 +39,19 @@ class ExifEngine implements Engine
     public function isRunning(): bool
     {
         return extension_loaded('exif');
+    }
+
+    public function read(string $file_path): array
+    {
+        try {
+            $exif = exif_read_data($file_path);
+            if ($exif === false) {
+                return [];
+            }
+            return $exif;
+        } catch (\Throwable $e) {
+            return [];
+        }
     }
 
 }

@@ -128,9 +128,8 @@ class CropSquare extends AbstractMachine implements FlavourMachine
     {
         // if PHP exif is installed, this is quite easy
         $exif = new ExifEngine();
-        if ($exif->isRunning()) {
-            $exif = exif_read_data($stream_path);
-            switch ($exif['Orientation'] ?? null) {
+        if ($exif->isRunning() && ($exif_data = $exif->read($stream_path)) !== []) {
+            switch ($exif_data['Orientation'] ?? null) {
                 case 8:
                     $image = imagerotate($image, 90, 0);
                     return true;

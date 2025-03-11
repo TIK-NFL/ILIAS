@@ -434,6 +434,13 @@ class FormAdapterGUI
             $ctrl_path
         );
 
+        foreach (["application/x-compressed", "application/x-zip-compressed"] as $zipmime) {
+            if (in_array("application/zip", $mime_types) &&
+                !in_array($zipmime, $mime_types)) {
+                $mime_types[] = $zipmime;
+            }
+        }
+
         if (count($mime_types) > 0) {
             $description .= $this->lng->txt("rep_allowed_types") . ": " .
                 implode(", ", $mime_types);
