@@ -107,7 +107,7 @@ class ilECSMappingUtils
             case 'organisation':
                 return array((string) $course->organisation);
 
-	    case 'term':
+            case 'term':
                 if (property_exists($course, "term")) {
                     return array((string) $course->term);
                 }
