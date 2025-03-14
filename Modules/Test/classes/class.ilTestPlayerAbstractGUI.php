@@ -62,15 +62,17 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
         $this->passwordChecker = new ilTestPasswordChecker($this->rbac_system, $this->user, $this->object, $this->lng);
     }
 
-    protected function checkReadAccess()
+    protected function checkReadAccess(): bool|string
     {
         if (!$this->rbac_system->checkAccess('read', $this->object->getRefId())) {
-            $this->ilias->raiseError($this->lng->txt('cannot_execute_test'), $this->ilias->error_obj->MESSAGE);
+            return $this->lng->txt('cannot_execute_test');
         }
 
         if (ilObjTestAccess::_lookupOnlineTestAccess($this->getObject()->getId(), $this->user->getId()) !== true) {
-            $this->ilias->raiseError($this->lng->txt('user_wrong_clientip'), $this->ilias->error_obj->MESSAGE);
+            return $this->lng->txt('user_wrong_clientip');
         }
+
+        return true;
     }
 
     protected function checkTestExecutable()
@@ -549,6 +551,11 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
      */
     public function autosaveCmd(): void
     {
+        $test_can_run = $this->object->isExecutable($this->test_session, $this->test_session->getUserId());
+        if (!$test_can_run['executable']) {
+            echo $test_can_run['errormessage'];
+            exit;
+        }
         if (!is_countable($_POST) || count($_POST) === 0) {
             echo '';
             exit;
@@ -697,11 +704,6 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
             ilSession::set('tst_pass_finish', 1);
         }
 
-        $this->sendNewPassFinishedNotificationEmailIfActivated(
-            $this->test_session->getActiveId(),
-            $this->test_session->getPass()
-        );
-
         $this->performTestPassFinishedTasks();
 
         $this->ctrl->redirect($this, ilTestPlayerCommands::AFTER_TEST_PASS_FINISHED);
@@ -714,6 +716,12 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
             $this->object->getId()
         );
         $finishTasks->performFinishTasks($this->processLocker);
+        $this->object->updateTestResultCache($this->test_session->getActiveId(), null);
+
+        $this->sendNewPassFinishedNotificationEmailIfActivated(
+            $this->test_session->getActiveId(),
+            $this->test_session->getPass()
+        );
     }
 
     protected function sendNewPassFinishedNotificationEmailIfActivated(int $active_id, int $pass)
@@ -746,9 +754,10 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
         }
 
         // redirect after test
-        $redirection_mode = $this->object->getRedirectionMode();
-        $redirection_url = $this->object->getRedirectionUrl();
-        if ($redirection_url !== '' && $redirection_mode !== '0') {
+        $redirection_url = $this->object->getMainSettings()->getFinishingSettings()->getRedirectionUrl();
+        if (!$this->object->canShowTestResults($this->test_session)
+            && $this->object->getMainSettings()->getFinishingSettings()->getRedirectionMode() !== '0'
+            && $redirection_url !== '') {
             if ($this->object->isRedirectModeKiosk()) {
                 if ($this->object->getKioskMode()) {
                     ilUtil::redirect($redirection_url);
@@ -807,11 +816,11 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
             ilTestPlayerLayoutProvider::TEST_PLAYER_VIEW_TITLE,
             $this->object->getTitle() . ' - ' . $this->lng->txt('final_statement')
         );
-
+        $this->content_style->gui()->addCss($this->tpl, $this->ref_id);
         $template = new ilTemplate("tpl.il_as_tst_final_statement.html", true, true, "Modules/Test");
         $this->ctrl->setParameter($this, "skipfinalstatement", 1);
         $template->setVariable("FORMACTION", $this->ctrl->getFormAction($this, ilTestPlayerCommands::AFTER_TEST_PASS_FINISHED));
-        $template->setVariable("FINALSTATEMENT", $this->object->prepareTextareaOutput($this->object->getFinalStatement(), true));
+        $template->setVariable("FINALSTATEMENT", $this->object->getFinalStatement());
         $template->setVariable("BUTTON_CONTINUE", $this->lng->txt("btn_next"));
         $this->tpl->setVariable($this->getContentBlockName(), $template->get());
     }

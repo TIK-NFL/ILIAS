@@ -199,7 +199,12 @@ class ResourceBuilder
         if ($resource->getCurrentRevisionIncludingDraft()->getStatus() === RevisionStatus::DRAFT) {
             throw new \LogicException('You can not replace a draft revision, you must publish it first');
         }
-        $revision = $this->revision_repository->blankFromUpload($info_resolver, $resource, $result, RevisionStatus::PUBLISHED);
+        $revision = $this->revision_repository->blankFromUpload(
+            $info_resolver,
+            $resource,
+            $result,
+            RevisionStatus::PUBLISHED
+        );
         $revision = $this->populateRevisionInfo($revision, $info_resolver);
 
         foreach ($resource->getAllRevisionsIncludingDraft() as $existing_revision) {
@@ -229,7 +234,13 @@ class ResourceBuilder
             );
         }
 
-        $new_revision = $this->revision_repository->blankFromStream($info_resolver, $resource, $stream, $status, $keep_original);
+        $new_revision = $this->revision_repository->blankFromStream(
+            $info_resolver,
+            $resource,
+            $stream,
+            $status,
+            $keep_original
+        );
 
         if ($resource->getCurrentRevisionIncludingDraft()->getStatus() === RevisionStatus::DRAFT) {
             $clone_revision = $this->buildDraftReplacementRevision($resource, $new_revision, $info_resolver);
@@ -353,7 +364,7 @@ class ResourceBuilder
                 $this->resource_repository->store($resource);
 
                 foreach ($resource->getAllRevisionsIncludingDraft() as $revision) {
-                    $this->storeRevision($revision);
+                    $this->storeRevision($revision, $resource);
                 }
 
                 foreach ($resource->getStakeholders() as $stakeholder) {
@@ -406,7 +417,7 @@ class ResourceBuilder
      * @description  Store one Revision
      * @throws \ILIAS\ResourceStorage\Policy\FileNamePolicyException
      */
-    public function storeRevision(Revision $revision): void
+    public function storeRevision(Revision $revision, ?StorableResource $resource = null): void
     {
         $storage_handler = empty($revision->getStorageID())
             ? $this->primary_storage_handler
@@ -428,6 +439,19 @@ class ResourceBuilder
         }
         $this->revision_repository->store($revision);
         $this->information_repository->store($revision->getInformation(), $revision);
+
+        // we replace the revision with the populated one
+        if ($resource !== null) {
+            $replace_revision = new FileRevision($revision->getIdentification());
+            $replace_revision->setVersionNumber($revision->getVersionNumber());
+            $replace_revision->setOwnerId($revision->getOwnerId());
+            $replace_revision->setTitle($revision->getTitle());
+            $replace_revision->setStatus($revision->getStatus());
+            $replace_revision->setInformation($revision->getInformation());
+            $replace_revision->setStorageID($revision->getStorageID());
+
+            $resource->replaceRevision($replace_revision);
+        }
     }
 
     /**
@@ -482,9 +506,9 @@ class ResourceBuilder
     {
         switch (true) {
             case $revision instanceof FileStreamRevision:
-                return $revision->getStream();
+                return Streams::ofReattachableResource($revision->getStream()->detach());
             case $revision instanceof UploadedFileRevision:
-                return Streams::ofResource(fopen($revision->getUpload()->getPath(), 'rb'));
+                return Streams::ofReattachableResource(fopen($revision->getUpload()->getPath(), 'rb'));
             case $revision instanceof CloneRevision:
                 return $revision->getRevisionToClone()->getStream();
             case $revision instanceof FileRevision:
@@ -539,6 +563,179 @@ class ResourceBuilder
             $this->deleteRevision($resource, $reveision_to_delete);
         }
         $this->store($resource);
+    }
+
+    // Container Actions
+    public function createDirectoryInsideContainer(
+        StorableContainerResource $container,
+        string $path_inside_container,
+    ): bool {
+        $revision = $container->getCurrentRevisionIncludingDraft();
+        $stream = $this->extractStream($revision);
+
+        // create directory inside ZipArchive
+        try {
+            $zip = new \ZipArchive();
+            $zip->open($stream->getMetadata()['uri']);
+            $path_inside_container = $this->ensurePathInZIP($zip, $path_inside_container, false);
+            $zip->close();
+
+            // cleanup revision and flavours
+            $this->storage_handler_factory->getHandlerForRevision($revision)->clearFlavours($revision);
+            $revision->getInformation()->setSize(filesize($stream->getMetadata()['uri']));
+            $this->storeRevision($revision);
+
+            return true;
+        } catch (\Throwable $exception) {
+            return false;
+        }
+    }
+
+    private function ensurePathInZIP(\ZipArchive $zip, string $path, bool $is_file): string
+    {
+        if ($path === '' || $path === '/') {
+            return $path;
+        }
+
+        $filename = '';
+        if ($is_file) {
+            $filename = basename($path);
+            $path = dirname($path);
+        }
+
+        // try to determine if a path inside the zip exists with or without a slash at the beginning
+        // determine root directory of the path using regex
+        $parts = explode('/', $path);
+        $root = array_shift($parts);
+        $root = $root === '' ? array_shift($parts) : $root;
+
+        // check if the root directory exists without a slash at the beginning
+        if ($zip->locateName($root . '/') !== false) {
+            $root = $root;
+        } elseif ($zip->locateName('/' . $root . '/') !== false) {
+            // check if the root directory exists with a slash at the beginning
+            $root = '/' . $root;
+        } else {
+            // if the root directory does not exist, create it
+            $zip->addEmptyDir($root);
+        }
+
+        $path_inside_container = $root;
+        foreach ($parts as $part) {
+            $path_inside_container .= '/' . $part;
+            if ($zip->locateName($path_inside_container . '/') === false) {
+                $zip->addEmptyDir($path_inside_container . '/');
+            }
+        }
+
+        return rtrim($path_inside_container, '/') . '/' . $filename;
+    }
+
+    public function removePathInsideContainer(
+        StorableContainerResource $container,
+        string $path_inside_container,
+    ): bool {
+        $revision = $container->getCurrentRevisionIncludingDraft();
+        $stream = $this->extractStream($revision);
+
+        // create directory inside ZipArchive
+        try {
+            $zip = new \ZipArchive();
+            $zip->open($stream->getMetadata()['uri']);
+
+            $return = $zip->deleteName($path_inside_container);
+            // remove all files inside the directory
+            for ($i = 0; $i < $zip->numFiles; $i++) {
+                $path = $zip->getNameIndex($i);
+                if ($path === false) {
+                    continue;
+                }
+                if (strpos($path, $path_inside_container) === 0) {
+                    $zip->deleteIndex($i);
+                }
+            }
+
+            $zip->close();
+
+            // cleanup revision and flavours
+            $this->storage_handler_factory->getHandlerForRevision($revision)->clearFlavours($revision);
+            $revision->getInformation()->setSize(filesize($stream->getMetadata()['uri']));
+            $this->storeRevision($revision);
+
+            return $return;
+        } catch (\Throwable $exception) {
+            $this->storage_handler_factory->getHandlerForRevision($revision)->clearFlavours($revision);
+            return false;
+        }
+    }
+
+    public function addUploadToContainer(
+        StorableContainerResource $container,
+        UploadResult $result,
+        string $parent_path_inside_container,
+    ): bool {
+        $revision = $container->getCurrentRevisionIncludingDraft();
+        $stream = $this->extractStream($revision);
+
+        // create directory inside ZipArchive
+        try {
+            $zip = new \ZipArchive();
+            $zip->open($stream->getMetadata()['uri']);
+
+            $parent_path_inside_container = $this->ensurePathInZIP($zip, $parent_path_inside_container, false);
+
+            $path_inside_zip = rtrim($parent_path_inside_container, '/') . '/' . $result->getName();
+
+            $return = $zip->addFile(
+                $result->getPath(),
+                $path_inside_zip
+            );
+            $zip->close();
+
+            // cleanup revision and flavours
+            $this->storage_handler_factory->getHandlerForRevision($revision)->clearFlavours($revision);
+            $revision->getInformation()->setSize(filesize($stream->getMetadata()['uri']));
+            $this->storeRevision($revision);
+
+            return $return;
+        } catch (\Throwable $exception) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function addStreamToContainer(
+        StorableContainerResource $container,
+        FileStream $stream,
+        string $path_inside_container,
+    ): bool {
+        $revision = $container->getCurrentRevisionIncludingDraft();
+        $revision_stream = $this->extractStream($revision);
+
+        try {
+            $zip = new \ZipArchive();
+            $zip->open($revision_stream->getMetadata()['uri']);
+
+            $path_inside_container = $this->ensurePathInZIP($zip, $path_inside_container, true);
+
+            $return = $zip->addFromString(
+                $path_inside_container,
+                (string) $stream
+            );
+            $zip->close();
+
+            // cleanup revision and flavours
+            $this->storage_handler_factory->getHandlerForRevision($revision)->clearFlavours($revision);
+            $revision->getInformation()->setSize(filesize($revision_stream->getMetadata()['uri']));
+            $this->storeRevision($revision);
+
+            return $return;
+        } catch (\Throwable $exception) {
+            return false;
+        }
+
+        return true;
     }
 
     private function deleteRevision(StorableResource $resource, Revision $revision): void

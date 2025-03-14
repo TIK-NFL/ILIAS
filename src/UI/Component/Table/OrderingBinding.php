@@ -16,17 +16,21 @@
  *
  *********************************************************************/
 
-
 declare(strict_types=1);
 
-class ilDclCreateViewDefinitionConfig extends ilPageConfig
+namespace ILIAS\UI\Component\Table;
+
+use Generator;
+
+interface OrderingBinding
 {
-    public function init(): void
-    {
-        // config
-        $this->setPreventHTMLUnmasking(true);
-        $this->setEnableInternalLinks(false);
-        $this->setEnableWikiLinks(false);
-        $this->setEnableActivation(false);
-    }
+    /**
+     * This is called by the (ordering-)table to retrieve rows;
+     * map data-records to rows using the $row_builder
+     * e.g. yield $row_builder->buildOrderingRow($row_id, $record).
+     */
+    public function getRows(
+        OrderingRowBuilder $row_builder,
+        array $visible_column_ids
+    ): Generator;
 }

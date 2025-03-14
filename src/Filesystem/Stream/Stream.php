@@ -32,7 +32,7 @@ class Stream implements FileStream, \Stringable
     public const MASK_ACCESS_WRITE = 02;
     public const MASK_ACCESS_READ_WRITE = 03;
 
-    private static array $accessMap = [
+    protected static array $accessMap = [
         'r' => self::MASK_ACCESS_READ,
         'w+' => self::MASK_ACCESS_READ_WRITE,
         'r+' => self::MASK_ACCESS_READ_WRITE,
@@ -54,20 +54,21 @@ class Stream implements FileStream, \Stringable
         'wb' => self::MASK_ACCESS_WRITE,
         'a' => self::MASK_ACCESS_WRITE
     ];
+    protected ?string $_mode = null;
 
-    private bool $readable;
-    private bool $writeable;
-    private bool $seekable;
+    protected bool $readable;
+    protected bool $writeable;
+    protected bool $seekable;
     /**
      * @var null $stream
      */
-    private $stream;
-    private ?int $size = null;
-    private ?string $uri = null;
+    protected $stream;
+    protected ?int $size = null;
+    protected ?string $uri = null;
     /**
      * @var string[] $customMetadata
      */
-    private array $customMetadata;
+    protected array $customMetadata;
 
     /**
      * Stream constructor.
@@ -93,16 +94,16 @@ class Stream implements FileStream, \Stringable
         $this->stream = $stream;
 
         $meta = stream_get_meta_data($this->stream);
-        $mode = $meta['mode'];
+        $this->_mode = $mode = $meta['mode'];
 
         $this->readable = array_key_exists(
             $mode,
             self::$accessMap
-        ) && (bool) (self::$accessMap[$mode]&self::MASK_ACCESS_READ);
+        ) && (bool) (self::$accessMap[$mode] & self::MASK_ACCESS_READ);
         $this->writeable = array_key_exists(
             $mode,
             self::$accessMap
-        ) && (bool) (self::$accessMap[$mode]&self::MASK_ACCESS_WRITE);
+        ) && (bool) (self::$accessMap[$mode] & self::MASK_ACCESS_WRITE);
         $this->seekable = $meta['seekable'];
         $this->uri = $this->getMetadata('uri');
     }
@@ -150,7 +151,7 @@ class Stream implements FileStream, \Stringable
             clearstatcache(true, $this->uri);
         }
 
-        $stats = fstat($this->stream);
+        $stats = fstat($this->stream) ?: [];
         if (array_key_exists('size', $stats)) {
             $this->size = $stats['size'];
             return $this->size;
@@ -163,7 +164,7 @@ class Stream implements FileStream, \Stringable
     /**
      * @inheritDoc
      */
-    public function tell(): int|bool
+    public function tell(): int
     {
         $this->assertStreamAttached();
 
@@ -229,7 +230,7 @@ class Stream implements FileStream, \Stringable
     /**
      * @inheritDoc
      */
-    public function write($string): int|bool
+    public function write($string): int
     {
         $this->assertStreamAttached();
 
@@ -259,7 +260,7 @@ class Stream implements FileStream, \Stringable
     /**
      * @inheritDoc
      */
-    public function read($length): string|bool
+    public function read($length): string
     {
         $this->assertStreamAttached();
 
@@ -286,7 +287,7 @@ class Stream implements FileStream, \Stringable
     /**
      * @inheritDoc
      */
-    public function getContents(): string|bool
+    public function getContents(): string
     {
         $this->assertStreamAttached();
 
@@ -362,7 +363,7 @@ class Stream implements FileStream, \Stringable
      *
      * @throws \RuntimeException Thrown if the stream is already detached.
      */
-    private function assertStreamAttached(): void
+    protected function assertStreamAttached(): void
     {
         if ($this->stream === null) {
             throw new \RuntimeException('Stream is detached');

@@ -940,6 +940,20 @@
 			<xsl:comment>Break</xsl:comment>
 		</h3>
 		</xsl:when>
+		<xsl:when test="./SimpleBulletList or ./SimpleNumberedList">
+			<xsl:variable name="char_name">
+				<xsl:call-template name="CharacteristicName">
+					<xsl:with-param name="pctype">heading3</xsl:with-param>
+					<xsl:with-param name="characteristic"><xsl:value-of select="@Characteristic"/></xsl:with-param>
+				</xsl:call-template>
+			</xsl:variable>
+			<!-- Label -->
+			<xsl:call-template name="EditLabel"><xsl:with-param name="text"><xsl:value-of select="//LVs/LV[@name='pc_par']/@value"/>  <xsl:value-of select="$char_name"/></xsl:with-param></xsl:call-template>
+			<div>
+				<xsl:call-template name="ShowParagraph"/>
+				<xsl:comment>Break</xsl:comment>
+			</div>
+		</xsl:when>
 		<xsl:when test="not (@Characteristic) or @Characteristic != 'Code'">
 			<xsl:variable name="char_name">
 				<xsl:call-template name="CharacteristicName">
@@ -1005,7 +1019,7 @@
 	</xsl:choose>
 
 	<!-- command selectbox -->
-	<xsl:if test="$mode = 'edit'">
+	<!-- <xsl:if test="$mode = 'edit'">
 		<br />
 		<xsl:if test="((../../../../@DataTable != 'y' or not(../../../../@DataTable)))">
 			<xsl:if test="$javascript='disable'">
@@ -1021,7 +1035,7 @@
 				<xsl:with-param name="edit">y</xsl:with-param>
 			</xsl:call-template>
 		</xsl:if>
-	</xsl:if>
+	</xsl:if> -->
 </xsl:template>
 
 <xsl:template name="Sourcecode">
@@ -2903,7 +2917,7 @@
 	<xsl:if test="$mode = 'edit'">
 		<xsl:attribute name="style">border: 1px solid #000000; padding: 20px; margin-bottom:10px;</xsl:attribute>
 		<div style="margin-bottom:20px;">
-			<i><b><xsl:value-of select="@Title" /></b></i>
+			<i><strong><xsl:value-of select="@Title" /></strong></i>
 			<xsl:comment>Break</xsl:comment>
 		</div>
 	</xsl:if>
@@ -3295,6 +3309,12 @@
 		<xsl:when test="@HorizontalAlign = 'RightFloat'">float:right; <xsl:if test="$disable_auto_margins != 'y'">margin-right:0px;</xsl:if></xsl:when>
 		<xsl:otherwise></xsl:otherwise>
 	</xsl:choose></xsl:variable>
+	<xsl:variable name="aheadclass">
+		<xsl:choose>
+			<xsl:when test="@Template and //StyleTemplates/StyleTemplate[@Name=$ttemp]/StyleClass[@Type='va_iheada']/@Value">ilc_va_iheada_<xsl:value-of select = "//StyleTemplates/StyleTemplate[@Name=$ttemp]/StyleClass[@Type='va_iheada']/@Value"/></xsl:when>
+			<xsl:otherwise>ilc_va_iheada_AccordIHeadActive</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
 	<div>
 		<xsl:variable name="cwidth">
 			<xsl:choose>
@@ -3342,6 +3362,7 @@
 				<xsl:with-param name="cwidth" select="$cwidth" />
 				<xsl:with-param name="cheight" select="$cheight" />
 				<xsl:with-param name="ttemp" select="$ttemp" />
+				<xsl:with-param name="aheadclass" select="$aheadclass" />
 			</xsl:apply-templates>
 			<xsl:if test="@Type != 'Carousel'">
 				<div style="clear:both;"><xsl:comment>Break</xsl:comment></div>
@@ -3374,12 +3395,6 @@
 				</xsl:choose>
 			</xsl:variable>
 			<xsl:if test="(@Type = 'VerticalAccordion' or @Type = 'HorizonalAccordion') and $mode != 'print' and $compare_mode = 'n'">
-				<xsl:variable name="aheadclass">
-					<xsl:choose>
-						<xsl:when test="@Template and //StyleTemplates/StyleTemplate[@Name=$ttemp]/StyleClass[@Type='va_iheada']/@Value">ilc_va_iheada_<xsl:value-of select = "//StyleTemplates/StyleTemplate[@Name=$ttemp]/StyleClass[@Type='va_iheada']/@Value"/></xsl:when>
-						<xsl:otherwise>ilc_va_iheada_AccordIHeadActive</xsl:otherwise>
-					</xsl:choose>
-				</xsl:variable>
 				<script type="text/javascript">
 					if (typeof ilAccordionsInits === 'undefined') {
 						var ilAccordionsInits = [];
@@ -3433,6 +3448,7 @@
 	<xsl:param name="cwidth"/>
 	<xsl:param name="cheight"/>
 	<xsl:param name="ttemp"/>
+	<xsl:param name="aheadclass"/>
 	<xsl:variable name="cstyle"><xsl:if test="$cheight != 'null' and $mode != 'edit' and $mode != 'print' and $compare_mode = 'n'">height: <xsl:value-of select="$cheight" />px;</xsl:if></xsl:variable>
 
 	<!-- TabContainer -->
@@ -3469,9 +3485,13 @@
 			<xsl:attribute name="class">ilc_va_ihead_AccordIHead ilc_va_iheada_AccordIHeadActive</xsl:attribute>
 		</xsl:when>
 		<xsl:when test="../@Type = 'VerticalAccordion' or ../@Type = 'HorizontalAccordion'">
-			<xsl:attribute name="class">ilc_va_ihead_AccordIHead</xsl:attribute>
+			<xsl:attribute name="class">ilc_va_ihead_AccordIHead
+				<xsl:if test="../@Behavior = 'ForceAllOpen'"><xsl:value-of select="$aheadclass"/></xsl:if>
+			</xsl:attribute>
 			<xsl:if test="../@Template and //StyleTemplates/StyleTemplate[@Name=$ttemp]/StyleClass[@Type='va_ihead']/@Value">
-				<xsl:attribute name = "class">ilc_va_ihead_<xsl:value-of select = "//StyleTemplates/StyleTemplate[@Name=$ttemp]/StyleClass[@Type='va_ihead']/@Value"/></xsl:attribute>
+				<xsl:attribute name = "class">ilc_va_ihead_<xsl:value-of select = "//StyleTemplates/StyleTemplate[@Name=$ttemp]/StyleClass[@Type='va_ihead']/@Value"/>
+					<xsl:if test="../@Behavior = 'ForceAllOpen'"><xsl:value-of select="$aheadclass"/></xsl:if>
+				</xsl:attribute>
 			</xsl:if>
 		</xsl:when>
 		<xsl:when test="../@Type = 'Carousel'">

@@ -89,9 +89,9 @@ class ilTestResultsFactory
             $title = $qresult['title'];
             $question_score = $qresult['max'];
             $usr_score = $qresult['reached'];
-            $workedthrough = (bool)$qresult['workedthrough'];
-            $answered = (bool)$qresult['answered'];
-            $requested_hints = (int)$qresult['requested_hints'];
+            $workedthrough = (bool) $qresult['workedthrough'];
+            $answered = (bool) $qresult['answered'];
+            $requested_hints = (int) $qresult['requested_hints'];
 
 
             $question_gui = $test_obj->createQuestionGUI("", $qid);
@@ -100,7 +100,7 @@ class ilTestResultsFactory
 
             $graphical_output = true;
             $show_correct_solution = false;
-            $show_inline_feedback = $settings->getShowFeedback();
+            $show_feedback = $settings->getShowFeedback();
             $usr_solution = $question_gui->getSolutionOutput(
                 $active_id,
                 $pass_id,
@@ -114,25 +114,27 @@ class ilTestResultsFactory
                 $show_inline_feedback
             );
 
-            if ($test_obj->getAutosave() &&
-                $type === 'assTextQuestion'
-            ) {
-                $usr_solution .= $question_gui->getAutoSavedSolutionOutput(
+            $autosave_output = null;
+            $show_autosave_title = false;
+            if ($test_obj->getAutosave()) {
+                $autosave_output = $question_gui->getAutoSavedSolutionOutput(
                     $active_id,
                     $pass_id,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    true
+                    $graphical_output,
+                    $result_output,
+                    $show_question_only,
+                    $show_feedback,
+                    $show_correct_solution,
+                    $show_manual_scoring,
+                    $show_question_text,
+                    $show_autosave_title,
+                    $show_inline_feedback
                 );
             }
 
             $graphical_output = false;
             $show_correct_solution = true;
+            $show_feedback = false;
             $show_inline_feedback = false;
             $best_solution = $question_gui->getSolutionOutput(
                 $active_id,
@@ -171,7 +173,8 @@ class ilTestResultsFactory
                 $workedthrough,
                 $answered,
                 $requested_hints,
-                $recapitulation
+                $recapitulation,
+                $autosave_output
             );
         }
 
@@ -195,7 +198,7 @@ class ilTestResultsFactory
         $show_optional_questions = true;
         $show_best_solution = $is_user_output ?
             $settings_result->getShowSolutionListComparison() :
-            (bool)ilSession::get('tst_results_show_best_solutions');
+            (bool) ilSession::get('tst_results_show_best_solutions');
         $show_feedback = $settings_result->getShowSolutionFeedback();
         $show_question_text_only = $settings_result->getShowSolutionAnswersOnly();
         $show_content_for_recapitulation = $settings_result->getShowSolutionSuggested();

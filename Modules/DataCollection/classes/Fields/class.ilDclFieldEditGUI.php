@@ -28,6 +28,7 @@ class ilDclFieldEditGUI
     protected ilPropertyFormGUI $form;
     protected ilDclBaseFieldModel $field_obj;
     private ilGlobalTemplateInterface $main_tpl;
+    protected ilHelpGUI $help;
     protected ILIAS\HTTP\Services $http;
     protected ILIAS\Refinery\Factory $refinery;
     protected int $field_id;
@@ -43,6 +44,7 @@ class ilDclFieldEditGUI
 
         $this->obj_id = $a_parent_obj->getObjId();
         $this->parent_obj = $a_parent_obj;
+        $this->help = $DIC->help();
         $this->http = $DIC->http();
         $this->refinery = $DIC->refinery();
 
@@ -116,11 +118,10 @@ class ilDclFieldEditGUI
      */
     public function create(): void
     {
-        global $DIC;
-        $tpl = $DIC['tpl'];
+        $this->help->setSubScreenId('create');
 
         $this->initForm();
-        $tpl->setContent($this->form->getHTML());
+        $this->main_tpl->setContent($this->form->getHTML());
     }
 
     /**
@@ -128,14 +129,11 @@ class ilDclFieldEditGUI
      */
     public function edit(): void
     {
-        global $DIC;
-        $tpl = $DIC['tpl'];
+        $this->help->setSubScreenId('edit');
 
         $this->initForm("edit");
-
         $this->field_obj->fillPropertiesForm($this->form);
-
-        $tpl->setContent($this->form->getHTML());
+        $this->main_tpl->setContent($this->form->getHTML());
     }
 
     /*

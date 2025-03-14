@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -355,16 +356,7 @@ class assClozeTestImport extends assQuestionImport
             );
         }
         $this->object->saveToDb();
-
-        if (count($item->suggested_solutions)) {
-            foreach ($item->suggested_solutions as $suggested_solution) {
-                $this->importSuggestedSolution(
-                    $this->object->getId(),
-                    $suggested_solution["solution"]->getContent(),
-                    $suggested_solution["gap_index"]
-                );
-            }
-        }
+        $this->importSuggestedSolutions($this->object->getId(), $item->suggested_solutions);
         if (isset($tst_id) && $tst_id !== $questionpool_id) {
             $qpl_qid = $this->object->getId();
             $tst_qid = $this->object->duplicate(true, "", "", -1, $tst_id);
@@ -373,7 +365,7 @@ class assClozeTestImport extends assQuestionImport
             return $import_mapping;
         }
 
-        if (isset($tst_id)) {
+        if ($tst_id > 0) {
             $tst_object->questions[$question_counter++] = $this->object->getId();
             $import_mapping[$item->getIdent()] = ["pool" => 0, "test" => $this->object->getId()];
             return $import_mapping;

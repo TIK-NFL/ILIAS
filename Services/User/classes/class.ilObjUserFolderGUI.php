@@ -2596,7 +2596,7 @@ class ilObjUserFolderGUI extends ilObjectGUI
             }
         }
 
-        if ($selected['default_hits_per_page']) {
+        if (isset($selected['default_hits_per_page']) && $selected['default_hits_per_page']) {
             $this->ilias->setSetting(
                 'hits_per_page',
                 $selected['default_hits_per_page']
@@ -2614,23 +2614,23 @@ class ilObjUserFolderGUI extends ilObjectGUI
 
         $this->ilias->setSetting(
             'mail_incoming_mail',
-            $selected['default_mail_incoming_mail']
+            $selected['default_mail_incoming_mail'] ?? '0'
         );
         $this->ilias->setSetting(
             'chat_osc_accept_msg',
-            $selected['default_chat_osc_accept_msg']
+            $selected['default_chat_osc_accept_msg'] ?? 'n'
         );
         $this->ilias->setSetting(
             'chat_broadcast_typing',
-            $selected['default_chat_broadcast_typing']
+            $selected['default_chat_broadcast_typing'] ?? 'n'
         );
         $this->ilias->setSetting(
             'bs_allow_to_contact_me',
-            $selected['default_bs_allow_to_contact_me']
+            $selected['default_bs_allow_to_contact_me'] ?? 'n'
         );
         $this->ilias->setSetting(
             'hide_own_online_status',
-            $selected['default_hide_own_online_status']
+            $selected['default_hide_own_online_status'] ?? 'n'
         );
 
         if ($this->usrFieldChangeListenersAccepted && count($changed_fields) > 0) {
@@ -2694,13 +2694,13 @@ class ilObjUserFolderGUI extends ilObjectGUI
         $confirmDialog->addItem('', '0', $tpl->get());
 
         foreach ($post['chb'] as $postVar => $value) {
-            $confirmDialog->addHiddenItem('chb[$postVar]', $value);
+            $confirmDialog->addHiddenItem("chb[{$postVar}]", $value);
         }
         foreach ($post['select'] as $postVar => $value) {
-            $confirmDialog->addHiddenItem('select[$postVar]', $value);
+            $confirmDialog->addHiddenItem("select[{$postVar}]", $value);
         }
         foreach ($post['current'] as $postVar => $value) {
-            $confirmDialog->addHiddenItem('current[$postVar]', $value);
+            $confirmDialog->addHiddenItem("current[{$postVar}]", $value);
         }
         $this->tpl->setContent($confirmDialog->getHTML());
     }
@@ -3240,8 +3240,9 @@ class ilObjUserFolderGUI extends ilObjectGUI
 
     protected function getTabs(): void
     {
-        if ($this->rbac_system->checkAccess(
+        if ($this->access->checkRbacOrPositionPermissionAccess(
             'visible,read',
+            \ilObjUserFolder::ORG_OP_EDIT_USER_ACCOUNTS,
             $this->object->getRefId()
         )) {
             $this->tabs_gui->addTarget(

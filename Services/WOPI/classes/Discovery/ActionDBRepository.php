@@ -28,7 +28,7 @@ use ILIAS\Data\URI;
 class ActionDBRepository implements ActionRepository
 {
     private const TABLE_NAME = 'wopi_action';
-    private array $edit_actions = [ActionTarget::EDIT, ActionTarget::EMBED_EDIT, ActionTarget::CONVERT];
+    private array $edit_actions = [ActionTarget::EDIT, ActionTarget::EMBED_EDIT];
     private array $view_actions = [ActionTarget::VIEW, ActionTarget::EMBED_VIEW];
 
     public function __construct(
@@ -45,6 +45,15 @@ class ActionDBRepository implements ActionRepository
                 $targets
             )
         );
+    }
+
+    /**
+     * @description this is only for cases where you need an action (for compatibility), this action cannot be used
+     * for any WOPI capability
+     */
+    public function null(): NullAction
+    {
+        return new NullAction();
     }
 
     public function hasActionForSuffix(

@@ -20,6 +20,7 @@ declare(strict_types=1);
 
 namespace ILIAS\File\Capabilities;
 
+use ILIAS\HTTP\Services;
 use ILIAS\Services\WOPI\Discovery\ActionRepository;
 use ILIAS\File\Capabilities\Check\Download;
 use ILIAS\File\Capabilities\Check\EditContent;
@@ -31,6 +32,7 @@ use ILIAS\File\Capabilities\Check\Info;
 use ILIAS\File\Capabilities\Check\Edit;
 use ILIAS\File\Capabilities\Check\Check;
 use ILIAS\File\Capabilities\Check\CheckHelpers;
+use ILIAS\File\Capabilities\Check\ForcedInfo;
 
 /**
  * @author Fabian Schmid <fabian@sr.solutions>
@@ -47,9 +49,13 @@ class CapabilityBuilder
         private \ilObjFileInfoRepository $file_info_repository,
         private \ilAccessHandler $access,
         private \ilCtrlInterface $ctrl,
-        private ActionRepository $action_repository
+        private ActionRepository $action_repository,
+        private Services $http,
+        private ?TypeResolver $type_resolver = null,
+        private ?\ilWorkspaceAccessHandler $workspace_access_handler = null
     ) {
         $this->checks = [
+            new ForcedInfo(),
             new Download(),
             new Edit(),
             new EditContent(),
@@ -59,12 +65,14 @@ class CapabilityBuilder
             new Unzip(),
             new ViewContent(),
         ];
+        $this->type_resolver = $this->type_resolver ?? new CoreTypeResolver();
+        $this->workspace_access_handler = $this->workspace_access_handler ?? new \ilWorkspaceAccessHandler();
     }
 
-    public function get(int $ref_id, bool $do_checks = true): CapabilityCollection
+    public function get(Context $context): CapabilityCollection
     {
-        if (isset($this->cache[$ref_id])) {
-            return $this->cache[$ref_id];
+        if (isset($this->cache[$context->getNode()])) {
+            return $this->cache[$context->getNode()];
         }
 
         /**
@@ -73,34 +81,45 @@ class CapabilityBuilder
          * which will return the first unlocked Capability
          */
         $capabilities = [
+            new Capability(Capabilities::FORCED_INFO_PAGE, ...Permissions::ANY()),
             new Capability(Capabilities::VIEW_EXTERNAL, Permissions::VIEW_CONTENT),
+            new Capability(Capabilities::EDIT_EXTERNAL, Permissions::EDIT_CONTENT),
             new Capability(Capabilities::DOWNLOAD, Permissions::READ),
-            new Capability(Capabilities::EDIT_EXTERNAL, Permissions::EDIT_FILE),
             new Capability(Capabilities::MANAGE_VERSIONS, Permissions::WRITE),
             new Capability(Capabilities::EDIT_SETTINGS, Permissions::WRITE),
-            new Capability(Capabilities::INFO_PAGE, Permissions::VISIBLE),
+            new Capability(Capabilities::INFO_PAGE, ...Permissions::ANY()),
             new Capability(Capabilities::NONE, Permissions::NONE),
             new Capability(Capabilities::UNZIP, Permissions::WRITE),
         ];
 
-
-        if (\ilObject2::_lookupType($ref_id, true) !== 'file') {
+        if ($this->type_resolver->resolveTypeByObjectId($context->getObjectId()) !== 'file') {
             return new CapabilityCollection($capabilities);
         }
 
-        $info = $this->file_info_repository->getByRefId($ref_id);
-        $helpers = new CheckHelpers($this->access, $this->ctrl, $this->action_repository);
-        $this->ctrl->setParameterByClass(\ilObjFileGUI::class, 'ref_id', $ref_id);
+        $info = $this->file_info_repository->getByObjectId($context->getObjectId());
+        $helpers = new CheckHelpers(
+            $this->access,
+            $this->ctrl,
+            $this->action_repository,
+            $this->http,
+            $this->workspace_access_handler
+        );
+
+        $calling_id = $context->getCallingId();
+
+        if ($calling_id > 0) {
+            $this->ctrl->setParameterByClass(\ilObjFileGUI::class, 'ref_id', $calling_id);
+        }
 
         foreach ($capabilities as $capability) {
             foreach ($this->checks as $check) {
                 if ($check->canUnlock() === $capability->getCapability()) {
-                    $capability = $check->maybeUnlock($capability, $helpers, $info, $ref_id);
-                    $capability = $check->maybeBuildURI($capability, $helpers, $ref_id);
+                    $capability = $check->maybeUnlock($capability, $helpers, $info, $context);
+                    $capability = $check->maybeBuildURI($capability, $helpers, $context);
                 }
             }
         }
-        return $this->cache[$ref_id] = new CapabilityCollection($capabilities);
+        return $this->cache[$context->getNode()] = new CapabilityCollection($capabilities);
     }
 
 }

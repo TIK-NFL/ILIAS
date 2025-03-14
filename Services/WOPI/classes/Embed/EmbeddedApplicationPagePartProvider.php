@@ -35,8 +35,8 @@ use ILIAS\UI\Component\Toast\Container;
 class EmbeddedApplicationPagePartProvider implements PagePartProvider
 {
     public function __construct(
-        private PagePartProvider $page_part_provider,
-        private EmbeddedApplication $embedded_application
+        private readonly PagePartProvider $page_part_provider,
+        private readonly EmbeddedApplication $embedded_application
     ) {
     }
 
@@ -87,7 +87,7 @@ class EmbeddedApplicationPagePartProvider implements PagePartProvider
 
     public function getSystemInfos(): array
     {
-        return [];
+        return $this->page_part_provider->getSystemInfos();
     }
 
     public function getFooter(): ?Footer

@@ -20,6 +20,8 @@ declare(strict_types=1);
 
 namespace ILIAS\DataProtection;
 
+use ilLink;
+use ILIAS\Data\URI;
 use ILIAS\LegalDocuments\ConsumerToolbox\UI;
 use ILIAS\LegalDocuments\ConsumerToolbox\User;
 use ilDBConstants;
@@ -85,7 +87,7 @@ final class Consumer implements ConsumerInterface
         } else {
             $slot = $slot->canWithdraw($blocks->slot()->withdrawProcess($user, $global_settings, $this->userHasWithdrawn(...)))
                          ->hasAgreement($agreement, self::GOTO_NAME)
-                         ->showInFooter($blocks->slot()->modifyFooter($user))
+                         ->showInFooter($blocks->slot()->modifyFooter($user, self::GOTO_NAME))
                          ->onSelfRegistration($blocks->slot()->selfRegistration($user, $build_user))
                          ->hasOnlineStatusFilter($blocks->slot()->onlineStatusFilter($this->usersWhoDidntAgree($this->container->database())))
                          ->hasUserManagementFields($blocks->userManagementAgreeDateField($build_user, 'dpro_agree_date', 'dpro'))
@@ -98,15 +100,19 @@ final class Consumer implements ConsumerInterface
 
     private function showMatchingDocument(User $user, UI $ui, Provide $legal_documents): Closure
     {
-        return function ($footer) use ($user, $ui, $legal_documents) {
+        return function (Closure $footer) use ($user, $ui, $legal_documents) {
+            $in_footer = fn($v) => $footer('usr_agreement', $ui->txt('usr_agreement'), $v);
+            if (!$user->isLoggedIn()) {
+                return $in_footer(new URI(ilLink::_getLink(null, 'usr', [], self::GOTO_NAME)));
+            }
             if ($user->cannotAgree()) {
                 return $footer;
             }
 
-            $render = fn(Document $document): Footer => $footer->withAdditionalModalAndTrigger($ui->create()->modal()->roundtrip(
+            $render = fn(Document $document): Closure => $in_footer($ui->create()->modal()->roundtrip(
                 $document->content()->title(),
                 [$legal_documents->document()->contentAsComponent($document->content())]
-            ), $ui->create()->button()->shy($ui->txt('usr_agreement'), ''));
+            ));
 
             return $user->matchingDocument()
                         ->map($render)

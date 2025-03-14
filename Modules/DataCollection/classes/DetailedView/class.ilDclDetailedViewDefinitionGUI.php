@@ -38,10 +38,11 @@ class ilDclDetailedViewDefinitionGUI extends ilPageObjectGUI
         $this->refinery = $DIC->refinery();
         $this->locator = $DIC['ilLocator'];
 
+        $ref_id = $this->http->wrapper()->query()->retrieve('ref_id', $this->refinery->kindlyTo()->int());
+        $this->setStyleId($DIC->contentStyle()->domain()->styleForRefId($ref_id)->getEffectiveStyleId());
+
         // we always need a page object - create on demand
         if (!ilPageObject::_exists('dclf', $tableview_id)) {
-            $ref_id = $this->http->wrapper()->query()->retrieve('ref_id', $this->refinery->kindlyTo()->int());
-
             $viewdef = new ilDclDetailedViewDefinition();
             $viewdef->setId($tableview_id);
             $viewdef->setParentId(ilObject2::_lookupObjectId($ref_id));
@@ -162,17 +163,6 @@ class ilDclDetailedViewDefinitionGUI extends ilPageObjectGUI
 
         $this->tpl->setOnScreenMessage('success', $this->lng->txt("dcl_empty_detailed_view_success"), true);
         $this->ctrl->redirectByClass(self::class, "edit");
-    }
-
-    /**
-     * Release page lock
-     * overwrite to redirect properly
-     */
-    public function releasePageLock(): void
-    {
-        $this->getPageObject()->releasePageLock();
-        $this->tpl->setOnScreenMessage('success', $this->lng->txt("cont_page_lock_released"), true);
-        $this->ctrl->redirectByClass('ilDclTableViewGUI', "show");
     }
 
     /**

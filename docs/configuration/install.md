@@ -106,7 +106,7 @@ is set to `COMPACT`.
 <a name="reference-system"></a>
 ## Reference System
 
-The ILIAS Testserver (https://test7.ilias.de) is currently configured as follows:
+The ILIAS Testserver (https://test9.ilias.de) is currently configured as follows:
 
 | Package        | Version          |
 |----------------|------------------|
@@ -719,6 +719,20 @@ to manage and monitor your ILIAS installation.
 
 To check which update step gets currently executed run the following SQL-Statement
 on your ILIAS database: `SELECT * FROM `settings` WHERE keyword = "db_update_running"`.
+
+Database updates are performed in steps; it might happen that a step fails, e.g. due
+to some edge case or inconsistency in existing data, files, etc.
+In this case, a concecutive command `php setup/setup.php update` will error with 
+a message like 
+> step 2 was started last, but step 1 was finished last. 
+> Aborting because of that mismatch.
+
+You may reset the records for those steps by running:
+```
+php setup/setup.php achieve database.resetFailedSteps
+```
+However, be sure to understand the cause for the failing steps and tend to it before 
+resetting and running update again.
 
 
 ## Information on Updates

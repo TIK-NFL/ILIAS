@@ -1269,6 +1269,8 @@ assessment#:#tst_add_quest_cont_edit_mode_IPE#:#Egyszerű szöveg használata k�
 assessment#:#tst_add_quest_cont_edit_mode_IPE_info#:#A kérdések és a válaszok nem formázható szövegek. LaTex sem használható. Viszont a visszajelzések és a tippek újra felhasználhatóak, ha kérdés beágyazott az ILIAS-tananyagban.
 assessment#:#tst_add_quest_cont_edit_mode_RTE#:#Rich-Text-Editor (TinyMCE) használata a kérdések és a válaszok, továbbá a visszajelzések és a segítségek szerkesztéséhez
 assessment#:#tst_add_quest_cont_edit_mode_RTE_info#:#A kérdések, a válaszok, a visszajelzések és a tippek formázható szövegek. Viszont a visszajelzések és a tippek nem használhatóak fel újra, ha kérdés beágyazott az ILIAS-tananyagban.
+assessment#:#tst_add_quest_cont_edit_mode_plain#:#Use plain text###10 12 2024 new variable
+assessment#:#tst_add_quest_cont_edit_mode_plain_info#:#No formatting of text in question, answers, feedback, and hints.###10 12 2024 new variable
 assessment#:#tst_addit_passes_blocked_after_passed_msg#:#A tesztet sikeresen kitöltötte, több kitöltést nem indíthat el.
 assessment#:#tst_all_test_competences#:#Összes tesztkompetencia
 assessment#:#tst_all_user_data_deleted#:#Ennek a tesztnek minden felhasználói adatát sikeresen eltávolította.
@@ -1362,7 +1364,7 @@ assessment#:#tst_enable_questionlist#:#'Kérdések listája' megjelenítése
 assessment#:#tst_enable_questionlist_description#:#A résztvevők bekapcsolhatják a tesztkérdések felsorolását az aktuális kérdés bal oldalán.
 assessment#:#tst_ending_time#:#Záró időpont
 assessment#:#tst_ending_time_before_starting_time#:#A tesztet lezáró, a kezdődátumnál későbbi dátum.
-assessment#:#tst_ending_time_desc#:#Az az időpont, ami utána résztvevők már nem tudnak választ adni. <b>Fontos</b>: <b>Ne</b> használja ezt a lehetőséget vizsgánál, helyett inkább korlátozza a kitöltési időt. Csak ez utóbbi esetben fejeződik be a teszt a szerveroldalon, illetve ekkor mentjük automatikusan az utolsó beírt választ.
+assessment#:#tst_ending_time_desc#:#Az az időpont, ami utána résztvevők már nem tudnak választ adni. <strong>Fontos</strong>: <strong>Ne</strong> használja ezt a lehetőséget vizsgánál, helyett inkább korlátozza a kitöltési időt. Csak ez utóbbi esetben fejeződik be a teszt a szerveroldalon, illetve ekkor mentjük automatikusan az utolsó beírt választ.
 assessment#:#tst_enter_questionpool#:#Adja meg annak a kérdéssornak a nevét, amelybe menteni szeretné az új kérdést.
 assessment#:#tst_eval_question_points#:#Eredményes teljesítéshez kérdéseredmények %s
 assessment#:#tst_eval_results_by_pass#:#%s. tesztkitöltés kérdésre adott válaszai
@@ -1843,8 +1845,6 @@ assessment#:#tst_show_answer_sheet#:#Válaszok megjelenítése
 assessment#:#tst_show_cancel#:#Teszt felfüggesztése
 assessment#:#tst_show_cancel_description#:#A résztvevő egy gomb megnyomásával felfüggeszthetik a teszt töltését, hogy később folytathassák azt. FIGYELEM: A teszt felfüggesztése nem állítja le az órát akkor sem, ha maximálisan elhasználható idő be lett állítva.
 assessment#:#tst_show_comp_results#:#Kompetenciaeredmények
-assessment#:#tst_show_pass_details#:#Adott időpontban a 'Részletes teszteredmények táblázata' jelenjen meg az összes tesztkitöltéshez
-assessment#:#tst_show_pass_details_desc#:#A fent beállított időponttól az eredmények összesítését hozzáfűzzük: A 'Részletes teszteredmények táblázata' a kérdés címét és a résztvevő adott kitöltésben elért pontszámát mutatja.<br />A legutolsó lehetséges kitöltés ('Általános' menü 'Tesztkitöltések számának korlátja' beállítás) vagy a teszt zárása ('Általános' menü 'Záró időpont' beállítás) után másik táblázat jelenik meg.<br />'Részletes teszteredmények táblázata' tartalmával kapcsolatos további beállítások a 'Teszteredmények további tartamai' részben adható meg.
 assessment#:#tst_show_results#:#Teszteredmények
 assessment#:#tst_show_side_list#:#Kérdéslista megjelenítése
 assessment#:#tst_show_solution_answers_only#:#Eredmények nyomtatási előnézete (csak a válaszoké)
@@ -2073,6 +2073,8 @@ auth#:#auth_oidc_update_field_info#:#Automatikus frissítés
 auth#:#auth_oidc_update_role_info#:#Csak az első bejelentkezéskor (automatikus szinkronizálás) alkalmazzuk
 auth#:#auth_oidconnect#:#OpenID
 auth#:#auth_page_type_auth#:#Bejelentkezési oldal
+auth#:#auth_required_password#:#Please enter a password.###10 12 2024 new variable
+auth#:#auth_required_username#:#Please enter a username.###10 12 2024 new variable
 auth#:#auth_saml#:#SAML
 auth#:#auth_saml_add_idp_btn#:#Új azonosításszolgáltató hozzáadása
 auth#:#auth_saml_add_idp_md_error#:#A megadott érték nem valós XML dokumentum. Ellenőrizze, hogy valós XML valós azonosítószolgálgatót tartalmazzon.
@@ -3768,6 +3770,7 @@ common#:#copy_all#:#Összeset másol
 common#:#copy_n_of_suffix#:#- másolata (%1$s)
 common#:#copy_of#:#Másolandó:
 common#:#copy_of_suffix#:#- másolata
+common#:#copy_perma_link#:#Copy link to clipboard###10 12 2024 new variable
 common#:#copy_selected_items#:#Másolás
 common#:#count#:#Darabszám
 common#:#counter_novelty#:#Hírek
@@ -3784,7 +3787,6 @@ common#:#create_stylesheet#:#Stílus létrehozása
 common#:#created#:#Létrehozva
 common#:#cron_forum_notification#:#Fórumértesítések küldése ütemezett feladattal
 common#:#cron_forum_notification_crob_desc#:#Az összes olyan felhasználó, aki a fórumértesítéseket engedélyezte bizonyos fórumokról, illetve témákról, a több, egymástól független azonnali e-mail értesítések helyett napi összesítő e-mail értesítést kap az új és a módosított hozzászólásokról.
-common#:#cron_forum_notification_desc#:#Azon felhasználók, akik meghatározott fórumtémákban értesülni szeretnének új hozzászólásokról, e-mailben értesítést kapnak.
 common#:#cron_forum_notification_disabled#:#Addig nem kapcsolható ki, amíg az ütemezett feladat aktív.
 common#:#cron_jobs#:#Ütemezett feladatok
 common#:#cron_lucene_index#:#Lucene keresési index aktualizálása
@@ -5159,6 +5161,7 @@ common#:#objs_rglo#:#ECS fogalomtárak
 common#:#objs_rgrp#:#ECS csoportok
 common#:#objs_rlm#:#ECS tananyagok
 common#:#objs_role#:#Szerepek
+common#:#objs_rolf#:#Role Folders###10 12 2024 new variable
 common#:#objs_rtst#:#ECS tesztek
 common#:#objs_rwik#:#ECS wikik
 common#:#objs_sahs#:#SCORM-tananyagok
@@ -5250,6 +5253,7 @@ common#:#pd_items_news#:#Személyes objektumok híreit beleértve
 common#:#pdf_export#:#PDF-export
 common#:#perm_settings#:#Jogosultságok
 common#:#perma_link#:#Állandó link
+common#:#perma_link_copied#:#Link to this page has been copied to the clipboard.###10 12 2024 new variable
 common#:#permission#:#Jogosultság
 common#:#permission_denied#:#Hozzáférés elutasítva.
 common#:#permission_settings#:#Jogosultságok beállítása
@@ -5823,7 +5827,7 @@ common#:#upload_pending#:#Folyamatban
 common#:#upload_settings#:#Fájlok feltöltési beállításai
 common#:#upload_svg_rejection_message#:#Az SVG-fájl vélhetően rosszindulatú kódot tartalmaz, ezért nem dolgoztuk fel.
 common#:#upload_svg_rejection_message_base64#:#A fájl base64 kódolású részeket tartalmaz.
-common#:#upload_svg_rejection_message_elements#:#A fájl nem engedélyezettek vagy ismeretlen elemeket, attribútumokat tartalmaz. 
+common#:#upload_svg_rejection_message_elements#:#A fájl nem engedélyezettek vagy ismeretlen elemeket, attribútumokat tartalmaz.
 common#:#upload_svg_rejection_message_script#:#A fájl script-elemeket tartalmaz.
 common#:#uploaded_and_checked#:#A fájlt feltöltötte és sikeresen ellenőriztük. Elkezdheti importálását.
 common#:#uploading#:#Feltöltés…
@@ -6095,6 +6099,7 @@ cont#:#cont_tile_size_3#:#extra nagy (soronként 1-2 csempe)
 cont#:#cont_tile_size_4#:#teljes (soronként 1 csempe)
 cont#:#cont_tile_view#:#Csempék
 cont#:#cont_tile_view_info#:#Az ebben a tárolóban lévő objektumok megjelenítése mint miniatűrstílusú csempeként. Csempekép minden objektum saját beállításaiban tölthető fel.
+cont#:#cont_trash_general_usage#:#If you want to remove a huge amount of old, deleted objects from the system it is highly advisable to start with non-container objects (i.e. Files, Glossaries, Tests,..) and thus removing all objects from the containers (Categories, Courses, Groups, Learning Sequences,...) . Using the filters "Type" and "Deleted on" helps this process. Then finally remove the containers.###10 12 2024 new variable
 contact#:#contact_awrn_ap_contacts#:#Elfogadott jelölések
 contact#:#contact_awrn_ap_contacts_info#:#A felhasználó összes elfogadott jelölését felsoroljuk.
 contact#:#contact_awrn_req_contacts#:#'Ismerősnek jelölés' kérések
@@ -7367,6 +7372,7 @@ copg#:#copg_page_element_not_found#:#Az oldalelem nem található.
 copg#:#copg_page_type_stys#:#Lapelrendezés
 copg#:#copg_par_format_selection#:#Bekezdésformátumok
 copg#:#copg_pc_mob_does_not_exist#:#Ez a médiaelem nem létezik.
+copg#:#copg_plugin_not_avail#:#Plugin %s not available.###10 12 2024 new variable
 copg#:#copg_questions_not_supported_here#:#Ebben a kontextusban a kérdéseket nem támogatjuk.
 copg#:#copg_reload_page#:#Oldal újratöltése
 copg#:#copg_remove_formats#:#Formázás eltávolítása
@@ -8554,6 +8560,9 @@ dcl#:#dcl_confirm_delete_table#:#Biztos, hogy törli a táblát annak tartalmáv
 dcl#:#dcl_confirm_storing_records#:#Kérem, ellenőrizze és hagyja jóvá beírt adatát.
 dcl#:#dcl_confirm_storing_records_no_permission#:#Nincs jogosultsága a bejegyzést utólag módosítani.
 dcl#:#dcl_copy#:#Adatgyűjtés másolása
+dcl#:#dcl_copy_field#:#Copy###10 12 2024 new variable
+dcl#:#dcl_copy_field_desc#:#Field to copy options stored in a different field of a table.###10 12 2024 new variable
+dcl#:#dcl_copy_title#:#Copy of table and field###10 12 2024 new variable
 dcl#:#dcl_create_date#:#Létrehozás dátuma
 dcl#:#dcl_create_entry_rules#:#Bejegyzés létrehozása
 dcl#:#dcl_create_field#:#Mező létrehozása
@@ -8578,6 +8587,7 @@ dcl#:#dcl_delete_tables_no_selection#:#Legalább egy törlendő táblát válass
 dcl#:#dcl_delete_views#:#Nézetek törlése
 dcl#:#dcl_delete_views_no_selection#:#Legalább egy törlendő nézetet válasszon ki
 dcl#:#dcl_deleted_records#:#Sikeresen törölt %s bejegyzéseket
+dcl#:#dcl_deprecated_copy#:#(Deprecated)###10 12 2024 new variable
 dcl#:#dcl_desc#:#Csökkenő sorrend (CSÖKK)
 dcl#:#dcl_description#:#Mező leírása
 dcl#:#dcl_detailed_view#:#Egyszerű
@@ -8696,6 +8706,7 @@ dcl#:#dcl_number#:#Egész szám
 dcl#:#dcl_number_desc#:#Egész szám típusú beviteli mező (max. 9 számjegy). Közönséges és tizedes törtek nem engedélyezettek.
 dcl#:#dcl_online_info#:#Az adatgyűjtést csak online állapotában használhatják a felhasználók.
 dcl#:#dcl_order#:#Sorrend
+dcl#:#dcl_origin_not_found#:#Origin field was not found!###10 12 2024 new variable
 dcl#:#dcl_own_entries#:#Csak a saját bejegyzéseim
 dcl#:#dcl_owner#:#Tulajdonos
 dcl#:#dcl_owner_description#:#Az a felhasználó, aki a bejegyzés tulajdonosa.
@@ -9090,6 +9101,7 @@ ecs#:#ecs_protocol#:#Protokoll
 ecs#:#ecs_publish_as#:#Közzététel mint:
 ecs#:#ecs_publish_for#:#Kibocsátás ennek:
 ecs#:#ecs_published_for#:#Publikálva neki:
+ecs#:#ecs_rcat_created_body_a#:#A new ECS Category has been created:###10 12 2024 new variable
 ecs#:#ecs_rcrs_created_body_a#:#Új ECS-kurzus jött létre:
 ecs#:#ecs_read_remote_links#:#ECS-kurzusok frissítése
 ecs#:#ecs_refresh_participants#:#ECS-résztvevők frissítése
@@ -9932,6 +9944,8 @@ forum#:#forums_download_attachment#:#Fájl letöltése
 forum#:#forums_edit_draft#:#Piszkozat módosítása
 forum#:#forums_edit_post#:#Hozzászólás módosítása
 forum#:#forums_enable_notification#:#Értesítés kérése ehhez a témához
+forum#:#forums_forum_notification#:#Send Forum Notifications###10 12 2024 new variable
+forum#:#forums_forum_notification_desc#:#If enabled, all users, who want to be informed about new posts in specified forum threads, will get notifications by mail.###10 12 2024 new variable
 forum#:#forums_forum_notification_disabled#:#Nem kap a továbbiakban értesítést, ha új hozzászólás születik ebben a fórumban.
 forum#:#forums_info_censor2_post#:#Cenzúrázás visszavonása?
 forum#:#forums_info_censor_post#:#Biztos, hogy elrejti ezt a hozzászólást?
@@ -10497,7 +10511,7 @@ irss#:#revisions#:#Elérhető felülvizsgálatok
 irss#:#rid_deleted#:#A fájl eltávolították
 irss#:#rids_appended#:#Az erőforrás(oka)t sikeresen hozzáadta
 irss#:#rids_deleted#:#Az erőforrás(oka)t sikeresen törölte
-irss#:#rids_updated#:#Az erőforrás(oka)t sikeresen frissítette 
+irss#:#rids_updated#:#Az erőforrás(oka)t sikeresen frissítette
 irss#:#sorting#:#Alapértelmezett rendezés
 irss#:#sorting_1#:#Cím szerint (Növekvő)
 irss#:#sorting_2#:#Cím szerint (Csökkenő)
@@ -10756,6 +10770,7 @@ ldoc#:#ldoc_form_edit_doc_head#:#Dokumentum módosítása
 ldoc#:#ldoc_form_new_doc_head#:#Dokumentum létrehozása
 ldoc#:#ldoc_last_modified#:#Utolsó módosítás
 ldoc#:#ldoc_ldoc_settings#:#Beállítások
+ldoc#:#ldoc_order_invalid#:#Please enter a number for the order###14 01 2025 new variable
 ldoc#:#ldoc_period#:#Időszak
 ldoc#:#ldoc_period_from#:#Kezdő időpont
 ldoc#:#ldoc_period_until#:#Záró időpont
@@ -11467,10 +11482,12 @@ mail#:#mail_smtp_user#:#Felhasználó
 mail#:#mail_subject_prefix#:#Levél tárgya
 mail#:#mail_subject_prefix_info#:#Az automatikusan generált kimenő e-mailek tárgya elé kerülő szöveg, ami segíti, hogy a felhasználók szűrhessék az üzenetet.
 mail#:#mail_subject_too_long#:#A tárgy túl hosszú.
+mail#:#mail_success_removed_user#:#User(s) successfully removed from mailing list.###10 12 2024 new variable
 mail#:#mail_sure_delete#:#Biztos, hogy törli a megjelölt level(ek)et?
 mail#:#mail_sure_delete_entry#:#Biztos, hogy törli az alábbi névjegy(ek)et?
 mail#:#mail_sure_delete_file#:#Biztos, hogy törli a kiválasztott fájlokat?
 mail#:#mail_sure_delete_folder#:#A mappa és tartalma véglegesen el lesz távolítva.
+mail#:#mail_sure_remove_user#:#Are you sure you want to remove the following user(s) from the members list?###10 12 2024 new variable
 mail#:#mail_system_sys_env_from_addr#:#Technikai feladó
 mail#:#mail_system_sys_env_from_addr_info#:#Üres mező esetén a feladó e-mail címét használjuk, ha az SMTP be van kapcsolva. Különben a szerver rendszergazdájának a feladta beállítani ezt az értéket.
 mail#:#mail_system_sys_from_addr#:#Küldő e-mail címe (feladó)
@@ -12855,6 +12872,7 @@ obj#:#obj_tool_setting_skills_info#:#Aktiválja a kompetenciamenedzsmentet és a
 obj#:#obj_tool_setting_tag_cloud#:#Címkefelhő
 obj#:#obj_tool_setting_tag_cloud_info#:#'Címkefelhő' blokk megjelenik a 'Tartalom' lapon.
 obj#:#obj_tool_setting_taxonomies#:#Taxonómiák
+obj#:#obj_tool_setting_taxonomies_info#:#Taxonomies allow the filtering of objects. They are created in the "Taxonomy" sub-tab in the "Settings" tab.###10 12 2024 new variable
 obj#:#obj_tool_setting_use_news#:#Hírek
 obj#:#obj_tool_setting_use_news_info#:#Hírblokk, illetve idővonal nézet bekapcsolása. Amennyiben aktív, a felhasználók értesítést kérhetnek a módosulásról.
 obj#:#obj_tool_setting_use_news_open_settings#:#Beállítások megnyitása
@@ -13197,6 +13215,7 @@ prg#:#pc_prgstatus_unlimited_validation#:#Nincs lejárata
 prg#:#percentage#:#%
 prg#:#prg_access_by_orgu#:#Hozzáférés-vezérlés a szervezeti egység pozíciói alapján
 prg#:#prg_access_by_orgu_byline#:#További hozzáférés-vezérlési szabályok adhatóak meg a szervezeti egységekben elfoglalt pozíciók alapján.
+prg#:#prg_acknowledge_all_completed_courses#:#Acknowledge All Completed Courses###10 12 2024 new variable
 prg#:#prg_acknowledge_completed_courses#:#Teljesített kurzusok elismerése
 prg#:#prg_add#:#Képzési program hozzáadása
 prg#:#prg_added_course_ref_successful#:#Új kurzuslinket sikeresen hozzáadta.
@@ -13983,9 +14002,11 @@ rbac#:#frm_add_reply#:#A felhasználó válaszolhat a hozzászólásra
 rbac#:#frm_add_thread#:#A felhasználó vehet fel új témát
 rbac#:#frm_copy#:#A felhasználó másolhat fórumot
 rbac#:#frm_delete#:#A felhasználó áthelyezhet vagy törölhet fórumot
+rbac#:#frm_edit_learning_progress#:#User can edit learning progress settings###14 01 2025 new variable
 rbac#:#frm_edit_permission#:#A felhasználó módosíthatja a jogosultsági beállításokat
 rbac#:#frm_moderate_frm#:#A felhasználó módosíthatja, cenzúrázhatja és törölheti a hozzászólásokat
 rbac#:#frm_read#:#A felhasználónak olvasási hozzáférése van a fórumhoz
+rbac#:#frm_read_learning_progress#:#User can view learning progress of other users###14 01 2025 new variable
 rbac#:#frm_visible#:#A fórum látható
 rbac#:#frm_write#:#A felhasználó módosíthatja a fórum beállításait és moderátorait
 rbac#:#frma_edit_permission#:#Jogosultsági beállítások változtatása
@@ -16817,6 +16838,7 @@ tagging#:#tagging_enable_all_users_info#:#A Tartalomtár objektumainak 'Informá
 tagging#:#tagging_enable_tagging#:#Címkézés engedélyezése
 tagging#:#tagging_forbidden_tags#:#Tiltott címkék
 tagging#:#tagging_no_obj_for_tag#:#Egy erőforrásnak sincs címkéjé: %s.
+tagging#:#tagging_no_perm_write#:#You have no permission to change this data.###10 12 2024 new variable
 tagging#:#tagging_other_users#:#Más felhasználók címkéi
 tagging#:#tagging_resources_for_tag#:#Források ezzel a címkével: %s
 tagging#:#tagging_search_users#:#Felhasználók keresése
@@ -17171,6 +17193,7 @@ ui#:#order_option_numerical_ascending#:#0 → 9
 ui#:#order_option_numerical_descending#:#9 → 0
 ui#:#presentation_table_collapse#:#becsukás
 ui#:#presentation_table_expand#:#kinyitás
+ui#:#table_posinput_col_title#:#Pozíció
 ui#:#ui_chars_max#:#Maximum:
 ui#:#ui_chars_min#:#Minimum:
 ui#:#ui_chars_remaining#:#Fennmaradó karakterek száma:

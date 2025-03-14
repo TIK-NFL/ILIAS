@@ -40,7 +40,7 @@ class EmbeddedApplication
 
     public function __construct(
         protected ResourceIdentification $identification,
-        protected ?Action $action,
+        protected Action $action,
         protected ResourceStakeholder $stakeholder,
         protected URI $back_target,
         protected bool $inline = false,
@@ -55,9 +55,7 @@ class EmbeddedApplication
             'resource_id' => $this->identification->serialize(),
             'user_id' => $DIC->user()->getId(),
             'stakeholder' => $this->stakeholder::class,
-            'editable' => $edit ?? ($this->action === null
-                    ? false
-                    : $this->action->getName() === ActionTarget::EDIT->value)
+            'editable' => $edit ?? ($this->action->getName() === ActionTarget::EDIT->value)
         ];
         $this->token = $data_signer->sign($payload, 'wopi', new \DateTimeImmutable("now + $this->ttl seconds"));
         $this->ilias_base_url = $ilias_base_url ?? new URI(ILIAS_HTTP_PATH);

@@ -72,7 +72,7 @@ class Consumer implements ConsumerInterface
 
         return $slot->canWithdraw($blocks->slot()->withdrawProcess($user, $global_settings, $this->userHasWithdrawn(...)))
                     ->hasAgreement($blocks->slot()->agreement($user, $global_settings), self::GOTO_NAME)
-                    ->showInFooter($blocks->slot()->modifyFooter($user))
+                    ->showInFooter($blocks->slot()->modifyFooter($user, self::GOTO_NAME))
                     ->showOnLoginPage($blocks->slot()->showOnLoginPage())
                     ->onSelfRegistration($blocks->slot()->selfRegistration($user, $build_user))
                     ->hasOnlineStatusFilter($blocks->slot()->onlineStatusFilter($this->usersWhoDidntAgree($this->container->database())))

@@ -192,7 +192,7 @@ class assMultipleChoice extends assQuestion implements ilObjQuestionScoringAdjus
             $this->setQuestion(ilRTE::_replaceMediaObjectImageSrc($data["question_text"] ?? '', 1));
             $shuffle = (is_null($data['shuffle'])) ? true : $data['shuffle'];
             $this->setShuffle((bool) $shuffle);
-            if ($data['thumb_size'] !== null && $data['thumb_size'] >= self::MINIMUM_THUMB_SIZE) {
+            if ($data['thumb_size'] !== null && $data['thumb_size'] >= $this->getMinimumThumbSize()) {
                 $this->setThumbSize($data['thumb_size']);
             }
             $this->isSingleline = $data['allow_images'] === null || $data['allow_images'] === '0';

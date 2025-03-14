@@ -400,7 +400,7 @@ adn#:#msg_type_3#:#Breaking News
 adn#:#msg_type_during_event#:#During Event
 adn#:#msg_type_info#:#the importance has an influence on the color representation of the notification
 adve#:#advanced_editing_excass_settings#:#Exercise Text Assignments
-adve#:#advanced_editing_tst_editing#:#Page Editor for additional question content
+adve#:#advanced_editing_tst_editing#:#ILIAS Page Editor for additional question content
 adve#:#advanced_editing_tst_editing_desc#:#Activates ILIAS Page Editor for feedback and hint text editing.
 adve#:#adve_activation#:#Activation
 adve#:#adve_auto_url_linking#:#URL Auto-Linking
@@ -426,7 +426,7 @@ adve#:#adve_rte_settings#:#TinyMCE Editor
 adve#:#adve_text_content_features#:#Text Content Menu
 adve#:#adve_use_physical#:#Use b/i/u instead of str/emp/imp
 adve#:#adve_use_physical_info#:#This setting replaces the semantic style class buttons for ‘strong’, ‘emphatic’ and ‘important’ with physical attribute buttons ‘b’ (bold), ‘i’ (italic) and ‘u’ (underline). Please note, that this may result in inconsistencies if the style editor is used and other physical attributes are assigned to the strong/emphatic/important style classes.
-adve#:#adve_use_tiny_mce#:#Enable TinyMCE for WYSIWYG Editing
+adve#:#adve_use_tiny_mce#:#Enable TinyMCE Editor for WYSIWYG Editing
 assessment#:#action#:#Action
 assessment#:#addSuggestedSolution#:#Add Content for Recapitulation
 assessment#:#add_answers#:#Add answers
@@ -1364,7 +1364,7 @@ assessment#:#tst_enable_questionlist#:#Show 'List of Questions’
 assessment#:#tst_enable_questionlist_description#:#Participants can switch on a list of the test questions on the left of the actual question.
 assessment#:#tst_ending_time#:#Finishing Time
 assessment#:#tst_ending_time_before_starting_time#:#Please enter a date for the end of the test that is after the start date.
-assessment#:#tst_ending_time_desc#:#Time from which participants can no longer submit answers. <b>Important</b>: Do <b>not</b> use this option for e-exams/distance exams. Instead, use the function 'Limit Duration of Test' (see below). Only then will the test be ended on the server side and each participant's last entry in Essay-Questions automatically saved as auto-save-content.
+assessment#:#tst_ending_time_desc#:#Time from which participants can no longer submit answers. <strong>Important</strong>: Do <strong>not</strong> use this option for e-exams/distance exams. Instead, use the function 'Limit Duration of Test' (see below). Only then will the test be ended on the server side and each participant's last entry in Essay-Questions automatically saved as auto-save-content.
 assessment#:#tst_enter_questionpool#:#Please enter a question pool name where the new question will be stored
 assessment#:#tst_eval_question_points#:#Question Results for Pass %s
 assessment#:#tst_eval_results_by_pass#:#List of Answers for Pass %s
@@ -1378,7 +1378,7 @@ assessment#:#tst_eval_total_passed_average_points#:#Average points of passed tes
 assessment#:#tst_eval_total_passed_average_time#:#Average processing time of all passed tests
 assessment#:#tst_eval_total_persons#:#Total number of participants who started the test
 assessment#:#tst_exam_access_code#:#Access Code
-assessment#:#tst_exam_access_code_label#:#Enter access code to continue your already started test.
+assessment#:#tst_exam_access_code_label#:#Enter access code to continue your already started test. Leave the field empty to start a new test run.
 assessment#:#tst_exam_conditions#:#Exam Conditions
 assessment#:#tst_exam_conditions_label#:#Check to accept the conditions.
 assessment#:#tst_exam_conditions_not_checked_message#:#You need to accept the exam conditions!
@@ -1661,7 +1661,7 @@ assessment#:#tst_previous_access_code_not_available#:#No previous code available
 assessment#:#tst_print#:#Test and Assessment - Print View
 assessment#:#tst_proceed#:#Proceed
 assessment#:#tst_processing_time#:#Limit Duration of Test
-assessment#:#tst_processing_time_desc#:#Participants can work through the test only for a specified period of time. Time is clocking away from the moment a user starts a test for the first time. Suspending the test does not stop the clock. If the number of possible test attempts is limited an additional feature for granting extra time to participants appears in the tab 'Dashboard'.
+assessment#:#tst_processing_time_desc#:#Participants can work through the test only for a specified period of time. Time is clocking away from the moment a user starts a test for the first time. Suspending the test does not stop the clock. If the number of possible test attempts is limited an additional feature for granting extra time to participants appears in the tab 'Participants'.
 assessment#:#tst_processing_time_duration#:#Maximum Duration of the Test im Minutes
 assessment#:#tst_processing_time_duration_desc#:#Maximum of time granted to take the test.
 assessment#:#tst_qbt_filter_question_title#:#Title of Question
@@ -1763,6 +1763,7 @@ assessment#:#tst_res_jump_to_participant_hint_opt#:#Jump to Participant
 assessment#:#tst_res_lo_objectives_header#:#Relevant Learning Objectives
 assessment#:#tst_res_lo_try_header#:#Attempt
 assessment#:#tst_res_lo_try_n#:#Attempt %s
+assessment#:#tst_res_tab_msg_no_lp_access#:#You are currently not allowed to access your Learning Progress, as you are not allowed to see your test results.
 assessment#:#tst_res_tab_msg_res_after_date#:#Your test results will be shown here after: %s
 assessment#:#tst_res_tab_msg_res_after_date_no_res#:#Once you have taken the test your results will be shown here after: %s
 assessment#:#tst_res_tab_msg_res_after_finish_test#:#After finishing the test your results will be shown here.
@@ -1845,8 +1846,6 @@ assessment#:#tst_show_answer_sheet#:#Show Answers
 assessment#:#tst_show_cancel#:#Suspend Test
 assessment#:#tst_show_cancel_description#:#Participants are presented with a button to stop the test run and to continue it later. Caution: Suspending the test does not stop the countdown of the maximum duration of the test.
 assessment#:#tst_show_comp_results#:#Competence Results
-assessment#:#tst_show_pass_details#:#Show ‘Table of Detailed Test Results’ for each Test Attempt upon Selected Point in Time
-assessment#:#tst_show_pass_details_desc#:#The summary of results will be appended at the point in time indicated in the setting above: A ‘Table of Detailed Test Results’ will show the title of the questions and the points scored in a particular test attempt. <br> Other than that the table will be displayed after the last test attempt possible (setting in link ‘General’, option ‘Limit Number of Test Attempts) or after the test is officially finished (setting in link ‘General’, option ‘Finishing Time’). <br> Further settings about the content of the ‘Table of Detailed Test Results’ can be made in the section ‘Further Details to be Included in Test Results’ of this form.
 assessment#:#tst_show_results#:#Test Results
 assessment#:#tst_show_side_list#:#Show List of Questions
 assessment#:#tst_show_solution_answers_only#:#Print View of Results (Answers Only)
@@ -2019,7 +2018,6 @@ auth#:#auth_cron_destroy_expired_sessions_desc#:#This job deletes expires sessio
 auth#:#auth_err_expired#:#Your session has been deactivated due to inactivity.
 auth#:#auth_err_invalid_user_account#:#Authentication failed due to an internal failure.
 auth#:#auth_err_ldap_exception#:#Authentication failed due to an internal authentication failure (LDAP).
-auth#:#auth_err_login_attempts_deactivation#:#This user account has been deactivated due to too many incorrect login attempts.
 auth#:#auth_info_add#:#Choose this option if you have never registered to ILIAS. A new account will be created.
 auth#:#auth_info_migrate#:#If you have already an ILIAS account, enter username and password to migrate your personal data (mail, test results...).
 auth#:#auth_ldap_server_ds#:#LDAP-Server
@@ -2075,6 +2073,8 @@ auth#:#auth_oidc_update_field_info#:#Update Automatically
 auth#:#auth_oidc_update_role_info#:#Only Synchronise Automatically the First Time a User Logs In.
 auth#:#auth_oidconnect#:#OpenID Connect
 auth#:#auth_page_type_auth#:#Login Page
+auth#:#auth_required_password#:#Please enter a password.
+auth#:#auth_required_username#:#Please enter a username.
 auth#:#auth_saml#:#SAML
 auth#:#auth_saml_add_idp_btn#:#Add new Identity Provider
 auth#:#auth_saml_add_idp_md_error#:#The given value was not a valid XML document. Ensure the XML contains a valid Identity Provider.
@@ -2113,9 +2113,9 @@ auth#:#err_auth_ldap_failed#:#Authentication failed. Please contact your ILIAS a
 auth#:#err_auth_saml_failed#:#Authentication failed. Please contact your system administrator.
 auth#:#err_auth_saml_no_ilias_user#:#Authentication failed. Please contact your system administrator.
 auth#:#login_page_activate#:#Activate Editor for Selected Languages
-auth#:#login_page_editor_switched#:#The active page editor has been changed
-auth#:#login_page_switch_ipe#:#Use ILIAS page editor
-auth#:#login_page_switch_rte#:#Use Rich-text editor
+auth#:#login_page_editor_switched#:#The editor has been changed.
+auth#:#login_page_switch_ipe#:#Use ILIAS Page Editor
+auth#:#login_page_switch_rte#:#Use TinyMCE Editor
 auth#:#lti_consumer_inactive#:#LTI tool consumer is disabled.
 auth#:#saml_tab_head_idp#:#IDP
 awrn#:#awareness_now_online#:#Online Now
@@ -2786,12 +2786,12 @@ certificate#:#certificate_text#:#Certificate Text
 certificate#:#certificate_text_info#:#Please enter the certificate text. If the WYSIWYG editor is disabled in the ILIAS administration, you can still use valid XHTML to format the text.<br><br>
 certificate#:#certificate_unit_description#:#Enter units of measure as VALUE[cm|mm|in|pt|pc|px|em], e.g. 10mm or 3in
 certificate#:#certificate_usage#:#Please note that the usage of certificates is only available if the ILIAS Java-Server is running. The configuration for Java-Server is available in Administration » General Settings » Server, sub-tab Java-Server.
-certificate#:#certificate_var_max_points#:#46
-certificate#:#certificate_var_result_mark_long#:#Good
-certificate#:#certificate_var_result_mark_short#:#B
-certificate#:#certificate_var_result_passed#:#passed
-certificate#:#certificate_var_result_percent#:#83%
-certificate#:#certificate_var_result_points#:#38
+certificate#:#certificate_var_max_points#:#Maximum number of points in the test used
+certificate#:#certificate_var_result_mark_long#:#Achieved mark presented in 'official form'
+certificate#:#certificate_var_result_mark_short#:#Achieved mark presented in 'short form'
+certificate#:#certificate_var_result_passed#:#Information on whether the test was passed or not
+certificate#:#certificate_var_result_percent#:#Percentage achieved in the test
+certificate#:#certificate_var_result_points#:#Number of points achieved in the test
 certificate#:#certificate_var_user_birthday#:#1977-05-08
 certificate#:#certificate_var_user_city#:#Anytown, NY
 certificate#:#certificate_var_user_country#:#USA
@@ -2889,8 +2889,6 @@ chatroom#:#chat_osc_accepts_messages_yes#:#Receives Chat Messages
 chatroom#:#chat_osc_add_user#:#Add Further Users
 chatroom#:#chat_osc_conversations#:#Conversations
 chatroom#:#chat_osc_doesnt_accept_msg#:#Conversations not possible
-chatroom#:#chat_osc_dont_accept_msg#:#You currently cannot be invited to conversations. If desired you can change this in your %s.
-chatroom#:#chat_osc_dont_accept_msg_link_txt#:#'Personal Settings'
 chatroom#:#chat_osc_head_grp_x_persons#:#%s Users
 chatroom#:#chat_osc_invite_to_conversation#:#Add to Conversation
 chatroom#:#chat_osc_leave_grp_conv#:#Leave Conversation
@@ -3463,7 +3461,7 @@ common#:#adve_assessment_settings#:#Test and Assessment Settings
 common#:#adve_frm_post_settings#:#Forum Posts
 common#:#adve_general_settings#:#General Settings
 common#:#adve_survey_settings#:#Survey Settings
-common#:#agree_date#:#Agreed on
+common#:#agree_date#:#ToS agreed to on
 common#:#all#:#All
 common#:#all_global_roles#:#Global Roles
 common#:#all_local_roles#:#Local Roles (all)
@@ -3530,7 +3528,7 @@ common#:#auth_allow_local#:#Allow Local Authentication
 common#:#auth_cas#:#CAS
 common#:#auth_cas_allow_local_desc#:#Allows CAS users to authenticate themselves with their local ILIAS username and a local password.
 common#:#auth_cas_auth#:#Configure CAS Authentication
-common#:#auth_cas_auth_desc#:#CAS requires PHP 4.3.1 or higher with CURL support (7.5 or higher)
+common#:#auth_cas_auth_desc#:#For CAS authentication to work, the server setting prevent_super_global_replacement in client.ini.php must be set.
 common#:#auth_cas_port_desc#:#E.g. 443 if the full CAS server URI is https://auth.yourserver.com:443/cas/
 common#:#auth_cas_server_desc#:#E.g. auth.yourserver.com if the full CAS server URI is https://auth.yourserver.com:443/cas/
 common#:#auth_cas_uri_desc#:#Local URI, e.g. cas if the full CAS server URI is https://auth.yourserver.com:443/cas/
@@ -3770,6 +3768,7 @@ common#:#copy_all#:#Copy all
 common#:#copy_n_of_suffix#:#- Copy (%1$s)
 common#:#copy_of#:#Copy of
 common#:#copy_of_suffix#:#- Copy
+common#:#copy_perma_link#:#Copy link to clipboard
 common#:#copy_selected_items#:#Copy
 common#:#count#:#Count
 common#:#counter_novelty#:#News
@@ -3917,6 +3916,7 @@ common#:#download_selected_items#:#Download
 common#:#downloading_settings#:#Download Settings
 common#:#dpro_accept_usr_agreement#:#Accept Declaration of Data Protection?
 common#:#dpro_accept_usr_agreement_intro#:#There is a new Declaration of Data Protection. You need to accept it before proceeding with the use of ILIAS. Read the following document carefully and give your consent or dissent at the bottom of the page.
+common#:#dpro_agreed_on#:#DoDP agreed to on
 common#:#dpro_force_accept_usr_agreement#:#You must accept the Declaration of Data Protection!
 common#:#dpro_no_agreement_description#:#There is currently no Declaration of Data Protection document available for this installation. Please contact the <a href="%1$s">system administrator</a>.
 common#:#dpro_refuse_acceptance#:#Refuse to Accept the Declaration of Data Protection
@@ -3965,8 +3965,8 @@ common#:#enable_export_scorm_desc#:#Display of Personal Data in the Protocol Dat
 common#:#enable_fora_statistics#:#Enable Statistics in Forum
 common#:#enable_fora_statistics_desc#:#If disabled, nobody is able to access the forum statistics.
 common#:#enable_hide_user_toggle#:#Member is not allowed to deactivate
-common#:#enable_hist_user_comments#:#Enable user comments in history
-common#:#enable_hist_user_comments_desc#:#Give authors the opportunity to add comments to the history log of pages.
+common#:#enable_hist_user_comments#:#Revision Comments
+common#:#enable_hist_user_comments_desc#:#Allows users with edit permission to add comments to revised pages. The comments are shown in tab 'Content', sub-tab 'History'.
 common#:#enable_multi_download#:#'Download of multiple objects' enabled
 common#:#enable_multi_download_info#:#Multiple folders/files can be selected and downloaded as zip archive.
 common#:#enable_password_assistance#:#Enable Password Assistance
@@ -4841,7 +4841,7 @@ common#:#obj_adm#:#Administration
 common#:#obj_adm_desc#:#Main system settings folder containing all panels to administrate your ILIAS installation.
 common#:#obj_adn#:#Administrative Notifications
 common#:#obj_adve#:#Editing
-common#:#obj_adve_desc#:#Administration settings for ILIAS page editor and TinyMCE.
+common#:#obj_adve_desc#:#Administration settings for the ILIAS Page Editor and the TinyMCE Editor
 common#:#obj_ass#:#Asset
 common#:#obj_assf#:#Test and Assessment
 common#:#obj_assf_desc#:#Platform settings for the Test and Assessment tool
@@ -5252,6 +5252,7 @@ common#:#pd_items_news#:#Include News of Personal Items
 common#:#pdf_export#:#PDF Export
 common#:#perm_settings#:#Permissions
 common#:#perma_link#:#Permanent Link
+common#:#perma_link_copied#:#Link to this page has been copied to the clipboard.
 common#:#permission#:#Permission
 common#:#permission_denied#:#Permission Denied
 common#:#permission_settings#:#Object Permission Settings
@@ -5631,7 +5632,6 @@ common#:#show_users_online#:#Show active users
 common#:#show_who_is_online#:#Show who is online
 common#:#side_frame#:#Side Frame
 common#:#signature#:#Signature
-common#:#simultaneous_login_detected#:#Your access is denied because of a simultaneous login with the same account.
 common#:#size#:#Size
 common#:#skills#:#Competences
 common#:#skin_style#:#Default Skin / Style
@@ -6008,7 +6008,6 @@ common#:#withdrawal_sure_account_no_consent_yet#:#Are you sure that you do not w
 common#:#wizard_search_list#:#Your search produced the following hits. Please select one of them.
 common#:#wizard_title_info#:#Search for the object you want to duplicate. Please enter the object's title or a part of it and click on 'Continue' to get matching search results.
 common#:#write#:#Write
-common#:#wrong_ip_detected#:#Your access is denied because of a wrong client ip.<br>You are currently using this IP address: %s<br>Please contact the system administrator.
 common#:#year#:#Year
 common#:#yearly#:#yearly
 common#:#years#:#Years
@@ -6159,7 +6158,7 @@ content#:#cont_active_from#:#Activation Start
 content#:#cont_active_to#:#Activation End
 content#:#cont_add_area#:#Add Area
 content#:#cont_add_cell#:#Add Column
-content#:#cont_add_change_comment#:#Add change comment
+content#:#cont_add_change_comment#:#Add Revision Comment
 content#:#cont_add_definition#:#Add Definition
 content#:#cont_add_elements#:#<b>Click</b> on a plus symbol to <b>add</b> a new element.
 content#:#cont_add_file#:#Add File
@@ -6387,7 +6386,7 @@ content#:#cont_ed_go#:#Go
 content#:#cont_ed_grid_col_width#:#Column Width
 content#:#cont_ed_grid_col_width_info#:#Column width can span multiple 1/12 units of the row and depends on the overall screen size. Devices are given as examples. Their screen size determines the concrete behaviour. 12/12 equals to 100% width.
 content#:#cont_ed_grid_col_widths#:#Column Widths
-content#:#cont_ed_insert_amdfrm#:#Insert Advanced Metadata
+content#:#cont_ed_insert_amdfrm#:#Insert Custom Metadata
 content#:#cont_ed_insert_amdpl#:#Insert Page List
 content#:#cont_ed_insert_blog#:#Insert Blog
 content#:#cont_ed_insert_cach#:#Insert Consultation Hours
@@ -6827,7 +6826,7 @@ content#:#cont_other_resources#:#Content (Other Remaining Resources)
 content#:#cont_out_of_focus_message#:#This page is not related to your current learning objective anymore.
 content#:#cont_out_of_focus_message_last_page#:#This is the last page of the content related to your current learning objective.
 content#:#cont_ov_all_correct#:#You have correctly answered all questions.
-content#:#cont_ov_preview#:#The question overview does not work in the page editor context. Use the SCO or SCORM level preview instead.
+content#:#cont_ov_preview#:#The question overview does not work in the ILIAS Page Editor context. Use the SCO or SCORM level preview instead.
 content#:#cont_ov_some_correct#:#You have correctly answered [x] out of [y] questions.
 content#:#cont_ov_wrong_answered#:#The following questions were not answered or answered wrong
 content#:#cont_overlay_image#:#Overlay Image
@@ -7370,6 +7369,7 @@ copg#:#copg_page_element_not_found#:#Page element not found.
 copg#:#copg_page_type_stys#:#Layout Page
 copg#:#copg_par_format_selection#:#Paragraph Format Selection
 copg#:#copg_pc_mob_does_not_exist#:#This media object does not exist.
+copg#:#copg_plugin_not_avail#:#Plugin %s not available.
 copg#:#copg_questions_not_supported_here#:#Questions are not supported in this context.
 copg#:#copg_reload_page#:#Reload Page
 copg#:#copg_remove_formats#:#Remove Formatting
@@ -8557,6 +8557,9 @@ dcl#:#dcl_confirm_delete_table#:#Do you really want to delete this table with it
 dcl#:#dcl_confirm_storing_records#:#Please validate and confirm your input.
 dcl#:#dcl_confirm_storing_records_no_permission#:#You have no permission to change the record afterwards.
 dcl#:#dcl_copy#:#Copy Data Collection
+dcl#:#dcl_copy_field#:#Copy
+dcl#:#dcl_copy_field_desc#:#Field to copy options stored in a different field of a table.
+dcl#:#dcl_copy_title#:#Copy of table and field
 dcl#:#dcl_create_date#:#Creation Date
 dcl#:#dcl_create_entry_rules#:#Entry Creation
 dcl#:#dcl_create_field#:#Create Field
@@ -8581,6 +8584,7 @@ dcl#:#dcl_delete_tables_no_selection#:#Please select at least one table to delet
 dcl#:#dcl_delete_views#:#Delete Views
 dcl#:#dcl_delete_views_no_selection#:#Please select at least one view to delete
 dcl#:#dcl_deleted_records#:#Successfully deleted %s Entries
+dcl#:#dcl_deprecated_copy#:#(Deprecated)
 dcl#:#dcl_desc#:#Descending Order (DESC)
 dcl#:#dcl_description#:#Field Description
 dcl#:#dcl_detailed_view#:#Single
@@ -8699,6 +8703,7 @@ dcl#:#dcl_number#:#Integer
 dcl#:#dcl_number_desc#:#Field for integer values (max. 9 digits). No decimals or fractions.
 dcl#:#dcl_online_info#:#Only if the Data Collection is online, users are able to use the Data Collection.
 dcl#:#dcl_order#:#Order
+dcl#:#dcl_origin_not_found#:#Origin field was not found!
 dcl#:#dcl_own_entries#:#Only own entries
 dcl#:#dcl_owner#:#Owner
 dcl#:#dcl_owner_description#:#The owner of the entry.
@@ -8712,7 +8717,7 @@ dcl#:#dcl_plugin_hooks#:#Available Plugins
 dcl#:#dcl_plugin_no_hooks_available#:#No active field-type plugins found
 dcl#:#dcl_prev_record#:#Previous Entry
 dcl#:#dcl_prop_expression#:#Expression
-dcl#:#dcl_prop_expression_info#:#Supported operators: <b>%s</b><br>Supported functions: <b>%s</b><br>Use brackets <b>‘(’, ‘)’</b> to group calculations.<br>Concatenate strings and placeholders with &: <b>‘The result is ’ & [[Int 1]] * [[Int2]]</b><br>Using functions: <b>SUM([[Int 1]];[[Int 2]])</b><br>When using date fields and number fields in a formula, the number fields are considered seconds and must be multiplied by 86400, for example.<br><br>Available fields (click on title to copy field inside expression):<br>%s
+dcl#:#dcl_prop_expression_info#:#Supported operators: <b>%s</b><br>Supported functions: <b>%s</b><br>Use brackets <b>‘(’, ‘)’</b> to group calculations.<br>Concatenate strings and placeholders with &: <b>‘The result is ’ & [[Int 1]] * [[Int2]]</b><br>Using functions: <b>SUM([[Int 1]];[[Int 2]])</b><br><br>Allowed fields (click on title to copy field inside expression):<br>%s<br><b>(Allowed fields are boolean, number, text and date that dont contain formular-sensitive chars inside their title)</b>
 dcl#:#dcl_public_comments#:#Activate Public Comments
 dcl#:#dcl_public_comments_desc#:#Users can comment on entries of the table.
 dcl#:#dcl_rating#:#Rating
@@ -9713,7 +9718,7 @@ export#:#export_resource#:#Resource
 export#:#export_save_selection#:#Start Export
 export#:#export_select_resources#:#Select Resources
 export#:#no_file#:#No file
-file#:#action_download#:#Download file
+file#:#action_download#:#Download file or view content
 file#:#action_show#:#Redirect user to the file’s ‘Info’ tab
 file#:#add_icon#:#Add Icon
 file#:#amount_of_downloads#:#Downloads
@@ -9775,6 +9780,8 @@ file#:#preview_caption#:#Preview %sof %s
 file#:#preview_image_size_info#:#The preview versions of images will be downscaled or upscaled as appropriate, so that their longest side is the length (in px) entered here.
 file#:#preview_persisting#:#Persistent Preview Images
 file#:#preview_persisting_info#:#Generated preview images will be stored by ILIAS and used from then on each time the preview icon for that file is clicked on. If deactivated, previews will be generated anew each time.
+file#:#previews_for_tiles#:#Tiles
+file#:#previews_for_tiles_info#:#Use Preview for Tiles where possible.
 file#:#publish_before_delete#:#It was not possible to delete any of the existing versions because an unpublished draft exists.
 file#:#replace_file_info#:#All previous file versions will be deleted.
 file#:#resource_id#:#Resource ID
@@ -10762,6 +10769,7 @@ ldoc#:#ldoc_form_edit_doc_head#:#Edit Document
 ldoc#:#ldoc_form_new_doc_head#:#Create Document
 ldoc#:#ldoc_last_modified#:#Last Change
 ldoc#:#ldoc_ldoc_settings#:#Settings
+ldoc#:#ldoc_order_invalid#:#Please enter a number for the order
 ldoc#:#ldoc_period#:#Period
 ldoc#:#ldoc_period_from#:#From
 ldoc#:#ldoc_period_until#:#Until
@@ -11858,7 +11866,7 @@ meta#:#meta_advmd_select_option_position#:#Position
 meta#:#meta_advmd_select_option_value#:#Value
 meta#:#meta_advmd_select_options#:#Entries
 meta#:#meta_advmd_select_options_edit#:#Edit Entries
-meta#:#meta_advmd_select_position_identifier#:#After %s
+meta#:#meta_advmd_select_position_identifier#:#After ‘%s’
 meta#:#meta_aggregation_level#:#Aggregation Level
 meta#:#meta_amaya#:#Amaya
 meta#:#meta_annotation#:#Annotation
@@ -12808,6 +12816,7 @@ obj#:#copy_container_page_yes_label#:#Copy Content Page
 obj#:#custom_icon#:#Custom Icon
 obj#:#edit_availability_period#:#Availability Period
 obj#:#edit_questions#:#Edit Questions
+obj#:#multiple_reference_deletion_info#:#Further references exist for the following objects.
 obj#:#no_objects_selected#:#At least one object needs to be selected.
 obj#:#obj_activate_content_lang#:#Activate Translation for Page Editing
 obj#:#obj_activate_multilang#:#Activate Multilingualism
@@ -12863,6 +12872,7 @@ obj#:#obj_tool_setting_skills_info#:#Activates competence management and compete
 obj#:#obj_tool_setting_tag_cloud#:#Tag Cloud
 obj#:#obj_tool_setting_tag_cloud_info#:#The ‘Tag Cloud’ block will be displayed inside the ‘Content’ tab.
 obj#:#obj_tool_setting_taxonomies#:#Taxonomies
+obj#:#obj_tool_setting_taxonomies_info#:#Taxonomies allow the filtering of objects. They are created in the "Taxonomy" sub-tab in the "Settings" tab.
 obj#:#obj_tool_setting_use_news#:#News
 obj#:#obj_tool_setting_use_news_info#:#Use of the news block and/or timeline view. Users can subscribe for notifications if the news block or the timeline are activated.
 obj#:#obj_tool_setting_use_news_open_settings#:#Open Settings of News Block and Timeline
@@ -12930,7 +12940,7 @@ orgu#:#org_op_score_participants#:#Score Participants
 orgu#:#org_op_view_certificates#:#View certificates of other users
 orgu#:#org_op_view_competences#:#View competences of other users
 orgu#:#org_op_view_individual_plan#:#View Individual Plan
-orgu#:#org_op_view_members#:#View Members
+orgu#:#org_op_view_members#:#View Assignments
 orgu#:#org_op_write_learning_progress#:#Set learning progress of other users
 orgu#:#org_unit_not_found#:#Organisational Unit not found.
 orgu#:#orgu_add#:#Add Organisational Unit
@@ -13839,7 +13849,7 @@ rbac#:#chtr_moderate#:#User can moderate discussion in chat room
 rbac#:#chtr_read#:#User can join and participate at chat room
 rbac#:#chtr_visible#:#Chat Room is visible
 rbac#:#chtr_write#:#User can edit settings of chat room and ban users
-rbac#:#cmis_edit_permissions#:#User can change permission settings of xAPI/cmi5 administration.
+rbac#:#cmis_edit_permission#:#User can change permission settings of xAPI/cmi5 administration.
 rbac#:#cmis_read#:#User has read access to xAPI/cmi5 administration.
 rbac#:#cmis_visible#:#Administration of xAPI/cmi5 is visible.
 rbac#:#cmis_write#:#User can edit settings of xAPI/cmi5 administration.
@@ -13911,6 +13921,10 @@ rbac#:#dcl_write#:#User can edit settings and content of data collection
 rbac#:#delete_files#:#Delete Files
 rbac#:#delete_folders#:#Delete Folders
 rbac#:#delete_wiki_pages#:#Delete Pages
+rbac#:#dpro_edit_permission#:#User can change permission settings in the Declaration of Data Protected administration
+rbac#:#dpro_read#:#User has read access to the Declaration of Data Protection administration
+rbac#:#dpro_visible#:#Declaration of Data Protection administration is visible
+rbac#:#dpro_write#:#Edit settings in the Declaration of Data Protection
 rbac#:#dshs_change_presentation#:#Change presentation of dashboard view
 rbac#:#dshs_edit_permission#:#User can change permission settings of Dashboard administration
 rbac#:#dshs_read#:#User has read access to Dashboard administration
@@ -13992,9 +14006,11 @@ rbac#:#frm_add_reply#:#Users can reply to a post
 rbac#:#frm_add_thread#:#User can add a new thread
 rbac#:#frm_copy#:#User can copy forum
 rbac#:#frm_delete#:#User can move or delete forum
+rbac#:#frm_edit_learning_progress#:#User can edit learning progress settings
 rbac#:#frm_edit_permission#:#User can change permission settings
 rbac#:#frm_moderate_frm#:#User can edit, censor and delete posts
 rbac#:#frm_read#:#User can read forum content
+rbac#:#frm_read_learning_progress#:#User can view learning progress of other users
 rbac#:#frm_visible#:#Forum is visible
 rbac#:#frm_write#:#User can edit forum settings and moderators
 rbac#:#frma_edit_permission#:#User can change permission settings of Forum administration
@@ -14057,6 +14073,10 @@ rbac#:#il_lti_global_role#:#LTI User
 rbac#:#il_sess_participant#:#Session Participant
 rbac#:#il_sess_status_closed#:#Non-Participant Closed Session
 rbac#:#ilias_id#:#ILIAS-ID
+rbac#:#impr_edit_permission#:#User can change permission settings of Legal Notice administration
+rbac#:#impr_read#:#User can read in Legal Notice administration
+rbac#:#impr_visible#:#Administration of Legal Notice is visible
+rbac#:#impr_write#:#User can edit content and settings of Legal Notice
 rbac#:#info_user_view_changed#:#User view changed
 rbac#:#internal_mail#:#Internal Mail
 rbac#:#invite#:#Inviting to survey
@@ -14104,7 +14124,7 @@ rbac#:#lso_read_learning_progress#:#User can view learning progress of other use
 rbac#:#lso_unparticipate#:#User can unsubscribe from a Learning Sequence
 rbac#:#lso_visible#:#Learning Sequence is visible
 rbac#:#lso_write#:#User can edit settings of Learning Sequence
-rbac#:#lsos_edit_permissions#:#User can change permission settings of Learning Sequences administration.
+rbac#:#lsos_edit_permission#:#User can change permission settings of Learning Sequences administration.
 rbac#:#lsos_read#:#User has read access to Learning Sequences administration.
 rbac#:#lsos_visible#:#Administration of Learning Sequences is visible.
 rbac#:#lsos_write#:#User can edit settings of Learning Sequences administration.
@@ -14169,7 +14189,8 @@ rbac#:#moderate_frm#:#Moderate
 rbac#:#msg_anonymous_cannot_be_assigned#:#Anonymous cannot be assigned to a role.
 rbac#:#msg_no_roles_of_type#:#No Roles available with selected filter setting
 rbac#:#news_add_news#:#Add News
-rbac#:#nots_edit_permissions#:#User can change permission settings of Notes administration.
+rbac#:#no_corresponding_roles#:#No corresponding roles could be found.
+rbac#:#nots_edit_permission#:#User can change permission settings of Notes administration.
 rbac#:#nots_read#:#User has read access to Notes administration.
 rbac#:#nots_visible#:#Administration of Notes is visible.
 rbac#:#nots_write#:#User can edit settings of Notes administration.
@@ -14246,7 +14267,7 @@ rbac#:#prgs_edit_permission#:#Change permission settings in Study Programme admi
 rbac#:#prgs_read#:#User has read access to Study Programme administration
 rbac#:#prgs_visible#:#Study Programme administration is visible
 rbac#:#prgs_write#:#Edit settings in Study Programme administration
-rbac#:#prss_edit_permissions#:#User can change permission settings of Personal Resources administration.
+rbac#:#prss_edit_permission#:#User can change permission settings of Personal Resources administration.
 rbac#:#prss_read#:#User has read access to Personal Resources administration.
 rbac#:#prss_visible#:#Administration of Personal Resources is visible.
 rbac#:#prss_write#:#User can edit settings of Personal Resources administration.
@@ -14586,7 +14607,7 @@ rbac#:#tst_tst_results#:#User has access to test results of others
 rbac#:#tst_tst_statistics#:#User has access to test statistics
 rbac#:#tst_visible#:#Test is visible
 rbac#:#tst_write#:#User can edit content and settings of test
-rbac#:#upload_blacklisted_files#:#Bypass blacklist
+rbac#:#upload_blacklisted_files#:#Bypass Negative List
 rbac#:#usrf_delete#:#User can delete user accounts
 rbac#:#usrf_edit_permission#:#User can change permission settings in User administration
 rbac#:#usrf_edit_roleassignment#:#User can change role assignment of user account
@@ -14595,7 +14616,7 @@ rbac#:#usrf_read#:#User has read access to User administration
 rbac#:#usrf_read_users#:#User has read access to local user accounts (local administrators)
 rbac#:#usrf_visible#:#User administration is visible
 rbac#:#usrf_write#:#Edit settings in User administration
-rbac#:#wbdv_edit_permissions#:#User can change permission settings of WebDAV administration.
+rbac#:#wbdv_edit_permission#:#User can change permission settings of WebDAV administration.
 rbac#:#wbdv_read#:#User has read access to WebDAV administration.
 rbac#:#wbdv_visible#:#Administration of WebDAV is visible.
 rbac#:#wbdv_write#:#User can edit settings of WebDAV administration.
@@ -14779,6 +14800,7 @@ rep#:#rep_fav_intro2#:#Click on '%s' and select a learning object from the avail
 rep#:#rep_fav_intro3#:#When you have found something that interests you, you can easily add it to your favourites. Select the desired item in the <i>Actions</i> menu and choose "<i>Add to favourites</i>".
 rep#:#rep_favourites#:#Favourites
 rep#:#rep_favourites_info#:#Users can mark single repository items as favourites. Favourites lists can be activated and configured in the dashboard and menu settings.
+rep#:#rep_input_not_empty#:#This field must not be empty, please provide a value.
 rep#:#rep_intro#:#Welcome to the Repository!
 rep#:#rep_intro1#:#In this area you can create learning and working resources for all users. All resources are organised in categories. Categories can reflect the structure of your organisation (e.g. departments), a hierarchy of disciplines, or classes of a school.
 rep#:#rep_intro2#:#Three steps are needed to build an initial structure:
@@ -15302,7 +15324,7 @@ sess#:#sess_material_not_assigned#:#Not Assigned
 sess#:#sess_max_members_needed#:#A maximum number of members is needed for the waiting list feature.
 sess#:#sess_mem_contacts#:#Tutorial Support
 sess#:#sess_mem_send_mail#:#Send Mail
-sess#:#sess_mem_tbl_header#:#Session Participants
+sess#:#sess_mem_tbl_header#:#Participants From %s
 sess#:#sess_member_administration#:#Edit Participants
 sess#:#sess_members#:#Participants
 sess#:#sess_members_gallery#:#Session Gallery
@@ -16532,11 +16554,11 @@ survey#:#survey_question_editor#:#List View
 survey#:#survey_question_obligatory#:#This question is compulsory. You must answer the question!
 survey#:#survey_question_pool#:#Question Pool
 survey#:#survey_question_pool_title#:#Pool Title
-survey#:#survey_question_pool_usage#:#Question Pool
-survey#:#survey_question_pool_usage_active#:#Questions can be added optionally to a question pool
-survey#:#survey_question_pool_usage_active_info#:#Each time a question is created it has to be decided if a question pool is to be used.
-survey#:#survey_question_pool_usage_inactive#:#Questions are created directly in the survey.
-survey#:#survey_question_pool_usage_inactive_info#:#The questions can be added to a question pool manually later but are created only for this survey first.
+survey#:#survey_question_pool_usage#:#Use Question Pool
+survey#:#survey_question_pool_usage_active#:#Questions created in survey or re-used from pool
+survey#:#survey_question_pool_usage_active_info#:#Questions can be created directly in the survey or be added to the survey from a question pool.
+survey#:#survey_question_pool_usage_inactive#:#Create questions in survey only
+survey#:#survey_question_pool_usage_inactive_info#:#All questions have to be created directly in the survey. A re-use of existing questions from a pool is not possible.
 survey#:#survey_question_text_hidden#:#Text hidden
 survey#:#survey_question_text_visible#:#Text visible
 survey#:#survey_question_title#:#Question Title
@@ -17181,6 +17203,7 @@ ui#:#order_option_numerical_ascending#:#0 to 9
 ui#:#order_option_numerical_descending#:#9 to 0
 ui#:#presentation_table_collapse#:#collapse all
 ui#:#presentation_table_expand#:#expand all
+ui#:#table_posinput_col_title#:#Position
 ui#:#ui_chars_max#:#Maximum:
 ui#:#ui_chars_min#:#Minimum:
 ui#:#ui_chars_remaining#:#Characters remaining:
@@ -17211,7 +17234,7 @@ user#:#confirm_delete_starting_point#:#Are you sure you want to delete this rule
 user#:#confirm_logout_for_email_change#:#You changed your email. To finalize this change, you will need to provide your password. The system is thus going to log you out and you will have 5 minutes to log in again. All other changes will be saved before logging you out.
 user#:#create_starting_point#:#Create Rule
 user#:#criteria#:#Criteria
-user#:#del_mail_body#:#Hello %1$s, %2$s You have not logged in to %3$s for a long time. Therefore, your ILIAS account is expected to be deleted on %4$s. In order to keep your ILIAS account, you must log in again before the aforementioned date.
+user#:#del_mail_body#:#Hello %1$s, %2$s You have not logged in to %3$s for a long time. Therefore, your ILIAS account %5$s is expected to be deleted on %4$s. In order to keep your ILIAS account, you must log in again before the aforementioned date.
 user#:#del_mail_subject#:#Your ILIAS account will be deleted soon
 user#:#delete_inactive_user_accounts_frequency#:#Frequency
 user#:#delete_inactive_user_accounts_frequency_desc#:#Frequency, in which the deletion and e-mail distribution will be tested.

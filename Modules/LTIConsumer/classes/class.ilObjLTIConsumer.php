@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -17,6 +15,8 @@ declare(strict_types=1);
  * https://github.com/ILIAS-eLearning
  *
  *********************************************************************/
+
+declare(strict_types=1);
 
 use ILIAS\Filesystem\Stream\Streams;
 use Firebase\JWT\JWK;
@@ -891,7 +891,7 @@ class ilObjLTIConsumer extends ilObject2
 
             // ! Moodle as tool provider requires a custom_lineitems_url even though this should be optional in launch request, especially if only posting score scope is permitted by platform
             // http://www.imsglobal.org/spec/lti-ags/v2p0#example-link-has-a-single-line-item-tool-can-only-post-score
-            $launch_vars['custom_lineitems_url'] = self::getIliasHttpPath() . "/Modules/LTIConsumer/ltiservices.php/gradeservice/" . $contextId . "/linetitems/";
+            $launch_vars['custom_lineitems_url'] = self::getIliasHttpPath() . "/Modules/LTIConsumer/ltiservices.php/gradeservice/" . $contextId . "/lineitems/";
 
             $launch_vars['custom_ags_scopes'] = implode(",", $gradeservice->getPermittedScopes());
         }
@@ -1274,7 +1274,7 @@ class ilObjLTIConsumer extends ilObject2
         $reponseData = $data;
         $provider = new ilLTIConsumeProvider();
         $toolConfig = $data['https://purl.imsglobal.org/spec/lti-tool-configuration'];
-        $provider->setTitle($data['client_name']);
+        $provider->setTitle(strip_tags($data['client_name'], ilObjectGUI::ALLOWED_TAGS_IN_TITLE_AND_DESCRIPTION));
         $provider->setProviderUrl($toolConfig['target_link_uri']);
         $provider->setInitiateLogin($data['initiate_login_uri']);
         $provider->setRedirectionUris(implode(",", $data['redirect_uris']));

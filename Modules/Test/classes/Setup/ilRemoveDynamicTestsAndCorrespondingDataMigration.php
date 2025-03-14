@@ -38,9 +38,11 @@ class ilRemoveDynamicTestsAndCorrespondingDataMigration implements Setup\Migrati
      */
     private mixed $io;
 
+    private bool $ilias_is_initialized = false;
+
     public function getLabel(): string
     {
-        return "Delete All Data of Dynamic Tests from Database.";
+        return "Delete All Data of Dynamic (CTM) Tests from Database.";
     }
 
     public function getDefaultAmountOfStepsPerRun(): int
@@ -58,27 +60,54 @@ class ilRemoveDynamicTestsAndCorrespondingDataMigration implements Setup\Migrati
 
     public function prepare(Environment $environment): void
     {
-        //This is necessary for using ilObjects delete function to remove existing objects
-        \ilContext::init(\ilContext::CONTEXT_CRON);
-        \ilInitialisation::initILIAS();
         $this->db = $environment->getResource(Setup\Environment::RESOURCE_DATABASE);
         $this->io = $environment->getResource(Environment::RESOURCE_ADMIN_INTERACTION);
     }
 
-    /**
-     * @throws Exception
-     */
     public function step(Environment $environment): void
     {
-        $tests_query = $this->db->query(
-            'SELECT obj_fi FROM tst_tests WHERE '
-            . $this->db->equals('question_set_type', 'DYNAMIC_QUEST_SET', 'text', true)
-            . 'Limit 1'
+        if (!$this->ilias_is_initialized) {
+            //This is necessary for using ilObjects delete function to remove existing objects
+            \ilContext::init(\ilContext::CONTEXT_CRON);
+            \ilInitialisation::initILIAS();
+            $this->ilias_is_initialized = true;
+        }
+        $row_test_info = $this->db->fetchObject(
+            $this->db->query(
+                'SELECT obj_fi, test_id FROM tst_tests '
+                . 'WHERE '
+                . $this->db->equals('question_set_type', 'DYNAMIC_QUEST_SET', \ilDBConstants::T_TEXT, true)
+                . 'Limit 1'
+            )
         );
 
-        $row_test = $this->db->fetchObject($tests_query);
-        $test = new \ilObjTest($row_test->obj_fi, false);
-        $test->delete();
+        $row_ref_id = $this->db->fetchObject(
+            $this->db->query(
+                'SELECT ref_id FROM object_reference '
+                . 'WHERE '
+                . $this->db->equals('object_reference.obj_id', $row_test_info->obj_fi, \ilDBConstants::T_INTEGER)
+            )
+        );
+
+        if ($row_ref_id !== null) {
+            try {
+                \ilRepUtil::removeObjectsFromSystem([$row_ref_id->ref_id]);
+                return;
+            } catch (\Exception $e) {
+            }
+        }
+
+        try {
+            (new \ilObjTest($row_test_info->obj_fi, false))->delete();
+        } catch (\Exception $e) {
+        }
+
+        try {
+            $test_obj = new \ilObjTest();
+            $test_obj->setTestId($row_test_info->test_id);
+            $test_obj->deleteTest();
+        } catch (\Exception $e) {
+        }
     }
 
     public function getRemainingAmountOfSteps(): int

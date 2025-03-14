@@ -447,7 +447,7 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
                 [
                     'test_id' => ['integer', $next_id],
                     'obj_fi' => ['integer', $this->getId()],
-                    'author' => ['text', $this->getAuthor()],
+                    'author' => ['text', mb_substr($this->getAuthor(), 0, 50)],
                     'created' => ['integer', time()],
                     'tstamp' => ['integer', time()],
                     'template_id' => ['integer', $this->getTemplate()],
@@ -477,7 +477,7 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
             $this->db->update(
                 'tst_tests',
                 [
-                    'author' => ['text', $this->getAuthor()],
+                    'author' => ['text', mb_substr($this->getAuthor(), 0, 50)],
                     'broken' => ['integer', (int) $this->isTestFinalBroken()]
                 ],
                 [
@@ -750,14 +750,40 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
         return $this->getMainSettings()->getIntroductionSettings()->getIntroductionText();
     }
 
+    private function cloneIntroduction(): ?int
+    {
+        $page_id = $this->getMainSettings()->getIntroductionSettings()->getIntroductionPageId();
+        if ($page_id === null) {
+            return null;
+        }
+        return $this->clonePage($page_id);
+    }
+
     public function getFinalStatement(): string
     {
         $page_id = $this->getMainSettings()->getFinishingSettings()->getConcludingRemarksPageId();
         if ($page_id !== null) {
             return (new ilTestPageGUI('tst', $page_id))->showPage();
         }
-
         return $this->getMainSettings()->getFinishingSettings()->getConcludingRemarksText();
+    }
+
+    private function cloneConcludingRemarks(): ?int
+    {
+        $page_id = $this->getMainSettings()->getFinishingSettings()->getConcludingRemarksPageId();
+        if ($page_id === null) {
+            return null;
+        }
+        return $this->clonePage($page_id);
+    }
+
+    private function clonePage(int $source_page_id): int
+    {
+        $page_object = new ilTestPage();
+        $page_object->setParentId($this->getId());
+        $new_page_id = $page_object->createPageWithNextId();
+        (new ilTestPage($source_page_id))->copy($new_page_id);
+        return $new_page_id;
     }
 
     /**
@@ -1180,9 +1206,11 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
 
         if (count($participantData->getUserIds())) {
             /* @var ilTestLP $testLP */
-            $testLP = ilObjectLP::getInstance($this->getId());
-            $testLP->setTestObject($this);
-            $testLP->resetLPDataForUserIds($participantData->getUserIds(), false);
+            $test_lp = ilObjectLP::getInstance($this->getId());
+            if ($test_lp instanceof ilTestLP) {
+                $test_lp->setTestObject($this);
+                $test_lp->resetLPDataForUserIds($participantData->getUserIds(), false);
+            }
         }
 
         if (count($participantData->getActiveIds())) {
@@ -1720,7 +1748,7 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
             return (int) $row['active_id'];
         }
 
-        return 0;
+        return null;
     }
 
     public static function _getActiveIdOfUser($user_id = "", $test_id = "")
@@ -2570,176 +2598,8 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
 
     public function getUnfilteredEvaluationData(): ilTestEvaluationData
     {
-        $data = new ilTestEvaluationData($this->db, $this);
-
-        $query = "
-			SELECT		tst_test_result.*,
-						qpl_questions.original_id,
-						qpl_questions.title questiontitle,
-						qpl_questions.points maxpoints
-
-			FROM		tst_test_result, qpl_questions, tst_active
-
-			WHERE		tst_active.active_id = tst_test_result.active_fi
-			AND			qpl_questions.question_id = tst_test_result.question_fi
-			AND			tst_active.test_fi = %s
-
-			ORDER BY	tst_active.active_id ASC, tst_test_result.pass ASC, tst_test_result.tstamp DESC
-		";
-
-        $result = $this->db->queryF(
-            $query,
-            ['integer'],
-            [$this->getTestId()]
-        );
-
-        $pass = null;
-        $checked = [];
-        $datasets = 0;
-        $questionData = [];
-
-        while ($row = $this->db->fetchAssoc($result)) {
-            if (!$data->participantExists($row["active_fi"])) {
-                continue;
-            }
-
-            $participantObject = $data->getParticipant($row["active_fi"]);
-            $passObject = $participantObject->getPass($row["pass"]);
-
-            if (!($passObject instanceof ilTestEvaluationPassData)) {
-                continue;
-            }
-
-            $passObject->addAnsweredQuestion(
-                $row["question_fi"],
-                $row["maxpoints"],
-                $row["points"],
-                (bool) $row['answered'],
-                null,
-                $row['manual']
-            );
-        }
-
-        foreach (array_keys($data->getParticipants()) as $active_id) {
-            if ($this->isRandomTest()) {
-                for ($testpass = 0; $testpass <= $data->getParticipant($active_id)->getLastPass(); $testpass++) {
-                    $this->db->setLimit($this->getQuestionCount(), 0);
-
-                    $query = "
-						SELECT tst_test_rnd_qst.sequence, tst_test_rnd_qst.question_fi, qpl_questions.original_id,
-						tst_test_rnd_qst.pass, qpl_questions.points, qpl_questions.title
-						FROM tst_test_rnd_qst, qpl_questions
-						WHERE tst_test_rnd_qst.question_fi = qpl_questions.question_id
-						AND tst_test_rnd_qst.pass = %s
-						AND tst_test_rnd_qst.active_fi = %s ORDER BY tst_test_rnd_qst.sequence
-					";
-
-                    $result = $this->db->queryF(
-                        $query,
-                        ['integer','integer'],
-                        [$testpass, $active_id]
-                    );
-
-                    if ($result->numRows()) {
-                        while ($row = $this->db->fetchAssoc($result)) {
-                            $tpass = array_key_exists("pass", $row) ? $row["pass"] : 0;
-
-                            if (
-                                !isset($row["question_fi"], $row["points"], $row["sequence"]) ||
-                                !is_numeric($row["question_fi"]) || !is_numeric($row["points"]) || !is_numeric($row["sequence"])
-                            ) {
-                                continue;
-                            }
-
-                            $data->getParticipant($active_id)->addQuestion(
-                                (int) $row["original_id"],
-                                (int) $row["question_fi"],
-                                (float) $row["points"],
-                                (int) $row["sequence"],
-                                $tpass
-                            );
-
-                            $data->addQuestionTitle($row["question_fi"], $row["title"]);
-                        }
-                    }
-                }
-            } else {
-                $query = "
-					SELECT tst_test_question.sequence, tst_test_question.question_fi,
-					qpl_questions.points, qpl_questions.title, qpl_questions.original_id
-					FROM tst_test_question, tst_active, qpl_questions
-					WHERE tst_test_question.question_fi = qpl_questions.question_id
-					AND tst_active.active_id = %s
-					AND tst_active.test_fi = tst_test_question.test_fi
-					ORDER BY tst_test_question.sequence
-				";
-
-                $result = $this->db->queryF(
-                    $query,
-                    ['integer'],
-                    [$active_id]
-                );
-
-                if ($result->numRows()) {
-                    $questionsbysequence = [];
-
-                    while ($row = $this->db->fetchAssoc($result)) {
-                        $questionsbysequence[$row["sequence"]] = $row;
-                    }
-
-                    $seqresult = $this->db->queryF(
-                        "SELECT * FROM tst_sequence WHERE active_fi = %s",
-                        ['integer'],
-                        [$active_id]
-                    );
-
-                    while ($seqrow = $this->db->fetchAssoc($seqresult)) {
-                        $questionsequence = unserialize($seqrow["sequence"]);
-
-                        foreach ($questionsequence as $sidx => $seq) {
-                            $data->getParticipant($active_id)->addQuestion(
-                                $questionsbysequence[$seq]['original_id'] ?? 0,
-                                $questionsbysequence[$seq]['question_fi'],
-                                $questionsbysequence[$seq]['points'],
-                                $sidx + 1,
-                                $seqrow['pass']
-                            );
-
-                            $data->addQuestionTitle(
-                                $questionsbysequence[$seq]["question_fi"],
-                                $questionsbysequence[$seq]["title"]
-                            );
-                        }
-                    }
-                }
-            }
-        }
-
-        foreach (array_keys($data->getParticipants()) as $active_id) {
-            $tstUserData = $data->getParticipant($active_id);
-
-            $percentage = $tstUserData->getReachedPointsInPercent();
-
-            $obligationsAnswered = $tstUserData->areObligationsAnswered();
-
-            $mark = $this->mark_schema->getMatchingMark($percentage);
-
-            if (is_object($mark)) {
-                $tstUserData->setMark($mark->getShortName());
-                $tstUserData->setMarkOfficial($mark->getOfficialName());
-
-                $tstUserData->setPassed(
-                    $mark->getPassed() && $tstUserData->areObligationsAnswered()
-                );
-            }
-
-            $visitingTime = $this->getVisitTimeOfParticipant($active_id);
-
-            $tstUserData->setFirstVisit($visitingTime["firstvisit"]);
-            $tstUserData->setLastVisit($visitingTime["lastvisit"]);
-        }
-
-        return $data;
+        return (new ilTestEvaluationFactory($this->db, $this))
+            ->getEvaluationData();
     }
 
     public static function _getQuestionCountAndPointsForPassOfParticipant($active_id, $pass): array
@@ -2932,22 +2792,25 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
     * @return string The output name of the user
     * @access public
     */
-    public function buildName($user_id, $firstname, $lastname, $title): string
-    {
-        $name = "";
-        if (strlen($firstname . $lastname . $title) == 0) {
-            $name = $this->lng->txt('deleted_user');
-        } else {
-            if ($user_id == ANONYMOUS_USER_ID) {
-                $name = $lastname;
-            } else {
-                $name = trim($lastname . ", " . $firstname . " " . $title);
-            }
-            if ($this->getAnonymity()) {
-                $name = $this->lng->txt("anonymous");
-            }
+    public function buildName(
+        ?int $user_id,
+        ?string $firstname,
+        ?string $lastname
+    ): string {
+        if ($user_id === null
+            || $firstname . $lastname === '') {
+            return $this->lng->txt('deleted_user');
         }
-        return $name;
+
+        if ($this->getAnonymity()) {
+            return $this->lng->txt('anonymous');
+        }
+
+        if ($user_id == ANONYMOUS_USER_ID) {
+            return $lastname;
+        }
+
+        return trim($lastname . ', ' . $firstname);
     }
 
     public function evalTotalStartedAverageTime(?array $active_ids_to_filter = null): float
@@ -4424,14 +4287,18 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
     public function canEditMarks(): bool
     {
         $total = $this->evalTotalPersons();
-        if ($total > 0) {
-            $reporting_date = $this->getScoreSettings()->getResultSummarySettings()->getReportingDate();
-            if ($reporting_date !== null) {
-                return $reporting_date <= new DateTimeImmutable('now', new DateTimeZone('UTC'));
-            }
-            return false;
+        $results_summary_settings = $this->getScoreSettings()->getResultSummarySettings();
+        if ($total === 0
+            || $results_summary_settings->getScoreReportingEnabled() === false) {
+            return true;
         }
-        return true;
+
+        if ($results_summary_settings->getScoreReporting() === ilObjTestSettingsResultSummary::SCORE_REPORTING_DATE) {
+            return $results_summary_settings->getReportingDate()
+                >= new DateTimeImmutable('now', new DateTimeZone('UTC'));
+        }
+
+        return false;
     }
 
     /**
@@ -4496,7 +4363,7 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
                 }
             }
         }
-        return join(",", $author);
+        return join(", ", $author);
     }
 
     /**
@@ -4577,17 +4444,26 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
         $new_obj->setTmpCopyWizardCopyId($copy_id);
         $this->cloneMetaData($new_obj);
 
+        $new_obj->mark_schema = clone $this->mark_schema;
+        $new_obj->setTemplate($this->getTemplate());
         $new_obj->saveToDb();
         $new_obj->addToNewsOnOnline(false, $new_obj->getObjectProperties()->getPropertyIsOnline()->getIsOnline());
+
         $this->getMainSettingsRepository()->store(
             $this->getMainSettings()->withTestId($new_obj->getTestId())
+                ->withIntroductionSettings(
+                    $this->getMainSettings()->getIntroductionSettings()->withIntroductionPageId(
+                        $this->cloneIntroduction()
+                    )->withTestId($new_obj->getTestId())
+                )->withFinishingSettings(
+                    $this->getMainSettings()->getFinishingSettings()->withConcludingRemarksPageId(
+                        $this->cloneConcludingRemarks()
+                    )->withTestId($new_obj->getTestId())
+                )
         );
         $this->getScoreSettingsRepository()->store(
             $this->getScoreSettings()->withTestId($new_obj->getTestId())
         );
-
-        $new_obj->mark_schema = clone $this->mark_schema;
-        $new_obj->setTemplate($this->getTemplate());
 
         // clone certificate
         $pathFactory = new ilCertificatePathFactory();
@@ -4958,33 +4834,8 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
         $participants = &$this->getTestParticipants();
         $filtered_participants = [];
         foreach ($participants as $active_id => $participant) {
-            $qstType_IN_manScoreableQstTypes = $this->db->in('qpl_questions.question_type_fi', $scoring, false, 'integer');
-
-            $queryString = "
-				SELECT		tst_test_result.manual
-
-				FROM		tst_test_result
-
-				INNER JOIN	qpl_questions
-				ON			tst_test_result.question_fi = qpl_questions.question_id
-
-				WHERE		tst_test_result.active_fi = %s
-				AND			$qstType_IN_manScoreableQstTypes
-			";
-
-            $result = $this->db->queryF(
-                $queryString,
-                ["integer"],
-                [$active_id]
-            );
-
-            $count = $result->numRows();
-
-            if ($count > 0) {
+            if ($participant['tries'] > 0) {
                 switch ($filter) {
-                    case 3: // all users
-                        $filtered_participants[$active_id] = $participant;
-                        break;
                     case 4:
                         if ($this->testManScoringDoneHelper->isDone((int) $active_id)) {
                             $filtered_participants[$active_id] = $participant;
@@ -4995,21 +4846,8 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
                             $filtered_participants[$active_id] = $participant;
                         }
                         break;
-                    case 6:
-                        // partially scored participants
-                        $found = 0;
-                        while ($row = $this->db->fetchAssoc($result)) {
-                            if ($row["manual"]) {
-                                $found++;
-                            }
-                        }
-                        if (($found > 0) && ($found < $count)) {
-                            $filtered_participants[$active_id] = $participant;
-                        }
-                        break;
                     default:
                         $filtered_participants[$active_id] = $participant;
-                        break;
                 }
             }
         }
@@ -5563,6 +5401,12 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
             "executable" => true,
             "errormessage" => ""
         ];
+
+        if (!$this->getObjectProperties()->getPropertyIsOnline()->getIsOnline()) {
+            $result["executable"] = false;
+            $result["errormessage"] = $this->lng->txt('autosave_failed') . ': ' . $this->lng->txt('offline');
+            return $result;
+        }
 
         if (!$this->startingTimeReached()) {
             $result["executable"] = false;
@@ -6476,7 +6320,7 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
                 ->withUsePreviousAnswerAllowed((bool) $testsettings['use_previous_answers'])
                 ->withSuspendTestAllowed((bool) $testsettings['ShowCancel'])
                 ->withPostponedQuestionsMoveToEnd((bool) $testsettings['SequenceSettings'])
-                ->withUsrPassOverviewMode($testsettings['ListOfQuestionsSettings'])
+                ->withUsrPassOverviewMode((int) $testsettings['ListOfQuestionsSettings'])
                 ->withQuestionMarkingEnabled((bool) $testsettings['ShowMarker'])
             )
             ->withFinishingSettings(
@@ -8195,8 +8039,11 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
 
         if ($pass !== null) {
             $query = '
-                SELECT		tst_pass_result.*
+                SELECT		tst_pass_result.*,
+                            tst_active.last_finished_pass
                 FROM		tst_pass_result
+                INNER JOIN  tst_active
+                on          tst_pass_result.active_fi = tst_active.active_id
                 WHERE		active_fi = %s
                 AND			pass = %s
             ';
@@ -8215,11 +8062,10 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
             $max = (float) ($test_pass_result_row['maxpoints'] ?? 0);
             $reached = (float) ($test_pass_result_row['points'] ?? 0);
             $percentage = ($max <= 0.0 || $reached <= 0.0) ? 0 : ($reached / $max) * 100.0;
-
             $obligations_answered = (int) ($test_pass_result_row['obligations_answered'] ?? 1);
 
             $mark = $this->mark_schema->getMatchingMark($percentage);
-            $is_passed = (bool) $mark->getPassed();
+            $is_passed = $pass <= $test_pass_result_row['last_finished_pass'] && $mark->getPassed();
 
             $hint_count = $test_pass_result_row['hint_count'] ?? 0;
             $hint_points = $test_pass_result_row['hint_points'] ?? 0.0;
@@ -8239,6 +8085,10 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
                     ['integer'],
                     [$active_id]
                 );
+
+                if ($reached < 0.0) {
+                    $reached = 0.0;
+                }
 
                 $mark_short_name = $mark->getShortName();
                 if ($mark_short_name === '') {
@@ -8336,7 +8186,8 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
 
             $row = $this->db->fetchAssoc($result);
 
-            if ($row['reachedpoints'] === null) {
+            if ($row['reachedpoints'] === null
+                || $row['reachedpoints'] < 0.0) {
                 $row['reachedpoints'] = 0.0;
             }
             if ($row['hint_count'] === null) {
@@ -8356,7 +8207,7 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
                         'pass' => ['integer', $pass]
                     ],
                     [
-                        'points' => ['float', $row['reachedpoints'] ?: 0],
+                        'points' => ['float', $row['reachedpoints']],
                         'maxpoints' => ['float', $data['points']],
                         'questioncount' => ['integer', $data['count']],
                         'answeredquestions' => ['integer', $row['answeredquestions']],
@@ -8382,10 +8233,10 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
         return [
             'active_fi' => $active_id,
             'pass' => $pass,
-            'points' => $row["reachedpoints"] ?? 0.0,
-            'maxpoints' => $data["points"],
-            'questioncount' => $data["count"],
-            'answeredquestions' => $row["answeredquestions"],
+            'points' => $row['reachedpoints'],
+            'maxpoints' => $data['points'],
+            'questioncount' => $data['count'],
+            'answeredquestions' => $row['answeredquestions'],
             'workingtime' => $time,
             'tstamp' => time(),
             'hint_count' => $row['hint_count'],

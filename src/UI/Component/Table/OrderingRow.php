@@ -18,17 +18,14 @@
 
 declare(strict_types=1);
 
-class ilDclEditViewDefinitionConfig extends ilPageConfig
+namespace ILIAS\UI\Component\Table;
+
+use ILIAS\UI\Component\Table\Column\Column;
+use ILIAS\UI\Component\Table\Action\Action;
+
+interface OrderingRow extends DataRow
 {
-    /**
-     * Init
-     */
-    public function init(): void
-    {
-        // config
-        $this->setPreventHTMLUnmasking(true);
-        $this->setEnableInternalLinks(false);
-        $this->setEnableWikiLinks(false);
-        $this->setEnableActivation(false);
-    }
+    public function withPosition(int $position_index): self;
+
+    public function getPosition(): int;
 }

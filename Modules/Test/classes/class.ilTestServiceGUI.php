@@ -23,11 +23,11 @@ use ILIAS\UI\Renderer as UIRenderer;
 use ILIAS\HTTP\Services as HTTPServices;
 use ILIAS\GlobalScreen\Services as GlobalScreenServices;
 use ILIAS\Refinery\Factory as Refinery;
-use ILIAS\Refinery\Transformation;
 use ILIAS\Test\InternalRequestService;
 use ILIAS\HTTP\Wrapper\ArrayBasedRequestWrapper;
 use ILIAS\DI\LoggingServices;
 use ILIAS\Skill\Service\SkillService;
+use ILIAS\Style\Content\Service as ContentStyle;
 
 require_once "./Modules/Test/classes/inc.AssessmentConstants.php";
 
@@ -62,6 +62,7 @@ class ilTestServiceGUI
      * `ilTestPlayerAbstractGUI::populateIntantResponseModal()`.
      */
     protected ilGlobalTemplateInterface|ilTemplate $tpl;
+    protected ContentStyle $content_style;
     protected ilErrorHandling $error;
     protected ilAccess $access;
     protected HTTPServices $http;
@@ -120,6 +121,7 @@ class ilTestServiceGUI
         global $DIC;
         $this->lng = $DIC['lng'];
         $this->tpl = $DIC['tpl'];
+        $this->content_style = $DIC->contentStyle();
         $this->error = $DIC['ilErr'];
         $this->access = $DIC['ilAccess'];
         $this->http = $DIC['http'];
@@ -973,15 +975,15 @@ class ilTestServiceGUI
 
     protected function isGradingMessageRequired(): bool
     {
-        if ($this->getObjectiveOrientedContainer()->isObjectiveOrientedPresentationRequired()) {
+        $session = $this->testSessionFactory->getSession();
+        if ($this->getObjectiveOrientedContainer()->isObjectiveOrientedPresentationRequired()
+            || $this->object->getScoreSettings()->getScoringSettings()->getPassScoring() === SCORE_LAST_PASS
+                && $session->getLastFinishedPass() < $session->getLastStartedPass()) {
             return false;
         }
 
-        if ($this->object->isShowGradingStatusEnabled()) {
-            return true;
-        }
-
-        if ($this->object->isShowGradingMarkEnabled()) {
+        if ($this->object->isShowGradingStatusEnabled()
+            || $this->object->isShowGradingMarkEnabled()) {
             return true;
         }
 
