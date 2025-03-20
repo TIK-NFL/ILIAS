@@ -764,7 +764,7 @@ class assErrorText extends assQuestion implements ilObjQuestionScoringAdjustable
         $selections = [];
         foreach ($positions_array as $position => $position_data) {
             if ($position === ''
-                || $withPositivePointsOnly && $position_data['points'] < 1) {
+                || $withPositivePointsOnly && $position_data['points'] <= 0) {
                 continue;
             }
 

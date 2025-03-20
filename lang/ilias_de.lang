@@ -1606,7 +1606,6 @@ assessment#:#tst_objective_oriented_test_pass_without_questions#:#Der gestartete
 assessment#:#tst_objective_progress_header#:#Fortschritt im Lernziel
 assessment#:#tst_objectives_progress_header#:#Fortschritte in den Lernzielen
 assessment#:#tst_old_style_rnd_quest_set_broken#:#Dieser Random Test befindet sich in einem irreparablen Zustand, da angeschlossene Fragepools gelöscht wurden. Aus diesem Grund können Teilnehmer diesen Test nicht länger absolvieren.
-assessment#:#tst_optional_questions_confirmation_fixed_test#:#<b>Fragen zu bereits erfolgreich bearbeiteten Lernzielen sind in vorherigen Versuchen erfolgreich beantwortet worden.</b><br /><br />Sie wollen nun zu einer Frage wechseln, welche zu einem bereits bestandenen Lernziel gehört.<br />Sie können wählen:<br /><br />Wenn Sie fortfahren, können Sie die Fragen zu diesen Lernzielen erneut bearbeiten oder nur einsehen. Wenn Sie die aus früheren Versuchen übernommenen Antworten nicht verändern, können Sie Ihr Lernzielergebnis auch nicht verschlechtern.<br /><br />Wenn Sie die Fragen nicht erneut bearbeiten oder einsehen möchten, können Sie zurück gehen. Die Fragen werden in jedem Fall in der Auswertung berücksichtigt.
 assessment#:#tst_optional_questions_confirmation_non_fixed_test#:#<b>Fragen zu bereits erfolgreich bearbeiteten Lernzielen sind optional.</b><br /><br />Sie wollen nun zu einer Frage wechseln, welche zu einem bereits bestandenen Lernziel gehört.<br />Sie können wählen:<br /><br />Wenn Sie fortfahren, können Sie die Fragen zu diesen Lernzielen bearbeiten. Da für diesen Versuch aber neue Fragen ausgewählt wurden, wurden Ihre Antworten aus vorherigen Versuchen nicht übernommen. Sie können sich bei erneuter Bearbeitung der Fragen Ihr Lernzielergebnis auch verschlechtern.<br /><br />Wenn Sie die Fragen nicht erneut bearbeiten möchten können Sie zurück gehen. Die Fragen werden dann in der Auswertung nicht berücksichtigt.
 assessment#:#tst_out_of_time_message#:#Sie haben die maximal erlaubte Bearbeitungszeit des Tests erreicht!
 assessment#:#tst_participant#:#Teilnehmer
@@ -7079,7 +7078,7 @@ content#:#cont_snippet_from_another_installation#:#Inhaltsbaustein stammt von ei
 content#:#cont_snippets_used#:#Genutzte Inhaltsbausteine
 content#:#cont_span#:#Zellen verbinden
 content#:#cont_special_page#:#Sonderseite
-content#:#cont_split_cell#:#Zelle auteilen
+content#:#cont_split_cell#:#Zelle aufteilen
 content#:#cont_spreadsheet_table#:#Kalkulationstabelle
 content#:#cont_sqst#:#Frage in Umfrage (Material)
 content#:#cont_src#:#Programmiersprache
@@ -10725,7 +10724,7 @@ ldap#:#ldap_user_sync_cron#:#LDAP-Benutzersynchronisierung
 ldap#:#ldap_user_sync_cron_info#:#Wenn aktiviert, werden Anmeldekonten aus dem LDAP-Verzeichnis importiert und optional laufend synchronisiert.
 ldap#:#ldap_user_sync_info#:#Legt fest, ob noch nicht in ILIAS vorhandene Benutzer automatisch beim ersten Login oder aber regelmäßig per Cron-Job angelegt werden.
 ldap#:#ldap_username_filter#:#Anmeldenamen-Filter
-ldap#:#ldap_username_filter_info#:#Benutzen Sie * als Wildcard.
+ldap#:#ldap_username_filter_info#:#Der Anmeldenamen-Filter kann optional verwendet werden, um diese LDAP-Serverkonfiguration anhand des auf der Anmeldeseite eingegebenen Anmeldenamen automatisch zu bestimmen. Das Zeichen „*“ kann als Platzhalter verwendet werden. Zum Beispiel entspricht „*example\.com“ allen Anmeldenamen, die mit „example.com“ enden. Wenn der konfigurierte Filter mit dem eingegebenen Anmeldenamen übereinstimmt, wird diese LDAP-Serverkonfiguration bevorzugt, falls eine feste Authentifizierungsreihenfolge festgelegt ist.
 ldoc#:#deleteDocument#:#Löschen
 ldoc#:#detachCriterionAssignment#:#Löschen
 ldoc#:#ldoc_acceptance_history#:#Zustimmungshistorie
@@ -12792,18 +12791,12 @@ noti#:#noti_notification_deactivated#:#Benachrichtigungen sind deaktiviert
 notifications_adm#:#enable_osd#:#Pop-up-Benachrichtigungen aktivieren
 notifications_adm#:#enable_osd_desc#:#Wenn aktiviert, werden Benutzer durch ein Pop-up über neue Benachrichtigungen informiert.
 notifications_adm#:#notification_settings#:#Benachrichtigungseinstellungen
-notifications_adm#:#osd_delay#:#Anzeigeverzögerung
-notifications_adm#:#osd_delay_desc#:#Verzögerung der Anzeige der Benachrichtigungen in Millisekunden
-notifications_adm#:#osd_error_presentation_time_too_small#:#Die Anzeigedauer muss mindestens 1000 Millisekunden betragen.
-notifications_adm#:#osd_error_refresh_interval_smaller_than_delay_and_vanish_combined#:#Das Abfrageintervall muss größer sein als die Summe der Anzeigedauer und der Anzeigeverzögerung.
 notifications_adm#:#osd_error_refresh_interval_too_small#:#Das Abfrageintervall muss mindestens 3000 Millisekunden betragen.
 notifications_adm#:#osd_interval#:#Abfrageintervall
 notifications_adm#:#osd_interval_desc#:#Abfrageintervall für Nachrichten in Millisekunden.Eine geringere Zeit ermöglicht zeitnähere Benachrichtigungen, erhöht aber die Serverlast.
 notifications_adm#:#osd_play_sound#:#Ton abspielen
 notifications_adm#:#osd_play_sound_desc#:#Ton abspielen bei Erhalt einer neuen Benachrichtigung.
 notifications_adm#:#osd_settings#:#Pop-up-Benachrichtigungen
-notifications_adm#:#osd_vanish#:#Anzeigedauer
-notifications_adm#:#osd_vanish_desc#:#Dauer der Anzeige von Benachrichtigungen in Millisekunden
 obj#:#activation_visible_when_disabled#:#Sichtbarkeit
 obj#:#activation_visible_when_disabled_info#:#Die gewählten Objekte sind auch außerhalb des gewählten Zeitraums sichtbar, können aber nicht geöffnet werden.
 obj#:#availability_period_changed#:#Die zeitliche Verfügbarkeit wurde für die ausgewählten Objekte erfolgreich angepasst.

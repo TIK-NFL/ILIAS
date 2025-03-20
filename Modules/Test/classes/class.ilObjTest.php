@@ -268,7 +268,8 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
          * Dynamic-Tests in migration. The check can go with ILIAS10
          * @todo: Remove check with ILIAS10
          */
-        if ($this->isFixedTest() || $this->isRandomTest()) {
+        if ($this->main_settings !== null
+            && ($this->isFixedTest() || $this->isRandomTest())) {
             $this->question_set_config_factory->getQuestionSetConfig()->removeQuestionSetRelatedData();
         }
 
