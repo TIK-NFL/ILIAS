@@ -930,6 +930,13 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
                 if ((!$this->access->checkAccess("write", "", $this->testrequest->getRefId()))) {
                     $this->redirectAfterMissingWrite();
                 }
+                if ($cmd === 'downloadFile') {
+                    $page_id = $this->object->getIntroductionPageId();
+                    if ($this->testrequest->strVal('page_type') === 'concludingremarkspage') {
+                        $page_id = $this->object->getConcludingRemarksPageId();
+                    }
+                    $this->ctrl->forwardCommand(new ilTestPageGUI('tst', $page_id));
+                }
                 $this->showEditTestPageGUI($cmd);
                 break;
 
