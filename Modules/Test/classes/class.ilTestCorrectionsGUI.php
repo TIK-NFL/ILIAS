@@ -132,9 +132,7 @@ class ilTestCorrectionsGUI
 
         $this->setCorrectionTabsContext($questionGUI, 'question');
 
-        if ($form === null) {
-            $form = $this->buildQuestionCorrectionForm($questionGUI);
-        }
+        $form ??= $this->buildQuestionCorrectionForm($questionGUI);
 
         $this->populatePageTitleAndDescription($questionGUI);
         $this->main_tpl->setContent($form->getHTML());
@@ -286,10 +284,15 @@ class ilTestCorrectionsGUI
         $this->main_tpl->parseCurrentBlock();
     }
 
-    protected function showAnswerStatistic()
+    /**
+     * @param null|list<ilTestEvaluationUserData> $participant_results
+     */
+    protected function showAnswerStatistic(?array $participant_results = null)
     {
         $questionGUI = $this->getQuestion((int) $this->testrequest->raw('qid'));
-        $solutions = $this->getSolutions($questionGUI->object);
+        $solutions = $participant_results
+            ? $this->getSolutionsByParticipantResults($questionGUI->object, $participant_results)
+            : $this->getSolutions($questionGUI->object);
 
         $this->setCorrectionTabsContext($questionGUI, 'answers');
 
@@ -345,10 +348,11 @@ class ilTestCorrectionsGUI
 
         $scoring = new ilTestScoring($this->testOBJ, $this->database);
         $scoring->setPreserveManualScores(true);
-        $scoring->recalculateSolutions();
+        $scoring->setQuestionId($question_id);
+        $results = $scoring->recalculateSolutions();
 
         $this->main_tpl->setOnScreenMessage('success', $this->language->txt('saved_successfully'));
-        $this->showAnswerStatistic();
+        $this->showAnswerStatistic($results);
     }
 
     protected function confirmQuestionRemoval()
@@ -528,6 +532,24 @@ class ilTestCorrectionsGUI
     }
 
     /**
+     * @param list<ilTestEvaluationUserData> $participant_results
+     */
+    protected function getSolutionsByParticipantResults(assQuestion $question, array $participant_results): array
+    {
+        $solutions = [];
+
+        foreach ($participant_results as $active_id => $result) {
+            foreach ($result->getPasses() as $pass) {
+                foreach ($question->getSolutionValues($active_id, $pass->getPass()) as $row) {
+                    $solutions[] = $row;
+                }
+            }
+        }
+
+        return $solutions;
+    }
+
+    /**
      * @return array
      */
     protected function getQuestions(): array
@@ -574,17 +596,11 @@ class ilTestCorrectionsGUI
      */
     protected function allowedInAdjustment(\assQuestionGUI $question_object): bool
     {
-        $setting = new ilSetting('assessment');
-        $types = explode(',', $setting->get('assessment_scoring_adjustment'));
-        $type_def = array();
-        foreach ($types as $type) {
+        $type_def = [];
+        foreach (explode(',', (new ilSetting('assessment'))->get('assessment_scoring_adjustment', '')) as $type) {
             $type_def[$type] = ilObjQuestionPool::getQuestionTypeByTypeId($type);
         }
 
-        $type = $question_object->getQuestionType();
-        if (in_array($type, $type_def)) {
-            return true;
-        }
-        return false;
+        return in_array($question_object->getQuestionType(), $type_def);
     }
 }
