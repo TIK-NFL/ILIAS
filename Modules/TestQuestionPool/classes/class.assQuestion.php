@@ -399,7 +399,7 @@ abstract class assQuestion
 
     public function getTitleForHTMLOutput(): string
     {
-        return $this->refinery->string()->stripTags()->transform($this->title);
+        return htmlspecialchars($this->title);
     }
 
     public function getTitleFilenameCompliant(): string
@@ -429,7 +429,7 @@ abstract class assQuestion
 
     public function getDescriptionForHTMLOutput(): string
     {
-        return $this->refinery->string()->stripTags()->transform($this->comment);
+        return htmlspecialchars($this->comment);
     }
 
     public function getThumbSize(): int
