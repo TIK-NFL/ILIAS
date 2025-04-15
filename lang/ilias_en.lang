@@ -176,6 +176,7 @@ administration#:#auth_auth_mode_determination#:#Authentication Method Determinat
 administration#:#auth_automatic#:#Fixed Sequence
 administration#:#auth_by_user#:#By the User
 administration#:#auth_kind_determination#:#Kind of Determination
+administration#:#auth_mode_default_change_info#:#Changing the default authentication method affects all user accounts configured to use the default authentication method. If the selected default method (e.g., Shibboleth, SAML, SOAP, ...) does not support or is not configured to allow fallback to local ILIAS authentication, affected users may no longer be able to log in. To avoid this, please ensure that local fallback authentication is activated in the configuration of the selected method, or that the authentication method stored for affected user accounts is manually changed.
 administration#:#auth_mode_determination_info#:#Choose either if the users have to select their authentication method on the login screen or if this is managed by a fixed sequence of authentication methods.
 administration#:#clean#:#Clean up
 administration#:#clean_desc#:#Remove invalid references and tree entries. Initialize gaps in tree structure.
@@ -13863,7 +13864,7 @@ rbac#:#coms_read#:#User has read access to administration of Comments.
 rbac#:#coms_visible#:#Administration of Comments is visible.
 rbac#:#coms_write#:#User can edit settings of administration of Comments.
 rbac#:#condition_failed#:#Failed
-rbac#:#condition_learning_progress#:#Learning Progress Status: Completed
+rbac#:#condition_learning_progress#:#Derive from Learning Progress
 rbac#:#contribute#:#Contribute
 rbac#:#copa_copy#:#Copy Content Page
 rbac#:#copa_delete#:#User can move or delete Content Page
@@ -15460,7 +15461,7 @@ skmg#:#skmg_create_skill_template_reference#:#Create Competence Template Referen
 skmg#:#skmg_create_skll#:#Create Competence
 skmg#:#skmg_custom_image_alt#:#Custom image for competence profile
 skmg#:#skmg_delete_profiles#:#Do you really want to delete the following profiles?
-skmg#:#skmg_delete_warning#:#Are you sure that you want to delete the following item(s)? When you delete the items, you also delete all usages, assignments and achievements of it. To be on the safe side, you find a list of all usages below. If the item is used in a competence profile, it will be removed from the profile, too. This may cause the fulfilment of the competence profile for the assigned users. If your are not sure whether an item should really be deleted, please use the statuses in the settings of a single item.
+skmg#:#skmg_delete_warning#:#Are you sure that you want to delete the following competences, competence categories or competence trees? You also delete all record for objects and users. If the item is removed from a competence profile this may result in the competence profile being fulfilled for the assigned users. The list below shows how many times the item to be deleted is used in objects and by users. Please inspect the list below closely before actually deleting.
 skmg#:#skmg_description_info#:#The description comes from the template.
 skmg#:#skmg_edit_level#:#Edit Level
 skmg#:#skmg_edit_profile#:#Edit Profile
