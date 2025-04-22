@@ -201,7 +201,7 @@ class ilObjDataCollectionGUI extends ilObject2GUI
 
                 $rgui->setObject($record_id, "dcl_record", $field_id, "dcl_field");
                 $rgui->executeCommand();
-                $this->listRecords();
+                $this->ctrl->redirectToURL($this->http->request()->getServerParams()['HTTP_REFERER']);
                 break;
 
             case strtolower(ilDclDetailedViewGUI::class):
@@ -251,12 +251,12 @@ class ilObjDataCollectionGUI extends ilObject2GUI
         }
     }
 
-    protected function handleExport(bool $do_default = false)
+    protected function handleExport(bool $do_default = false): void
     {
         $this->prepareOutput();
         $this->tabs->setTabActive(self::TAB_EXPORT);
         $exp_gui = new ilDclExportGUI($this);
-        $exporter = new ilDclContentExporter($this->object->getRefId(), $this->table_id);
+        $exporter = new ilDclContentExporter($this->object->getRefId(), null);
         $exp_gui->addFormat("xlsx", $this->lng->txt('dcl_xls_async_export'), $exporter, 'exportAsync');
         $exp_gui->addFormat("xml");
         if ($do_default) {
