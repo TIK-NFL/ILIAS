@@ -18,7 +18,6 @@
 
 declare(strict_types=1);
 
-use ILIAS\Test\InternalRequestService;
 use ILIAS\TestQuestionPool\QuestionInfoService;
 
 /**
@@ -77,6 +76,11 @@ class ilTestExportGUI extends ilExportGUI
      */
     public function createTestExportWithResults()
     {
+        if (!$this->access->checkAccess('write', '', $this->obj->getRefId())) {
+            $this->tpl->setOnScreenMessage('info', 'cannot_export_archive', true);
+            $this->ctrl->redirectByClass(self::class);
+        }
+
         $this->ctrl->setParameterByClass(self::class, 'export_results', 1);
         (new ilExport())->exportObject($this->obj->getType(), $this->obj->getId());
         $this->tpl->setOnScreenMessage('success', $this->lng->txt('exp_file_created'), true);
@@ -85,6 +89,11 @@ class ilTestExportGUI extends ilExportGUI
 
     public function createTestResultsExport()
     {
+        if (!$this->access->checkAccess('write', '', $this->obj->getRefId())) {
+            $this->tpl->setOnScreenMessage('info', 'cannot_export_archive', true);
+            $this->ctrl->redirectByClass(self::class);
+        }
+
         $export_factory = new ilTestExportFactory(
             $this->obj,
             $this->lng,

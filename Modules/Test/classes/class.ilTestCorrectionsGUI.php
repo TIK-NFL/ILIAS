@@ -225,7 +225,7 @@ class ilTestCorrectionsGUI
         $confirmation = sprintf(
             $this->language->txt('tst_corrections_manscore_reset_warning'),
             $scoring->getNumManualScorings(),
-            $questionGUI->object->getTitle(),
+            $questionGUI->object->getTitleForHTMLOutput(),
             $questionGUI->object->getId()
         );
 
@@ -244,7 +244,6 @@ class ilTestCorrectionsGUI
     {
         $questionGUI = $this->getQuestion((int) $this->testrequest->raw('qid'));
 
-        $this->setCorrectionTabsContext($questionGUI, 'solution');
 
         $pageGUI = new ilAssQuestionPageGUI($questionGUI->object->getId());
         $pageGUI->setRenderPageContainer(false);
@@ -264,7 +263,7 @@ class ilTestCorrectionsGUI
         );
 
         $pageGUI->setQuestionHTML(array($questionGUI->object->getId() => $solutionHTML));
-        $pageGUI->setPresentationTitle($questionGUI->object->getTitle());
+        $pageGUI->setPresentationTitle($questionGUI->object->getTitleForHTMLOutput());
 
         $tpl = new ilTemplate('tpl.tst_corrections_solution_presentation.html', true, true, 'Modules/Test');
         $tpl->setVariable('SOLUTION_PRESENTATION', $pageGUI->preview());
@@ -282,6 +281,7 @@ class ilTestCorrectionsGUI
         $stylesheet = ilObjStyleSheet::getSyntaxStylePath();
         $this->main_tpl->setVariable("LOCATION_SYNTAX_STYLESHEET", $stylesheet);
         $this->main_tpl->parseCurrentBlock();
+        $this->setCorrectionTabsContext($questionGUI, 'solution');
     }
 
     /**
@@ -363,7 +363,7 @@ class ilTestCorrectionsGUI
 
         $confirmation = sprintf(
             $this->language->txt('tst_corrections_qst_remove_confirmation'),
-            $questionGUI->object->getTitle(),
+            $questionGUI->object->getTitleForHTMLOutput(),
             $questionGUI->object->getId()
         );
 
@@ -473,7 +473,7 @@ class ilTestCorrectionsGUI
      */
     protected function populatePageTitleAndDescription(assQuestionGUI $questionGUI)
     {
-        $this->main_tpl->setTitle($questionGUI->object->getTitle());
+        $this->main_tpl->setTitle($questionGUI->object->getTitleForHTMLOutput());
         $this->main_tpl->setDescription($questionGUI->outQuestionType());
     }
 

@@ -269,7 +269,8 @@ class ilTestScoringGUI extends ilTestServiceGUI
                     $maxPointsByQuestionId[$questionId],
                     $pass,
                     true,
-                    $this->object->areObligationsEnabled()
+                    $this->object->areObligationsEnabled(),
+                    $this->getTestAccess()->getTestId()
                 );
             }
 
@@ -377,7 +378,7 @@ class ilTestScoringGUI extends ilTestServiceGUI
         $autosave_enabled = $this->object->getAutosave();
         $show_solutions_enabled = $this->object->getShowSolutionFeedback();
         foreach ($questionGuiList as $questionId => $questionGUI) {
-            $questionHeader = sprintf($this->lng->txt('tst_manscoring_question_section_header'), $questionGUI->object->getTitle());
+            $questionHeader = sprintf($this->lng->txt('tst_manscoring_question_section_header'), $questionGUI->object->getTitleForHTMLOutput());
             $questionSolution = $questionGUI->getSolutionOutput($active_id, $pass, false, false, true, false, false, true);
             $bestSolution = $questionGUI->object->getSuggestedSolutionOutput();
 
