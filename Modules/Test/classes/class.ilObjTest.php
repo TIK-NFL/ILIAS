@@ -8071,7 +8071,9 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
             $obligations_answered = (int) ($test_pass_result_row['obligations_answered'] ?? 1);
 
             $mark = $this->mark_schema->getMatchingMark($percentage);
-            $is_passed = $pass <= $test_pass_result_row['last_finished_pass'] && $mark->getPassed();
+            $is_passed = $test_pass_result_row['last_finished_pass'] !== null
+                && $pass <= $test_pass_result_row['last_finished_pass']
+                && $mark->getPassed();
 
             $hint_count = $test_pass_result_row['hint_count'] ?? 0;
             $hint_points = $test_pass_result_row['hint_points'] ?? 0.0;
