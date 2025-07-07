@@ -6274,12 +6274,15 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
         );
 
         $main_settings = $this->getMainSettings();
+
+        $general_settings = $main_settings->getGeneralSettings()
+            ->withAnonymity((bool) $testsettings['Anonymity']);
+        if (isset($testsettings['questionSetType'])) {
+            $general_settings = $general_settings->withQuestionSetType($testsettings['questionSetType']);
+        }
+
         $main_settings = $main_settings
-            ->withGeneralSettings(
-                $main_settings->getGeneralSettings()
-                ->withQuestionSetType($testsettings['questionSetType'])
-                ->withAnonymity((bool) $testsettings['Anonymity'])
-            )
+            ->withGeneralSettings($general_settings)
             ->withIntroductionSettings(
                 $main_settings->getIntroductionSettings()
                 ->withIntroductionEnabled((bool) $testsettings['IntroEnabled'])
