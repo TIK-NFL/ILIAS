@@ -115,10 +115,10 @@ class PHPResponseBuilder implements ResponseBuilder
 
         $length = $end - $start + 1;
         $fh = $stream->detach();
+        $buffer_size = 8048 * 10;
 
         if ($stream->isSeekable()) {
             fseek($fh, $start);
-            $buffer_size = 8048 * 10;
             while (!feof($fh) && $length > 0) {
                 $chunk_size_requested = min($buffer_size, $end - $start);
                 $content = fread($fh, $length);
@@ -127,17 +127,18 @@ class PHPResponseBuilder implements ResponseBuilder
                 }
                 $length -= strlen($content);
                 $response->getBody()->write($content);
+                $output_length = strlen($content);
             }
         } else {
-            $length = 1024 * 1024 * 10; // 10 MB per chunk
+            $length = $buffer_size;
             $content = stream_get_contents($fh, $length, $start);
-            $length = strlen($content);
+            $output_length = strlen($content);
             $response = $response->withBody(
                 Streams::ofString($content)
             );
         }
 
-        return $response->withHeader(ResponseHeader::CONTENT_LENGTH, $length);
+        return $response->withHeader(ResponseHeader::CONTENT_LENGTH, $output_length);
     }
 
     public function supportPartial(): bool
