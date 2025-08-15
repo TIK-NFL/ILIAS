@@ -299,7 +299,7 @@ il.UI.Input = il.UI.Input || {};
 
 			event.preventDefault();
 			setFormControlsDisabledState(dropzone.options.form, true);
-			processCurrentFormDropzones(dropzone.options.form, event);
+			processCurrentFormDropzones(dropzone, event);
 		}
 
 		let toggleExpansionGlyphsHook = function () {
@@ -418,9 +418,7 @@ il.UI.Input = il.UI.Input || {};
 		let submitCurrentFormHook = function (dropzone) {
 			// submit the current form only if all dropzones
 			// were processed.
-      console.log(current_dropzone);
-      console.log(current_dropzone_count);
-			if (dropzone.options.form.should_submit === true && current_dropzone >= current_dropzone_count) {
+			if (dropzone.options.form.should_submit === true && ++current_dropzone === current_dropzone_count) {
 				dropzone.options.form.submit();
 			}
 		}
@@ -627,38 +625,36 @@ il.UI.Input = il.UI.Input || {};
 			}
 		}
 
-		let processCurrentFormDropzones = function (form, event) {
+		let processCurrentFormDropzones = function (dropzone, event) {
 			// retrieve all file inputs of the current form.
-			let file_inputs = $(form).find(SELECTOR.file_input);
+			let file_inputs = $(dropzone.options.form).find(SELECTOR.file_input);
 			current_dropzone_count = file_inputs.length;
 
             if (typeof file_inputs[Symbol.iterator] === 'function') {
-                let total_files = 0;
+                let to_process = 0;
                 for (let i = 0; i < file_inputs.length; i++) {
                     let input_id = file_inputs[i].id;
                     let dropzone = dropzones[input_id];
-                    const queue = dropzone.getQueuedFiles();
                     processRemovals(input_id, event);
-                    total_files += dropzone.files.length;
-                    if (queue.length !== 0) {
+                    to_process += dropzone.files.length;
+                    if (dropzone.files.length !== 0) {
                         dropzone.processQueue();
                     } else {
                         current_dropzone++;
                     }
                 }
-                // handle case if no files selected.
-                if (total_files === 0) {
-                  form.submit();
+                if (to_process === 0) {
+									dropzone.options.form.submit();
                 }
             } else {
                 let input_id = file_inputs.attr('id');
-                let dropzone = dropzones[input_id];
-                processRemovals(input_id, event);
-                if (0 !== dropzone.getQueuedFiles().length) {
-                    dropzone.processQueue();
-                } else {
-                    form.submit();
-                }
+				let dropzone = dropzones[input_id];
+				processRemovals(input_id, event);
+				if (0 !== dropzone.files.length) {
+					dropzone.processQueue();
+				} else {
+					dropzone.options.form.submit();
+				}
             }
 		}
 
