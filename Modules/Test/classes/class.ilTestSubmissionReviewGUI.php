@@ -61,7 +61,6 @@ class ilTestSubmissionReviewGUI extends ilTestServiceGUI
         switch ($this->ctrl->getCmd()) {
             case 'show':
             default:
-
                 $this->show();
         }
     }
