@@ -1200,7 +1200,7 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
             $title = htmlspecialchars($row['title'], ENT_QUOTES, null, false);
             $description = '';
             if ($row['description'] !== '') {
-                $description = ' title="' . htmlspecialchars($row['description'], ENT_QUOTES, null, false) . '" ';
+                $description = htmlspecialchars($row['description'], ENT_QUOTES, null, false);
             }
 
             if (!$row['disabled']) {
