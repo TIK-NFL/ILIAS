@@ -81,7 +81,10 @@ class RebuildMissingThumbnailMigration implements Migration
             $previous_question_id = $row->question_id;
             $previous_question_type_id = $row->question_type_fi;
         }
-        $this->updateThumbSize($previous_question_id, $previous_question_type_id, $image_width);
+
+        if (isset($previous_question_type_id)) {
+            $this->updateThumbSize($previous_question_id, $previous_question_type_id, $image_width);
+        }
     }
 
     public function getRemainingAmountOfSteps(): int

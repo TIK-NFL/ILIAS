@@ -2533,6 +2533,7 @@ book#:#book_new#:#Neuen Buchungspool anlegen
 book#:#book_no_bookings_for_you#:#Es wurden keine Buchungen für Sie durchgeführt.
 book#:#book_no_objects#:#Keine Buchungen
 book#:#book_no_of_objects#:#Anzahl Angebote
+book#:#book_no_pools_selected#:#Diesem Kurs ist kein Buchungspool zugewiesen. Buchungspools können über den Reiter „Ressourcen“ des Kurses zugewiesen werden.
 book#:#book_no_preferences_for_you#:#Sie haben keine Präferenzen abgespeichert.
 book#:#book_no_recurrence#:#Nur diesen Termin buchen
 book#:#book_not#:#Nicht
@@ -12829,7 +12830,7 @@ obj#:#obj_deactivate_multilang_conf#:# Wollen Sie die Unterstützung für mehrsp
 obj#:#obj_fallback_lang#:#Standardsprache
 obj#:#obj_features#:#Zusätzliche Funktionen
 obj#:#obj_import_file_error#:#Die Datei konnte nicht importiert werden. Bitte stellen Sie sicher, dass es sich um eine ILIAS-Exportdatei (XML-Export) des gleichen Objekttyps handelt und der Dateiname unverändert ist. Fehlermeldung:
-obj#:#obj_insert_into_clipboard#:#In Zwischenablage übernehmen
+obj#:#obj_insert_into_clipboard#:#book_no_pools_selected
 obj#:#obj_inserted_clipboard#:#Die Objekte wurden in die Zwischenablage übernommen.
 obj#:#obj_master_lang#:#Basissprache
 obj#:#obj_more_translations#:#Weitere Übersetzungen
