@@ -843,7 +843,8 @@ class ilObjUserGUI extends ilObjectGUI
         $data['ext_account'] = $this->object->getExternalAccount();
         $data['create_date'] = ilDatePresentation::formatDate(new ilDateTime(
             $this->object->getCreateDate(),
-            IL_CAL_DATETIME
+            IL_CAL_DATETIME,
+            'UTC'
         ));
         $data['owner'] = ilObjUser::_lookupLogin($this->object->getOwner());
         $data['approve_date'] = ($this->object->getApproveDate() != '')

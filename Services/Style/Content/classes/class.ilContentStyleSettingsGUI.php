@@ -27,6 +27,7 @@ use ILIAS\Style\Content\StandardGUIRequest;
  */
 class ilContentStyleSettingsGUI
 {
+    protected \ILIAS\Style\Content\InternalDomainService $domain;
     protected ilContentStyleSettings $cs_settings;
     protected ilObjStyleSettingsGUI $parent_gui;
     protected int $obj_id;
@@ -64,6 +65,7 @@ class ilContentStyleSettingsGUI
         $this->obj_id = $this->request->getObjId();		// note that reference ID is the id of the style settings node and object ID may be a style sheet object ID
 
         $this->cs_settings = new ilContentStyleSettings();
+        $this->domain = $DIC->contentStyle()->internal()->domain();
     }
 
     public function executeCommand(): void
@@ -128,7 +130,7 @@ class ilContentStyleSettingsGUI
         $styles = $this->cs_settings->getStyles();
         foreach ($styles as $style) {
             $style["active"] = ilObjStyleSheet::_lookupActive((int) $style["id"]);
-            $style["lm_nr"] = ilObjContentObject::_getNrOfAssignedLMs((int) $style["id"]);
+            $style["lm_nr"] = $this->domain->object(0)->countObjSelected((int) $style["id"]);
             $data[$style["title"] . ":" . $style["id"]]
                 = $style;
             if ($style["lm_nr"] > 0) {
@@ -143,7 +145,7 @@ class ilContentStyleSettingsGUI
         if ($fixed_style <= 0) {
             $data[-1] =
                 array("title" => $this->lng->txt("sty_individual_styles"),
-                    "id" => 0, "lm_nr" => ilObjContentObject::_getNrLMsIndividualStyles());
+                    "id" => 0, "lm_nr" => $this->domain->object(0)->countOverallOwned());
             $from_styles[-1] = $this->lng->txt("sty_individual_styles");
         }
 
@@ -151,7 +153,7 @@ class ilContentStyleSettingsGUI
         if ($default_style <= 0 && $fixed_style <= 0) {
             $data[0] =
                 array("title" => $this->lng->txt("sty_default_style"),
-                    "id" => 0, "lm_nr" => ilObjContentObject::_getNrLMsNoStyle());
+                    "id" => 0, "lm_nr" => $this->domain->object(0)->countObjSelected(0));
             $from_styles[0] = $this->lng->txt("sty_default_style");
             $to_styles[0] = $this->lng->txt("sty_default_style");
         }
