@@ -893,7 +893,7 @@ class ilObjExerciseGUI extends ilObjectGUI
         $this->checkPermission("read");
 
         $tabs->activateTab("content");
-        $this->addContentSubTabs("list");
+        $this->addContentSubTabs("content");
 
         if ($this->handleRandomAssignmentEntryPage()) {
             return;

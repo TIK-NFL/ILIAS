@@ -568,7 +568,7 @@ class ilObjMediaObject extends ilObject
                         $location = ilWACSignedPath::signFile($this->getDataDirectory() . "/" . $item->getLocation());
                         $location = substr($location, strrpos($location, "/") + 1);
                     } else {
-                        $location = $item->getLocation();
+                        $location = trim($item->getLocation());
                         if ($item->getLocationType() != "LocalFile") {  //#25941
                             $location = ilUtil::secureUrl($location); //#23518
                         }
@@ -641,7 +641,6 @@ class ilObjMediaObject extends ilObject
 
                 // full xml for export
             case IL_MODE_FULL:
-
                 //				$meta = $this->getMetaData();
                 $xml = "<MediaObject>";
 
@@ -1883,7 +1882,7 @@ class ilObjMediaObject extends ilObject
                             $mob_logger->debug('Successfully fetched preview file from YouTube: Received {bytes} bytes', [
                                 'bytes' => (string) strlen($response),
                             ]);
-   
+
                             file_put_contents(
                                 self::_getDirectory(
                                     $this->getId()

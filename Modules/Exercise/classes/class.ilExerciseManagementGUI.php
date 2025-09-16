@@ -352,9 +352,9 @@ class ilExerciseManagementGUI
         $part_id = $this->requested_part_id;
 
         $ilCtrl->setParameter($this, "vw", "");
-        $ilCtrl->setParameter($this, "member_id", "");
-        $ilCtrl->setParameter($this, "ass_id", "");
-        $ilCtrl->setParameter($this, "part_id", "");
+        $ilCtrl->setParameter($this, "member_id", "0");
+        $ilCtrl->setParameter($this, "ass_id", "0");
+        $ilCtrl->setParameter($this, "part_id", "0");
 
         $ilTabs->addSubTab(
             "assignment",
@@ -509,7 +509,7 @@ class ilExerciseManagementGUI
             $this->tpl->setOnScreenMessage('info', $lng->txt("exc_no_assignments_available"));
         }
 
-        $ilCtrl->setParameter($this, "ass_id", "");
+        $ilCtrl->setParameter($this, "ass_id", "0");
     }
 
     public function downloadSelectedObject(): void
@@ -988,7 +988,7 @@ class ilExerciseManagementGUI
         $access = $this->access;
 
         $this->addSubTabs("participant");
-        $this->ctrl->setParameter($this, "ass_id", "");
+        $this->ctrl->setParameter($this, "ass_id", "0");
 
         // participant selection
         $members = $this->exercise->members_obj->getMembers();
@@ -1375,7 +1375,7 @@ class ilExerciseManagementGUI
             }
 
             $data[$ass_id][$member_id] = array(
-                "status" => $status[$ass_id]
+                "status" => $status[$ass_id] ?? ""
             );
             if (isset($marks[$ass_id])) {
                 $data[$ass_id][$member_id]["mark"] = $marks[$ass_id];
@@ -1434,7 +1434,6 @@ class ilExerciseManagementGUI
     public function saveStatusSelectedObject(): void
     {
         //$members = $this->getMultiActionUserIds();
-
         if ($this->assignment !== null) {
             $this->saveStatusAllObject($this->selected_participants);
         } else {

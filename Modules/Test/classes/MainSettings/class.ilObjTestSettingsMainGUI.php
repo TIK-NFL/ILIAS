@@ -225,6 +225,12 @@ class ilObjTestSettingsMainGUI extends ilTestSettingsGUI
         $current_question_config = $this->testQuestionSetConfigFactory->getQuestionSetConfig();
         $new_question_set_type = $data[self::GENERAL_SETTINGS_SECTION_LABEL]['question_set_type'];
 
+        if ($new_question_set_type === null) {
+            $this->tpl->setOnScreenMessage('info', $this->lng->txt('tst_settings_form_reload_needed'));
+            $this->showForm();
+            return;
+        }
+
         if ($new_question_set_type !== $current_question_set_type
             && $current_question_config->doesQuestionSetRelatedDataExist()) {
             $modal = $this->populateConfirmationModal($current_question_set_type, $new_question_set_type);
@@ -487,9 +493,31 @@ class ilObjTestSettingsMainGUI extends ilTestSettingsGUI
             $inputs,
             $this->lng->txt('rep_time_based_availability')
         )->withAdditionalTransformation(
+            $this->getConstraintForActivationLimitedOptionalGroup()
+        )->withAdditionalTransformation(
             $this->getTransformationForActivationLimitedOptionalGroup()
         )->withValue(
             $this->getValueForActivationLimitedOptionalGroup()
+        );
+    }
+
+    private function getConstraintForActivationLimitedOptionalGroup(): Constraint
+    {
+        return $this->refinery->custom()->constraint(
+            function (?array $vs): bool {
+                if ($vs === null
+                    || $vs['time_limit_start'] === null
+                    || $vs['time_limit_end'] === null) {
+                    return true;
+                }
+
+                if ($vs['time_limit_start'] > $vs['time_limit_end']) {
+                    return false;
+                }
+
+                return true;
+            },
+            $this->lng->txt('duration_end_must_not_be_earlier_than_start')
         );
     }
 
