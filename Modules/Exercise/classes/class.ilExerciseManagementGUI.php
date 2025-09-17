@@ -758,7 +758,12 @@ class ilExerciseManagementGUI
             $card_tpl->parseCurrentBlock();
         }
 
-        $main_panel = $this->ui_factory->panel()->sub($a_data['uname'], $this->ui_factory->legacy($a_data['utext']))
+        $main_panel = $this->ui_factory->panel()->sub(
+            $a_data['uname'],
+            $this->ui_factory->legacy(
+                $this->gui->html()->escapeCurly($a_data['utext'])
+            )
+        )
             ->withFurtherInformation($this->ui_factory->card()->standard($this->lng->txt('text_assignment'))->withSections(array($this->ui_factory->legacy($card_tpl->get()))))->withActions($actions_dropdown);
 
         $feedback_tpl = new ilTemplate("tpl.exc_report_feedback.html", true, true, "Modules/Exercise");
