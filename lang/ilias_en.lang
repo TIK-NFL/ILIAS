@@ -13052,7 +13052,7 @@ pdesk#:#bookmark_select_target#:#Please select target.
 poll#:#poll_absolute#:#Current Votes
 poll#:#poll_activation_online_info#:#Activate this setting to make the poll accessible to users.
 poll#:#poll_add#:#Add Poll
-poll#:#poll_anonymous_warning#:#Your name is not visible in the poll results.
+poll#:#poll_anonymous_warning#:#Individual votes are recorded, but your name will not be shown in the poll results.
 poll#:#poll_answer#:#Answer
 poll#:#poll_answer_selected_alt_text#:#Selected
 poll#:#poll_answers#:#Possible Answers
@@ -13075,7 +13075,7 @@ poll#:#poll_max_number_of_answers#:#Max. Answers
 poll#:#poll_max_number_of_answers_info#:#You may choose up to %s answers.
 poll#:#poll_mode#:#Mode
 poll#:#poll_mode_anonymous#:#Without Names / Anonymous
-poll#:#poll_mode_anonymous_info#:#In the tab ‘Results’ the names of participants are omitted.
+poll#:#poll_mode_anonymous_info#:#The names of poll participants are not shown in the 'Results' tab. Please note: participant user IDs are, however, recorded in the database.
 poll#:#poll_mode_personal#:#With Names
 poll#:#poll_mode_personal_info#:#In the tab ‘Results’ the names of participants and their respective answers are listed. Users with access to this tab can inspect who has given which answer.
 poll#:#poll_new#:#Add New Poll
