@@ -1115,8 +1115,11 @@ assessment#:#redirectAfterSave#:#Die maximale Bearbeitungszeit für diesen Test 
 assessment#:#redirect_after_finishing_rule#:#Weiterleitung
 assessment#:#redirect_after_finishing_tst#:#Weiterleitung
 assessment#:#redirect_after_finishing_tst_desc#:#Teilnehmer werden nach Beenden des Tests automatisch zu einer definierten Webseite weitergeleitet. Dies geschieht nur, wenn der Test so konfiguriert wurde, dass die Teilnehmer ihre Testergebnisse nach Beenden des Tests nicht einsehen können. Wenn Sie die Adresse einer externen Webseite eingeben, verwenden Sie die vollständige URL (einschließlich "https://"). Wenn Sie zu einem Objekt in ILIAS weiterleiten, verwenden Sie den Permalink, der in der Fußzeile des betreffenden Objekts zu finden ist.
-assessment#:#redirect_always#:#immer zur definierten Zielseite
-assessment#:#redirect_in_kiosk_mode#:#nur bei aktivierter Prüfungsansicht
+assessment#:#redirect_always#:#Immer zur definierten Zielseite
+assessment#:#redirect_always_to_logout#:#Immer zum Abmeldebildschirm
+assessment#:#redirect_in_kiosk_mode#:#Bei aktivierten Prüfungsansicht zur definierten Zielseite
+assessment#:#redirect_url_invalid#:#Bitte geben Sie eine gültige URL zur Zielseite an.
+assessment#:#redirect_url_required_for_rule#:#Die URL der Zielseite muss angegeben werden, wenn "%s" ausgewählt ist.
 assessment#:#redirection_url#:#URL Zielseite
 assessment#:#region#:#Region
 assessment#:#remove_as_participant#:#Als festen Teilnehmer entfernen
@@ -2788,7 +2791,7 @@ certificate#:#certificate_short_name_description#:#Bitte geben Sie einen Kurztit
 certificate#:#certificate_text#:#Text des Zertifikats
 certificate#:#certificate_text_info#:#Bitte geben Sie hier den Text des Zertifikats ein. Falls der WYSIWYG-Edtior in der ILIAS-Administration deaktiviert wurde, können Sie hier dennoch gültiges XHTML zur Formatierung nutzen.<br><br>
 certificate#:#certificate_unit_description#:#Geben Sie Maße immer in der Form WERT[cm|mm|in|pt|pc|px|em] an, d.h. 10mm oder 3in
-certificate#:#certificate_usage#:#Bitte beachten Sie, dass die Verwendung und Erstellung von Zertifikaten nur möglich ist, wenn Sie den Java-Server von ILIAS verwenden. Der Java-Server wird in der Hauptseite der Administration in der Kategorie Web-Services konfiguriert und ist unter anderem für die Generierung von PDF-Dateien erforderlich.
+certificate#:#certificate_usage#:#Bitte beachten Sie, dass die Verwendung und Erstellung von Zertifikaten nur möglich ist, wenn Sie den Java-Server von ILIAS verwenden. Der Java-Server wird durch Angabe von Netzwerk-Host und -Port über das ILIAS-Setup konfiguriert und ist unter anderem für die Generierung von PDF-Dateien erforderlich.
 certificate#:#certificate_var_max_points#:#Maximale Punktzahl im verwendeten Test
 certificate#:#certificate_var_result_mark_long#:#Erreichte Note in der Form 'Offizielle Bezeichnung'
 certificate#:#certificate_var_result_mark_short#:#Erreichte Note in der Form 'Kurzbezeichnung'
@@ -9162,8 +9165,10 @@ etal#:#etal_date_series_edit#:#Gesprächsserie
 etal#:#etal_delete_confirmation_msg#:#Sind Sie sicher, dass das folgende Gespräch gelöscht werden soll?
 etal#:#etal_edit#:#Allgemein
 etal#:#etal_invalid_user#:#Dieses Konto existiert nicht, oder kann nicht eingeladen werden.
+etal#:#etal_location#:#Ort
 etal#:#etal_new#:#Neues Gespräch
 etal#:#etal_open#:#Gespräch öffnen
+etal#:#etal_recurrence#:#Wiederholung
 etal#:#etal_status_all#:#Alle
 etal#:#etal_status_completed#:#Abgeschlossen
 etal#:#etal_status_pending#:#Ausstehend
@@ -10950,7 +10955,6 @@ lso#:#lso_print_list#:#Liste erstellen
 lso#:#lso_read#:#Lesezugriff auf Learning Sequence
 lso#:#lso_search_users#:#Benutzer suchen
 lso#:#lso_settings_availability#:#Verfügbarkeit
-lso#:#lso_settings_availability_error#:#Das Enddatum darf nicht vor dem Startdatum liegen
 lso#:#lso_settings_extro#:#Abschlussseite bearbeiten
 lso#:#lso_settings_intro#:#Einleitungsseite bearbeiten
 lso#:#lso_settings_old_extro#:#Alte Abschlussseite ansehen
