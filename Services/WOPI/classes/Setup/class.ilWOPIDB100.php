@@ -18,21 +18,31 @@
 
 declare(strict_types=1);
 
-namespace ILIAS\WOPI\Discovery;
-
 /**
  * @author Fabian Schmid <fabian@sr.solutions>
  */
-interface AppRepository
+class ilWOPIDB100 implements \ilDatabaseUpdateSteps
 {
-    /**
-     * @return App[]
-     */
-    public function getApps(ActionRepository $action_repository): array;
+    private ?ilDBInterface $db = null;
 
-    public function storeCollection(Apps $apps, ActionRepository $action_repository): void;
+    public function prepare(ilDBInterface $db): void
+    {
+        $this->db = $db;
+    }
 
-    public function store(App $app, ActionRepository $action_repository): void;
+    public function step_1(): void
+    {
+        if (!$this->db->tableColumnExists('wopi_action', 'target_text')) {
+            $this->db->addTableColumn(
+                'wopi_action',
+                'target_text',
+                [
+                    'type' => 'text',
+                    'length' => 256,
+                    'notnull' => false,
+                ],
+            );
+        }
+    }
 
-    public function clear(ActionRepository $action_repository): void;
 }

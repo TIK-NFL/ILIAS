@@ -747,7 +747,10 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
             return (new ilTestPageGUI('tst', $page_id))->showPage();
         }
 
-        return $this->getMainSettings()->getIntroductionSettings()->getIntroductionText();
+        return ilRTE::_replaceMediaObjectImageSrc(
+            $this->getMainSettings()->getIntroductionSettings()->getIntroductionText(),
+            1
+        );
     }
 
     private function cloneIntroduction(): ?int
@@ -765,7 +768,10 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
         if ($page_id !== null) {
             return (new ilTestPageGUI('tst', $page_id))->showPage();
         }
-        return $this->getMainSettings()->getFinishingSettings()->getConcludingRemarksText();
+        return ilRTE::_replaceMediaObjectImageSrc(
+            $this->getMainSettings()->getFinishingSettings()->getConcludingRemarksText(),
+            1
+        );
     }
 
     private function cloneConcludingRemarks(): ?int
