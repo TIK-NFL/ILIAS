@@ -59,7 +59,8 @@ class ilTestEvaluationGUI extends ilTestServiceGUI
 
         $this->processLockerFactory = new ilTestProcessLockerFactory(
             new ilSetting('assessment'),
-            $this->db
+            $this->db,
+            ilLoggerFactory::getLogger('tst')
         );
     }
 

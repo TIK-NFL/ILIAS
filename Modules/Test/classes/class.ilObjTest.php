@@ -2934,7 +2934,7 @@ class ilObjTest extends ilObject implements ilMarkSchemaAware
             $question->object->feedbackOBJ = new $feedbackObjectClassname($question->object, $this->ctrl, $this->db, $this->lng);
 
             $assSettings = new ilSetting('assessment');
-            $processLockerFactory = new ilAssQuestionProcessLockerFactory($assSettings, $this->db);
+            $processLockerFactory = new ilAssQuestionProcessLockerFactory($assSettings, $this->db, ilLoggerFactory::getLogger('tst'));
             $processLockerFactory->setQuestionId($question->object->getId());
             $processLockerFactory->setUserId($this->user->getId());
             $processLockerFactory->setAssessmentLogEnabled(ilObjAssessmentFolder::_enabledAssessmentLogging());
