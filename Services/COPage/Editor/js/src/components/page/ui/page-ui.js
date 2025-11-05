@@ -538,6 +538,12 @@ export default class PageUI {
     });
 
     $(droppableSelector).droppable({
+      over(event, ui) {
+        $(this).addClass('il-copg-cell-selected');
+      },
+      out(event, ui) {
+        $(this).removeClass('il-copg-cell-selected');
+      },
       drop: (event, ui) => {
         ui.draggable.draggable('option', 'revert', false);
 
