@@ -9886,7 +9886,7 @@ form#:#form_msg_max_upload#:#Maximale Anzahl von gleichzeitig hochladbaren Datei
 form#:#form_msg_numeric_value_required#:#Bitte geben Sie einen numerischen Wert ein.
 form#:#form_msg_value_too_high#:#Wert ist zu hoch. Bitte geben Sie einen niedrigeren Wert ein.
 form#:#form_msg_value_too_low#:#Wert ist zu niedrig. Bitte geben Sie einen höheren Wert ein.
-form#:#form_msg_wrong_date#:#Falsches Datum. Bitte geben Sie ein gültiges Datum an.
+form#:#form_msg_wrong_date#:#Bitte überprüfen Sie Ihre Datumseingabe. Sowohl ein Startdatum als auch ein Enddatum sind erforderlich und das Startdatum darf nicht später liegen als das Enddatum.
 form#:#form_no_link#:#Kein Link
 form#:#form_open_answer#:#Freitext
 form#:#form_password_not_allowed_for_auth#:#Für die gewählte Authentifizierungmethode können Sie das Passwort nicht ändern

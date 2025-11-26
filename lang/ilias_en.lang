@@ -9886,7 +9886,7 @@ form#:#form_msg_max_upload#:#Maximum number of simultaneously uploadable files:
 form#:#form_msg_numeric_value_required#:#Please enter a numeric value.
 form#:#form_msg_value_too_high#:#Value too high. Please enter a lower value.
 form#:#form_msg_value_too_low#:#Value too low. Please enter a higher value.
-form#:#form_msg_wrong_date#:#Wrong date. Please enter a valid date.
+form#:#form_msg_wrong_date#:#Please check your date entry. Both a start date and an end date are required and the start date cannot be later than the end date.
 form#:#form_no_link#:#No Link
 form#:#form_open_answer#:#Open Answer
 form#:#form_password_not_allowed_for_auth#:#It is not possible to change the password for the chosen authentication method.
