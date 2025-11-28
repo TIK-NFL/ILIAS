@@ -11050,6 +11050,7 @@ lti#:#highscore_top_table#:#Bästalista
 lti#:#highscore_top_table_description#:#Deltagarna kommer att få se en tabell med de bästa placeringarna.
 lti#:#highscore_wtime#:#Varaktighet
 lti#:#highscore_wtime_description#:#En kolumn med varaktigheten ingår i placeringarna.
+lti#:#launch_custom_params#:#Custom launch parameters###27 11 2025 new variable
 lti#:#launch_method#:#Alternativ för lanseringen
 lti#:#launch_method_embedded#:#Inbäddat innehåll
 lti#:#launch_method_embedded_info#:#Innehållet öppnas i ILIAS-kontext. Det kommer att visas som inbäddat innehåll på fliken Innehåll.

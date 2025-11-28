@@ -11049,6 +11049,7 @@ lti#:#highscore_top_table#:#Classifica dei migliori risultati
 lti#:#highscore_top_table_description#:#Ai partecipanti sarà mostrata una tabella contenente la classifica dei migliori risultati.
 lti#:#highscore_wtime#:#Durata
 lti#:#highscore_wtime_description#:#Una colonna contenente la durata sarà inclusa nella classifica.
+lti#:#launch_custom_params#:#Custom launch parameters###27 11 2025 new variable
 lti#:#launch_method#:#Opzioni di avvio
 lti#:#launch_method_embedded#:#Contenuto integrato
 lti#:#launch_method_embedded_info#:#Il contenuto viene aperto nel contesto ILIAS. Viene presentato come contenuto integrato nella tab "Contenuti"

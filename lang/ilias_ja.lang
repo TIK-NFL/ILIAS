@@ -11050,6 +11050,7 @@ lti#:#highscore_top_table#:#トップランキング
 lti#:#highscore_top_table_description#:#受講者はトップランキングの入った表で表示されます。
 lti#:#highscore_wtime#:#期間
 lti#:#highscore_wtime_description#:#期間の入った列はランキング内に含まれます。
+lti#:#launch_custom_params#:#Custom launch parameters###27 11 2025 new variable
 lti#:#launch_method#:#起動オプション
 lti#:#launch_method_embedded#:#エンベデッドコンテンツ
 lti#:#launch_method_embedded_info#:#コンテンツはILIASコンテンキスト内で開かれます。コンテンツタブ内でエンベデッドコンテンツとして表示されます。

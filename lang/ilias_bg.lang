@@ -11050,6 +11050,7 @@ lti#:#highscore_top_table#:#Висша класация
 lti#:#highscore_top_table_description#:#На участниците се представя таблица с най-добрите класации.###22 06 2022 new variable
 lti#:#highscore_wtime#:#Duration
 lti#:#highscore_wtime_description#:#Колона, съдържаща продължителността, ще бъде включена в класирането.
+lti#:#launch_custom_params#:#Custom launch parameters###27 11 2025 new variable
 lti#:#launch_method#:#Опции за стартиране
 lti#:#launch_method_embedded#:#Embedded Content
 lti#:#launch_method_embedded_info#:#Съдържанието се отваря в контекста на ILIAS. То се представя като вградено съдържание в раздела със съдържание.

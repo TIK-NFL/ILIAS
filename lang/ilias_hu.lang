@@ -11050,6 +11050,7 @@ lti#:#highscore_top_table#:#Legjobb helyezések
 lti#:#highscore_top_table_description#:#A résztvevők a legjobb helyezéseket tartalmazó táblázatban jelennek meg.
 lti#:#highscore_wtime#:#Időtartam
 lti#:#highscore_wtime_description#:#A rangsorban megjelenik az időtartamot tartalmazó oszlop.
+lti#:#launch_custom_params#:#Custom launch parameters###27 11 2025 new variable
 lti#:#launch_method#:#Indítás beállításai
 lti#:#launch_method_embedded#:#Beágyazott tartalom
 lti#:#launch_method_embedded_info#:#A tartalom az ILIAS környezetben nyílik meg. Beágyazott tartalomként jelenik meg a tartalom lapon.

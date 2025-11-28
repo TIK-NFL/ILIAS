@@ -11052,6 +11052,7 @@ lti#:#highscore_top_table#:#Top Ranking###07 02 2020 new variable
 lti#:#highscore_top_table_description#:#Participants are presented with a table containing the top rankings.###07 02 2020 new variable
 lti#:#highscore_wtime#:#Duration###07 02 2020 new variable
 lti#:#highscore_wtime_description#:#A column containing the duration will be included in the ranking.###07 02 2020 new variable
+lti#:#launch_custom_params#:#Custom launch parameters###27 11 2025 new variable
 lti#:#launch_method#:#Options for Launch###07 02 2020 new variable
 lti#:#launch_method_embedded#:#Embedded Content###07 02 2020 new variable
 lti#:#launch_method_embedded_info#:#The content is opened within the ILIAS context. It is presented as embedded content within the content tab.###07 02 2020 new variable
