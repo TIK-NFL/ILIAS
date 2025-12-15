@@ -23,6 +23,7 @@ use ILIAS\TestQuestionPool\QuestionInfoService;
 use ILIAS\UI\Factory as UIFactory;
 use ILIAS\UI\Renderer as UIRenderer;
 use ILIAS\HTTP\Services as HTTPServices;
+use ILIAS\Data\Factory as DataFactory;
 use ILIAS\DI\LoggingServices;
 use ILIAS\Skill\Service\SkillService;
 use ILIAS\Test\InternalRequestService;
@@ -1630,16 +1631,19 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
     */
     public function executeCreateQuestionObject(): void
     {
-        if (!$this->access->checkAccess('write', '', $this->object->getRefId())) {
-            $this->redirectAfterMissingWrite();
-        }
-        $qpl_ref_id = $this->testrequest->raw("sel_qpl");
-
         try {
             $qpl_mode = $this->testrequest->int('usage');
         } catch (ConstraintViolationException $e) {
             $qpl_mode = 1;
         }
+
+        if (!$this->access->checkAccess('write', '', $this->object->getRefId())
+            || $qpl_mode === 2 && !$this->userCanCreatePoolAtCurrentLocation()
+        ) {
+            $this->redirectAfterMissingWrite();
+        }
+
+        $qpl_ref_id = $this->testrequest->raw("sel_qpl");
 
         if ($this->testrequest->isset('qtype')) {
             $sel_question_types = ilObjQuestionPool::getQuestionTypeByTypeId($this->testrequest->raw("qtype"));
@@ -2142,8 +2146,14 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
         $usage->addOption($no_pool);
         $existing_pool = new ilRadioOption($this->lng->txt("assessment_existing_pool"), '3');
         $usage->addOption($existing_pool);
-        $new_pool = new ilRadioOption($this->lng->txt("assessment_new_pool"), '2');
-        $usage->addOption($new_pool);
+        if ($this->userCanCreatePoolAtCurrentLocation()) {
+            $new_pool = new ilRadioOption($this->lng->txt("assessment_new_pool"), '2');
+            $usage->addOption($new_pool);
+            $name = new ilTextInputGUI($this->lng->txt("name"), "txt_qpl");
+            $name->setSize(50);
+            $name->setMaxLength(50);
+            $new_pool->addSubItem($name);
+        }
         $form->addItem($usage);
 
         $usage->setValue('1');
@@ -2156,11 +2166,6 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
         $pools = new ilSelectInputGUI($this->lng->txt("select_questionpool"), "sel_qpl");
         $pools->setOptions($pools_data);
         $existing_pool->addSubItem($pools);
-
-        $name = new ilTextInputGUI($this->lng->txt("name"), "txt_qpl");
-        $name->setSize(50);
-        $name->setMaxLength(50);
-        $new_pool->addSubItem($name);
 
         $form->addCommandButton("executeCreateQuestion", $this->lng->txt("create"));
         $form->addCommandButton("questions", $this->lng->txt("cancel"));
@@ -2435,12 +2440,18 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
             $max_points += $question_gui->object->getMaximumPoints();
         }
 
-        $template->setVariable("TITLE", strip_tags($this->object->getTitle(), ilObjectGUI::ALLOWED_TAGS_IN_TITLE_AND_DESCRIPTION));
-        $template->setVariable("PRINT_TEST", ilLegacyFormElementsUtil::prepareFormOutput($this->lng->txt("tst_print")));
+        $template->setVariable(
+            "PRINT_TEST",
+            ilLegacyFormElementsUtil::prepareFormOutput($this->lng->txt("print_view"))
+        );
         $template->setVariable("TXT_PRINT_DATE", ilLegacyFormElementsUtil::prepareFormOutput($this->lng->txt("date")));
+        $date_format = $this->user->getDateFormat();
+        $format = $this->user->getTimeFormat() === (string) ilCalendarSettings::TIME_FORMAT_12
+            ? (new DataFactory())->dateFormat()->withTime12($date_format)->toString()
+            : (new DataFactory())->dateFormat()->withTime24($date_format)->toString();
         $template->setVariable(
             "VALUE_PRINT_DATE",
-            ilDatePresentation::formatDate(new ilDateTime($print_date, IL_CAL_UNIX))
+            (new \DateTimeImmutable('now', new DateTimeZone($this->user->getTimeZone())))->format($format)
         );
         $template->setVariable(
             "TXT_MAXIMUM_POINTS",
@@ -2490,19 +2501,19 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
             $max_points += $question_gui->object->getMaximumPoints();
         }
 
-        $template->setVariable("TITLE", strip_tags($this->object->getTitle(), ilObjectGUI::ALLOWED_TAGS_IN_TITLE_AND_DESCRIPTION));
         $template->setVariable(
             "PRINT_TEST",
             ilLegacyFormElementsUtil::prepareFormOutput($this->lng->txt("review_view"))
         );
         $template->setVariable("TXT_PRINT_DATE", ilLegacyFormElementsUtil::prepareFormOutput($this->lng->txt("date")));
-        $usedRelativeDates = ilDatePresentation::useRelativeDates();
-        ilDatePresentation::setUseRelativeDates(false);
+        $date_format = $this->user->getDateFormat();
+        $format = $this->user->getTimeFormat() === (string) ilCalendarSettings::TIME_FORMAT_12
+            ? (new DataFactory())->dateFormat()->withTime12($date_format)->toString()
+            : (new DataFactory())->dateFormat()->withTime24($date_format)->toString();
         $template->setVariable(
             "VALUE_PRINT_DATE",
-            ilDatePresentation::formatDate(new ilDateTime(time(), IL_CAL_UNIX))
+            (new \DateTimeImmutable('now', new DateTimeZone($this->user->getTimeZone())))->format($format)
         );
-        ilDatePresentation::setUseRelativeDates($usedRelativeDates);
         $template->setVariable(
             "TXT_MAXIMUM_POINTS",
             ilLegacyFormElementsUtil::prepareFormOutput($this->lng->txt("tst_maximum_points"))
@@ -3578,5 +3589,11 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
             $this->db,
             $this->rbac_system
         );
+    }
+
+    private function userCanCreatePoolAtCurrentLocation(): bool
+    {
+        return $this->settings->get('obj_dis_creation_qpl') !== '1'
+            && $this->checkPermissionBool('create', '', 'qpl', $this->tree->getParentId($this->ref_id));
     }
 }
