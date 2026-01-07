@@ -168,8 +168,8 @@ class assFormulaQuestionGUI extends assQuestionGUI
                     $this->object->addResultUnits($resObj, $_POST["units_{$result}"] ?? []);
                 }
             }
-            if ($checked == false) {
-                $this->editQuestion();
+            if ($checked === false) {
+                $this->editQuestion(false, '', true);
                 return 1;
             } else {
                 $this->saveTaxonomyAssignments();
@@ -186,13 +186,13 @@ class assFormulaQuestionGUI extends assQuestionGUI
         return in_array($this->ctrl->getCmd(), array('save', 'saveEdit', 'saveReturn'));
     }
 
-    /**
-     * @param bool $checkonly
-     */
-    public function editQuestion($checkonly = false, string $suggest_range_for_result = ''): bool
-    {
+    public function editQuestion(
+        bool $checkonly = false,
+        string $suggest_range_for_result = '',
+        bool $skip_write_post_data = false
+    ): bool {
         $save = $this->isSaveCommand();
-        if ($save) {
+        if ($save && !$skip_write_post_data) {
             $this->writePostData(true);
         }
 
@@ -607,11 +607,12 @@ class assFormulaQuestionGUI extends assQuestionGUI
 
                 $decimal_spots = $form->getItemByPostVar('precision_' . $variable->getVariable());
                 $int_precision = $form->getItemByPostVar('intprecision_' . $variable->getVariable());
-                if ($decimal_spots instanceof ilFormPropertyGUI && $decimal_spots->getValue() === 0) {
-                    $txt = !$variable->isIntPrecisionValid($int_precision?->getValue(), $min_range_value, $max_range_value)
-                        ? 'err_divider_too_big_specific'
-                        : 'err_division';
-                    $int_precision?->setAlert($this->lng->txt($txt));
+                if (
+                    $decimal_spots instanceof ilFormPropertyGUI
+                    && $decimal_spots->getValue() === 0.0
+                    && !$variable->isIntPrecisionValid($int_precision?->getValue(), $min_range_value, $max_range_value)
+                ) {
+                    $int_precision?->setAlert($this->lng->txt('err_division'));
                     $custom_errors = true;
                 }
             }

@@ -89,6 +89,8 @@ class ilLMNavigationRendererGUI
 
     protected function render(bool $top = true): string
     {
+        $this->toolbar->setStickyItems([]);
+
         $page_id = $this->current_page;
 
         $tpl = new ilTemplate("tpl.lm_navigation.html", true, true, "Modules/LearningModule/Presentation");
@@ -275,6 +277,8 @@ class ilLMNavigationRendererGUI
         $nodes = $this->lm_tree->getSubTree($this->lm_tree->getNodeData($this->lm_tree->getRootId()));
         //$nodes = $this->filterNonAccessibleNode($nodes);
 
+        $actions = [];
+
         foreach ($nodes as $node) {
             $disabled = false;
 
@@ -369,13 +373,18 @@ class ilLMNavigationRendererGUI
                     }
                 }
                 $text = str_pad("", ($node["depth"] - 1) * 12, "&nbsp;") . $text;
-                $actions[] = $this->ui->factory()->button()->shy(
+                $button = $this->ui->factory()->button()->shy(
                     $text,
                     $href
                 );
+                if ($disabled) {
+                    $button = $button->withUnavailableAction();
+                }
+                $actions[] = $button;
             }
         }
 
+        $title = "";
         if ($this->lm->getTOCMode() === "pages") {
             $title = ilLMPageObject::_getPresentationTitle(
                 $this->current_page,
@@ -404,7 +413,6 @@ class ilLMNavigationRendererGUI
         }
 
         $title = "<span style='vertical-align: bottom; max-width:60px; display: inline-block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;'>" . $title . "</span>";
-
 
         $this->toolbar->addStickyItem(
             $this->ui->factory()->dropdown()->standard($actions)->withLabel($title)
