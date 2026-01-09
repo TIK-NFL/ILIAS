@@ -149,12 +149,12 @@ class ilNewsForContextBlockGUI extends ilBlockGUI
 
     private function getNewsForId(int $news_id): array
     {
-        $item = $this->collection->getById($news_id) ?? '';
+        $item = $this->collection->getById($news_id);
 //         if ($item === null) {
 //             throw new \InvalidArgumentException("News item with id {$news_id} not found.");
 //         }
 
-        $grouping = $this->collection->getGroupingFor($item) ?? '';
+        $grouping = $this->collection->getGroupingFor($item);
 
         $creation_date = new ilDateTime($item->getCreationDate()->format('c'), IL_CAL_DATETIME);
         $title = ilStr::shortenWords(
