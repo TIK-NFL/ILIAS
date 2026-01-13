@@ -343,6 +343,7 @@ class ilSurveyEvaluationGUI
 
         // parse answer data in evaluation results
         $ov_row = 2;
+        $question_index = 1;
         foreach ($this->object->getSurveyQuestions() as $qdata) {
             $q_eval = SurveyQuestion::_instanciateQuestionEvaluation($qdata["question_id"], $finished_ids);
             $q_res = $q_eval->getResults();
@@ -369,7 +370,7 @@ class ilSurveyEvaluationGUI
             if ($details) {
                 switch ($this->request->getExportFormat()) {
                     case self::TYPE_XLS:
-                        $this->exportResultsDetailsExcel($excel, $q_eval, $q_res, $do_title, $do_label);
+                        $this->exportResultsDetailsExcel($excel, $q_eval, $q_res, $do_title, $do_label, $question_index++);
                         break;
                 }
             }
@@ -412,7 +413,8 @@ class ilSurveyEvaluationGUI
         SurveyQuestionEvaluation $a_eval,
         $a_results,
         bool $a_do_title,
-        bool $a_do_label
+        bool $a_do_label,
+        int $question_index
     ): void {
         $question_res = $a_results;
         $matrix = false;
@@ -422,7 +424,7 @@ class ilSurveyEvaluationGUI
         }
         $question = $question_res->getQuestion();
 
-        $a_excel->addSheet($question->getTitle());
+        $a_excel->addSheet($question_index . "_" . $question->getTitle());
 
 
         // question "overview"
@@ -710,6 +712,13 @@ class ilSurveyEvaluationGUI
 
         $this->log->debug("check access");
 
+        if ($details == 0) {
+            $this->tabs->activateSubTab("svy_eval_cumulated");
+        } else {
+            $this->tabs->activateSubTab("svy_eval_detail");
+        }
+
+
         // auth
         if (!$this->hasResultsAccess()) {
             if (!$this->access->checkAccess('read', '', $this->object->getRefId())) {
@@ -763,13 +772,9 @@ class ilSurveyEvaluationGUI
             if ($details) {
                 //templates: results, table of contents
                 $dtmpl = new ilTemplate("tpl.il_svy_svy_results_details.html", true, true, "Modules/Survey/Evaluation");
-                $toc_tpl = new ilTemplate("tpl.svy_results_table_contents.html", true, true, "Modules/Survey/Evaluation");
                 $this->lng->loadLanguageModule("content");
-                $toc_tpl->setVariable("TITLE_TOC", $this->lng->txt('cont_toc'));
             }
-
             $finished_ids = $this->evaluation_manager->getFilteredFinishedIds();
-
             // parse answer data in evaluation results
             $listing = $this->gui->listing();
 
@@ -816,10 +821,8 @@ class ilSurveyEvaluationGUI
             }
 
             if ($details) {
-                $toc_tpl->setVariable("LIST", $listing->render());
-
                 //TABLE OF CONTENTS
-                $panel_toc = $ui_factory->panel()->standard("", $ui_factory->legacy($toc_tpl->get()));
+                $panel_toc = $ui_factory->panel()->standard($this->lng->txt('cont_toc'), $ui_factory->legacy($listing->render()));
                 $render_toc = $ui_renderer->render($panel_toc);
                 $dtmpl->setVariable("PANEL_TOC", $render_toc);
 
@@ -1075,6 +1078,12 @@ class ilSurveyEvaluationGUI
             $this->tpl->setOnScreenMessage('failure', $this->lng->txt("no_permission"), true);
             $this->ctrl->redirectByClass("ilObjSurveyGUI", "infoScreen");
         }
+
+        $this->ui_modifier->setResultsParticipantToolbar(
+            $this->object,
+            $ilToolbar,
+            $this->user->getId()
+        );
 
         $ilToolbar->setFormAction($this->ctrl->getFormAction($this, "evaluationuser"));
 

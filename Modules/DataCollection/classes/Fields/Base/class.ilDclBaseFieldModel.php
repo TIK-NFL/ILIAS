@@ -44,8 +44,6 @@ class ilDclBaseFieldModel
     public const PROP_URL = "url";
     public const PROP_TEXTAREA = "text_area";
     public const PROP_REFERENCE_LINK = "reference_link";
-    public const PROP_WIDTH = "width";
-    public const PROP_HEIGHT = "height";
     public const PROP_LEARNING_PROGRESS = "learning_progress";
     public const PROP_ILIAS_REFERENCE_LINK = "ILIAS_reference_link";
     public const PROP_N_REFERENCE = "multiple_selection";
@@ -611,8 +609,13 @@ class ilDclBaseFieldModel
 
             $value = $originalField->getProperty($prop_name);
 
-            // If reference field, we must reset the referenced field, otherwise it will point to the old ID
-            if ($originalField->getDatatypeId() == ilDclDatatype::INPUTFORMAT_REFERENCE && $prop_name == ilDclBaseFieldModel::PROP_REFERENCE) {
+            if (
+                $prop_name == ilDclBaseFieldModel::PROP_REFERENCE &&
+                (
+                    $originalField->getDatatypeId() == ilDclDatatype::INPUTFORMAT_REFERENCE ||
+                    $originalField->getDatatypeId() == ilDclDatatype::INPUTFORMAT_COPY
+                )
+            ) {
                 $value = null;
             }
 
@@ -744,7 +747,7 @@ class ilDclBaseFieldModel
 
             // save non empty values and set them to null, when they already exist. Do not override plugin-hook when already set.
             if (!empty($value) || ($this->getPropertyInstance($property) != null && $property != self::PROP_PLUGIN_HOOK_NAME)) {
-                $this->setProperty($property, $value)->store();
+                $this->setProperty($property, $value)?->store();
             }
         }
     }

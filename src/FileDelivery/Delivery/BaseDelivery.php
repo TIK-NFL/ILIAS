@@ -20,22 +20,23 @@ declare(strict_types=1);
 
 namespace ILIAS\FileDelivery\Delivery;
 
+use ILIAS\HTTP\Services;
 use ILIAS\FileDelivery\Delivery\ResponseBuilder\ResponseBuilder;
 use ILIAS\HTTP\Response\ResponseHeader;
 use Psr\Http\Message\ResponseInterface;
-use ILIAS\FileDelivery\Token\Data\Stream;
 
 /**
  * @author Fabian Schmid <fabian@sr.solutions>
  */
 abstract class BaseDelivery
 {
-    protected const MIME_TYPE_MAP = 'src/FileUpload/mime_type_map.php';
+    protected const MIME_TYPE_MAP = __DIR__ . '/../../FileUpload/mime_type_map.php';
+    private bool $caching_headers = true;
 
     protected array $mime_type_map;
 
     public function __construct(
-        protected \ILIAS\HTTP\Services $http,
+        protected Services $http,
         protected ResponseBuilder $response_builder,
         protected ResponseBuilder $fallback_response_builder,
     ) {
@@ -45,11 +46,21 @@ abstract class BaseDelivery
         $this->mime_type_map = $map ?? [];
     }
 
+    public function disableCachingHeaders(): void
+    {
+        $this->caching_headers = false;
+    }
+
+    public function enableCachingHeaders(): void
+    {
+        $this->caching_headers = true;
+    }
+
     protected function saveAndClose(
         ResponseInterface $r,
         string $path_to_delete = null
     ): never {
-        $sender = function () use ($r) {
+        $sender = function () use ($r): void {
             $this->http->saveResponse($r);
             $this->http->sendResponse();
             $this->http->close();
@@ -85,12 +96,24 @@ abstract class BaseDelivery
             ResponseHeader::CONTENT_DISPOSITION,
             $disposition->value . '; filename="' . $file_name . '"'
         );
-        $r = $r->withHeader(ResponseHeader::CACHE_CONTROL, 'max-age=31536000, immutable, private');
-        $r = $r->withHeader(
-            ResponseHeader::EXPIRES,
-            date("D, j M Y H:i:s", strtotime('+5 days')) . " GMT"
-        );
-
-        return $r;
+        if (!$this->caching_headers) {
+            return $r
+                ->withHeader(
+                    ResponseHeader::EXPIRES,
+                    "0"
+                )->withHeader(
+                    ResponseHeader::CACHE_CONTROL,
+                    'no-store, no-cache, must-revalidate, post-check=0, pre-check=0'
+                );
+        }
+        return $r
+            ->withHeader(
+                ResponseHeader::CACHE_CONTROL,
+                'max-age=31536000, immutable, private'
+            )
+            ->withHeader(
+                ResponseHeader::EXPIRES,
+                date("D, j M Y H:i:s", strtotime('+5 days')) . " GMT"
+            );
     }
 }

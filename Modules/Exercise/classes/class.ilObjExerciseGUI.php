@@ -180,6 +180,7 @@ class ilObjExerciseGUI extends ilObjectGUI
                 break;
 
             case "ilcertificategui":
+                $this->checkPermission("write");
                 $this->setSettingsSubTabs();
                 $this->tabs_gui->activateTab("settings");
                 $this->tabs_gui->activateSubTab("certificate");
@@ -892,7 +893,7 @@ class ilObjExerciseGUI extends ilObjectGUI
         $this->checkPermission("read");
 
         $tabs->activateTab("content");
-        $this->addContentSubTabs("list");
+        $this->addContentSubTabs("content");
 
         if ($this->handleRandomAssignmentEntryPage()) {
             return;
@@ -965,8 +966,7 @@ class ilObjExerciseGUI extends ilObjectGUI
         )->withActive($am->getListModeLabel($this->getCurrentMode()));
 
         $html = "";
-        $l = $f->legacy("<br><br>");
-        $html .= $r->render([$mode, $l, $panel]);
+        $html .= $r->render([$mode, $panel]);
 
         $this->tpl->setContent(
             $html
@@ -992,6 +992,7 @@ class ilObjExerciseGUI extends ilObjectGUI
      */
     public function certificateObject(): void
     {
+        $this->checkPermission("write");
         $this->setSettingsSubTabs();
         $this->tabs_gui->activateTab("settings");
         $this->tabs_gui->activateSubTab("certificate");

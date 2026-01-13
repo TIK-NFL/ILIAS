@@ -333,11 +333,18 @@ class ilPCQuestion extends ilPageContent
         if ($get_stored_tries) {
             if (count($q_ids) > 0) {
                 foreach ($q_ids as $q_id) {
-                    $as = ilPageQuestionProcessor::getAnswerStatus($q_id, $ilUser->getId());
-                    $code[] = "ilias.questions.initAnswer(" . $q_id . ", " . (int) ($as["try"] ?? 0) . ", " . ($as["passed"] ? "true" : "null") . ");";
+                    $status = ilPageQuestionProcessor::getAnswerStatus($q_id, $ilUser->getId());
+                    $status = $status[$q_id] ?? $status;
+
+                    $try = (int) ($status["try"] ?? 0);
+                    $passed = isset($status["passed"]) && $status["passed"] ? "true" : "null";
+                    $points = $status["points"] ?? "null";
+                    $code[] = "ilias.questions.initAnswer(" . $q_id . ", " . $try . ", " . $passed . ", " . $points . ");";
                 }
             }
         }
+
+        $code[] = "ilias.questions.refresh_lang();";
         return $code;
     }
 
@@ -374,7 +381,6 @@ class ilPCQuestion extends ilPageContent
 			ilias.questions.txt.please_select = "' . $lng->txtlng("content", "cont_please_select", $a_lang) . '";
 			ilias.questions.txt.ov_preview = "' . $lng->txtlng("content", "cont_ov_preview", $a_lang) . '";
 			ilias.questions.txt.submit_answers = "' . $lng->txtlng("content", "cont_submit_answers", $a_lang) . '";
-			ilias.questions.refresh_lang();
 			';
     }
 

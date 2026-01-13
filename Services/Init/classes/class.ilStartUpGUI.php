@@ -648,6 +648,23 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
         );
         $frontend->authenticate();
 
+        setcookie(session_name(), session_id(), [
+            'expires' => 0,
+            'path' => rtrim(IL_COOKIE_PATH, '/'),
+            'domain' => IL_COOKIE_DOMAIN,
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'None'
+        ]);
+
+        $lti_context_ids = ilSession::get("lti_context_ids");
+
+        if (is_array($lti_context_ids) && isset($lti_context_ids[0])) {
+            $ref_id = $lti_context_ids[0];
+            $obj_type = ilObject::_lookupType($ref_id, true);
+            ilSession::set('orig_request_target', "goto.php?target=" . $obj_type . "_" . $ref_id . "&lti_context_id=" . $ref_id);
+        }
+
         switch ($status->getStatus()) {
             case ilAuthStatus::STATUS_AUTHENTICATED:
                 ilLoggerFactory::getLogger('auth')->debug('Authentication successful; Redirecting to starting page.');
@@ -1324,12 +1341,6 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
                 'used_external_auth_mode' => $used_external_auth_mode,
             ]
         );
-        if ($used_external_auth_mode && (int) $this->user->getAuthMode(true) === ilAuthUtils::AUTH_SAML) {
-            $this->logger->info('Redirecting user to SAML logout script');
-            $this->ctrl->redirectToURL(
-                'saml.php?action=logout&logout_url=' . urlencode(ilUtil::_getHttpPath() . '/login.php')
-            );
-        }
 
         // reset cookie
         ilUtil::setCookie("ilClientId", "");
@@ -1563,19 +1574,17 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
             }
             $user->update();
 
-            $target = $user->getPref('reg_target') ?? '';
-            if ($target !== '') {
-                // Used for ilAccountMail in ilAccountRegistrationMail, which relies on this super global ...
-                // @todo: fixme
-                $_GET['target'] = $target;
-            }
-
-            $accountMail = new ilAccountRegistrationMail(
+            $accountMail = (new ilAccountRegistrationMail(
                 $oRegSettings,
                 $this->lng,
                 ilLoggerFactory::getLogger('user')
-            );
-            $accountMail->withEmailConfirmationRegistrationMode()->send($user, $password);
+            ))->withEmailConfirmationRegistrationMode();
+
+            if ($user->getPref('reg_target') ?? '') {
+                $accountMail = $accountMail->withPermanentLinkTarget($user->getPref('reg_target'));
+            }
+
+            $accountMail->send($user, $password);
 
             $this->mainTemplate->setOnScreenMessage(
                 ilGlobalTemplateInterface::MESSAGE_TYPE_SUCCESS,

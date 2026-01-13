@@ -212,6 +212,7 @@ class ilObjGlossaryGUI extends ilObjectGUI implements \ILIAS\Taxonomy\Settings\M
                 break;
 
             case strtolower(ilTaxonomySettingsGUI::class):
+                $this->checkPermission("write");
                 $this->getTemplate();
                 $this->setTabs();
                 $this->setLocator();
@@ -230,6 +231,7 @@ class ilObjGlossaryGUI extends ilObjectGUI implements \ILIAS\Taxonomy\Settings\M
                 break;
 
             case "ilexportgui":
+                $this->checkPermission("write");
                 $this->getTemplate();
                 $this->setTabs();
                 $this->tabs->activateTab("export");
@@ -259,6 +261,7 @@ class ilObjGlossaryGUI extends ilObjectGUI implements \ILIAS\Taxonomy\Settings\M
                 break;
 
             case "ilglossaryforeigntermcollectorgui":
+                $this->checkPermission("write");
                 $this->ctrl->setReturn($this, "");
                 $this->getTemplate();
                 $this->setTabs();
@@ -269,13 +272,13 @@ class ilObjGlossaryGUI extends ilObjectGUI implements \ILIAS\Taxonomy\Settings\M
                 break;
 
             case "iltermdefinitionbulkcreationgui":
+                $this->checkPermission("write");
                 $this->ctrl->setReturn($this, "listTerms");
                 $this->ctrl->forwardCommand($this->term_def_bulk_gui);
                 break;
 
             default:
                 $cmd = $this->ctrl->getCmd("listTerms");
-
                 if (($cmd == "create") && ($this->edit_request->getNewType() == "term")) {
                     $this->ctrl->setCmd("create");
                     $this->ctrl->setCmdClass("ilGlossaryTermGUI");
@@ -295,6 +298,23 @@ class ilObjGlossaryGUI extends ilObjectGUI implements \ILIAS\Taxonomy\Settings\M
 
                             if ($cmd == "redrawHeaderAction") {
                                 $cmd = "redrawHeaderActionObject";
+                            }
+                        }
+                    }
+                    if (in_array($cmd, [
+                        "redrawHeaderActionObject"
+                    ])) {
+                        $this->checkPermission("read");
+                    } elseif (in_array($cmd, [
+                        "showInfoScreen"
+                    ])) {
+                        $this->checkPermission("visible");
+                    } else {
+                        if (!$this->getCreationMode()) {
+                            if (!$this->access->checkAccess("write", "", $this->requested_ref_id) &&
+                                !$this->access->checkAccess("edit_content", "", $this->requested_ref_id)
+                            ) {
+                                $this->checkPermission("write");
                             }
                         }
                     }
@@ -645,7 +665,6 @@ class ilObjGlossaryGUI extends ilObjectGUI implements \ILIAS\Taxonomy\Settings\M
     public function saveProperties(): void
     {
         $obj_service = $this->getObjectService();
-
         $this->initSettingsForm();
         if ($this->form->checkInput()) {
             $this->object->setTitle($this->form->getInput("title"));
@@ -751,7 +770,6 @@ class ilObjGlossaryGUI extends ilObjectGUI implements \ILIAS\Taxonomy\Settings\M
     public function listTerms(): void
     {
         $this->showTaxonomy();
-
         $panel_html = "";
         $modals = "";
         $tab_html = "";
@@ -848,8 +866,13 @@ class ilObjGlossaryGUI extends ilObjectGUI implements \ILIAS\Taxonomy\Settings\M
             }
             $glossary = new ilObjGlossary($glo_id, false);
             $glo_ref_id = current(ilObject::_getAllReferences($glossary->getId()));
+            $props = [];
+            if (!ilObjGlossaryAccess::_lookupOnline($glo_id)) {
+                $props[$this->lng->txt("status")] =
+                    $this->lng->txt("offline");
+            }
             $glo_link = $this->ui_fac->link()->standard($glossary->getTitle(), ilLink::_getLink($glo_ref_id));
-            $glo_item = $this->ui_fac->item()->standard($glo_link);
+            $glo_item = $this->ui_fac->item()->standard($glo_link)->withProperties($props);
             $glo_item = $glo_item->withDescription($glossary->getDescription());
             $form_action = $this->ctrl->getFormActionByClass(ilObjGlossaryGUI::class, "removeGlossaryFromCollection");
             $delete_modal = $this->ui_fac->modal()->interruptive(

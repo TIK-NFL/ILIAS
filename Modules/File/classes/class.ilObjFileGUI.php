@@ -31,8 +31,8 @@ use ILIAS\UI\Implementation\Component\Input\UploadLimitResolver;
 use ILIAS\Data\DataSize;
 use ILIAS\Refinery\String\Group;
 use ILIAS\Data\Factory;
-use ILIAS\Services\WOPI\Discovery\ActionDBRepository;
-use ILIAS\Services\WOPI\Embed\EmbeddedApplication;
+use ILIAS\WOPI\Discovery\ActionDBRepository;
+use ILIAS\WOPI\Embed\EmbeddedApplication;
 use ILIAS\Data\URI;
 use ILIAS\File\Capabilities\Capabilities;
 use ILIAS\File\Capabilities\CapabilityBuilder;
@@ -279,17 +279,27 @@ class ilObjFileGUI extends ilObject2GUI
                 $action = match ($capability->getCapability()) {
                     Capabilities::VIEW_EXTERNAL => $this->action_repo->getViewActionForSuffix($suffix),
                     Capabilities::EDIT_EXTERNAL => $this->action_repo->getEditActionForSuffix($suffix),
-                    default => $this->action_repo->null()
+                    default => null
                 };
 
                 $this->tabs_gui->activateTab('content');
+
+                if ($this->id_type === Context::CONTEXT_WORKSPACE) {
+                    $goto_link = ilWorkspaceAccessHandler::getGotoLink(
+                        $this->node_id,
+                        $this->object->getId()
+                    );
+                } else {
+                    $goto_link = ilLink::_getLink($this->object->getRefId());
+                }
 
                 $embeded_application = new EmbeddedApplication(
                     $this->storage->manage()->find($this->object->getResourceId()),
                     $action,
                     $this->stakeholder,
-                    new URI(ilLink::_getLink($this->object->getRefId())),
-                    $capability->getCapability() === Capabilities::VIEW_EXTERNAL
+                    new URI($goto_link),
+                    $capability->getCapability() === Capabilities::VIEW_EXTERNAL,
+                    $this->lng->getLangKey()
                 );
 
                 $this->ctrl->forwardCommand(

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.ilias.ilserver</groupId>
     <artifactId>ilServer</artifactId>
-    <version>9.0.2</version>
+    <version>9.1.1</version>
     <build>
         <finalName>ilServer</finalName>
         <plugins>
@@ -72,6 +72,17 @@
             </plugin>
         </plugins>
     </build>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.tika</groupId>
+                <artifactId>tika-bom</artifactId>
+                <version>3.2.3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
         <dependency>
@@ -113,7 +124,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-configuration2</artifactId>
-            <version>2.9.0</version>
+            <version>2.12.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
@@ -177,48 +188,41 @@
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-core</artifactId>
-            <version>2.9.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parser-html-module</artifactId>
-            <version>2.9.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parser-microsoft-module</artifactId>
-            <version>2.9.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parser-miscoffice-module</artifactId>
-            <version>2.9.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parser-pdf-module</artifactId>
-            <version>2.9.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parser-text-module</artifactId>
-            <version>2.9.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parser-xml-module</artifactId>
-            <version>2.9.2</version>
         </dependency>
         <!-- fop pdf generation: all in one jar produces class duplication warnings -->
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>fop-core</artifactId>
-            <version>2.9</version>
+            <version>2.11</version>
         </dependency>
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>fop-util</artifactId>
-            <version>2.9</version>
+            <version>2.11</version>
         </dependency>
     </dependencies>
     <packaging>jar</packaging>

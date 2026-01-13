@@ -108,45 +108,46 @@ class ilTestResultsImportParser extends ilSaxParser
                     case 'tst_active':
                         if (!$this->user_criteria_checked) {
                             $this->user_criteria_checked = true;
-                            if (isset($a_attribs['user_criteria'])
-                                && $this->db->tableColumnExists('usr_data', $a_attribs['user_criteria'])) {
-                                $analyzer = new ilDBAnalyzer();
-                                $info = $analyzer->getFieldInformation('usr_data');
-                                $this->user_criteria_field = $a_attribs['user_criteria'];
-                                $this->user_criteria_type = $info[$a_attribs['user_criteria']]['type'];
+                            $user_criteria = $a_attribs['user_criteria'] ?? null;
+                            if (
+                                is_string($user_criteria)
+                                && $this->db->tableColumnExists('usr_data', $user_criteria)
+                            ) {
+                                $info = (new ilDBAnalyzer())->getFieldInformation('usr_data');
+                                $this->user_criteria_field = $user_criteria;
+                                $this->user_criteria_type = $info[$user_criteria]['type'];
                             }
                         }
+
                         $usr_id = ANONYMOUS_USER_ID;
                         if ($this->user_criteria_field !== '') {
                             $result = $this->db->queryF(
-                                'SELECT usr_id FROM usr_data WHERE '
-                                    . $this->user_criteria_field . ' =  %s',
-                                array($this->user_criteria_type),
-                                array($a_attribs[$this->user_criteria_field])
+                                "SELECT usr_id FROM usr_data WHERE {$this->user_criteria_field} = %s",
+                                [$this->user_criteria_type],
+                                [$a_attribs[$this->user_criteria_field]]
                             );
                             if ($result->numRows()) {
-                                $row = $this->db->fetchAssoc($result);
-                                $usr_id = $row['usr_id'];
+                                $usr_id = $this->db->fetchAssoc($result)['usr_id'];
                             }
                         }
-                        $next_id = $this->db->nextId('tst_active');
 
-                        $this->db->insert('tst_active', array(
-                            'active_id' => array('integer', $next_id),
-                            'user_fi' => array('integer', $usr_id),
-                            'anonymous_id' => array('text', strlen($a_attribs['anonymous_id']) ? $a_attribs['anonymous_id'] : null),
-                            'test_fi' => array('integer', $this->test_obj->getTestId()),
-                            'lastindex' => array('integer', $a_attribs['lastindex']),
-                            'tries' => array('integer', $a_attribs['tries']),
-                            'submitted' => array('integer', $a_attribs['submitted']),
-                            'submittimestamp' => array('timestamp', strlen($a_attribs['submittimestamp']) ? $a_attribs['submittimestamp'] : null),
-                            'tstamp' => array('integer', $a_attribs['tstamp']),
-                            'importname' => array('text', $a_attribs['fullname']),
-                            'last_finished_pass' => array('integer', $this->fetchLastFinishedPass($a_attribs)),
-                            'last_started_pass' => array('integer', $this->fetchLastStartedPass($a_attribs)),
-                            'answerstatusfilter' => array('integer', $this->fetchAttribute($a_attribs, 'answer_status_filter')),
-                            'objective_container' => array('integer', $this->fetchAttribute($a_attribs, 'objective_container'))
-                        ));
+                        $next_id = $this->db->nextId('tst_active');
+                        $this->db->insert('tst_active', [
+                            'active_id' => [ilDBConstants::T_INTEGER, $next_id],
+                            'user_fi' => [ilDBConstants::T_INTEGER, $usr_id],
+                            'anonymous_id' => [ilDBConstants::T_TEXT, $a_attribs['anonymous_id'] ?: null],
+                            'test_fi' => [ilDBConstants::T_INTEGER, $this->test_obj->getTestId()],
+                            'lastindex' => [ilDBConstants::T_INTEGER, $a_attribs['lastindex']],
+                            'tries' => [ilDBConstants::T_INTEGER, $a_attribs['tries']],
+                            'submitted' => [ilDBConstants::T_INTEGER, $a_attribs['submitted']],
+                            'submittimestamp' => [ilDBConstants::T_TIMESTAMP, $a_attribs['submittimestamp'] ?: null],
+                            'tstamp' => [ilDBConstants::T_INTEGER, $a_attribs['tstamp']],
+                            'importname' => [ilDBConstants::T_TEXT, $a_attribs['fullname']],
+                            'last_finished_pass' => [ilDBConstants::T_INTEGER, $this->fetchLastFinishedPass($a_attribs)],
+                            'last_started_pass' => [ilDBConstants::T_INTEGER, $this->fetchLastStartedPass($a_attribs)],
+                            'answerstatusfilter' => [ilDBConstants::T_INTEGER, $this->fetchAttribute($a_attribs, 'answer_status_filter')],
+                            'objective_container' => [ilDBConstants::T_INTEGER, $this->fetchAttribute($a_attribs, 'objective_container')]
+                        ]);
                         $this->active_id_mapping[$a_attribs['active_id']] = $next_id;
                         break;
                     case 'tst_test_rnd_qst':
@@ -321,21 +322,21 @@ class ilTestResultsImportParser extends ilSaxParser
     }
 
     /**
-     * @param array{value1: string, value2: string} $a_attribs
-     * @return string
+     * @param array{value1: ?string, value2: ?string} $a_attribs
+     * @return ?string
      */
     private function importParticipantsUploadedFiles(array $a_attribs): ?string
     {
         ['value1' => $value1, 'value2' => $value2] = $a_attribs;
 
         if ($value2 !== 'rid') {
-            return $value1 ?: null;
+            return $value1 !== '' ? $value1 : null;
         }
 
         $resource_directory = "$this->import_directory/objects/resources/$value1";
         $file_name = $this->getFirstFileName($resource_directory);
         if (!is_string($file_name)) {
-            return $value1 ?: null;
+            return $value1 !== '' ? $value1 : null;
         }
 
         $file_path = "$resource_directory/$file_name";

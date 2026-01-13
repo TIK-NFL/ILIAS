@@ -1,25 +1,23 @@
 <?php
-/*
- +-----------------------------------------------------------------------------+
- | ILIAS open source                                                           |
- +-----------------------------------------------------------------------------+
- | Copyright (c) 1998-2001 ILIAS open source, University of Cologne            |
- |                                                                             |
- | This program is free software; you can redistribute it and/or               |
- | modify it under the terms of the GNU General Public License                 |
- | as published by the Free Software Foundation; either version 2              |
- | of the License, or (at your option) any later version.                      |
- |                                                                             |
- | This program is distributed in the hope that it will be useful,             |
- | but WITHOUT ANY WARRANTY; without even the implied warranty of              |
- | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               |
- | GNU General Public License for more details.                                |
- |                                                                             |
- | You should have received a copy of the GNU General Public License           |
- | along with this program; if not, write to the Free Software                 |
- | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. |
- +-----------------------------------------------------------------------------+
-*/
+
+/**
+ * This file is part of ILIAS, a powerful learning management system
+ * published by ILIAS open source e-Learning e.V.
+ *
+ * ILIAS is licensed with the GPL-3.0,
+ * see https://www.gnu.org/licenses/gpl-3.0.en.html
+ * You should have received a copy of said license along with the
+ * source code, too.
+ *
+ * If this is not the case or you just want to try ILIAS, you'll find
+ * us at:
+ * https://www.ilias.de
+ * https://github.com/ILIAS-eLearning
+ *
+ *********************************************************************/
+
+// declare(strict_types=1);
+// TODO: Fix types in this file before enabling strict types
 
 /**
  * Soap object administration methods
@@ -483,7 +481,8 @@ class ilSoapObjectAdministration extends ilSoapAdministration
                 !$objDefinition->isSystemObject($node['type']) &&
                 ($all || !in_array($node['type'], $filter, true)) &&
                 $access->checkAccess("read", "", (int) $node['ref_id']) &&
-                ($tmp = ilObjectFactory::getInstanceByRefId($node['ref_id'], false))) {
+                ($tmp = ilObjectFactory::getInstanceByRefId($node['ref_id'], false))
+            ) {
                 $nodes[] = $tmp;
             }
         }
@@ -609,8 +608,10 @@ class ilSoapObjectAdministration extends ilSoapAdministration
             $newObj = new $class_constr();
             if (isset($object_data['owner']) && $object_data['owner'] != '') {
                 if ((int) $object_data['owner']) {
-                    if (ilObject::_exists((int) $object_data['owner']) &&
-                        $ilObjDataCache->lookupType((int) $object_data['owner']) === 'usr') {
+                    if (
+                        ilObject::_exists((int) $object_data['owner']) &&
+                        $ilObjDataCache->lookupType((int) $object_data['owner']) === 'usr'
+                    ) {
                         $newObj->setOwner((int) $object_data['owner']);
                     }
                 } else {
@@ -626,12 +627,14 @@ class ilSoapObjectAdministration extends ilSoapAdministration
                 $newObj->setImportId($object_data['import_id']);
             }
 
-            if ($objDefinition->supportsOfflineHandling($newObj->getType())) {
-                $newObj->setOfflineStatus((bool) $object_data['offline']);
-            }
             $newObj->setTitle($object_data['title']);
             $newObj->setDescription($object_data['description']);
             $newObj->create(); // true for upload
+            if ($objDefinition->supportsOfflineHandling($newObj->getType()) && isset($object_data['offline'])) {
+                $newObj->setOfflineStatus((bool) $object_data['offline']);
+                $newObj->update();
+            }
+
             $newObj->createReference();
             $newObj->putInTree($a_target_id);
             $newObj->setPermissions($a_target_id);
@@ -657,7 +660,7 @@ class ilSoapObjectAdministration extends ilSoapAdministration
                         $object_data["title"],
                         $object_data["description"],
                         $lng->getLangKey(),
-                        true
+                        '1'
                     );
                     break;
             }
@@ -702,9 +705,11 @@ class ilSoapObjectAdministration extends ilSoapAdministration
             );
         }
 
-        if (!$objDefinition->allowLink($source_obj->getType()) and
+        if (
+            !$objDefinition->allowLink($source_obj->getType()) and
             $source_obj->getType() !== 'cat' and
-            $source_obj->getType() !== 'crs') {
+            $source_obj->getType() !== 'crs'
+        ) {
             return $this->raiseError(
                 'Linking of object type: ' . $source_obj->getType() . ' is not allowed',
                 'Client'
@@ -1074,6 +1079,10 @@ class ilSoapObjectAdministration extends ilSoapAdministration
             return $this->raiseError('No valid target given.', 'Client');
         }
 
+        if (!$rbacsystem->checkAccess('move', $ref_id)) {
+            return $this->raiseError("No permission to move object with id: $ref_id", 'Client');
+        }
+
         // check for trash
         if (ilObject::_isInTrash($ref_id)) {
             return $this->raiseError('Object is trashed.', 'Client');
@@ -1312,11 +1321,13 @@ class ilSoapObjectAdministration extends ilSoapAdministration
             return true;
         }
         if ($a_action === 'create') {
-            if (count($a_object_data['references']) > 1 && in_array(
-                $a_object_data['type'],
-                ['cat', 'crs', 'grp', 'fold'],
-                true
-            )) {
+            if (
+                count($a_object_data['references']) > 1 && in_array(
+                    $a_object_data['type'],
+                    ['cat', 'crs', 'grp', 'fold'],
+                    true
+                )
+            ) {
                 return $this->raiseError(
                     "Cannot create references for type " . $a_object_data['type'],
                     'Client'

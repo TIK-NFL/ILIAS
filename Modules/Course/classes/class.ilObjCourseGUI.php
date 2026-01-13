@@ -834,7 +834,6 @@ class ilObjCourseGUI extends ilContainerGUI
         $this->object->enableSubscriptionMembershipLimitation((bool) $form->getInput('subscription_membership_limitation'));
         $this->object->setSubscriptionMaxMembers((int) $form->getInput('subscription_max'));
         $this->object->setSubscriptionMinMembers((int) $form->getInput('subscription_min'));
-        $old_autofill = $this->object->hasWaitingListAutoFill();
         switch ((int) $form->getInput('waiting_list')) {
             case 2:
                 $this->object->enableWaitingList(true);
@@ -908,9 +907,6 @@ class ilObjCourseGUI extends ilContainerGUI
             }
         }
 
-        if (!$old_autofill && $this->object->hasWaitingListAutoFill()) {
-            $this->object->handleAutoFill();
-        }
         $this->object->update();
 
         ilObjectServiceSettingsGUI::updateServiceSettingsForm(
@@ -1645,8 +1641,7 @@ class ilObjCourseGUI extends ilContainerGUI
             is_array($ids));
         if ($do_prtf) {
             $all_prtf = ilObjPortfolio::getAvailablePortfolioLinksForUserIds(
-                $ids,
-                $this->ctrl->getLinkTarget($this, "members")
+                $ids
             );
         }
 
@@ -1843,7 +1838,7 @@ class ilObjCourseGUI extends ilContainerGUI
                 $this->tabs_gui->addTab(
                     "news_timeline",
                     $this->lng->txt("cont_news_timeline_tab"),
-                    $this->ctrl->getLinkTargetByClass("ilnewstimelinegui", "show")
+                    $this->ctrl->getLinkTargetByClass(ilNewsTimelineGUI::class, "show")
                 );
                 if ($this->object->isNewsTimelineLandingPageEffective()) {
                     $this->addContentTab();
@@ -2373,7 +2368,7 @@ class ilObjCourseGUI extends ilContainerGUI
                 $this->ctrl->forwardCommand($news_set_gui);
                 break;
 
-            case "ilnewstimelinegui":
+            case strtolower(ilNewsTimelineGUI::class):
                 if (!$this->__checkStartObjects()) {    // see #37236
                     $this->ctrl->redirectByClass(self::class, "view");
                 }
@@ -2470,7 +2465,7 @@ class ilObjCourseGUI extends ilContainerGUI
                 }
                 // if news timeline is landing page, redirect if necessary
                 if ($cmd == "" && $this->object->isNewsTimelineLandingPageEffective()) {
-                    $this->ctrl->redirectByClass("ilnewstimelinegui");
+                    $this->ctrl->redirectByClass(ilNewsTimelineGUI::class);
                 }
 
                 if (!$cmd) {

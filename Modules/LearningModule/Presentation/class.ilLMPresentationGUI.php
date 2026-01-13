@@ -1636,7 +1636,7 @@ class ilLMPresentationGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInt
         $op3 = new ilRadioOption($lng->txt("cont_selected_pg_chap"), "selection");
         $radg->addOption($op3);
 
-        $nl = new ilNestedListInputGUI("", "obj_id");
+        $nl = new ilNestedListInputGUI("", "sel_obj_id");
         $this->nl = $nl;
         $op3->addSubItem($nl);
 
@@ -1691,6 +1691,7 @@ class ilLMPresentationGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInt
         }
 
         $this->setContentStyles();
+        $this->tpl->addCss(ilObjStyleSheet::getContentPrintStyle());
 
         $tpl = new ilTemplate("tpl.lm_print_view.html", true, true, "Modules/LearningModule");
 
@@ -1705,6 +1706,7 @@ class ilLMPresentationGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInt
         $glossary_links = array();
         $output_header = false;
         $media_links = array();
+        $last_page_title = "";
 
         // get header and footer
         if ($this->lm->getFooterPage() > 0 && !$this->lm->getHideHeaderFooterPrint()) {
@@ -1769,9 +1771,9 @@ class ilLMPresentationGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInt
 
             // print all subchapters/subpages if higher chapter
             // has been selected
-            if ($node["depth"] <= $act_level) {
+            if (($node["depth"] ?? 0) <= $act_level) {
                 if (in_array($node["obj_id"], $sel_obj_ids)) {
-                    $act_level = $node["depth"];
+                    $act_level = $node["depth"] ?? 0;
                     $activated = true;
                 } else {
                     $act_level = 99999;
@@ -1808,8 +1810,10 @@ class ilLMPresentationGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInt
 
                     $chapter_title = $chap->_getPresentationTitle(
                         $node["obj_id"],
+                        ilLMObject::CHAPTER_TITLE,
                         $this->lm->isActiveNumbering(),
                         (bool) $this->lm_set->get("time_scheduled_page_activation"),
+                        false,
                         0,
                         $this->lang
                     );
@@ -1861,7 +1865,8 @@ class ilLMPresentationGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInt
                     $page_object_gui->setOutputMode("print");
                     $page_object_gui->setPresentationTitle("");
 
-                    if ($this->lm->getPageHeader() == ilLMObject::PAGE_TITLE || ($node["free"] ?? false) === true) {
+                    // if ($this->lm->getPageHeader() == ilLMObject::PAGE_TITLE || ($node["free"] ?? false) === true) {
+                    if (true) {
                         $page_title = ilLMPageObject::_getPresentationTitle(
                             $lm_pg_obj->getId(),
                             $this->lm->getPageHeader(),
@@ -1872,6 +1877,11 @@ class ilLMPresentationGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInt
                             $this->lang
                         );
 
+                        if ($this->lm->getPageHeader() === ilLMObject::CHAPTER_TITLE) {
+                            // remove the suffic (x/n)
+                            $page_title = trim(substr($page_title, 0, strrpos($page_title, " ")));
+                        }
+
                         // prevent page title after chapter title
                         // that have the same content
                         if ($this->lm->isActiveNumbering()) {
@@ -1881,9 +1891,10 @@ class ilLMPresentationGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInt
                             ));
                         }
 
-                        if ($page_title != $chapter_title) {
+                        if ($page_title != $chapter_title && $page_title !== $last_page_title) {
                             $page_object_gui->setPresentationTitle($page_title);
                         }
+                        $last_page_title = $page_title;
                     }
 
                     // handle header / footer
@@ -1978,26 +1989,30 @@ class ilLMPresentationGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInt
                 $link = $t["link"];
                 $key = $t["key"];
 
-                // output definition of term
-                $page_gui = new ilGlossaryDefPageGUI($link["id"]);
-                $page_gui->setTemplateOutput(false);
-                $page_gui->setOutputMode("print");
+                try {
+                    // output definition of term
+                    $page_gui = new ilGlossaryDefPageGUI($link["id"]);
+                    $page_gui->setTemplateOutput(false);
+                    $page_gui->setOutputMode("print");
 
-                $tpl->setCurrentBlock("definition");
-                $page_gui->setFileDownloadLink("#");
-                $page_gui->setFullscreenLink("#");
-                $page_gui->setSourcecodeDownloadScript("#");
-                $output = $page_gui->showPage();
-                $tpl->setVariable("VAL_DEFINITION", $output);
-                $tpl->parseCurrentBlock();
+                    $tpl->setCurrentBlock("definition");
+                    $page_gui->setFileDownloadLink("#");
+                    $page_gui->setFullscreenLink("#");
+                    $page_gui->setSourcecodeDownloadScript("#");
+                    $output = $page_gui->showPage();
+                    $tpl->setVariable("VAL_DEFINITION", $output);
+                    $tpl->parseCurrentBlock();
 
-                // output term
-                $tpl->setCurrentBlock("term");
-                $tpl->setVariable(
-                    "VAL_TERM",
-                    $term = ilGlossaryTerm::_lookGlossaryTerm($link["id"])
-                );
-                $tpl->parseCurrentBlock();
+                    // output term
+                    $tpl->setCurrentBlock("term");
+                    $tpl->setVariable(
+                        "VAL_TERM",
+                        $term = ilGlossaryTerm::_lookGlossaryTerm($link["id"])
+                    );
+                    $tpl->parseCurrentBlock();
+                } catch (Exception $e) {
+
+                }
             }
 
             // output glossary header

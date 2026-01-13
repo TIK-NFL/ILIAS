@@ -28,6 +28,7 @@ class ilItemGroupItems
     protected ilObjectDefinition $obj_def;
     protected ilObjectDataCache $obj_data_cache;
     protected ilLogger $log;
+    protected ilAccessHandler $access;
     public ilTree $tree;
     public ilLanguage $lng;
     public int $item_group_id = 0;
@@ -45,6 +46,7 @@ class ilItemGroupItems
         $this->lng = $DIC->language();
         $this->tree = $DIC->repositoryTree();
         $this->obj_def = $DIC["objDefinition"];
+        $this->access = $DIC->access();
 
         $this->setItemGroupRefId($a_item_group_ref_id);
         if ($this->getItemGroupRefId() > 0) {
@@ -96,6 +98,20 @@ class ilItemGroupItems
         }
     }
 
+    public static function removeItemGroupAssociations(array $item_ref_ids, ?int $item_group_id = null): void
+    {
+        global $DIC;
+        $db = $DIC->database();
+
+        $query = "DELETE FROM item_group_item WHERE ({$db->in('item_ref_id', $item_ref_ids, false, ilDBConstants::T_INTEGER)})";
+
+        if (is_int($item_group_id) && $item_group_id > 0) {
+            $query .= " AND item_group_id = {$db->quote($item_group_id, ilDBConstants::T_INTEGER)}";
+        }
+
+        $db->manipulate($query);
+    }
+
     public function delete(): void
     {
         $query = "DELETE FROM item_group_item " .
@@ -131,8 +147,6 @@ class ilItemGroupItems
 
     public function getAssignableItems(): array
     {
-        $objDefinition = $this->obj_def;
-
         if ($this->getItemGroupRefId() <= 0) {
             return array();
         }
@@ -159,7 +173,11 @@ class ilItemGroupItems
                 continue;
             }
 
-            if ($objDefinition->isInactivePlugin((string) $node['type'])) {
+            if ($this->obj_def->isInactivePlugin((string) $node['type'])) {
+                continue;
+            }
+
+            if (!$this->access->checkAccess('visible', '', $node['ref_id'])) {
                 continue;
             }
 

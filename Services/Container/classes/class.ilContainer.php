@@ -832,7 +832,7 @@ class ilContainer extends ilObject
         // add default translation
         $this->addTranslation(
             $this->getTitle(),
-            $this->getDescription(),
+            $this->getLongDescription(),
             $lng->getDefaultLanguage(),
             '1'
         );
@@ -994,6 +994,13 @@ class ilContainer extends ilObject
             $pg = new ilContainerPage($obj_id);
             $pg->handleRepositoryLinksOnCopy($mapping, $a_source_ref_id);
             $pg->update(true, true);
+            foreach (ilContainerPage::lookupTranslations("cont", $obj_id) as $trans) {
+                if ($trans !== "-" && ilContainerPage::_exists("cont", $obj_id, $trans, true)) {
+                    $pg = new ilContainerPage($obj_id, 0, $trans);
+                    $pg->handleRepositoryLinksOnCopy($mapping, $a_source_ref_id);
+                    $pg->update(true, true);
+                }
+            }
         }
 
         foreach ($mapping as $old_ref_id => $new_ref_id) {

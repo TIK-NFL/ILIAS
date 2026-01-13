@@ -107,7 +107,7 @@ class ilObjGroupGUI extends ilContainerGUI
         // if news timeline is landing page, redirect if necessary
         if ($next_class == "" && $cmd == "" && $this->object->isNewsTimelineLandingPageEffective()
             && $this->access->checkAccess("read", "", $ref_id)) {
-            $this->ctrl->redirectByClass("ilnewstimelinegui");
+            $this->ctrl->redirectByClass(ilNewsTimelineGUI::class);
         }
 
         $header_action = true;
@@ -335,7 +335,7 @@ class ilObjGroupGUI extends ilContainerGUI
                 $this->ctrl->forwardCommand($news_set_gui);
                 break;
 
-            case "ilnewstimelinegui":
+            case strtolower(ilNewsTimelineGUI::class):
                 $this->checkPermission("read");
                 $this->tabs_gui->setTabActive('news_timeline');
                 $t = ilNewsTimelineGUI::getInstance($this->object->getRefId(), $this->object->getNewsTimelineAutoENtries());
@@ -596,8 +596,6 @@ class ilObjGroupGUI extends ilContainerGUI
                 return;
             }
 
-            $old_autofill = $this->object->hasWaitingListAutoFill();
-
             $this->object->setTitle($form->getInput('title'));
             $this->object->setDescription($form->getInput('desc'));
             $this->object->setGroupType((int) $form->getInput('grp_type'));
@@ -664,6 +662,7 @@ class ilObjGroupGUI extends ilContainerGUI
                     $this->object->setWaitingListAutoFill(false);
                     break;
             }
+            $this->object->handleAutoFill();
 
             // update object settings
             $this->object->update();
@@ -691,12 +690,6 @@ class ilObjGroupGUI extends ilContainerGUI
 
             // Save sorting
             $this->saveSortingSettings($form);
-            // if autofill has been activated trigger process
-            if (
-                !$old_autofill &&
-                $this->object->hasWaitingListAutoFill()) {
-                $this->object->handleAutoFill();
-            }
 
             // BEGIN ChangeEvents: Record update Object.
             ilChangeEvent::_recordWriteEvent(
@@ -932,8 +925,7 @@ class ilObjGroupGUI extends ilContainerGUI
             is_array($ids));
         if ($do_prtf) {
             $all_prtf = ilObjPortfolio::getAvailablePortfolioLinksForUserIds(
-                $ids,
-                $this->ctrl->getLinkTarget($this, "members")
+                $ids
             );
         }
 
@@ -1055,7 +1047,7 @@ class ilObjGroupGUI extends ilContainerGUI
                 $this->tabs_gui->addTab(
                     "news_timeline",
                     $this->lng->txt("cont_news_timeline_tab"),
-                    $this->ctrl->getLinkTargetByClass("ilnewstimelinegui", "show")
+                    $this->ctrl->getLinkTargetByClass(ilNewsTimelineGUI::class, "show")
                 );
                 if ($this->object->isNewsTimelineLandingPageEffective()) {
                     $this->addContentTab();

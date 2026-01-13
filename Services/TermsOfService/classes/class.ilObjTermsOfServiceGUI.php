@@ -28,10 +28,7 @@ use ILIAS\LegalDocuments\ConsumerToolbox\Blocks;
 use ILIAS\Data\Factory as DataFactory;
 
 /**
- * @author            Michael Jansen <mjansen@databay.de>
  * @ilCtrl_Calls      ilObjTermsOfServiceGUI: ilPermissionGUI
- * @ilCtrl_Calls      ilObjTermsOfServiceGUI: ilTermsOfServiceDocumentGUI
- * @ilCtrl_Calls      ilObjTermsOfServiceGUI: ilTermsOfServiceAcceptanceHistoryGUI
  * @ilCtrl_Calls      ilObjTermsOfServiceGUI: ilLegalDocumentsAdministrationGUI
  * @ilCtrl_isCalledBy ilObjTermsOfServiceGUI: ilAdministrationGUI
  */
@@ -97,6 +94,9 @@ class ilObjTermsOfServiceGUI extends ilObject2GUI
                     case 'confirmReset': $this->confirmReset();
                         return;
                     case 'resetNow': $this->resetNow();
+                        return;
+                    case 'documents':
+                        $this->ctrl->redirectByClass([self::class, get_class($this->legal_documents)], 'documents');
                         return;
                     default: $this->settings();
                         return;
@@ -209,6 +209,7 @@ class ilObjTermsOfServiceGUI extends ilObject2GUI
     private function confirmReset(): void
     {
         $this->legal_documents->admin()->requireEditable();
+        $this->tabs_gui->activateTab('documents');
         $this->legal_documents->admin()->setContent((new Confirmation($this->dic->language()))->render(
             $this->dic->ctrl()->getFormAction($this, 'resetNow'),
             'resetNow',
@@ -223,6 +224,7 @@ class ilObjTermsOfServiceGUI extends ilObject2GUI
         $in = $this->dic->database()->in('usr_id', [ANONYMOUS_USER_ID, SYSTEM_USER_ID], true, 'integer');
         $this->dic->database()->manipulate("UPDATE usr_data SET agree_date = NULL WHERE $in");
         $this->tos_settings->lastResetDate()->update((new DataFactory())->clock()->system()->now());
+        $this->tpl->setOnScreenMessage('success', $this->lng->txt('msg_obj_modified'), true);
         $this->dic->ctrl()->redirectByClass([self::class, get_class($this->legal_documents)], 'documents');
     }
 

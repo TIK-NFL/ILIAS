@@ -246,7 +246,7 @@ class ilMediaObjectUsagesTableGUI extends ilTable2GUI
         }
 
         // show versions
-        if (is_array($usage["versions"]) && is_object($usage["page"] ?? null)) {
+        if (is_array($usage["versions"] ?? false) && is_object($usage["page"] ?? null)) {
             $ver = $sep = "";
 
             if (count($usage["versions"]) > 5) {
@@ -280,7 +280,7 @@ class ilMediaObjectUsagesTableGUI extends ilTable2GUI
         }
 
         if (($usage["type"] ?? "") != "clip") {
-            if ($item["obj_link"]) {
+            if ($item["obj_link"] ?? false) {
                 $this->tpl->setCurrentBlock("linked_item");
                 $this->tpl->setVariable("TXT_OBJECT", $item["obj_title"]);
                 $this->tpl->setVariable("HREF_LINK", $item["obj_link"]);

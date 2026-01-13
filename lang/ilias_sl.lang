@@ -508,6 +508,7 @@ assessment#:#ass_create_export_file_with_results#:#Ustvari datoteko za izvoz (vk
 assessment#:#ass_create_export_test_archive#:#Ustvari arhivsko datoteko za test
 assessment#:#ass_create_export_test_results#:#Ustvari datoteko z rezultati
 assessment#:#ass_create_question#:#Ustvari vprašanje
+assessment#:#ass_file_upload_reuse_btn#:#Reuse Selected Files###16 12 2025 new variable
 assessment#:#ass_imap_hint#:#Opomba (prikaže se kot opis orodja)
 assessment#:#ass_imap_map_file_not_readable#:#Naloženega slikovnega zemljevida ni mogoče prebrati.
 assessment#:#ass_imap_no_map_found#:#V naloženem Imapemap ni bila najdena nobena podprta oblika.
@@ -1114,7 +1115,10 @@ assessment#:#redirect_after_finishing_rule#:#Posredovanje naprej
 assessment#:#redirect_after_finishing_tst#:#Posredovanje naprej
 assessment#:#redirect_after_finishing_tst_desc#:#Po zaključku testa so udeleženci samodejno preusmerjeni na določeno spletno stran. To se zgodi le, če je test zasnovan tako, da udeleženci po opravljenem testu nimajo dostopa do rezultatov testa.
 assessment#:#redirect_always#:#vedno na določeno spletno mesto
+assessment#:#redirect_always_to_logout#:#Always to the logout screen###04 11 2025 new variable
 assessment#:#redirect_in_kiosk_mode#:#samo ko je aktiviran prikaz preizkusa
+assessment#:#redirect_url_invalid#:#Please enter a valid url of the target webpage.###04 11 2025 new variable
+assessment#:#redirect_url_required_for_rule#:#The url of the webpage is required when "%s" is selected.###04 11 2025 new variable
 assessment#:#redirection_url#:#URL spletne strani
 assessment#:#region#:#Regija
 assessment#:#remove_as_participant#:#Odstrani kot stalnega udeleženca
@@ -1493,7 +1497,6 @@ assessment#:#tst_instant_feedback_answer_specific#:#Različne povratne informaci
 assessment#:#tst_instant_feedback_answer_specific_desc#:#Ob kliku na gumb ‚Zahtevaj povratno informacijo' ILIAS prikaže povratne informacije za vsak oddani odgovor. Vsi tipi vprašanj ne podpirajo te vrste povratnih informacij. Povratne informacije morajo biti shranjene pri vprašanju pod zavihkom ‚Povratna informacija'.
 assessment#:#tst_instant_feedback_contents#:#Vsebine povratnih informacij
 assessment#:#tst_instant_feedback_desc#:#Ko so vprašanja konfigurirana s povratnimi informacijami, so te informacije udeležencem na voljo med testom.
-assessment#:#tst_instant_feedback_forced#:#Povratna informacija naj se vedno prikaže ob oddaji odgovora
 assessment#:#tst_instant_feedback_results#:#Dosežene točke
 assessment#:#tst_instant_feedback_results_desc#:#Če udeleženci ob odgovarjanju na posamezno vprašanje kliknejo na gumb ‚Zahtevaj povratno informacijo', ILIAS prikaže, koliko točk je bilo doseženih v danem odgovoru.
 assessment#:#tst_instant_feedback_solution#:#Prikaži najboljši odgovor
@@ -1657,7 +1660,6 @@ assessment#:#tst_postpone_on_desc#:#Vprašanja, pri katerih udeleženci odgovore
 assessment#:#tst_presentation_properties#:#Izvedba: Lastnosti vprašanj
 assessment#:#tst_presentation_settings_section#:#Prikaz
 assessment#:#tst_previous_access_code_not_available#:#No previous code available!###30 04 2024 new variable
-assessment#:#tst_print#:#Test in ocena - prikaz za tiskanje
 assessment#:#tst_proceed#:#Nadaljuj
 assessment#:#tst_processing_time#:#Omeji trajanje obdelave
 assessment#:#tst_processing_time_desc#:#Udeleženci imajo omejen čas opravljanja testa. Čas teče od trenutka, ko udeleženec prvič začne s testom. "Prekini test" ne ustavi časa obdelave. Če je število možnih opravljanj testa omejeno, se na zavihku »Nadzorna plošča« prikaže dodatna funkcija, ki udeležencem omogoči dodatni čas.
@@ -1837,6 +1839,7 @@ assessment#:#tst_setting_offer_hints_label#:#Namigi za rešitev
 assessment#:#tst_settings_conflict_compulsory_and_lock#:#"Compulsory Questions" cannot be used together with "Answer Lock".###30 04 2024 new variable
 assessment#:#tst_settings_conflict_postpone_and_lock#:#"Unanswered questions will be enqueued" cannot be used together with "Lock Answers After Moving to Next Question".###30 04 2024 new variable
 assessment#:#tst_settings_conflict_shuffle_and_lock#:#"Shuffle Questions" cannot be used together with "Lock Answers After Moving to Next Question".###30 04 2024 new variable
+assessment#:#tst_settings_form_reload_needed#:#The form needed to be reloaded to avoid data loss as the available settings have changed due to the removal of all results of participants.###23 09 2025 new variable
 assessment#:#tst_settings_header_additional#:#Additional Features###30 04 2024 new variable
 assessment#:#tst_settings_header_execution#:#Izvedba: Dostop
 assessment#:#tst_settings_header_intro#:#Informacije o dostopu
@@ -1984,6 +1987,7 @@ assessment#:#unlock#:#Odkleni
 assessment#:#uploaded_material#:#Naložena gradiva
 assessment#:#use_previous_solution#:#Uporabi prejšnjo rešitev
 assessment#:#use_previous_solution_advice#:#Prikazano rešitev, ki ste jo oddali pred tem. Če želite rešitev prevzeti brez sprememb, morate prevzem te rešitve potrditi znotraj vprašanja.
+assessment#:#use_previous_solution_advice_file_upload#:#The shown files for the question are your previously uploaded ones. Select the files you want to reuse and click the button to confirm.###16 12 2025 new variable
 assessment#:#user_has_finished_a_test#:#Udeleženec je zaključil test.
 assessment#:#user_not_invited#:#Niste udeleženec tega izpita.
 assessment#:#user_wrong_clientip#:#Napačen IP odjemalca
@@ -2469,6 +2473,7 @@ blog#:#blog_whole_blog#:#Whole Blog###31 03 2023 new variable
 book#:#X_reservations_of#:#%s reservations of
 book#:#book_add#:#Ustvari skupino rezervacij
 book#:#book_add_object#:#Dodaj objekt
+book#:#book_add_participant#:#Add Participant###16 12 2025 new variable
 book#:#book_add_schedule#:#Dodaj časovni raster
 book#:#book_additional_info_file#:#Dodaten opis
 book#:#book_all#:#Prikaži vse
@@ -2487,7 +2492,6 @@ book#:#book_booking#:#Booking###30 04 2024 new variable
 book#:#book_booking_information#:#Informacija
 book#:#book_booking_objects#:#Booking Objects###31 03 2023 new variable
 book#:#book_booking_reminders#:#Rezervacije na čakanju
-book#:#book_bookings_per_user#:#Bookings per User###31 03 2023 new variable
 book#:#book_bulk_confirmation#:#Please check that all values are listed correctly.###30 04 2024 new variable
 book#:#book_bulk_creation#:#Bulk Creation###30 04 2024 new variable
 book#:#book_bulk_data#:#Item Data###30 04 2024 new variable
@@ -2531,6 +2535,7 @@ book#:#book_new#:#Ustvari novo skupino rezervacij
 book#:#book_no_bookings_for_you#:#No reservations have been performed for you.
 book#:#book_no_objects#:#No Assignment
 book#:#book_no_of_objects#:#Število objektov
+book#:#book_no_pools_selected#:#No booking pools have been assigned to this course. Booking pools can be assigned via the course's 'Resources' tab.###23 09 2025 new variable
 book#:#book_no_preferences_for_you#:#No preferences have been stored for you.
 book#:#book_no_recurrence#:#Book only this date###30 04 2024 new variable
 book#:#book_not#:#Ni
@@ -2615,6 +2620,7 @@ book#:#book_show_message#:#Show Message###30 04 2024 new variable
 book#:#book_title_description_nr#:#Title; Description; Number of Units###30 04 2024 new variable
 book#:#book_title_description_nr_info#:#Enter title, description and number of units separated by semicolon or TAB character (if importing from spreadsheet software). Use one line per item.###30 04 2024 new variable
 book#:#book_too_many_preferences#:#You selected too many preferences. The preferences have not been saved.
+book#:#book_total_individual_bookings_limit#:#Limit the number of bookings that can be carried out by/for individual participants in total, across all available items. Each bookable item can still only be booked once per participant.###16 12 2025 new variable
 book#:#book_type_warning#:#Trenutno ni na voljo nobenih objektov rezervacije. Če želite uporabiti skupino, morate najprej ustvariti objekte rezervacije.
 book#:#book_week#:#Week###30 04 2024 new variable
 book#:#book_your_bookings#:#Your Reservations
@@ -4744,6 +4750,7 @@ common#:#msg_no_perm_perm#:#Nimate ustreznih pravic za dostop do nastavitev prav
 common#:#msg_no_perm_read#:#Nimate ustreznih pravic za dostop do tega objekta.
 common#:#msg_no_perm_read_item#:#Nimate pravic za dostop do objekta '%s'.
 common#:#msg_no_perm_read_lm#:#Nimate ustreznih pravic za prikaz tega učnega modula.
+common#:#msg_no_perm_view_roles_of_user#:#You have no permission to view the role assignment of this user###26 08 2025 new variable
 common#:#msg_no_perm_write#:#Nimate pravic za pisanje!
 common#:#msg_no_search_result#:#Noben vnos ni bil najden
 common#:#msg_no_search_string#:#Vnesite iskalni pojem
@@ -4825,6 +4832,7 @@ common#:#not_available#:#Ni na voljo
 common#:#not_implemented_yet#:#V razvoju
 common#:#not_installed#:#Ni nameščeno
 common#:#not_logged_in#:#Niste prijavljeni
+common#:#not_ok#:#Not OK###16 12 2025 new variable
 common#:#note#:#Opomba
 common#:#notes#:#Opombe
 common#:#notes_and_comments#:#Opombe in komentarji
@@ -5522,6 +5530,7 @@ common#:#select#:#Izberi
 common#:#select_all#:#Izberi vse
 common#:#select_at_least_one_object#:#Izberite vsaj en objekt.
 common#:#select_file#:#Izberi datoteko
+common#:#select_file_from_computer#:#Select File###16 12 2025 new variable
 common#:#select_files_from_computer#:#Izberi datoteke
 common#:#select_max_one_item#:#Izberite samo en objekt.
 common#:#select_object_to_link#:#Izberite objekt, ki ga želite povezati.
@@ -7367,6 +7376,7 @@ copg#:#copg_page_element_not_found#:#Page element not found.###19 08 2022 new va
 copg#:#copg_page_type_stys#:#Layout Page
 copg#:#copg_par_format_selection#:#Paragraph Format Selection###17 01 2024 new variable
 copg#:#copg_pc_mob_does_not_exist#:#This media object does not exist.###28 11 2023 new variable
+copg#:#copg_plugin#:#Plugin###23 09 2025 new variable
 copg#:#copg_plugin_not_avail#:#Plugin %s not available.###10 12 2024 new variable
 copg#:#copg_questions_not_supported_here#:#Vprašanja v tem kontekstu niso podprta.
 copg#:#copg_reload_page#:#Reload Page###19 08 2022 new variable
@@ -8540,7 +8550,6 @@ dcl#:#dcl_change_notification_dcl_new_record#:#Naslednji vnos je bil ustvarjen
 dcl#:#dcl_change_notification_dcl_update_record#:#Naslednji vnos je bil posodobljen
 dcl#:#dcl_change_notification_link#:#Pojdi na zbirko podatkov
 dcl#:#dcl_change_notification_subject#:#Zbirka podatkov "%s" je bila urejena.
-dcl#:#dcl_change_why_you_receive_this_email#:#To sporočilo ste prejeli, ker ste aktivirali obveščanje za zgoraj navedeno zbirko podatkov.
 dcl#:#dcl_changed_by#:#Zadnjič spremenil
 dcl#:#dcl_checked#:#Izbrano
 dcl#:#dcl_comments#:#Komentarji
@@ -8620,7 +8629,6 @@ dcl#:#dcl_formula#:#Formula
 dcl#:#dcl_formula_desc#:#Podobno kot pri računskih tabelah lahko s pomočjo formule združite ali izračunate več vnosov.
 dcl#:#dcl_formula_detail_desc#:#Vnosi v tem polju se generirajo samodejno. Tukaj ne morete izvesti vnosa.
 dcl#:#dcl_height#:#Višina
-dcl#:#dcl_hello#:#Pozdravljeni
 dcl#:#dcl_id#:#ID
 dcl#:#dcl_id_description#:#Notranja ID.
 dcl#:#dcl_ilias_reference#:#Objekt v magazinu
@@ -8678,7 +8686,6 @@ dcl#:#dcl_new#:#Ustvari novo zbirko podatkov
 dcl#:#dcl_new_field#:#Novo polje
 dcl#:#dcl_new_table#:#Nova tabela
 dcl#:#dcl_next_record#:#Naslednji vnos
-dcl#:#dcl_no_content_warning#:#Pozor, zbirka podatkov je že na spletu, nima pa še vsebine!
 dcl#:#dcl_no_entry#:#No entry
 dcl#:#dcl_no_export_async_config#:#No SOAP Configuration for asyncronous exports available.###20 05 2025 new variable
 dcl#:#dcl_no_export_data_available#:#Ni razpoložljivih podatkov ali polj za izvoz.
@@ -8686,6 +8693,8 @@ dcl#:#dcl_no_fields_yet#:#Za to tabelo še niso bila ustvarjena polja, zato ne m
 dcl#:#dcl_no_read_access_on_any_standard_view#:#Nimate bralnega dostopa do nobenega od privzetih pogledov tabele.
 dcl#:#dcl_no_search_results_found_for#:#Najden ni bil noben modul z:
 dcl#:#dcl_no_such_reference#:#Naslednja vrednost ni na voljo v referenčni tabeli:
+dcl#:#dcl_no_table_found#:#No visible table found!###16 12 2025 new variable
+dcl#:#dcl_no_tableview_found#:#No visible tableview found!###08 07 2025 new variable
 dcl#:#dcl_not_checked#:#Ni izbrano
 dcl#:#dcl_not_supported_in_import#:#Ta tip polja ni podprt za uvoz.
 dcl#:#dcl_notification_activate_dcl#:#Aktiviraj obveščanje
@@ -8693,11 +8702,12 @@ dcl#:#dcl_notification_activated#:#Obveščanje je aktivirano
 dcl#:#dcl_notification_deactivate_dcl#:#Onemogoči obveščanje
 dcl#:#dcl_notification_deactivated#:#Obveščanje je onemogočeno
 dcl#:#dcl_notification_info#:#Aktivira individualno funkcijo obveščanja za uporabnike.
-dcl#:#dcl_notimage_exception#:#Datoteka mora biti slika.
 dcl#:#dcl_noturl_exception#:#Vnesite povezavo (začenši s http:// ali www.) ali e-poštni naslov.
 dcl#:#dcl_number#:#Cela števila
 dcl#:#dcl_number_desc#:#Vnosno polje za cela števila (maksimalno 9 števk). Ulomki in decimalna števila niso dovoljeni.
 dcl#:#dcl_online_info#:#Samo če je zbirka podatkov na spletu, jo uporabniki lahko vidijo in uporabljajo.
+dcl#:#dcl_open_detail_view#:#Open detail view###26 08 2025 new variable
+dcl#:#dcl_open_url#:#Open link###26 08 2025 new variable
 dcl#:#dcl_order#:#Razvrstitev
 dcl#:#dcl_origin_not_found#:#Origin field was not found!###10 12 2024 new variable
 dcl#:#dcl_own_entries#:#Samo lastni vnosi
@@ -8752,8 +8762,6 @@ dcl#:#dcl_supported_filetypes_desc#:#Tukaj lahko vnesete končnice datotek, loč
 dcl#:#dcl_switch_table#:#Switch Table###30 04 2024 new variable
 dcl#:#dcl_switch_view#:#Change View###30 04 2024 new variable
 dcl#:#dcl_table#:#Tabela
-dcl#:#dcl_table_create#:#Ustvari tabelo
-dcl#:#dcl_table_edit#:#Shrani
 dcl#:#dcl_table_id#:#ID tabele
 dcl#:#dcl_table_info#:#V nadaljevanju določite, kaj lahko v tej tabeli delajo uporabniki, ki imajo v zbirki podatkov pravico "Vnašanje".
 dcl#:#dcl_table_info_title#:#Informacije
@@ -8813,6 +8821,8 @@ dcl#:#dcl_wrong_regex#:#Vneseno besedilo se ne ujema s specifikacijo tega polja 
 dcl#:#dcl_xls_async_export#:#as XLSX (asynchronous)###20 05 2025 new variable
 dcl#:#fieldtitle_allow_chars#:#Nedovoljeni znaki: %s
 dcl#:#fileupload_not_migrated#:#File has not yet been migration and cannot be displayed. Please contact your System-Administrator.###30 04 2024 new variable
+dcl#:#table_not_found#:#Table not found!###16 12 2025 new variable
+dcl#:#tableview_not_found#:#Tableview not found!###16 12 2025 new variable
 didactic#:#activate_exclusive_template#:#Privzeto sivo
 didactic#:#activate_exclusive_template_info#:#Privzeta predloga bo siva povsod, kjer je ta didaktična predloga aktivirana.
 didactic#:#activate_local_didactic_template#:#Področje veljave
@@ -9158,8 +9168,10 @@ etal#:#etal_date_series_edit#:#Date of Talk Series###31 03 2023 new variable
 etal#:#etal_delete_confirmation_msg#:#Are you sure that you want to delete the following talk?###30 04 2024 new variable
 etal#:#etal_edit#:#General###31 03 2023 new variable
 etal#:#etal_invalid_user#:#This user either does not exist or can't be invited.###31 03 2023 new variable
+etal#:#etal_location#:#Location###04 11 2025 new variable
 etal#:#etal_new#:#New Talk###31 03 2023 new variable
 etal#:#etal_open#:#Open Employee Talk###31 03 2023 new variable
+etal#:#etal_recurrence#:#Recurrence###04 11 2025 new variable
 etal#:#etal_status_all#:#All###31 03 2023 new variable
 etal#:#etal_status_completed#:#Completed###31 03 2023 new variable
 etal#:#etal_status_pending#:#Pending###31 03 2023 new variable
@@ -9175,6 +9187,7 @@ etal#:#notification_talks_subject#:#Invitation: %s###31 03 2023 new variable
 etal#:#notification_talks_subject_update#:#Update: %s###31 03 2023 new variable
 etal#:#notification_talks_updated#:#The following talk appointments have been changed.###31 03 2023 new variable
 etal#:#pending_talks_warning#:#The following pending talk appointments will be replaced:###28 11 2023 new variable
+etal#:#tala_no_content_without_admin_info#:#The Administrator role is required for access to Talk Templates.###08 07 2025 new variable
 etal#:#talk_serial#:#Talk Serial###31 03 2023 new variable
 etal#:#tals_add#:#Add Talks###31 03 2023 new variable
 etal#:#tals_new#:#New Talks###31 03 2023 new variable
@@ -10934,6 +10947,7 @@ lso#:#lso_player_abstract#:#Na uvod
 lso#:#lso_player_extro#:#Na zaključno stran
 lso#:#lso_player_finish#:#Zaključi
 lso#:#lso_player_next#:#Naprej
+lso#:#lso_player_noitems#:#There are no available items in this Learning Sequence.###08 07 2025 new variable
 lso#:#lso_player_previous#:#Nazaj
 lso#:#lso_player_resume#:#Nadaljuj z učnim zaporedjem
 lso#:#lso_player_review#:#Predelaj učno zaporedje
@@ -10944,7 +10958,6 @@ lso#:#lso_print_list#:#Ustvari seznam
 lso#:#lso_read#:#Bralni dostop do učnega zaporedja
 lso#:#lso_search_users#:#Išči uporabnika
 lso#:#lso_settings_availability#:#Razpoložljivost
-lso#:#lso_settings_availability_error#:#The end date can not be earlier than the start date###30 04 2024 new variable
 lso#:#lso_settings_extro#:#Uredi zaključno stran
 lso#:#lso_settings_intro#:#Uredi uvodno stran
 lso#:#lso_settings_old_extro#:#View Old Exit Page###31 03 2023 new variable
@@ -11040,6 +11053,8 @@ lti#:#highscore_top_table#:#Top Ranking
 lti#:#highscore_top_table_description#:#Participants are presented with a table containing the top rankings.
 lti#:#highscore_wtime#:#Duration
 lti#:#highscore_wtime_description#:#A column containing the duration will be included in the ranking.
+lti#:#launch_custom_params#:#Custom launch parameters###27 11 2025 new variable
+lti#:#launch_custom_params#:#Custom launch parameters###27 11 2025 new variable
 lti#:#launch_method#:#Options for Launch
 lti#:#launch_method_embedded#:#Embedded Content
 lti#:#launch_method_embedded_info#:#The content is opened within the ILIAS context. It is presented as embedded content within the content tab.
@@ -11197,6 +11212,7 @@ lti#:#lti_object_consumer#:#Potrošniki LTI
 lti#:#lti_object_release_settings_form#:#Uredi odobritve LTI
 lti#:#lti_provider#:#Odobritve LTI
 lti#:#lti_provider_not_avail_msg#:#LTI Provider is set to 'Not Available'
+lti#:#lti_provider_not_set_msg#:#Configuration of LTI Provider / tool is not completely finished.###08 07 2025 new variable
 lti#:#lti_providing_tab#:#ILIAS as LTI Provider
 lti#:#lti_released_objects#:#Odobritve objektov
 lti#:#lti_select_provider#:#Select Provider
@@ -13122,6 +13138,7 @@ prg#:#auto_membership_src_type#:#Type
 prg#:#auto_membership_title#:#Sources for Membership Automation
 prg#:#auto_memberships#:#Membership Automation
 prg#:#category#:#Category RefId
+prg#:#cert_relevance#:#Certificate###08 07 2025 new variable
 prg#:#completion_date#:#Completion Date
 prg#:#confirm_to_remove_selected_assignments#:#Do you really want to remove the user assignment(s)?###19 08 2022 new variable
 prg#:#cont_ed_insert_prgactionnote#:#Insert Study Programme Action Note###30 04 2024 new variable
@@ -13692,6 +13709,7 @@ pwsp#:#pwsp_enable_personal_resources#:#Enable personal resources
 pwsp#:#pwsp_enable_wsp_blogs#:#Enable Blogs
 pwsp#:#pwsp_enable_wsp_files#:#Enable Files
 pwsp#:#pwsp_enable_wsp_links#:#Enable Links
+pwsp#:#pwsp_type_cannot_be_copied#:#Objects of type '%s' cannot be copied.###23 09 2025 new variable
 qpl#:#qpl_filter_commented_exclude#:#Questions without comments###30 04 2024 new variable
 qpl#:#qpl_filter_commented_only#:#Questions with comments###30 04 2024 new variable
 qpl#:#qpl_page_type_qfbg#:#General Feedback
@@ -15834,6 +15852,7 @@ style#:#sty_media_queries#:#Media Queries
 style#:#sty_media_query_info#:#A separate CSS block is added for each media query after the default (no special media query) block.
 style#:#sty_min_height#:#Minimum Height
 style#:#sty_move_lm_styles#:#Change Style of Learning Modules
+style#:#sty_move_obj_styles#:#Change Style of Objects###23 09 2025 new variable
 style#:#sty_move_style#:#Change Style
 style#:#sty_move_user_styles#:#Change Style of Users
 style#:#sty_msg_characteristic_must_only_include#:#The title of style classes must start with a letter, does not use spaces and only include the following characters
@@ -15841,6 +15860,7 @@ style#:#sty_msg_color_must_only_include#:#The color name may only include the fo
 style#:#sty_msg_input_must_be_numeric#:#Input must be numeric.
 style#:#sty_name#:#Name
 style#:#sty_nr_learning_modules#:#Number of Learning Modules
+style#:#sty_nr_objects#:#Number of Objects###23 09 2025 new variable
 style#:#sty_odd_col_class#:#Odd Columns
 style#:#sty_odd_row_class#:#Odd Rows
 style#:#sty_ol#:#Ordered List###30 04 2024 new variable
@@ -17377,6 +17397,7 @@ validation#:#not_min_length#:#Your input has a length of %d and falls below the 
 validation#:#not_numeric#:#'%s' is not numeric.
 validation#:#not_numeric_empty_string#:#Your input is not numeric.
 validation#:#numeric_only#:#Please insert a whole number.###30 04 2024 new variable
+validation#:#required#:#This input is required.###08 07 2025 new variable
 validation#:#tag_required#:#Please insert at least one tag.###30 04 2024 new variable
 violation#:#not_a_string#:#Given value is not a String###31 03 2023 new variable
 webr#:#invalid_links_tbl#:#Invalid Links

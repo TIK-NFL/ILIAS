@@ -34,9 +34,6 @@ class ilDclFieldListGUI
     protected ilDclTableListGUI $parent_obj;
     protected int $obj_id;
 
-    /**
-     * Constructor
-     */
     public function __construct(ilDclTableListGUI $a_parent_obj)
     {
         global $DIC;
@@ -193,7 +190,8 @@ class ilDclFieldListGUI
         $switcher->addTableSwitcherToToolbar(
             $this->parent_obj->getDataCollectionObject()->getTables(),
             self::class,
-            'listFields'
+            'listFields',
+            $this->getTableId()
         );
 
         //table gui

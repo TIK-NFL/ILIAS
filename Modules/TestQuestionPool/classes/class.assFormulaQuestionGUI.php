@@ -168,8 +168,8 @@ class assFormulaQuestionGUI extends assQuestionGUI
                     $this->object->addResultUnits($resObj, $_POST["units_{$result}"] ?? []);
                 }
             }
-            if ($checked == false) {
-                $this->editQuestion();
+            if ($checked === false) {
+                $this->editQuestion(false, '', true);
                 return 1;
             } else {
                 $this->saveTaxonomyAssignments();
@@ -181,27 +181,20 @@ class assFormulaQuestionGUI extends assQuestionGUI
         }
     }
 
-    public function resetSavedPreviewSession(): void
-    {
-        global $DIC;
-        $ilUser = $DIC['ilUser'];
-        $user_id = $ilUser->getId();
-        $question_id = $this->object->getId();
-        $ilAssQuestionPreviewSession = new ilAssQuestionPreviewSession($user_id, $question_id);
-        $ilAssQuestionPreviewSession->setParticipantsSolution([]);
-    }
-
     public function isSaveCommand(): bool
     {
         return in_array($this->ctrl->getCmd(), array('save', 'saveEdit', 'saveReturn'));
     }
 
-    /**
-     * @param bool $checkonly
-     */
-    public function editQuestion($checkonly = false, string $suggest_range_for_result = ''): bool
-    {
+    public function editQuestion(
+        bool $checkonly = false,
+        string $suggest_range_for_result = '',
+        bool $skip_write_post_data = false
+    ): bool {
         $save = $this->isSaveCommand();
+        if ($save && !$skip_write_post_data) {
+            $this->writePostData(true);
+        }
 
         $this->getQuestionTemplate();
 
@@ -594,32 +587,33 @@ class assFormulaQuestionGUI extends assQuestionGUI
             $errors = !$form->checkInput();
 
             $custom_errors = false;
-            if (count($variables)) {
-                foreach ($variables as $variable) {
-                    /**
-                     * @var $variable assFormulaQuestionVariable
-                     */
-                    $min_range = $form->getItemByPostVar('range_min_' . $variable->getVariable());
-                    $max_range = $form->getItemByPostVar('range_max_' . $variable->getVariable());
-                    if ($min_range->getValue() > $max_range->getValue()) {
-                        $min_range->setAlert($this->lng->txt('err_range'));
-                        $max_range->setAlert($this->lng->txt('err_range'));
-                        $custom_errors = true;
-                    }
-                    $intPrecision = $form->getItemByPostVar('intprecision_' . $variable->getVariable());
-                    $decimal_spots = $form->getItemByPostVar('precision_' . $variable->getVariable());
-                    if ($decimal_spots->getValue() == 0
-                        && $min_range->getValue() !== null
-                        && $max_range->getValue() !== null
-                        && !$variable->isIntPrecisionValid(
-                            $intPrecision->getValue(),
-                            $min_range->getValue(),
-                            $max_range->getValue()
-                        )
-                    ) {
-                        $intPrecision->setAlert($this->lng->txt('err_division'));
-                        $custom_errors = true;
-                    }
+            /** @var $variable assFormulaQuestionVariable */
+            foreach ($variables as $variable) {
+                $min_range = $form->getItemByPostVar('range_min_' . $variable->getVariable());
+                $max_range = $form->getItemByPostVar('range_max_' . $variable->getVariable());
+                $min_range_value = $min_range?->getValue();
+                $max_range_value = $max_range?->getValue();
+
+                if ($min_range_value === null || $max_range_value === null) {
+                    $custom_errors = true;
+                    continue;
+                }
+
+                if ($min_range_value > $max_range_value) {
+                    $min_range?->setAlert($this->lng->txt('err_range'));
+                    $max_range?->setAlert($this->lng->txt('err_range'));
+                    $custom_errors = true;
+                }
+
+                $decimal_spots = $form->getItemByPostVar('precision_' . $variable->getVariable());
+                $int_precision = $form->getItemByPostVar('intprecision_' . $variable->getVariable());
+                if (
+                    $decimal_spots instanceof ilFormPropertyGUI
+                    && $decimal_spots->getValue() === 0.0
+                    && !$variable->isIntPrecisionValid($int_precision?->getValue(), $min_range_value, $max_range_value)
+                ) {
+                    $int_precision?->setAlert($this->lng->txt('err_division'));
+                    $custom_errors = true;
                 }
             }
 

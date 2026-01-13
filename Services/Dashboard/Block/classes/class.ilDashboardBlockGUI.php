@@ -334,7 +334,6 @@ abstract class ilDashboardBlockGUI extends ilBlockGUI implements ilDesktopItemHa
             }
             $grouped_items[$title][] = $item;
         }
-        ksort($grouped_items);
         $grouped_items = array_map($this->sortByTitle(...), $grouped_items);
         return $grouped_items;
     }
@@ -398,6 +397,7 @@ abstract class ilDashboardBlockGUI extends ilBlockGUI implements ilDesktopItemHa
             if ($this->viewSettings->isSelectedItemsViewActive()) {
                 $question = $this->lng->txt('dash_info_sure_remove_from_favs');
             } else {
+                $this->lng->loadLanguageModule('mmbr');
                 $question = $this->lng->txt('mmbr_info_delete_sure_unsubscribe');
             }
             $modal = $this->ui->factory()->modal()->roundtrip(
@@ -600,7 +600,7 @@ abstract class ilDashboardBlockGUI extends ilBlockGUI implements ilDesktopItemHa
     {
         usort(
             $data,
-            static fn(BlockDTO $left, BlockDTO $right): int => strcmp($left->getTitle(), $right->getTitle())
+            static fn(BlockDTO $left, BlockDTO $right): int => strcasecmp($left->getTitle(), $right->getTitle())
         );
         return $data;
     }

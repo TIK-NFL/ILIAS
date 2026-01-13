@@ -115,12 +115,23 @@ class ItemPresentationManager
     /**
      * Are we currently in ordering view and the items can be ordered?
      */
-    public function isActiveItemOrdering(): bool
+    public function isActiveItemOrdering(string $type): bool
     {
+        // see #43205
         if ($this->mode_manager->isActiveItemOrdering()) {
+            if ($type === "sess" && $this->container->getViewMode() === \ilContainer::VIEW_SESSIONS) {
+                return false;
+            }
             return true;
         }
         return false;
+    }
+
+    public function forceSessionOrderingByDate(): bool
+    {
+        // see #43205
+        return ($this->container->getViewMode() === \ilContainer::VIEW_SESSIONS ||
+            $this->container->getOrderType() !== \ilContainer::SORT_MANUAL);
     }
 
 
@@ -165,16 +176,21 @@ class ItemPresentationManager
             return;
         }
 
+        // get view
+        $view = $this->domain->content()->view($this->container);
         // get item set
         $ref_id = $this->container->getRefId();
         if ($this->filteredSubtree()) {
             $this->item_set = $this->domain->content()->itemSetTree($ref_id, $this->container_user_filter);
         } else {
-            $this->item_set = $this->domain->content()->itemSetFlat($ref_id, $this->container_user_filter);
+            $this->item_set = $this->domain->content()->itemSetFlat(
+                $ref_id,
+                $this->container_user_filter,
+                $this->forceSessionOrderingByDate(),
+                $view instanceof ObjectiveViewManager
+            );
         }
 
-        // get view
-        $view = $this->domain->content()->view($this->container);
         // get item block sequence generator
         $this->sequence_generator = $this->domain->content()->itemBlockSequenceGenerator(
             $this->container,
@@ -191,9 +207,11 @@ class ItemPresentationManager
         return $this->item_set->hasItems();
     }
 
-    public function getItemBlockSequence(): ItemBlockSequence
-    {
+    public function getItemBlockSequence(
+        array $omit_ref_ids = []
+    ): ItemBlockSequence {
         $this->init();
+        $this->sequence_generator->setOmitRefIds($omit_ref_ids);
         return $this->sequence_generator->getSequence();
     }
 

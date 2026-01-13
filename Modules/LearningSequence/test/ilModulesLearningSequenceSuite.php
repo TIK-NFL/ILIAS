@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is part of ILIAS, a powerful learning management system
  * published by ILIAS open source e-Learning e.V.
@@ -18,6 +16,8 @@ declare(strict_types=1);
  *
  *********************************************************************/
 
+declare(strict_types=1);
+
 use PHPUnit\Framework\TestSuite;
 
 class ilModulesLearningSequenceSuite extends TestSuite
@@ -27,8 +27,6 @@ class ilModulesLearningSequenceSuite extends TestSuite
         $suite = new ilModulesLearningSequenceSuite();
 
         // add each test class of the component
-        require_once("./Modules/LearningSequence/test/Activation/ilLearningSequenceActivationTest.php");
-        require_once("./Modules/LearningSequence/test/Activation/ilLearningSequenceActivationDBTest.php");
         require_once("./Modules/LearningSequence/test/LearnerProgress/ilLearnerProgressDBTest.php");
         require_once("./Modules/LearningSequence/test/LearnerProgress/ilLSLPTest.php");
         require_once("./Modules/LearningSequence/test/LearnerProgress/ilLSLPEventHandlerTest.php");
@@ -47,9 +45,8 @@ class ilModulesLearningSequenceSuite extends TestSuite
         require_once("./Modules/LearningSequence/test/LearnerProgress/LSLearnerItemTest.php");
         require_once("./Modules/LearningSequence/test/GlobalSettings/GlobalSettingsTest.php");
         require_once("./Modules/LearningSequence/test/LearnerProgress/ilLSLPEventHandlerTest.php");
+        require_once("./Modules/LearningSequence/test/Player/LSPlayerTest.php");
 
-        $suite->addTestSuite("ilLearningSequenceActivationTest");
-        $suite->addTestSuite("ilLearningSequenceActivationDBTest");
         $suite->addTestSuite("ilLearnerProgressDBTest");
         $suite->addTestSuite("ilLSLPTest");
         $suite->addTestSuite("ilLSLPEventHandlerTest");
@@ -68,6 +65,7 @@ class ilModulesLearningSequenceSuite extends TestSuite
         $suite->addTestSuite("LSLearnerItemTest");
         $suite->addTestSuite("GlobalSettingsTest");
         $suite->addTestSuite("ilLSLPEventHandlerTest");
+        $suite->addTestSuite("LSPlayerTest");
 
         return $suite;
     }

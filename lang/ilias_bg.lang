@@ -510,6 +510,7 @@ assessment#:#ass_create_export_file_with_results#:#Създаване на ек�
 assessment#:#ass_create_export_test_archive#:#Създаване на архивен файл на теста
 assessment#:#ass_create_export_test_results#:# Експортиране на резултатите от тестовете
 assessment#:#ass_create_question#:#Създаване на въпрос
+assessment#:#ass_file_upload_reuse_btn#:#Reuse Selected Files###16 12 2025 new variable
 assessment#:#ass_imap_hint#:#Намек, който да се показва като подсказка
 assessment#:#ass_imap_map_file_not_readable#:#Картата на качените изображения не може да бъде прочетена.
 assessment#:#ass_imap_no_map_found#:#Не можах да намеря никаква форма в качената карта с изображения.
@@ -1116,7 +1117,10 @@ assessment#:#redirect_after_finishing_rule#:#Пренасочване
 assessment#:#redirect_after_finishing_tst#:# Пренасочване след приключване на теста
 assessment#:#redirect_after_finishing_tst_desc#:#След приключване на теста всеки участник автоматично се пренасочва към определена уебстраница. Това е валидно само ако участниците нямат достъп до резултатите от тестовете си.
 assessment#:#redirect_always#:#always към определена уебстраница
+assessment#:#redirect_always_to_logout#:#Always to the logout screen###04 11 2025 new variable
 assessment#:#redirect_in_kiosk_mode#:# Пренасочване само в режим на киоск
+assessment#:#redirect_url_invalid#:#Please enter a valid url of the target webpage.###04 11 2025 new variable
+assessment#:#redirect_url_required_for_rule#:#The url of the webpage is required when "%s" is selected.###04 11 2025 new variable
 assessment#:#redirection_url#:#Цел на пренасочване
 assessment#:#region#:#Регион###22 06 2022 new variable
 assessment#:#remove_as_participant#:# Премахване като фиксиран участник
@@ -1495,7 +1499,6 @@ assessment#:#tst_instant_feedback_answer_specific#:#Показване на об
 assessment#:#tst_instant_feedback_answer_specific_desc#:#Ако е избрана обратна връзка за конкретен отговор, ще се покаже предварително зададената обратна връзка в зависимост от отговорите на участника (ако това се поддържа от типа въпрос).
 assessment#:#tst_instant_feedback_contents#:#Включено съдържание
 assessment#:#tst_instant_feedback_desc#:#Когато въпросите са конфигурирани с обратна връзка, тя се предоставя на участниците по време на преминаването на теста.
-assessment#:#tst_instant_feedback_forced#:#Засилване на незабавната обратна връзка
 assessment#:#tst_instant_feedback_results#:#Показване на резултатите (само точки)
 assessment#:#tst_instant_feedback_results_desc#:#Ако са избрани резултати (в точки), ще бъдат показани постигнатите точки.
 assessment#:#tst_instant_feedback_solution#:#Показване на решения
@@ -1659,7 +1662,6 @@ assessment#:#tst_postpone_on_desc#:#Въпросите, на които не е 
 assessment#:#tst_presentation_properties#:#Настройки на презентацията
 assessment#:#tst_presentation_settings_section#:#Представяне
 assessment#:#tst_previous_access_code_not_available#:#No previous code available!###30 04 2024 new variable
-assessment#:#tst_print#:#Поглед за печат на тестове и оценки
 assessment#:#tst_proceed#:#Продължете
 assessment#:#tst_processing_time#:#Макс. време за обработка
 assessment#:#tst_processing_time_desc#:#Максималното време за обработка започва от момента, в който потребителят започне теста, и приключва след изтичането на въведените часове, минути и секунди.
@@ -1839,6 +1841,7 @@ assessment#:#tst_setting_offer_hints_label#:#Специфични подсказ
 assessment#:#tst_settings_conflict_compulsory_and_lock#:#"Compulsory Questions" cannot be used together with "Answer Lock".###30 04 2024 new variable
 assessment#:#tst_settings_conflict_postpone_and_lock#:#"Unanswered questions will be enqueued" cannot be used together with "Lock Answers After Moving to Next Question".###30 04 2024 new variable
 assessment#:#tst_settings_conflict_shuffle_and_lock#:#"Shuffle Questions" cannot be used together with "Lock Answers After Moving to Next Question".###30 04 2024 new variable
+assessment#:#tst_settings_form_reload_needed#:#The form needed to be reloaded to avoid data loss as the available settings have changed due to the removal of all results of participants.###23 09 2025 new variable
 assessment#:#tst_settings_header_additional#:#Additional Features###30 04 2024 new variable
 assessment#:#tst_settings_header_execution#:#Администриране на теста: Достъп до
 assessment#:#tst_settings_header_intro#:#Информация преди началото на теста
@@ -1986,6 +1989,7 @@ assessment#:#unlock#:#Отключване###22 06 2022 new variable
 assessment#:#uploaded_material#:#Зареден материал
 assessment#:#use_previous_solution#:#Използване на предишно решение
 assessment#:#use_previous_solution_advice#:#Показаното решение на въпроса е даденото от вас преди това. Трябва да потвърдите приемането на решението, ако искате да го използвате без промяна.
+assessment#:#use_previous_solution_advice_file_upload#:#The shown files for the question are your previously uploaded ones. Select the files you want to reuse and click the button to confirm.###16 12 2025 new variable
 assessment#:#user_has_finished_a_test#:#Участникът е завършил тест.
 assessment#:#user_not_invited#:#Не трябва да се явявате на този тест.
 assessment#:#user_wrong_clientip#:#Нямате правилния IP адрес, за да получите достъп до този тест.
@@ -2471,6 +2475,7 @@ blog#:#blog_whole_blog#:#Whole Blog###31 03 2023 new variable
 book#:#X_reservations_of#:#%s reservations of
 book#:#book_add#:#Прибавяне на резервационен басейн
 book#:#book_add_object#:#Добавяне на обект
+book#:#book_add_participant#:#Add Participant###16 12 2025 new variable
 book#:#book_add_schedule#:#Прибавяне на график
 book#:#book_additional_info_file#:#Допълнително описание
 book#:#book_all#:#Покажи всичко
@@ -2489,7 +2494,6 @@ book#:#book_booking#:#Booking###30 04 2024 new variable
 book#:#book_booking_information#:#Информация
 book#:#book_booking_objects#:#Booking Objects###31 03 2023 new variable
 book#:#book_booking_reminders#:#Предстоящи резервации
-book#:#book_bookings_per_user#:#Bookings per User###31 03 2023 new variable
 book#:#book_bulk_confirmation#:#Please check that all values are listed correctly.###30 04 2024 new variable
 book#:#book_bulk_creation#:#Bulk Creation###30 04 2024 new variable
 book#:#book_bulk_data#:#Item Data###30 04 2024 new variable
@@ -2533,6 +2537,7 @@ book#:#book_new#:#Нова резервация
 book#:#book_no_bookings_for_you#:#Няма извършени резервации за вас.
 book#:#book_no_objects#:#No Assignment
 book#:#book_no_of_objects#:#No. of Objects
+book#:#book_no_pools_selected#:#No booking pools have been assigned to this course. Booking pools can be assigned via the course's 'Resources' tab.###23 09 2025 new variable
 book#:#book_no_preferences_for_you#:#Няма запазени предпочитания за вас.
 book#:#book_no_recurrence#:#Book only this date###30 04 2024 new variable
 book#:#book_not#:#No
@@ -2617,6 +2622,7 @@ book#:#book_show_message#:#Show Message###30 04 2024 new variable
 book#:#book_title_description_nr#:#Title; Description; Number of Units###30 04 2024 new variable
 book#:#book_title_description_nr_info#:#Enter title, description and number of units separated by semicolon or TAB character (if importing from spreadsheet software). Use one line per item.###30 04 2024 new variable
 book#:#book_too_many_preferences#:#Избрали сте твърде много предпочитания. Предпочитанията не са запазени.
+book#:#book_total_individual_bookings_limit#:#Limit the number of bookings that can be carried out by/for individual participants in total, across all available items. Each bookable item can still only be booked once per participant.###16 12 2025 new variable
 book#:#book_type_warning#:#Понастоящем няма налични обекти за резервации. За да използвате пула за резервации, трябва да създадете обекти за резервации.
 book#:#book_week#:#Week###30 04 2024 new variable
 book#:#book_your_bookings#:#Вашите резервации
@@ -4746,6 +4752,7 @@ common#:#msg_no_perm_perm#:#Нямате разрешени права да ре
 common#:#msg_no_perm_read#:#Нямате разрешение за достъп до този елемент.
 common#:#msg_no_perm_read_item#:#Нямате разрешение за достъп до елемент '%s'.
 common#:#msg_no_perm_read_lm#:#Нямате разрешени права да четете от този модул за обучение.
+common#:#msg_no_perm_view_roles_of_user#:#You have no permission to view the role assignment of this user###26 08 2025 new variable
 common#:#msg_no_perm_write#:#Нямате разрешени права да записвате
 common#:#msg_no_search_result#:#Няма намерени записи
 common#:#msg_no_search_string#:#Моля, въведете вашата заявка
@@ -4827,6 +4834,7 @@ common#:#not_available#:#Не е налично
 common#:#not_implemented_yet#:#Не е реализирано все още
 common#:#not_installed#:#Не е инсталиран
 common#:#not_logged_in#:#Не сте регистрирани
+common#:#not_ok#:#Not OK###16 12 2025 new variable
 common#:#note#:#Note
 common#:#notes#:#Notes
 common#:#notes_and_comments#:#Нотки и коментари
@@ -5524,6 +5532,7 @@ common#:#select#:#Избор
 common#:#select_all#:#Избиране на всички
 common#:#select_at_least_one_object#:#Изберете поне един обект.
 common#:#select_file#:#Избор на файл
+common#:#select_file_from_computer#:#Select File###16 12 2025 new variable
 common#:#select_files_from_computer#:#Изберете файловете от вашия компютър
 common#:#select_max_one_item#:#Моля, изберете само един елемент
 common#:#select_object_to_link#:#Моля, изберете желания от вас обект за свързване с линк
@@ -7369,6 +7378,7 @@ copg#:#copg_page_element_not_found#:#Елементът на страницат�
 copg#:#copg_page_type_stys#:#Страница за оформление
 copg#:#copg_par_format_selection#:#Paragraph Format Selection###17 01 2024 new variable
 copg#:#copg_pc_mob_does_not_exist#:#This media object does not exist.###28 11 2023 new variable
+copg#:#copg_plugin#:#Plugin###23 09 2025 new variable
 copg#:#copg_plugin_not_avail#:#Plugin %s not available.###10 12 2024 new variable
 copg#:#copg_questions_not_supported_here#:#Въпросите не се поддържат в този контекст.
 copg#:#copg_reload_page#:#Презареждане на страницата###22 06 2022 new variable
@@ -8542,7 +8552,6 @@ dcl#:#dcl_change_notification_dcl_new_record#:#създаден е следни�
 dcl#:#dcl_change_notification_dcl_update_record#:#актуализиран е следният запис
 dcl#:#dcl_change_notification_link#:#URL
 dcl#:#dcl_change_notification_subject#:#Колекцията от данни "%s" е променена
-dcl#:#dcl_change_why_you_receive_this_email#:#Получавате това съобщение, защото сте активирали известието за този сбор от данни.
 dcl#:#dcl_changed_by#:#Променено от
 dcl#:#dcl_checked#:#Проверено.
 dcl#:#dcl_comments#:#Коментари
@@ -8622,7 +8631,6 @@ dcl#:#dcl_formula#:#Формула
 dcl#:#dcl_formula_desc#:#Ähnlich wie bei der Tabellenkalkulation können per Formel Einträge verbunden oder berechnet werden.
 dcl#:#dcl_formula_detail_desc#:#Записите се генерират автоматично, не можете да ги редактирате.
 dcl#:#dcl_height#:#Height
-dcl#:#dcl_hello#:#Dear
 dcl#:#dcl_id#:#ID
 dcl#:#dcl_id_description#:#Вътрешният идентификатор.
 dcl#:#dcl_ilias_reference#:#Отправка към модул на ILIAS
@@ -8680,7 +8688,6 @@ dcl#:#dcl_new#:#Създаване на нова колекция от данн�
 dcl#:#dcl_new_field#:#Ново поле
 dcl#:#dcl_new_table#:#Нова таблица
 dcl#:#dcl_next_record#:#Следващ запис
-dcl#:#dcl_no_content_warning#:#Внимание, събирането на данни е онлайн, но все още няма съдържание!
 dcl#:#dcl_no_entry#:#Няма вписване
 dcl#:#dcl_no_export_async_config#:#No SOAP Configuration for asyncronous exports available.###20 05 2025 new variable
 dcl#:#dcl_no_export_data_available#:#Няма налични данни или полета за експортиране.
@@ -8688,6 +8695,8 @@ dcl#:#dcl_no_fields_yet#:#Няма дефинирани полета за таз
 dcl#:#dcl_no_read_access_on_any_standard_view#:#Нямате достъп за четене до нито един стандартен изглед на таблица.
 dcl#:#dcl_no_search_results_found_for#:#Няма намерени модули за
 dcl#:#dcl_no_such_reference#:#Следващата стойност не е налична в референтната таблица:
+dcl#:#dcl_no_table_found#:#No visible table found!###16 12 2025 new variable
+dcl#:#dcl_no_tableview_found#:#No visible tableview found!###08 07 2025 new variable
 dcl#:#dcl_not_checked#:#Не е проверено.
 dcl#:#dcl_not_supported_in_import#:#Този тип поле не се поддържа в импорта
 dcl#:#dcl_notification_activate_dcl#:#Активиране на известие за събиране на данни
@@ -8695,11 +8704,12 @@ dcl#:#dcl_notification_activated#:#Активирана нотификация
 dcl#:#dcl_notification_deactivate_dcl#:#Деактивиране на известие за събиране на данни
 dcl#:#dcl_notification_deactivated#:#Деактивиране на нотификацията
 dcl#:#dcl_notification_info#:#Всеки потребител решава за известието
-dcl#:#dcl_notimage_exception#:#Файлът трябва да е снимка.
 dcl#:#dcl_noturl_exception#:# Трябва да въведете връзка (започваща с http://)
 dcl#:#dcl_number#:#Integer
 dcl#:#dcl_number_desc#:#Поле за целочислени стойности (максимум 9 цифри). Не се използват десетични дроби и дробни числа.
 dcl#:#dcl_online_info#:# Само ако събирането на данни е онлайн, потребителите могат да използват събирането на данни.
+dcl#:#dcl_open_detail_view#:#Open detail view###26 08 2025 new variable
+dcl#:#dcl_open_url#:#Open link###26 08 2025 new variable
 dcl#:#dcl_order#:#Order
 dcl#:#dcl_origin_not_found#:#Origin field was not found!###10 12 2024 new variable
 dcl#:#dcl_own_entries#:#Само собствени записи
@@ -8754,8 +8764,6 @@ dcl#:#dcl_supported_filetypes_desc#:#Можете да зададете разр
 dcl#:#dcl_switch_table#:#Switch Table###30 04 2024 new variable
 dcl#:#dcl_switch_view#:#Change View###30 04 2024 new variable
 dcl#:#dcl_table#:#Таблица
-dcl#:#dcl_table_create#:#Създаване на таблица
-dcl#:#dcl_table_edit#:#Актуализиране на таблица
 dcl#:#dcl_table_id#:#Идентификатор на таблица
 dcl#:#dcl_table_info#:#Потребителите с разрешение "редактиране на настройки" (вж. раздела "Разрешение") винаги имат разрешение да добавят/редактират/изтриват записи. Потребителите с разрешение "редактиране на запис" (вж. раздела "Разрешения") имат само разрешения в съответствие с настройките, посочени във формуляра по-долу.
 dcl#:#dcl_table_info_title#:#Info
@@ -8815,6 +8823,8 @@ dcl#:#dcl_wrong_regex#:#Въведеният от вас текст не съо�
 dcl#:#dcl_xls_async_export#:#as XLSX (asynchronous)###20 05 2025 new variable
 dcl#:#fieldtitle_allow_chars#:#Допустими знаци: %s
 dcl#:#fileupload_not_migrated#:#File has not yet been migration and cannot be displayed. Please contact your System-Administrator.###30 04 2024 new variable
+dcl#:#table_not_found#:#Table not found!###16 12 2025 new variable
+dcl#:#tableview_not_found#:#Tableview not found!###16 12 2025 new variable
 didactic#:#activate_exclusive_template#:#Grey Out Default
 didactic#:#activate_exclusive_template_info#:#Стандартният шаблон няма да бъде достъпен навсякъде, където този шаблон е активен.
 didactic#:#activate_local_didactic_template#:#Scope of Application
@@ -9160,8 +9170,10 @@ etal#:#etal_date_series_edit#:#Date of Talk Series###31 03 2023 new variable
 etal#:#etal_delete_confirmation_msg#:#Are you sure that you want to delete the following talk?###30 04 2024 new variable
 etal#:#etal_edit#:#General###31 03 2023 new variable
 etal#:#etal_invalid_user#:#This user either does not exist or can't be invited.###31 03 2023 new variable
+etal#:#etal_location#:#Location###04 11 2025 new variable
 etal#:#etal_new#:#New Talk###31 03 2023 new variable
 etal#:#etal_open#:#Open Employee Talk###31 03 2023 new variable
+etal#:#etal_recurrence#:#Recurrence###04 11 2025 new variable
 etal#:#etal_status_all#:#All###31 03 2023 new variable
 etal#:#etal_status_completed#:#Completed###31 03 2023 new variable
 etal#:#etal_status_pending#:#Pending###31 03 2023 new variable
@@ -9177,6 +9189,7 @@ etal#:#notification_talks_subject#:#Invitation: %s###31 03 2023 new variable
 etal#:#notification_talks_subject_update#:#Update: %s###31 03 2023 new variable
 etal#:#notification_talks_updated#:#The following talk appointments have been changed.###31 03 2023 new variable
 etal#:#pending_talks_warning#:#The following pending talk appointments will be replaced:###28 11 2023 new variable
+etal#:#tala_no_content_without_admin_info#:#The Administrator role is required for access to Talk Templates.###08 07 2025 new variable
 etal#:#talk_serial#:#Talk Serial###31 03 2023 new variable
 etal#:#tals_add#:#Add Talks###31 03 2023 new variable
 etal#:#tals_new#:#New Talks###31 03 2023 new variable
@@ -10936,6 +10949,7 @@ lso#:#lso_player_abstract#:#Показване на абстрактна инф�
 lso#:#lso_player_extro#:#Показване на финалната страница
 lso#:#lso_player_finish#:#Финиш
 lso#:#lso_player_next#:#Next
+lso#:#lso_player_noitems#:#There are no available items in this Learning Sequence.###08 07 2025 new variable
 lso#:#lso_player_previous#:#Previous
 lso#:#lso_player_resume#:#Последователност на обучението за възобновяване
 lso#:#lso_player_review#:#Преглед на учебната последователност
@@ -10946,7 +10960,6 @@ lso#:#lso_print_list#:#Списък за печат
 lso#:#lso_read#:#Потребителят има достъп за четене на учебната последователност
 lso#:#lso_search_users#:#Потърсете потребител
 lso#:#lso_settings_availability#:#availability
-lso#:#lso_settings_availability_error#:#The end date can not be earlier than the start date###30 04 2024 new variable
 lso#:#lso_settings_extro#:#Настройки на изходната страница
 lso#:#lso_settings_intro#:#Настройки на страницата
 lso#:#lso_settings_old_extro#:#View Old Exit Page###31 03 2023 new variable
@@ -11042,6 +11055,7 @@ lti#:#highscore_top_table#:#Висша класация
 lti#:#highscore_top_table_description#:#На участниците се представя таблица с най-добрите класации.###22 06 2022 new variable
 lti#:#highscore_wtime#:#Duration
 lti#:#highscore_wtime_description#:#Колона, съдържаща продължителността, ще бъде включена в класирането.
+lti#:#launch_custom_params#:#Custom launch parameters###27 11 2025 new variable
 lti#:#launch_method#:#Опции за стартиране
 lti#:#launch_method_embedded#:#Embedded Content
 lti#:#launch_method_embedded_info#:#Съдържанието се отваря в контекста на ILIAS. То се представя като вградено съдържание в раздела със съдържание.
@@ -11199,6 +11213,7 @@ lti#:#lti_object_consumer#:#Потребители на LTI
 lti#:#lti_object_release_settings_form#:#LTI Freigaben bearbeiten
 lti#:#lti_provider#:#LTI-Freigaben
 lti#:#lti_provider_not_avail_msg#:#Доставчикът на LTI е настроен на 'Not Available'
+lti#:#lti_provider_not_set_msg#:#Configuration of LTI Provider / tool is not completely finished.###08 07 2025 new variable
 lti#:#lti_providing_tab#:#ILIAS като доставчик на LTI
 lti#:#lti_released_objects#:#Objekt-Freigaben
 lti#:#lti_select_provider#:#Избор на доставчик
@@ -13124,6 +13139,7 @@ prg#:#auto_membership_src_type#:#Вид
 prg#:#auto_membership_title#:#Източници за автоматизация на членството
 prg#:#auto_memberships#:#Автоматизация на членството
 prg#:#category#:#Category RefId
+prg#:#cert_relevance#:#Certificate###08 07 2025 new variable
 prg#:#completion_date#:#Дата на завършване
 prg#:#confirm_to_remove_selected_assignments#:#Наистина ли искате да премахнете потребителското(ките) задание(я)?###22 06 2022 new variable
 prg#:#cont_ed_insert_prgactionnote#:#Insert Study Programme Action Note###30 04 2024 new variable
@@ -13694,6 +13710,7 @@ pwsp#:#pwsp_enable_personal_resources#:#Активиране на личните
 pwsp#:#pwsp_enable_wsp_blogs#:#Активиране на блогове
 pwsp#:#pwsp_enable_wsp_files#:#Активиране на файловете
 pwsp#:#pwsp_enable_wsp_links#:#Активиране на връзките
+pwsp#:#pwsp_type_cannot_be_copied#:#Objects of type '%s' cannot be copied.###23 09 2025 new variable
 qpl#:#qpl_filter_commented_exclude#:#Questions without comments###30 04 2024 new variable
 qpl#:#qpl_filter_commented_only#:#Questions with comments###30 04 2024 new variable
 qpl#:#qpl_page_type_qfbg#:#Обща обратна връзка
@@ -15836,6 +15853,7 @@ style#:#sty_media_queries#:#Запитвания за медии
 style#:#sty_media_query_info#:#За всяка медийна заявка се добавя отделен CSS блок след блока по подразбиране (без специална медийна заявка).
 style#:#sty_min_height#:#Минимална височина
 style#:#sty_move_lm_styles#:#Промяна на стила на модулите за обучение
+style#:#sty_move_obj_styles#:#Change Style of Objects###23 09 2025 new variable
 style#:#sty_move_style#:#Промяна на стила
 style#:#sty_move_user_styles#:#Промяна на стила на потребителите
 style#:#sty_msg_characteristic_must_only_include#:#Заглавието на класовете стилове може да включва само следните символи:
@@ -15843,6 +15861,7 @@ style#:#sty_msg_color_must_only_include#:#Името на цвета може д
 style#:#sty_msg_input_must_be_numeric#:#Входните данни трябва да са цифрови.
 style#:#sty_name#:#Име
 style#:#sty_nr_learning_modules#:#Брой учебни модули
+style#:#sty_nr_objects#:#Number of Objects###23 09 2025 new variable
 style#:#sty_odd_col_class#:#Odd Columns
 style#:#sty_odd_row_class#:#Недостатъчни редове
 style#:#sty_ol#:#Ordered List###30 04 2024 new variable
@@ -17379,6 +17398,7 @@ validation#:#not_min_length#:#Входните данни са с дължина
 validation#:#not_numeric#:#'%s' не е число.
 validation#:#not_numeric_empty_string#:#Въведените от вас данни не са числови.
 validation#:#numeric_only#:#Please insert a whole number.###30 04 2024 new variable
+validation#:#required#:#This input is required.###08 07 2025 new variable
 validation#:#tag_required#:#Please insert at least one tag.###30 04 2024 new variable
 violation#:#not_a_string#:#Given value is not a String###31 03 2023 new variable
 webr#:#invalid_links_tbl#:#Невалидни връзки

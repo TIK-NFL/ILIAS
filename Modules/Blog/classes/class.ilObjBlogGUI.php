@@ -140,7 +140,7 @@ class ilObjBlogGUI extends ilObject2GUI implements ilDesktopItemHandling
             $this->items = $this->buildPostingList($this->object->getId());
             if ($this->items) {
                 // current month (if none given or empty)
-                if (!$this->month || !$this->items[$this->month]) {
+                if (!$this->month || !isset($this->items[$this->month]) || $this->items[$this->month] === []) {
                     $m = array_keys($this->items);
                     $this->month = array_shift($m);
                     $this->month_default = true;
@@ -1558,11 +1558,13 @@ class ilObjBlogGUI extends ilObject2GUI implements ilDesktopItemHandling
             }
 
             // permanent link
-            if ($a_cmd !== "preview" && $a_cmd !== "previewEmbedded") {
+            if ($this->node_id !== null &&
+                $a_cmd !== "preview" &&
+                $a_cmd !== "previewEmbedded") {
                 if ($this->id_type === self::WORKSPACE_NODE_ID) {
-                    $goto = $this->gui->permanentLink(0, $this->node_id)->getPermanentLink((int) $item["id"]);
+                    $goto = $this->gui->permanentLink(0, (int) $this->node_id)->getPermanentLink((int) $item["id"]);
                 } else {
-                    $goto = $this->gui->permanentLink($this->node_id)->getPermanentLink((int) $item["id"]);
+                    $goto = $this->gui->permanentLink((int) $this->node_id)->getPermanentLink((int) $item["id"]);
                 }
                 $wtpl->setCurrentBlock("permalink");
                 $wtpl->setVariable("URL_PERMALINK", $goto);
@@ -2069,7 +2071,7 @@ class ilObjBlogGUI extends ilObject2GUI implements ilDesktopItemHandling
 
         // by date
         if (count($a_items)) {
-            $blocks[$order["navigation"]] = array(
+            $blocks[$order["navigation"] ?? 0] = array(
                 $this->lng->txt("blog_navigation"),
                 $this->renderNavigationByDate($a_items, $a_list_cmd, $a_posting_cmd, $a_link_template, $a_show_inactive, $a_blpg)
             );
@@ -2088,7 +2090,7 @@ class ilObjBlogGUI extends ilObject2GUI implements ilDesktopItemHandling
                     $keywords = $this->lng->txt("blog_no_keywords");
                 }
                 $cmd = null;
-                $blocks[$order["keywords"]] = array(
+                $blocks[$order["keywords"] ?? 2] = array(
                     $this->lng->txt("blog_keywords"),
                     $keywords,
                     $cmd
@@ -2105,7 +2107,7 @@ class ilObjBlogGUI extends ilObject2GUI implements ilDesktopItemHandling
                 $this->object->hasAuthors()) {
                 $authors = $this->renderNavigationByAuthors($a_items, $a_list_cmd, $a_show_inactive);
                 if ($authors) {
-                    $blocks[$order["authors"]] = array($this->lng->txt("blog_authors"), $authors);
+                    $blocks[$order["authors"] ?? 1] = array($this->lng->txt("blog_authors"), $authors);
                 }
             }
 

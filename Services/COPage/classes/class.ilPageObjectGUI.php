@@ -862,7 +862,12 @@ class ilPageObjectGUI
 
             case "ileditclipboardgui":
                 $this->setBackToEditTabs();
-                $clip_gui = new ilEditClipboardGUI();
+
+                $return_cmd = $this->ctrl->getLinkTargetByClass(
+                    ilPageEditorGUI::class,
+                    "insertFromClipboard"
+                );
+                $clip_gui = new ilEditClipboardGUI($return_cmd);
                 $clip_gui->setPageBackTitle($this->page_back_title);
                 $ret = $this->ctrl->forwardCommand($clip_gui);
                 break;
@@ -2144,7 +2149,6 @@ class ilPageObjectGUI
     {
         $tpl = new ilGlobalTemplate("tpl.fullscreen.html", true, true, "Modules/LearningModule");
         $tpl->setCurrentBlock("ilMedia");
-
         //$int_links = $page_object->getInternalLinks();
         $med_links = ilMediaItem::_getMapAreasIntLinks($this->request->getMobId());
 
@@ -2179,7 +2183,7 @@ class ilPageObjectGUI
         $wb_path = ilFileUtils::getWebspaceDir("output") . "/";
         $enlarge_path = ilUtil::getImagePath("media/enlarge.svg");
         $params = array('mode' => $mode, 'enlarge_path' => $enlarge_path,
-            'link_params' => "ref_id=" . $this->requested_ref_id,'fullscreen_link' => "",
+            'link_params' => "ref_id=" . $this->requested_ref_id,'fullscreen_link' => $this->getFullscreenLink(),
                         'enable_html_mob' => ilObjMediaObject::isTypeAllowed("html") ? "y" : "n",
             'ref_id' => $this->requested_ref_id, 'webspace_path' => $wb_path);
         $output = $this->xsl->process($xml, $params);
@@ -2193,7 +2197,7 @@ class ilPageObjectGUI
         ilObjMediaObjectGUI::includePresentationJS($tpl);
         //$tpl->fillJavaScriptFiles();
         //$tpl->fillCssFiles();
-
+        $this->gui->toolbar()->setItems([]);    // clear toolbar, see #45620
         $tpl->printToStdout();
         exit;
     }

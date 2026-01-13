@@ -1141,6 +1141,14 @@ class ilContainerGUI extends ilObjectGUI implements ilDesktopItemHandling
             }
         }
 
+        foreach ($ids as $ref_id) {
+            if (!in_array(ilObject::_lookupType($ref_id, true), ["crs", "grp", "fold", "file"])) {
+                $this->lng->loadLanguageModule("cont");
+                $this->tpl->setOnScreenMessage('failure', $this->lng->txt("cont_only_crs_grp_fold_download"), true);
+                $this->ctrl->redirect($this, "");
+            }
+        }
+
         $download_job = new ilDownloadContainerFilesBackgroundTask(
             $GLOBALS['DIC']->user()->getId(),
             $ids,
@@ -1414,6 +1422,8 @@ class ilContainerGUI extends ilObjectGUI implements ilDesktopItemHandling
 
         // process CUT command
         if ($command === 'cut') {
+            ilItemGroupItems::removeItemGroupAssociations($ref_ids);
+
             foreach ($nodes as $folder_ref_id) {
                 foreach ($ref_ids as $ref_id) {
                     // Store old parent
@@ -1422,6 +1432,9 @@ class ilContainerGUI extends ilObjectGUI implements ilDesktopItemHandling
                     $rbacadmin->adjustMovedObjectPermissions($ref_id, $old_parent);
 
                     ilConditionHandler::_adjustMovedObjectConditions($ref_id);
+                    $availability = new ilObjectActivation();
+                    $availability->read($ref_id);
+                    $availability->update($ref_id, $folder_ref_id);
 
                     // BEGIN ChangeEvent: Record cut event.
                     $node_data = $tree->getNodeData($ref_id);
@@ -1731,6 +1744,8 @@ class ilContainerGUI extends ilObjectGUI implements ilDesktopItemHandling
 
         // process CUT command
         if ($this->clipboard->getCmd() === "cut") {
+            ilItemGroupItems::removeItemGroupAssociations($ref_ids);
+
             foreach ($ref_ids as $ref_id) {
                 // Store old parent
                 $old_parent = $tree->getParentId($ref_id);
@@ -1738,6 +1753,9 @@ class ilContainerGUI extends ilObjectGUI implements ilDesktopItemHandling
                 $rbacadmin->adjustMovedObjectPermissions($ref_id, $old_parent);
 
                 ilConditionHandler::_adjustMovedObjectConditions($ref_id);
+                $availability = new ilObjectActivation();
+                $availability->read($ref_id);
+                $availability->update($ref_id, $this->object->getRefId());
 
                 // BEGIN ChangeEvent: Record cut event.
                 $node_data = $tree->getNodeData($ref_id);

@@ -267,6 +267,8 @@
 			<xsl:if test="$map_edit_mode != 'get_coords'">
 				<span style="display:none;">
 					<xsl:attribute name="data-copg-iim-data-type">area</xsl:attribute>
+					<xsl:attribute name="data-copg-iim-hl-mode"><xsl:value-of select="@HighlightMode"/></xsl:attribute>
+					<xsl:attribute name="data-copg-iim-hl-class"><xsl:value-of select="@HighlightClass"/></xsl:attribute>
 					<xsl:attribute name="data-copg-iim-area-id">marea_<xsl:value-of select = "$pg_id"/>_<xsl:number count="MapArea" level="any" /></xsl:attribute>
 					<xsl:attribute name="data-copg-iim-id"><xsl:value-of select = "$pg_id"/>_<xsl:number count="InteractiveImage" level="any" /></xsl:attribute>
 					<xsl:attribute name="data-copg-iim-tr-nr"><xsl:value-of select = "@Id" /></xsl:attribute>
@@ -2851,9 +2853,9 @@
 			</a>
 		</xsl:when>
 		<xsl:otherwise>
-			<a target="_blank">
+			<a href="#" style="float: right; width: auto; display:inline-block" target="_blank">
 			<xsl:attribute name="onclick">il.COPagePres.openFullScreenModal('<xsl:value-of select="$fullscreen_link"/>&amp;mob_id=<xsl:value-of select="substring-after($cmobid,'mob_')"/>&amp;pg_id=<xsl:value-of select="$pg_id"/>'); return false;</xsl:attribute>
-			<img style="float: right; width: auto;">
+			<img style="width: auto;">
 			<xsl:attribute name="src"><xsl:value-of select="$enlarge_path"/></xsl:attribute>
 			</img>
 			</a>
@@ -3617,7 +3619,7 @@
 <!-- GridCell -->
 <xsl:template match="GridCell">
 	<xsl:variable name="container_edit_class"><xsl:if test="$mode = 'edit'"> copg-edit-container</xsl:if></xsl:variable>
-	<div>
+	<div style="position: relative;">
 		<xsl:attribute name="class">
 			<xsl:if test="@WIDTH_S != ''"> col-xs-<xsl:value-of select="@WIDTH_S"/></xsl:if>
 			<xsl:if test="@WIDTH_M != ''"> col-sm-<xsl:value-of select="@WIDTH_M"/></xsl:if>
@@ -3626,7 +3628,7 @@
 			<xsl:if test="@WIDTH_S = '' and @WIDTH_M = '' and @WIDTH_L = '' and @WIDTH_XL = ''">col-xs-12</xsl:if>
 			<xsl:value-of select="$container_edit_class"/>
 		</xsl:attribute>
-		<div style="height:100%">	<!-- this div enforces margin collapsing, see bug 31536, for height see 32067 -->
+		<!-- we had a div height=100% here, this div enforced margin collapsing, see bug 31536, for height see 32067, removed due to 45294, cols are different in 9 now -->
 			<xsl:if test="$mode = 'edit'">
 				<xsl:call-template name="EditReturnAnchors"/>
 			</xsl:if>
@@ -3656,7 +3658,6 @@
 			</xsl:if>
 			<xsl:apply-templates select="PageContent"/>
 			<xsl:comment>End of Grid Cell</xsl:comment>
-		</div>
 	</div>
 </xsl:template>
 
@@ -3679,6 +3680,8 @@
 
 <!-- Plugged -->
 <xsl:template match="Plugged">
+	<xsl:variable name="lang_var">pc_plugged_<xsl:value-of select="@PluginName"/></xsl:variable>
+	<xsl:call-template name="EditLabel"><xsl:with-param name="text"><xsl:value-of select="//LVs/LV[@name=$lang_var]/@value"/></xsl:with-param></xsl:call-template>
 	<xsl:call-template name="EditReturnAnchors"/>
 		{{{{{Plugged<pl/><xsl:value-of select="@PluginName"/><pl/><xsl:value-of select="@PluginVersion"/><xsl:for-each select="./PluggedProperty"><pl/><xsl:value-of select="@Name"/><pl/><xsl:value-of select="."/></xsl:for-each>}}}}}
 		<xsl:if test="$mode = 'edit'">
