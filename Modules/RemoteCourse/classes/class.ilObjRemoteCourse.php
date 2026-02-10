@@ -182,7 +182,7 @@ class ilObjRemoteCourse extends ilRemoteObjectBase
         );
 
         $import = new ilECSImport($a_server->getServerId(), $this->getId());
-        $import->setContentId($a_ecs_content->courseID);
+        $import->setContentId($a_ecs_content->courseID ?? $a_ecs_content->id);
         $import->save();
     }
 }
