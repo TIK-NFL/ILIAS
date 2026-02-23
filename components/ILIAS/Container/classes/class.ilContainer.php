@@ -587,6 +587,9 @@ class ilContainer extends ilObject
         // delete translations
         $this->obj_trans->delete();
 
+        // delete content page
+        $this->domain->page($this)->deletePage();
+
         return true;
     }
 

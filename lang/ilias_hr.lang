@@ -16668,7 +16668,7 @@ survey#:#survey_360_sure_appraisee_close#:#Jeste li sigurni da želite zatvoriti
 survey#:#survey_360_sure_appraisee_close_admin#:#Jeste li sigurni da želite zatvoriti ankete za sljedeće procijenjene osobe?
 survey#:#survey_360_sure_delete_appraises#:#Jeste li sigurni da želite ukloniti sljedeće procijenjene osobe?
 survey#:#survey_360_sure_delete_raters#:#Jeste li sigurni da želite ukloniti sljedeće ocjenjivače za %s?
-survey#:#survey_access_codes#:#Autentifikacija pristupnim kodovima
+survey#:#survey_access_code#:#Autentifikacija pristupnim kodovima
 survey#:#survey_access_codes_info#:#Korisnici pristup anketi dobivaju unosom koda na kartici ‘Informacije’. Ovi pristupni kodovi generiraju se na potkartici ‘Pristupni kodovi’ na kartici ‘Sudionici’.
 survey#:#survey_activate_skill_service#:#Aktiviraj servis za kompetencije
 survey#:#survey_activate_skill_service_info#:#Prikazat će se nova kartica ‘Kompetencije’. U ovoj su kartici pitanja dodijeljena kompetencijama, a zatim se određuju pragovi za postizanje određene razine kompetencije.

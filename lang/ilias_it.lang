@@ -16667,7 +16667,7 @@ survey#:#survey_360_sure_appraisee_close#:#Sei sicuro di voler chiudere il sonda
 survey#:#survey_360_sure_appraisee_close_admin#:#Sei sicuro di voler chiudere il sondaggio per tutti i seguenti valutati?
 survey#:#survey_360_sure_delete_appraises#:#Sei sicuro di voler rimuovere i seguenti valutati?
 survey#:#survey_360_sure_delete_raters#:#Sei sicuro di voler rimuovere i seguenti valutati per %s?
-survey#:#survey_access_codes#:#Autenticazione tramite codici di accesso
+survey#:#survey_access_code#:#Autenticazione tramite codici di accesso
 survey#:#survey_access_codes_info#:#Gli utenti ottengono l'accesso al sondaggio inserendo un codice nella scheda "Informazioni". Questi codici di accesso sono generati in una sottoscheda "Codici di accesso" nella scheda "Partecipanti".
 survey#:#survey_activate_skill_service#:#Attivare il servizio di competenze
 survey#:#survey_activate_skill_service_info#:#Verrà visualizzata una nuova scheda "Competenze". In questa scheda le domande vengono assegnate alle competenze, quindi vengono attribuite le soglie per raggiungere un livello specifico di una competenza.

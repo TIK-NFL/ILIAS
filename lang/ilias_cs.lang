@@ -16668,7 +16668,7 @@ survey#:#survey_360_sure_appraisee_close#:#Opravdu chcete uzavřít přehled pro
 survey#:#survey_360_sure_appraisee_close_admin#:#Opravdu chcete uzavřít přehled pro následující hodnocené osoby?
 survey#:#survey_360_sure_delete_appraises#:#Opravdu chcete odstranit následující hodnocené osoby?
 survey#:#survey_360_sure_delete_raters#:#Opravdu chcete odstranit následující hodnotitele pro %s?
-survey#:#survey_access_codes#:#Ověřování pomocí přístupových kódů
+survey#:#survey_access_code#:#Ověřování pomocí přístupových kódů
 survey#:#survey_access_codes_info#:#Uživatelé získají přístup k průzkumu zadáním kódu na kartě „Info“. Tyto přístupové kódy jsou generovány v záložce 'Přístupové kódy' na kartě 'Účastníci'.
 survey#:#survey_activate_skill_service#:#Aktivujte službu způsobilosti
 survey#:#survey_activate_skill_service_info#:#todo12

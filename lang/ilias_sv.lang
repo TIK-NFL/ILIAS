@@ -16668,7 +16668,7 @@ survey#:#survey_360_sure_appraisee_close#:#Vill du verkligen stänga enkäten f�
 survey#:#survey_360_sure_appraisee_close_admin#:#Vill du verkligen stänga enkäten för följande feedbackmottagare?
 survey#:#survey_360_sure_delete_appraises#:#Vill du verkligen ta bort följande feedbackmottagare?
 survey#:#survey_360_sure_delete_raters#:#Vill du verkligen ta bort följande feedbackgivare för %s?
-survey#:#survey_access_codes#:#Autentisering med åtkomstnycklar
+survey#:#survey_access_code#:#Autentisering med åtkomstnycklar
 survey#:#survey_access_codes_info#:#Användare får tillgång till undersökningen genom att ange en åtkomstnyckel på fliken "Info". Dessa åtkomstnycklar genereras i underfliken med samma namn i fliken "Deltagare".
 survey#:#survey_activate_skill_service#:#Aktivera kompetenstjänst
 survey#:#survey_activate_skill_service_info#:#Ytterligare en flik "Kompetenser" visas. Här tilldelas först kompetenser till frågorna, sedan sätts tröskelvärden för att uppnå vissa kompetensnivåer.

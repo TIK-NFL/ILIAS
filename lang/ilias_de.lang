@@ -2178,6 +2178,7 @@ auth#:#auth_saml_deleted_idp#:#Der Identity-Provider wurde gelöscht.
 auth#:#auth_saml_enable#:#SAML-Unterstützung aktivieren
 auth#:#auth_saml_err_sqlite_driver#:#Die SAML-Authentifizierung benötigt die SQLite-Treiber für PHP. Bitte installieren Sie diese und versuchen Sie es erneut.
 auth#:#auth_saml_idp#:#IDP
+auth#:#auth_saml_idp_deactivated_auth_failed#:#Der IDP ist nicht aktiviert, Authentifizierung gescheitert.
 auth#:#auth_saml_idp_selection_table_desc#:#Bitte wählen Sie den Identity-Provider aus, mit dem Sie sich einloggen möchten.
 auth#:#auth_saml_idp_selection_table_title#:#Identity-Provider
 auth#:#auth_saml_idp_settings#:#IDP Einstellungen
@@ -3066,9 +3067,9 @@ chatroom#:#messages#:#Nachrichten
 chatroom#:#no_further_users#:#Keine weiteren Benutzer anwesend.
 chatroom#:#no_messages#:#Es sind keine Nachrichten für den ausgewählten Zeitraum verfügbar.
 chatroom#:#no_username_given#:#Bitte wählen Sie einen Anmeldenamen!
-chatroom#:#osc_browser_noti_no_permission_error#:#Bitte entfernen Sie die ILIAS-Domain von der Liste der blockierten Websites in den Benachrichtigungs-Einstellungen Ihres Browsers oder Betriebssystems. Andernfalls kann ILIAS keine Browser-Benachrichtigungen zustellen.
+chatroom#:#osc_browser_noti_no_permission_error#:#Bitte entfernen Sie die ILIAS-Domain von der Liste der blockierten Websites in den Benachrichtigungseinstellungen Ihres Browsers oder Betriebssystems. Andernfalls kann ILIAS keine Browser-Benachrichtigungen zustellen.
 chatroom#:#osc_browser_noti_no_support_error#:#Browser-Benachrichtigungen werden mit Ihrem aktuellem Browser nicht unterstützt. Bitte stellen Sie sicher, dass Sie via HTTPS auf ILIAS zugreifen, und Ihr Browser als <a href="https://caniuse.com/#feat=notifications" target="_blank" rel="noopener noreferrer">unterstützter Browser</a> aufgelistet wird.
-chatroom#:#osc_browser_noti_req_permission_error#:#Die Browser-Benachrichtigungen konnten nicht aktiviert werden, da Sie den Zugriff in Ihrem Browser verweigert haben. Bitte entfernen Sie die ILIAS-Domain von der Liste der blockierten Websites in den Benachrichtigungs-Einstellungen Ihres Browsers oder Betriebssystems.
+chatroom#:#osc_browser_noti_req_permission_error#:#Die Browser-Benachrichtigungen konnten nicht aktiviert werden, da Sie den Zugriff in Ihrem Browser verweigert haben. Bitte entfernen Sie die ILIAS-Domain von der Liste der blockierten Websites in den Benachrichtigungseinstellungen Ihres Browsers oder Betriebssystems.
 chatroom#:#osc_enable_browser_notifications_info#:#Wenn aktiviert, erhalten Sie beim Eintreffen neuer Chats oder Chat-Nachrichten eine Browser-Benachrichtigung, wenn zwischen zwei Chat-Beiträgen mehr als %s Minute(n) vergangen ist/sind. Befindet sich ILIAS im Hintergrund und arbeiten Sie in anderen Browser-Tabs, oder ist der Browser ausgeblendet, erhalten Sie ebenfalls eine Benachrichtigung.
 chatroom#:#osc_enable_browser_notifications_label#:#Browser-Benachrichtigungen
 chatroom#:#osc_noti_title#:#Neue Chat-Nachricht
@@ -5476,6 +5477,7 @@ common#:#renderer_supported_file_types#:#Unterstützte Dateitypen
 common#:#renderer_supported_repo_types#:#Unterstützte ILIAS-Objekte
 common#:#renderer_type_builtin#:#Eingebaut
 common#:#rep_main_page#:#Einstiegsseite
+common#:#rep_main_page_logo_alt#:#Logo ILIAS - zur Einstiegsseite
 common#:#repeat_scan#:#Wiederhole Virenscan...
 common#:#repeat_scan_failed#:#Wiederholter Scan fehlgeschlagen.
 common#:#repeat_scan_succeded#:#Wiederholter Scan erfolgreich.
@@ -6569,7 +6571,7 @@ content#:#cont_footer#:#Fußzeile
 content#:#cont_footnote#:#Fußnote
 content#:#cont_force_all_open#:#Alle immer geöffnet
 content#:#cont_format#:#Format
-content#:#cont_format_cells#:#Zellen formattieren
+content#:#cont_format_cells#:#Zellen formatieren
 content#:#cont_fourth_edition#:#Neueste Version 'SCORM 2004 4th edition'
 content#:#cont_fourth_edition_info#:#Die neueste Version von SCORM 2004 bietet gegenüber der „3rd Edition“ einige Erweiterungen. Diese werden allerdings nur selten genutzt und können sich negativ auf die Performanz auswirken. So kann das Lernmodul Daten bereitstellen, die über SCO-Grenzen hinweg genutzt werden können. Dabei fallen nicht zu löschende Daten an, weshalb wir aus Datenschutzgründen die „3rd Edition“ empfehlen.
 content#:#cont_free_pages#:#Freie Seiten
@@ -7395,6 +7397,7 @@ copa#:#copa_value_reading_time_f_p#:#%s Minuten
 copa#:#copa_value_reading_time_f_s#:#%s Minute
 copa#:#obj_copa_duplicate#:#Inhaltsseite duplizieren
 copg#:#copg_active_to_small#:#Dieses Datum muss größer als das „Aktiv ab“-Datum sein.
+copg#:#copg_add_content#:#Inhalte hinzufügen
 copg#:#copg_allow_html#:#HTML/Javascript erlauben
 copg#:#copg_allow_html_info#:#Benutzer können HTML oder Javascript in Seiteninhalten verwenden. Dies kann zu Sicherheitsproblemen führen. Sie sollten diese Funktion nur für Komponenten aktivieren, die von vertrauenswürdigen Benutzern verwendet werden. Die Möglichkeit, HTML in dieser Art einzubinden, wird möglicherweise in einer zukünftigen Version komplett entfallen.
 copg#:#copg_an_error_occured#:#Es ist leider ein Problem aufgetreten.
@@ -7430,6 +7433,7 @@ copg#:#copg_remove_formats#:#Zeichenformate entfernen
 copg#:#copg_sec_link_info#:#Wählen Sie ein Ziel für die Verlinkung des Blocks. Achtung: In diesem Fall darf der Inhalt des Blocks dann selbst keine weiteren Links enthalten!
 copg#:#copg_snippet_cannot_be_edited#:#Dies ist ein vordefinierter Inhaltsbaustein, der an dieser Stelle nicht editiert werden kann.
 copg#:#copg_unsupported_media_type#:#Dieses Medienobjekt hat einen nicht unterstützen Medientyp.
+copg#:#copg_use_template#:#Vorlage nutzen
 copg#:#copg_x_minutes#:#%s Minute(n)
 cpad#:#cpad_reading_time_status#:#Lesezeit
 cpad#:#cpad_reading_time_status_desc#:#Falls aktiviert, wird die geschätzte Lesezeit für Inhaltsseiten ermittelt und angezeigt.
@@ -8133,6 +8137,18 @@ dash#:#dash_click_here#:#Hier klicken
 dash#:#dash_co_delete#:#Dashboard-Gestaltung löschen
 dash#:#dash_co_lang#:#Dashboard-Gestaltung nach Sprachen
 dash#:#dash_customization#:#Gestaltung der Dashboard-Seite
+dash#:#dash_dash_fav_remove#:#Entfernen
+dash#:#dash_dash_fav_remove_info#:#Wollen Sie die folgenden Objekte wirklich aus Ihren Favoriten entfernen?
+dash#:#dash_dash_fav_remove_multiple#:#Mehrere Favoriten entfernen
+dash#:#dash_dash_ls_remove#:#Mitgliedschaften beenden
+dash#:#dash_dash_ls_remove_info#:#Wollen Sie die folgenden Mitgliedschaften für Lernsequenzen wirklich beenden?
+dash#:#dash_dash_ls_remove_multiple#:#Mehrere Mitgliedschaften beenden
+dash#:#dash_dash_mem_remove#:#Mitgliedschaften beenden
+dash#:#dash_dash_mem_remove_info#:#Wollen Sie die folgenden Mitgliedschaften für Kurse und Gruppen wirklich beenden?
+dash#:#dash_dash_mem_remove_multiple#:#Mehrere Mitgliedschaften beenden
+dash#:#dash_dash_rc_remove#:#Entfernen
+dash#:#dash_dash_rc_remove_info#:#Wollen Sie die folgenden Objekte wirklich aus Ihren empfohlenen Inhalten entfernen?
+dash#:#dash_dash_rc_remove_multiple#:#Mehrere Inhalte entfernen
 dash#:#dash_dashboard#:#Dashboard
 dash#:#dash_default_presentation#:#Standardpräsentation
 dash#:#dash_default_sortation#:#Standardsortierung
@@ -8146,7 +8162,6 @@ dash#:#dash_enable_recommended_content#:#Empfohlene Inhalte
 dash#:#dash_enable_study_programmes#:#Studienprogramme
 dash#:#dash_enable_task#:#To-Dos
 dash#:#dash_favourites#:#Favoriten
-dash#:#dash_info_sure_remove_from_favs#:#Sollen die folgenden Objekte wirklich aus Ihren Favoriten entfernt werden?
 dash#:#dash_item_removed#:#Der Eintrag wurde aus der Liste entfernt.
 dash#:#dash_learning_sequences#:#Meine Lernsequenzen
 dash#:#dash_list#:#Liste
@@ -8154,6 +8169,7 @@ dash#:#dash_main_panel#:#Hauptbereich
 dash#:#dash_make_favourite#:#Zu Favoriten hinzufügen
 dash#:#dash_member_main_alt#:#Eine Ansicht der Mitgliedschaften kann auch direkt im Haupmenü eingebunden werden.
 dash#:#dash_memberships#:#Meine Kurse und Gruppen
+dash#:#dash_no_items_to_manage#:#Keine Objekte zum Entfernen verfügbar.
 dash#:#dash_page_edit_info#:#Der Inhalt dieser Seite wird allen Nutzern auf ihrem Dashboard angezeigt. Die Inhaltsblöcke des Dashboards werden darunter angezeigt.
 dash#:#dash_presentation#:#Präsentation
 dash#:#dash_recommended_content#:#Empfohlene Inhalte
@@ -9352,7 +9368,7 @@ exc#:#exc_ended#:#Beendet
 exc#:#exc_ended_on#:#Beendet am
 exc#:#exc_export_excel#:#Export (Excel)
 exc#:#exc_fb_files#:#Bewertungsdateien
-exc#:#exc_fb_tutor_info#:#Wird eine Datei zur Bewertung der Übungseinheit hochgeladen, erhält die Teilnehmerin oder der Teilnehmer eine Benachrichtigung und kann dann in der Übersicht der Übungseinheiten heruntergeladen und eingesehen werden.
+exc#:#exc_fb_tutor_info#:#Wird eine Datei zur Bewertung der Übungseinheit hochgeladen, erhält die Teilnehmerin oder der Teilnehmer eine Benachrichtigung und kann dann die Datei in der Übersicht der Übungseinheiten herunterladen und einsehen.
 exc#:#exc_feedback#:#Rückmeldungen
 exc#:#exc_feedback_notification_body#:#Das Feedback zur folgenden Übungseinheit wurde freigeschaltet.
 exc#:#exc_feedback_notification_link#:#Link zur Übung
@@ -9613,6 +9629,7 @@ exc#:#exc_settings_feedback_mail_info#:#Rückmeldungen zur jeweiligen Abgabe wer
 exc#:#exc_settings_feedback_text#:#Texteingabe
 exc#:#exc_settings_feedback_text_info#:#Rückmeldungen zur jeweiligen Abgabe werden in ein Textfeld eingegeben und im Reiter „Übungseinheiten“ angezeigt. Zusätzlich erhalten Teilnehmerinnen und Teilnehmer eine Benachrichtigung per Mail.
 exc#:#exc_show_instructions#:#Arbeitsanweisung anzeigen
+exc#:#exc_show_more#:#Mehr anzeigen
 exc#:#exc_show_peer_review#:#Peer-Feedback anzeigen
 exc#:#exc_show_submissions#:#Lösungsabgaben veröffentlichen
 exc#:#exc_show_submissions_info#:#Bei Übungseinheiten mit einem festen Abgabetermin können Teilnehmerinnen und Teilnehmer nach dem Abgabetermin alle Lösungsabgaben einsehen.
@@ -9728,6 +9745,7 @@ exc#:#exc_type_upload#:#Datei
 exc#:#exc_type_upload_team#:#Datei als Team einreichen
 exc#:#exc_value_can_not_set#:#Dieser Wert kann nicht gesetzt werden
 exc#:#exc_view_portfolio#:#Portfolio anzeigen
+exc#:#exc_view_wiki#:#Wiki anzeigen
 exc#:#exc_wait_for_files#:#Der Download sollte automatisch starten. Bei Problemen klicken Sie bitte hier.
 exc#:#exc_wiki_container#:#Wiki-Container
 exc#:#exc_wiki_container_info#:#Ort in dem neue Wikis der Teilnehmer angelegt werden.
@@ -10158,7 +10176,7 @@ forum#:#new_post#:#Neuer Beitrag
 forum#:#new_thread_with_post#:#Neues Thema mit Beitrag
 forum#:#no_forum_selected#:#Kein Forum für die Verschiebeaktion ausgewählt!
 forum#:#not_allowed_to_merge_into_another_forum#:#Es ist nicht möglich Themen verschiedener Foren zusammenzuführen.
-forum#:#notification_settings#:#Benachrichtigungs-Einstellungen
+forum#:#notification_settings#:#Benachrichtigungseinstellungen
 forum#:#notify_censored#:#Zensierte Beiträge
 forum#:#notify_modified#:#Geänderte Beiträge
 forum#:#notify_post_deleted#:#Gelöschte Beiträge
@@ -10971,6 +10989,7 @@ lm#:#lm_btn_lp_toggle_state_completed#:#Auf "Nicht bearbeitet" setzen
 lm#:#lm_btn_lp_toggle_state_not_completed#:#Auf "Bearbeitet" setzen
 lm#:#lm_copy#:#ILIAS-Lernmodul kopieren
 lm#:#lm_edit_chapters#:#Kapitel bearbeiten
+lm#:#lm_edit_content#:#Inhalt bearbeiten
 lm#:#lm_edit_lm_settings#:#Lernmoduleinstellungen bearbeiten
 lm#:#lm_est_reading_time#:#Geschätzte Lesedauer
 lm#:#lm_est_reading_time_info#:#In Lernmodulen kann eine geschätzte Lesezeit ermittelt und angezeigt werden.
@@ -10988,6 +11007,7 @@ lm#:#lm_insert_page_before#:#Seite davor einfügen
 lm#:#lm_insert_page_clip#:#Seiten aus Zwischenablage einfügen
 lm#:#lm_insert_page_clip_after#:#Seiten aus Zwischenablage danach einfügen
 lm#:#lm_insert_page_clip_before#:#Seiten aus Zwischenablage davor einfügen
+lm#:#lm_list_pages#:#Seiten bearbeiten
 lm#:#lm_page_added#:#Eine Seite wurde hinzugefügt.
 lm#:#lm_page_type_lm#:#Lernmodulseite
 lm#:#lm_pages_added#:#Die Seiten wurden hinzugefügt.
@@ -12739,7 +12759,6 @@ mmbr#:#info_refuse_sure#:#Sind Sie sicher, dass Sie den/die folgenden Benutzer a
 mmbr#:#mmbr_awrn_my_groups_courses#:#Meine Kurse und Gruppen
 mmbr#:#mmbr_awrn_my_groups_courses_info#:#Alle Mitglieder von Gruppen und Kursen eines Benutzers werden aufgelistet.
 mmbr#:#mmbr_btn_mail_selected_users#:#Mail verschicken
-mmbr#:#mmbr_info_delete_sure_unsubscribe#:#Wollen Sie wirklich die Mitgliedschaft für die folgenden Kurse und Gruppen beenden?
 mmbr#:#mmbr_memberships#:#Mitgliedschaften
 mmbr#:#mmbr_selected_users#:#Ausgewählte Teilnehmer
 mmbr#:#mmbr_unsubscribed_from_objs#:#Sie wurden von den ausgewählten Objekten abgemeldet.
@@ -13275,7 +13294,6 @@ pd#:#pd_ended#:#Beendet
 pd#:#pd_export_profile#:#Persönliche Daten exportieren
 pd#:#pd_import_personal_data#:#Persönliche Daten importieren
 pd#:#pd_my_memberships_sort_default#:#Standard-Sortierung
-pd#:#pd_no_items_to_manage#:#Keine Objekte zum Entfernen verfügbar.
 pd#:#pd_not_dated#:#Nicht datiert
 pd#:#pd_ongoing#:#Aktuell
 pd#:#pd_personal_items_default_view#:#Standard-Sicht
@@ -13285,9 +13303,6 @@ pd#:#pd_presentation_mode_tile#:#Kachelansicht
 pd#:#pd_private_calendars#:#Private Kalender
 pd#:#pd_profile_data#:#Profildaten
 pd#:#pd_remove_multi_confirm#:#Die Objekte wurden entfernt.
-pd#:#pd_remove_multiple#:#Mehrere Objekte entfernen
-pd#:#pd_unsubscribe_memberships#:#Mitgliedschaften beenden
-pd#:#pd_unsubscribe_multiple_memberships#:#Mehrere Mitgliedschaften beenden
 pd#:#pd_upcoming#:#Bevorstehend
 pd#:#pd_view_select_at_least_one#:#Bitte wählen Sie mindestens eine Sicht, entweder 'Ausgewählte Angebote' und/oder 'Kurse und Gruppen'.
 pdesk#:#bookmark_moved_ok#:#Bookmark wurde verschoben.
@@ -16668,7 +16683,7 @@ survey#:#survey_360_sure_appraisee_close#:#Wollen Sie wirklich die Umfrage für 
 survey#:#survey_360_sure_appraisee_close_admin#:#Wollen Sie wirklich die Umfrage für die folgenden Feedback-Nehmer schließen?
 survey#:#survey_360_sure_delete_appraises#:#Wollen Sie wirklich die folgenden Feedback-Nehmer entfernen?
 survey#:#survey_360_sure_delete_raters#:#Wollen Sie wirklich die folgenden Feedback-Geber für %s entfernen?
-survey#:#survey_access_codes#:#Authentifizierung mit Zugangsschlüsseln
+survey#:#survey_access_code#:#Authentifizierung mit Zugangsschlüssel
 survey#:#survey_access_codes_info#:#Im Reiter „Info“ muss ein Zugangsschlüssel eingegeben werden, um Zugang zur Umfrage zu erhalten. Diese Zugangsschlüssel werden erzeugt im Reiter „Befragte » Zugangsschlüssel“.
 survey#:#survey_activate_skill_service#:#Kompetenz-Service aktivieren
 survey#:#survey_activate_skill_service_info#:#Es wird ein weiterer Reiter „Kompetenzen“ eingeblendet. Hier werden zunächst den Fragen Kompetenzen zugeordnet, danach werden den Schwellenwerte für die Erreichung bestimmter Kompetenzstufen gesetzt.
@@ -17835,7 +17850,6 @@ wopi#:#wopi_url_byline#:#Vollständige URL des WOPI-Discovery, diese muss über 
 wsp#:#element_already_shared#:#Die Ressource ist für diese Person bereits freigegeben.
 wsp#:#element_shared#:#Die Ressource wurde freigegeben.
 wsp#:#error_creating_certificate_pdf#:#Das Zertifikat konnte nicht erstellt werden. Bitte kontaktieren Sie Ihre technische Betreuung und bitten um die Prüfung des Zertifikatsservers.
-wsp#:#search_no_match#:#Ihre Suche ergab keine Treffer.
 wsp#:#share#:#Freigeben
 wsp#:#share_content#:#Ressource freigeben
 wsp#:#share_with#:#Anmeldename
@@ -17857,6 +17871,7 @@ wsp#:#wsp_permission_registered_info#:#Dieses Objekt ist für alle registrierten
 wsp#:#wsp_permission_removed#:#Der Eintrag wurde gelöscht.
 wsp#:#wsp_permissions#:#Freigabe
 wsp#:#wsp_personal_resources_description#:#Hier können Sie persönliche Dateien, Blogs und Nachweise verwalten.
+wsp#:#wsp_search_no_match#:#Ihre Suche ergab keine Treffer.
 wsp#:#wsp_send_mail#:#Mail senden
 wsp#:#wsp_set_permission_all#:#Internet/WWW
 wsp#:#wsp_set_permission_all_password#:#Internet/WWW mit Passwort

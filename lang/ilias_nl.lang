@@ -16668,7 +16668,7 @@ survey#:#survey_360_sure_appraisee_close#:#Weet je zeker dat je de enqûete wilt
 survey#:#survey_360_sure_appraisee_close_admin#:#Weet je zeker dat je de 360° Feedback wilt sluiten voor de volgende gebruikers?
 survey#:#survey_360_sure_delete_appraises#:#Weet je zeker dat je de volgende beoordelingen wilt verwijderen?
 survey#:#survey_360_sure_delete_raters#:#Weet je zeker dat je de volgende feedbackgevers voor %s wilt verwijderen?
-survey#:#survey_access_codes#:#Authentication by Access Codes###06 02 2015 new variable
+survey#:#survey_access_code#:#Authentication by Access Codes###06 02 2015 new variable
 survey#:#survey_access_codes_info#:#Users get access to the survey by entering a code on the ‘Info’-tab. These access codes are generated in a sub-tab ‘Access Codes’ in the tab ‘Participants’.###06 02 2015 new variable
 survey#:#survey_activate_skill_service#:#Inschakelen van Competentie Service
 survey#:#survey_activate_skill_service_info#:#todo12

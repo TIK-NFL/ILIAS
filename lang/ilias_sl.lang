@@ -16668,7 +16668,7 @@ survey#:#survey_360_sure_appraisee_close#:#Ali res želite zapreti anketo za vse
 survey#:#survey_360_sure_appraisee_close_admin#:#Ali res želite zapreti anketo za naslednje prejemnike povratnih informacij?
 survey#:#survey_360_sure_delete_appraises#:#Ali res želite odstraniti naslednje ocenjevane osebe?
 survey#:#survey_360_sure_delete_raters#:#Ali res želite odstraniti naslednje dajalce povratnih informacij za %s?
-survey#:#survey_access_codes#:#Avtentikacija s kodo za dostop
+survey#:#survey_access_code#:#Avtentikacija s kodo za dostop
 survey#:#survey_access_codes_info#:#Uporabniki dobijo dostop do ankete z vnosom kode za dostop v zavihku 'Info'.  Te kode za dostop se ustvarijo v istoimenskem podzavihku zavihku 'Udeleženec'.
 survey#:#survey_activate_skill_service#:#Aktiviraj kompetenčno podporo
 survey#:#survey_activate_skill_service_info#:#Prikazal se bo nadaljnji zavihek 'Kompetence'. Tukaj so najprej vprašanjem dodeljene kompetence in nato se nastavijo mejne vrednosti za doseganje določene ravni kompetenc.
