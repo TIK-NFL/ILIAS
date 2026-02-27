@@ -22,6 +22,14 @@ window.MathJax = {
   loader: {
     load: ['ui/safe'],
   },
+  options: {
+    menuOptions: {
+      settings: {
+        zoom: 'Click',        // or 'Click' or 'DoubleClick' as zoom trigger
+        zscale: '300%',       // zoom scaling factor
+      },
+    },
+  },
 };
 
 (function () {
