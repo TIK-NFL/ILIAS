@@ -19,7 +19,7 @@
  */
 
 MathJax.Hub.Config({
-  menuSettings: {zoom: "Click"};
+  menuSettings: {zoom: "Click"}
 });
 
 (function () {
