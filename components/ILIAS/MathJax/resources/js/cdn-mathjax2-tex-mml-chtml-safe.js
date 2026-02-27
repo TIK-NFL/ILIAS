@@ -19,8 +19,8 @@
  */
 
 MathJax.Hub.Config({
-  "MathMenu": {
-    "zoomTrigger": "Click" // or "DoubleClick"
+  menuSettings: {
+    zoomTrigger: "Click" // or "DoubleClick"
   }
 });
 
