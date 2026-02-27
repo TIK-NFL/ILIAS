@@ -4684,7 +4684,7 @@ hr.il-divider-with-label {
   grid-area: help;
 }
 .c-input[data-il-ui-component] > .c-input__error-msg {
-  grid-area: or;
+  grid-area: error;
 }
 @media screen and (max-width: 768px) {
   .c-input[data-il-ui-component] {
@@ -4693,7 +4693,6 @@ hr.il-divider-with-label {
   }
   .c-input[data-il-ui-component] > .c-input__field {
     margin-top: 3px;
-    background-color: red;
   }
 }
 
@@ -10310,7 +10309,7 @@ div.alert ul > li:before {
 }
 .il-table-presentation-row .il-table-presentation-row-header-fields-label::after,
 .il-table-presentation-row .il-table-presentation-desclist .il-listing-characteristic-value-label::after {
-  content: ":";
+  content: ": ";
 }
 .il-table-presentation-row .il-table-presentation-row-expanded {
   margin-top: 6px;
@@ -15178,8 +15177,9 @@ img.ilBadgeImage {
 }
 
 .badge_table-wrapper button > img.img-responsive, .badge_table-wrapper a > img.img-responsive {
-    max-width: 150px;
-    max-height: 150px;
+  max-width: 150px;
+  max-height: 150px;
+  display: inline-block;
 }
 
 div.ilBadgeBackpackPanelContent {
@@ -17551,6 +17551,13 @@ ul.ilStartupSectionRegistrationLinks {
   list-style: none;
 }
 ul.ilStartupSectionRegistrationLinks li {
+  display: inline-block;
+}
+
+ul.ilStartupSectionLoginLinks {
+  list-style: none;
+}
+ul.ilStartupSectionLoginLinks li {
   display: inline-block;
 }
 

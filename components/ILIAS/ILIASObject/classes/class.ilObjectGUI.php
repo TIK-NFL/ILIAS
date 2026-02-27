@@ -2088,6 +2088,10 @@ class ilObjectGUI implements ImplementsCreationCallback
             $this->ctrl->setParameterByClass($create_target_class, 'crtcb', (string) $redirect_target_ref_id);
         }
 
+        $this->lng->loadLanguageModule('wsp');
+        $this->lng->loadLanguageModule('rep');
+        $this->lng->loadLanguageModule('cntr');
+
         $elements = $this->initAddNewItemElementsFromNewItemGroups(
             $create_target_class,
             \ilObjRepositorySettings::getNewItemGroups(),
