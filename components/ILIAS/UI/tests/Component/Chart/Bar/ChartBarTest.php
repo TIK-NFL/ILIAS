@@ -338,7 +338,7 @@ class ChartBarTest extends ILIAS_UI_TestBase
 
         $expected_html = <<<EOT
 <div class="il-chart-bar-horizontal">
-    <canvas id="id_1" height="150px" aria-label="bar123" role="img"></canvas>
+    <canvas id="id_1" height="150" aria-label="bar123" role="img"></canvas>
 </div>
 <div class="sr-only">
     <dl>
@@ -371,7 +371,7 @@ EOT;
 
         $expected_html = <<<EOT
 <div class="il-chart-bar-vertical">
-    <canvas id="id_1" height="165px" aria-label="bar123" role="img"></canvas>
+    <canvas id="id_1" height="165" aria-label="bar123" role="img"></canvas>
 </div>
 <div class="sr-only">
     <dl>
@@ -431,7 +431,7 @@ EOT;
 
         $expected_html = <<<EOT
 <div class="il-chart-bar-vertical">
-    <canvas id="id_1" height="150px" aria-label="bar123" role="img"></canvas>
+    <canvas id="id_1" height="150" aria-label="bar123" role="img"></canvas>
 </div>
 <div class="sr-only">
     <dl>
@@ -473,7 +473,7 @@ EOT;
 
         $expected_html = <<<EOT
 <div class="il-chart-bar-vertical">
-    <canvas id="id_1" height="150px" aria-label="bar123" role="img"></canvas>
+    <canvas id="id_1" height="150" aria-label="bar123" role="img"></canvas>
 </div>
 <div class="sr-only">
     <dl>
