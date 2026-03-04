@@ -20,7 +20,8 @@
 		],
 		"pre-install-cmd": [
 			"mkdir -p public/Customizing/global/plugins",
-			"mkdir -p public/Customizing/skin"
+			"mkdir -p public/Customizing/skin",
+			"cp ecsredi.php public/"
 		],
 		"post-install-cmd": [
 			"@php vendor/composer/rmdirs.php"
