@@ -83,7 +83,7 @@ class ilFileStaticURLHandler extends BaseHandler implements Handler
             self::VERSIONS => $capabilities->get(Capabilities::MANAGE_VERSIONS),
             self::EDIT => $capabilities->get(Capabilities::EDIT_EXTERNAL),
             self::VIEW => $capabilities->get(Capabilities::VIEW_EXTERNAL),
-            default => $capabilities->get(Capabilities::INFO_PAGE),
+            default => $capabilities->getBest(),
         };
 
         if (!$capability->isUnlocked() || $capability->getUri() === null) {
