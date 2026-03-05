@@ -178,7 +178,7 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
         }
 
         if ($subtree_nodes !== [] && $this->objCurrentPost->getId() > 0) {
-            $isCurrentPostingInPage = array_filter($pagedPostings, fn(ilForumPost $posting): bool => (
+            $isCurrentPostingInPage = array_filter($pagedPostings, fn (ilForumPost $posting): bool => (
                 $posting->getId() === $this->objCurrentPost->getId()
             ));
 
@@ -1689,7 +1689,7 @@ class ilObjForumGUI extends ilObjectGUI implements ilDesktopItemHandling, ilForu
             );
         }
 
-        if ($this->settings->get('enable_fora_statistics', '0')) {
+        if ($this->settings->get('enable_fora_statistics', '0' ) && !$this->objProperties->isAnonymized()) {
             $hasStatisticsAccess = $this->access->checkAccess('write', '', $this->ref_id);
             if (!$hasStatisticsAccess) {
                 $hasStatisticsAccess = (
