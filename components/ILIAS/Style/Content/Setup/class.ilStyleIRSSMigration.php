@@ -76,12 +76,11 @@ class ilStyleIRSSMigration implements Migration
 
             //$this->recursiveRmDir($lm_path);
         } else {
-            /*
             $this->helper->getDatabase()->update(
                 'style_data',
                 ['rid' => ['text', '-']],
                 ['id' => ['integer', $object_id],]
-            );*/
+            );
         }
     }
 
