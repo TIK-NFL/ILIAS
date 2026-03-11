@@ -20,9 +20,11 @@ declare(strict_types=1);
 
 namespace ILIAS\Survey\Settings;
 
+use HTMLPurifier;
 use ILIAS\Survey\InternalGUIService;
 use ILIAS\Survey\Mode\UIModifier;
 use ILIAS\Survey\InternalDomainService;
+use ilObjAdvancedEditing;
 
 /**
  * Settings form
@@ -883,8 +885,15 @@ class SettingsFormGUI
         } else {
             $survey->setEndDate("");
         }
-        $survey->setIntroduction($form->getInput("introduction"));
-        $survey->setOutro($form->getInput("outro"));
+        $tags = ilObjAdvancedEditing::_getUsedHTMLTags("survey");
+        $purifier = new HTMLPurifier($tags);
+
+        $introduction = $form->getInput("introduction");
+        $introduction = $purifier->purify($introduction);
+        $survey->setIntroduction($introduction);
+        $outro = $form->getInput("outro");
+        $outro = $purifier->purify($outro);
+        $survey->setOutro($outro);
         $survey->setShowQuestionTitles((bool) $form->getInput("show_question_titles"));
 
         // "separate mail for each participant finished"

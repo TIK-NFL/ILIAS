@@ -2178,6 +2178,7 @@ auth#:#auth_saml_deleted_idp#:#Az azonosításszolgáltatót sikeresen törölte
 auth#:#auth_saml_enable#:#SAML támogatása bekapcsolása
 auth#:#auth_saml_err_sqlite_driver#:#Az SAML hitelesítéshez szükséges az PHP-SQLite. Telepítse az SQLite csomagot, majd próbálja újra.
 auth#:#auth_saml_idp#:#IDP
+auth#:#auth_saml_idp_deactivated_auth_failed#:#Authentication failed, the identity provider is disabled.###10 03 2026 new variable
 auth#:#auth_saml_idp_selection_table_desc#:#Válassza ki azt az azonosítószolgáltatót, amellyel be kíván jelentkezni.
 auth#:#auth_saml_idp_selection_table_title#:#Azonosításszolgáltató kiválasztása
 auth#:#auth_saml_idp_settings#:#IDP beállítások
@@ -2769,6 +2770,7 @@ buddysystem#:#buddy_bs_state_requested_p#:#Ismerősnek jelölés elküldve
 buddysystem#:#buddy_bs_state_unlinked#:#Nincs összekötve
 buddysystem#:#buddy_bs_state_unlinked_a#:#Ismeretlen
 buddysystem#:#buddy_bs_state_unlinked_p#:#Nincs összekötve
+buddysystem#:#buddy_confirm_unlink#:#Do you really want to disconnect from this contact?###10 03 2026 new variable
 buddysystem#:#buddy_enable#:#'Kapcsolatok' aktiválása
 buddysystem#:#buddy_enable_info#:#Felhasználók kérések küldésével/elfogadásával ismerősnek jelölhetik meg egymást. Az összes felhasználó egyéni beállításában engedélyezheti/tilthatja, hogy őt ismerősnek jelöljék.
 buddysystem#:#buddy_handle_contact_request#:#Kapcsolat kérése
@@ -5476,6 +5478,7 @@ common#:#renderer_supported_file_types#:#Támogatott fájltípusok
 common#:#renderer_supported_repo_types#:#Támogatott Tartalomtár-típusok
 common#:#renderer_type_builtin#:#Beépített
 common#:#rep_main_page#:#Kezdőlap
+common#:#rep_main_page_logo_alt#:#Logo ILIAS - to the start page###10 03 2026 new variable
 common#:#repeat_scan#:#Víruskeresés ismétlése…
 common#:#repeat_scan_failed#:#Ismételt keresés sikertelen.
 common#:#repeat_scan_succeded#:#Ismételt keresés sikerült.
@@ -7395,6 +7398,7 @@ copa#:#copa_value_reading_time_f_p#:#%s perc
 copa#:#copa_value_reading_time_f_s#:#%s perc
 copa#:#obj_copa_duplicate#:#Tartalomlap duplikálása
 copg#:#copg_active_to_small#:#A dátumnak a kezdő dátumnál későbbinek kell lennie.
+copg#:#copg_add_content#:#Add Content###10 03 2026 new variable
 copg#:#copg_allow_html#:#HTML/Javascript bekapcsolása
 copg#:#copg_allow_html_info#:#HTML, illetve Javascript oldaltartalmakat használhat. Ez biztonsági rést okozhat, ezért ne kapcsolja be, ha lehet ártó szándékú felhasználója. Az ilyen módú HTML-tartalom hozzáadása várhatóan már nem lesz támogatott a későbbi verziókban.
 copg#:#copg_an_error_occured#:#Hiba történt.
@@ -7430,6 +7434,7 @@ copg#:#copg_remove_formats#:#Formázás eltávolítása
 copg#:#copg_sec_link_info#:#Válassza ki a célt, amire a blokk mutat. Figyelem: Ebben az esetben a blokk nem tartalmazhat további linket!
 copg#:#copg_snippet_cannot_be_edited#:#Ez egy előre definiált tartalom-építőelem, ezért itt nem módosítható.
 copg#:#copg_unsupported_media_type#:#Nem támogatott médiatípus.
+copg#:#copg_use_template#:#Use Template###10 03 2026 new variable
 copg#:#copg_x_minutes#:#%s perc
 cpad#:#cpad_reading_time_status#:#Olvasási idő
 cpad#:#cpad_reading_time_status_desc#:#A tartalomlap becsült olvasási idejét megállapítjuk és megjelenítjük.
@@ -8133,6 +8138,18 @@ dash#:#dash_click_here#:#Kattintson ide
 dash#:#dash_co_delete#:#Műszerfalstílus törlése
 dash#:#dash_co_lang#:#Műszerfalstílus nyelvek szerint
 dash#:#dash_customization#:#Műszerfal tartalmának személyre szabása
+dash#:#dash_dash_fav_remove#:#Remove###10 03 2026 new variable
+dash#:#dash_dash_fav_remove_info#:#Are you sure you want to remove the following objects from your Favourites?###10 03 2026 new variable
+dash#:#dash_dash_fav_remove_multiple#:#Remove Multiple Favorites###10 03 2026 new variable
+dash#:#dash_dash_ls_remove#:#Unsubscribe###10 03 2026 new variable
+dash#:#dash_dash_ls_remove_info#:#Are you sure you want to unsubscribe from the following learning sequences?###10 03 2026 new variable
+dash#:#dash_dash_ls_remove_multiple#:#Unsubscribe Multiple Learning Sequences###10 03 2026 new variable
+dash#:#dash_dash_mem_remove#:#Unsubscribe###10 03 2026 new variable
+dash#:#dash_dash_mem_remove_info#:#Are you sure you want to unsubscribe from the following courses and groups?###10 03 2026 new variable
+dash#:#dash_dash_mem_remove_multiple#:#Unsubscribe Multiple Courses and Groups###10 03 2026 new variable
+dash#:#dash_dash_rc_remove#:#Remove###10 03 2026 new variable
+dash#:#dash_dash_rc_remove_info#:#Are you sure you want to remove the following objects from your recommended content?###10 03 2026 new variable
+dash#:#dash_dash_rc_remove_multiple#:#Remove Multiple Contents###10 03 2026 new variable
 dash#:#dash_dashboard#:#Műszerfal
 dash#:#dash_default_presentation#:#Alapértelmezett megjelenítése
 dash#:#dash_default_sortation#:#Alapértelmezett rendezés
@@ -8146,7 +8163,6 @@ dash#:#dash_enable_recommended_content#:#Ajánlott tartalom
 dash#:#dash_enable_study_programmes#:#Képzési programok
 dash#:#dash_enable_task#:#Feladatok
 dash#:#dash_favourites#:#Kedvenceim
-dash#:#dash_info_sure_remove_from_favs#:#Biztos, hogy eltávolítja a kiválasztott objektumokat a Kedvencei közül?
 dash#:#dash_item_removed#:#Az ajánlást sikeresen törölték a listáról.
 dash#:#dash_learning_sequences#:#Tanulási soraim
 dash#:#dash_list#:#Felsorolás
@@ -8154,6 +8170,7 @@ dash#:#dash_main_panel#:#Főpanel
 dash#:#dash_make_favourite#:#Hozzáadás a Kedvenceimhez
 dash#:#dash_member_main_alt#:#A kurzusok és a csoportok szintén beállíthatók, mint egy különálló főmenü-bejegyzés.
 dash#:#dash_memberships#:#Kurzusaim és csoportjaim
+dash#:#dash_no_items_to_manage#:#No items available for removal.###10 03 2026 new variable
 dash#:#dash_page_edit_info#:#Ennek a lapnak a tartalma az összes felhasználó műszefalán megjelenik. Lentenn látható a műszerfal különböző blokkjainak tartalma.
 dash#:#dash_presentation#:#Megjelenítés
 dash#:#dash_recommended_content#:#Ajánlott tartalom
@@ -9613,6 +9630,7 @@ exc#:#exc_settings_feedback_mail_info#:#A tutorok az értékeléseiket egy levé
 exc#:#exc_settings_feedback_text#:#Szövegdobozban
 exc#:#exc_settings_feedback_text_info#:#A tutorok az értékeléseiket egy szöveges mezőben adják meg, melyről a résztvevők értesítést kapnak. Az értékelés a feladat áttekintésénél jelenik meg.
 exc#:#exc_show_instructions#:#Munkautasítások megjelenítése
+exc#:#exc_show_more#:#Show More###10 03 2026 new variable
 exc#:#exc_show_peer_review#:#Hallgatói visszajelzések megjelenítése
 exc#:#exc_show_submissions#:#Megoldások közzététele a határidő után
 exc#:#exc_show_submissions_info#:#A fix beadási határidővel rendelkező feladatok esetén a résztvevők a beadási határidő lejárta után az összes megoldást megtekinthetik.
@@ -9728,6 +9746,7 @@ exc#:#exc_type_upload#:#Feltöltés
 exc#:#exc_type_upload_team#:#Csapatfeltöltés
 exc#:#exc_value_can_not_set#:#Ez az érték nem állítható be.
 exc#:#exc_view_portfolio#:#Portfólió megtekintése
+exc#:#exc_view_wiki#:#View Wiki###10 03 2026 new variable
 exc#:#exc_wait_for_files#:#Letöltése automatikusan elindul 5 másodpercen belül. Amennyiben mégsem, kattintson ide
 exc#:#exc_wiki_container#:#Wikitároló
 exc#:#exc_wiki_container_info#:#A hely, ahová a résztvevők a wikijeit létrehozzák.
@@ -10971,6 +10990,7 @@ lm#:#lm_btn_lp_toggle_state_completed#:#Nem teljesítettre állítás
 lm#:#lm_btn_lp_toggle_state_not_completed#:#Sikeresen teljesítettre állítás
 lm#:#lm_copy#:#Tananyag másolása
 lm#:#lm_edit_chapters#:#Fejezetek módosítása
+lm#:#lm_edit_content#:#Edit Content###10 03 2026 new variable
 lm#:#lm_edit_lm_settings#:#Tananyag beállításainak módosítása
 lm#:#lm_est_reading_time#:#Becsült olvasási idő
 lm#:#lm_est_reading_time_info#:#A tananyagokban a becsült olvasási idő megállapítható és megjeleníthető.
@@ -10988,6 +11008,7 @@ lm#:#lm_insert_page_before#:#Új lap beszúrása elé
 lm#:#lm_insert_page_clip#:#Új lap beszúrása a vágólapről
 lm#:#lm_insert_page_clip_after#:#Új lap beszúrása a vágólapről mögé
 lm#:#lm_insert_page_clip_before#:#Új lap beszúrása a vágólapről elé
+lm#:#lm_list_pages#:#Edit Pages###10 03 2026 new variable
 lm#:#lm_page_added#:#Az oldalt sikeresen hozzáadta.
 lm#:#lm_page_type_lm#:#Tananyagoldal
 lm#:#lm_pages_added#:#Az oldalakat sikeresen hozzáadta.
@@ -12739,8 +12760,8 @@ mmbr#:#info_refuse_sure#:#Biztos, hogy elutasítja az alábbi felhasználó(ka)t
 mmbr#:#mmbr_awrn_my_groups_courses#:#Csoportjaim és kurzusaim
 mmbr#:#mmbr_awrn_my_groups_courses_info#:#A jelenlegi felhasználó kurzusainak vagy csoportjainak összes tagját felsoroljuk itt.
 mmbr#:#mmbr_btn_mail_selected_users#:#Levél küldése
-mmbr#:#mmbr_info_delete_sure_unsubscribe#:#Biztos, hogy leiratkozik az alábbi objektumokról?
 mmbr#:#mmbr_memberships#:#Tagság
+mmbr#:#mmbr_role_error#:#Members must have at least one role assigned.###10 03 2026 new variable
 mmbr#:#mmbr_selected_users#:#Kiválasztott résztvevők
 mmbr#:#mmbr_unsubscribed_from_objs#:#Sikeresen leiratkozott a kiválaszott objektumokról.
 mme#:#add_languages#:#Nyelv hozzáadása
@@ -13275,7 +13296,6 @@ pd#:#pd_ended#:#Elmúlt
 pd#:#pd_export_profile#:#Személyes adatok exportálása
 pd#:#pd_import_personal_data#:#Személyes adatok importálása
 pd#:#pd_my_memberships_sort_default#:#Alapértelmezett rendezési szempont
-pd#:#pd_no_items_to_manage#:#Nincs törölhető alkalom
 pd#:#pd_not_dated#:#Nincs időpontja
 pd#:#pd_ongoing#:#Folyamatban lévő
 pd#:#pd_personal_items_default_view#:#Alapértelmezett nézet
@@ -13285,9 +13305,6 @@ pd#:#pd_presentation_mode_tile#:#Csempe
 pd#:#pd_private_calendars#:#Privát naptár
 pd#:#pd_profile_data#:#Profiladatok
 pd#:#pd_remove_multi_confirm#:#Az objektumokat eltávolítottuk.
-pd#:#pd_remove_multiple#:#Több objektum eltávolítása
-pd#:#pd_unsubscribe_memberships#:#Leiratkozás
-pd#:#pd_unsubscribe_multiple_memberships#:#Többszörös leiratkozás
 pd#:#pd_upcoming#:#Jövőbeli
 pd#:#pd_view_select_at_least_one#:#Legalább egy nézetet ki kell választania vagy a 'Kigyűjtött objektumok' és/vagy a 'Tagságaim' közül.
 pdesk#:#bookmark_moved_ok#:#A könyvjelző áthelyeződött.
@@ -17835,7 +17852,6 @@ wopi#:#wopi_url_byline#:#A WOPI Discovery teljes URL-je, ennek elérhetőnek kel
 wsp#:#element_already_shared#:#Ezt az objektumot már megosztotta evvel a felhasználóval.
 wsp#:#element_shared#:#Az objektumot sikeresen megosztotta.
 wsp#:#error_creating_certificate_pdf#:#A tanúsítványt nem sikerült létrehozni. Kérem, keresse a szerver üzemeltetőjét.
-wsp#:#search_no_match#:#A keresése nem adott eredményt.
 wsp#:#share#:#Megosztás
 wsp#:#share_content#:#Megosztott objektum
 wsp#:#share_with#:#Felhasználónév
@@ -17857,6 +17873,7 @@ wsp#:#wsp_permission_registered_info#:#Az objektumot megosztotta az összes regi
 wsp#:#wsp_permission_removed#:#A bejegyzést sikeresen törölte.
 wsp#:#wsp_permissions#:#Megosztás
 wsp#:#wsp_personal_resources_description#:#Itt kezelheti személyes fájljait, blogjait és alkotásait.
+wsp#:#wsp_search_no_match#:#Your search did not match any results.###10 03 2026 new variable
 wsp#:#wsp_send_mail#:#Levél küldése
 wsp#:#wsp_set_permission_all#:#World Wide Web
 wsp#:#wsp_set_permission_all_password#:#World Wide Web (jelszóval)

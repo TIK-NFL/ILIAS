@@ -2163,6 +2163,7 @@ auth#:#auth_saml_deleted_idp#:#Le fournisseur d’identité a été supprimé.
 auth#:#auth_saml_enable#:#Autoriser le support SAML
 auth#:#auth_saml_err_sqlite_driver#:#The SAML authentication requires the SQLite driver for PHP. Please install the SQLite package and try again.
 auth#:#auth_saml_idp#:#IDP
+auth#:#auth_saml_idp_deactivated_auth_failed#:#Authentication failed, the identity provider is disabled.###10 03 2026 new variable
 auth#:#auth_saml_idp_selection_table_desc#:#Veuillez choisir le fournisseur d’identité avec lequel vous souhaitez vous connecter.
 auth#:#auth_saml_idp_selection_table_title#:#Sélection du fournisseur d’identité
 auth#:#auth_saml_idp_settings#:#Paramètres IDP
@@ -2754,6 +2755,7 @@ buddysystem#:#buddy_bs_state_requested_p#:#Demandé
 buddysystem#:#buddy_bs_state_unlinked#:#Unlinked
 buddysystem#:#buddy_bs_state_unlinked_a#:#Non liée
 buddysystem#:#buddy_bs_state_unlinked_p#:#Unlinked
+buddysystem#:#buddy_confirm_unlink#:#Do you really want to disconnect from this contact?###10 03 2026 new variable
 buddysystem#:#buddy_enable#:#Activer les Contacts
 buddysystem#:#buddy_enable_info#:#Si activé, les utilisateurs sont autorisés à  communiquer entre eux en lanàçant des demandes de contact. De plus, il y a un paramètre d'utilisateur personnel pour permettre ou éviter d'être contacté.
 buddysystem#:#buddy_handle_contact_request#:#Demande de contact
@@ -5461,6 +5463,7 @@ common#:#renderer_supported_file_types#:#Types de Fichiers Supportés
 common#:#renderer_supported_repo_types#:#Objets ILIAS Supportés
 common#:#renderer_type_builtin#:#Préfabriqué
 common#:#rep_main_page#:#Catalogue - Page d'accueil
+common#:#rep_main_page_logo_alt#:#Logo ILIAS - to the start page###10 03 2026 new variable
 common#:#repeat_scan#:#Nouvelle recherche de virus...
 common#:#repeat_scan_failed#:#Echec de la nouvelle recherche.
 common#:#repeat_scan_succeded#:#Nouvelle recherche réussie.
@@ -7380,6 +7383,7 @@ copa#:#copa_value_reading_time_f_p#:#%s Minutes
 copa#:#copa_value_reading_time_f_s#:#%s Minute
 copa#:#obj_copa_duplicate#:#Duplicate Content Page
 copg#:#copg_active_to_small#:#This date must be higher than the starting date.###26 08 2024 new variable
+copg#:#copg_add_content#:#Add Content###10 03 2026 new variable
 copg#:#copg_allow_html#:#Enable HTML/Javascript
 copg#:#copg_allow_html_info#:#User may use HTML or Javascript page content. This may lead to security issues. Do not activate, if features can be used by users which you consider not being trustworthy. The support to add HTML content this way may be discontinued in a future version.
 copg#:#copg_an_error_occured#:#An error occured.
@@ -7415,6 +7419,7 @@ copg#:#copg_remove_formats#:#Remove Formatting###26 08 2024 new variable
 copg#:#copg_sec_link_info#:#Si vous définissez un lien sur toute la section, veuillez vous assurer qu’aucun autre élément interactif n’est inclus dans la section. Autrement, son comportement peut être irrégulier.
 copg#:#copg_snippet_cannot_be_edited#:#Il s'agit d’un extrait du contenu prédéfini et il ne peut pas être édité ici.
 copg#:#copg_unsupported_media_type#:#This media object has an unsupported media type.###26 08 2024 new variable
+copg#:#copg_use_template#:#Use Template###10 03 2026 new variable
 copg#:#copg_x_minutes#:#%s minute(s)###31 10 2023 new variable
 cpad#:#cpad_reading_time_status#:#Reading Time
 cpad#:#cpad_reading_time_status_desc#:#If enabled, the estimated reading time for content page objects will be determined and displayed.
@@ -8118,6 +8123,18 @@ dash#:#dash_click_here#:#Click here
 dash#:#dash_co_delete#:#Delete Dashboard style###28 10 2024 new variable
 dash#:#dash_co_lang#:#Dashboard style by languages###28 10 2024 new variable
 dash#:#dash_customization#:#Customize Dashboard Content###28 10 2024 new variable
+dash#:#dash_dash_fav_remove#:#Remove###10 03 2026 new variable
+dash#:#dash_dash_fav_remove_info#:#Are you sure you want to remove the following objects from your Favourites?###10 03 2026 new variable
+dash#:#dash_dash_fav_remove_multiple#:#Remove Multiple Favorites###10 03 2026 new variable
+dash#:#dash_dash_ls_remove#:#Unsubscribe###10 03 2026 new variable
+dash#:#dash_dash_ls_remove_info#:#Are you sure you want to unsubscribe from the following learning sequences?###10 03 2026 new variable
+dash#:#dash_dash_ls_remove_multiple#:#Unsubscribe Multiple Learning Sequences###10 03 2026 new variable
+dash#:#dash_dash_mem_remove#:#Unsubscribe###10 03 2026 new variable
+dash#:#dash_dash_mem_remove_info#:#Are you sure you want to unsubscribe from the following courses and groups?###10 03 2026 new variable
+dash#:#dash_dash_mem_remove_multiple#:#Unsubscribe Multiple Courses and Groups###10 03 2026 new variable
+dash#:#dash_dash_rc_remove#:#Remove###10 03 2026 new variable
+dash#:#dash_dash_rc_remove_info#:#Are you sure you want to remove the following objects from your recommended content?###10 03 2026 new variable
+dash#:#dash_dash_rc_remove_multiple#:#Remove Multiple Contents###10 03 2026 new variable
 dash#:#dash_dashboard#:#Tableau de bord
 dash#:#dash_default_presentation#:#Default Presentation
 dash#:#dash_default_sortation#:#Default Sortation
@@ -8131,7 +8148,6 @@ dash#:#dash_enable_recommended_content#:#Recommended Content###31 10 2023 new va
 dash#:#dash_enable_study_programmes#:#Study Programmes###31 10 2023 new variable
 dash#:#dash_enable_task#:#Tasks
 dash#:#dash_favourites#:#Favoris
-dash#:#dash_info_sure_remove_from_favs#:#Are you sure you want to remove the following objects from your Favourites?
 dash#:#dash_item_removed#:#Recommendation has been removed from the list.
 dash#:#dash_learning_sequences#:#My Learning Sequences###31 10 2023 new variable
 dash#:#dash_list#:#List
@@ -8139,6 +8155,7 @@ dash#:#dash_main_panel#:#Main Panel
 dash#:#dash_make_favourite#:#Ajouter aux favoris
 dash#:#dash_member_main_alt#:#Courses and groups can also be configured as a separate main menu entry.
 dash#:#dash_memberships#:#Mes cours et groupes
+dash#:#dash_no_items_to_manage#:#No items available for removal.###10 03 2026 new variable
 dash#:#dash_page_edit_info#:#The content of this page is displayed to all users on their dashboard. The contents of the various blocks of the dashboard are presented below.###28 10 2024 new variable
 dash#:#dash_presentation#:#Presentation
 dash#:#dash_recommended_content#:#Recommended Content###31 10 2023 new variable
@@ -9598,6 +9615,7 @@ exc#:#exc_settings_feedback_mail_info#:#Les tuteurs entrent leurs évaluations s
 exc#:#exc_settings_feedback_text#:#Textinput
 exc#:#exc_settings_feedback_text_info#:#Les tuteurs tapent leurs évaluations dans un champ de texte. Le participant reçoit une notification à ce propos et peut accéder au fichier dans l’aperçu des affectations.
 exc#:#exc_show_instructions#:#Show Work Instructions###26 08 2024 new variable
+exc#:#exc_show_more#:#Show More###10 03 2026 new variable
 exc#:#exc_show_peer_review#:#Afficher les Retours des Pairs
 exc#:#exc_show_submissions#:#Publier les propositions après la date limite
 exc#:#exc_show_submissions_info#:#Publier toutes les propositions de tous les apprenants après la date limite.
@@ -9713,6 +9731,7 @@ exc#:#exc_type_upload#:#Dépôt de Fichier
 exc#:#exc_type_upload_team#:#Dépôt de Fichier par Equipe
 exc#:#exc_value_can_not_set#:#This value can not be set.
 exc#:#exc_view_portfolio#:#View Portfolio###31 10 2023 new variable
+exc#:#exc_view_wiki#:#View Wiki###10 03 2026 new variable
 exc#:#exc_wait_for_files#:#Votre téléchargement devrait démarrer automatiquement. Si le téléchargement ne démarre pas après 5 secondes, veuillez cliquer ici
 exc#:#exc_wiki_container#:#Wiki Container
 exc#:#exc_wiki_container_info#:#Location where wikis of participants will be created.
@@ -10956,6 +10975,7 @@ lm#:#lm_btn_lp_toggle_state_completed#:#Set Not Completed
 lm#:#lm_btn_lp_toggle_state_not_completed#:#Set Completed
 lm#:#lm_copy#:#Copier Module ILIAS
 lm#:#lm_edit_chapters#:#Edit Chapters###31 10 2023 new variable
+lm#:#lm_edit_content#:#Edit Content###10 03 2026 new variable
 lm#:#lm_edit_lm_settings#:#Edit Learning Module Settings###31 10 2023 new variable
 lm#:#lm_est_reading_time#:#Estimated Reading Time###31 10 2023 new variable
 lm#:#lm_est_reading_time_info#:#In Learning Modules in the repository the estimated reading time can be determined and displayed.###31 10 2023 new variable
@@ -10973,6 +10993,7 @@ lm#:#lm_insert_page_before#:#Insert page before###28 10 2024 new variable
 lm#:#lm_insert_page_clip#:#Insert page from clipboard###28 10 2024 new variable
 lm#:#lm_insert_page_clip_after#:#Insert page from clipboard after###28 10 2024 new variable
 lm#:#lm_insert_page_clip_before#:#Insert page from clipboard before###28 10 2024 new variable
+lm#:#lm_list_pages#:#Edit Pages###10 03 2026 new variable
 lm#:#lm_page_added#:#Page has been added.###26 08 2024 new variable
 lm#:#lm_page_type_lm#:#LM Page
 lm#:#lm_pages_added#:#Pages have been added.###26 08 2024 new variable
@@ -12724,8 +12745,8 @@ mmbr#:#info_refuse_sure#:#Etes-vous sûr de vouloir refuser l'utilisateur(s) sui
 mmbr#:#mmbr_awrn_my_groups_courses#:#Mes cours et groupes
 mmbr#:#mmbr_awrn_my_groups_courses_info#:#Tous les membres des groupes ou des cours de l'utilisateur actuel sont répertoriés.
 mmbr#:#mmbr_btn_mail_selected_users#:#Envoyer mail
-mmbr#:#mmbr_info_delete_sure_unsubscribe#:#Are you sure you want to unsubscribe from the following objects?
 mmbr#:#mmbr_memberships#:#Inscriptions
+mmbr#:#mmbr_role_error#:#Members must have at least one role assigned.###10 03 2026 new variable
 mmbr#:#mmbr_selected_users#:#Participants sélectionnés
 mmbr#:#mmbr_unsubscribed_from_objs#:#You have been unsubscribed from the selected objects.
 mme#:#add_languages#:#Add Language
@@ -13260,7 +13281,6 @@ pd#:#pd_ended#:#Terminée
 pd#:#pd_export_profile#:#Exporter des données personnelles
 pd#:#pd_import_personal_data#:#Importer des données personnelles
 pd#:#pd_my_memberships_sort_default#:#Option de triage par défaut
-pd#:#pd_no_items_to_manage#:#No items available for removal.###26 08 2024 new variable
 pd#:#pd_not_dated#:#Not Dated###31 10 2023 new variable
 pd#:#pd_ongoing#:#En cours
 pd#:#pd_personal_items_default_view#:#Vue par Défaut
@@ -13270,9 +13290,6 @@ pd#:#pd_presentation_mode_tile#:#Tile Presentation
 pd#:#pd_private_calendars#:#Calendriers privés
 pd#:#pd_profile_data#:#Données personnelles
 pd#:#pd_remove_multi_confirm#:#Les objets ont été retirés.
-pd#:#pd_remove_multiple#:#Retirer plusieurs objets
-pd#:#pd_unsubscribe_memberships#:#Se Désinscrire
-pd#:#pd_unsubscribe_multiple_memberships#:#Se désinscrire (plusieurs)
 pd#:#pd_upcoming#:#À venir
 pd#:#pd_view_select_at_least_one#:#Vous devez sélectionner au moins une vue : 'Items sélectionnés' et/ou 'Mes appartenances'
 pdesk#:#bookmark_moved_ok#:#Le favori a été déplacé.
@@ -17820,7 +17837,6 @@ wopi#:#wopi_url_byline#:#Complete URL of the WOPI-Discovery, this must be access
 wsp#:#element_already_shared#:#This element is already shared with this user.
 wsp#:#element_shared#:#Element shared
 wsp#:#error_creating_certificate_pdf#:#The certificate could not be created. Please contact the administrator to check the certificate server.
-wsp#:#search_no_match#:#Your search did not match any results
 wsp#:#share#:#Partager
 wsp#:#share_content#:#Share content
 wsp#:#share_with#:#Share with:
@@ -17842,6 +17858,7 @@ wsp#:#wsp_permission_registered_info#:#Cet objet est partagé avec tous les util
 wsp#:#wsp_permission_removed#:#L'élément a été supprimé.
 wsp#:#wsp_permissions#:#Partager
 wsp#:#wsp_personal_resources_description#:#Ici, vous pouvez gérer vos fichiers privés, vos blogs et vos éléments.
+wsp#:#wsp_search_no_match#:#Your search did not match any results.###10 03 2026 new variable
 wsp#:#wsp_send_mail#:#Send Mail###31 10 2023 new variable
 wsp#:#wsp_set_permission_all#:#Publier
 wsp#:#wsp_set_permission_all_password#:#Publier (Mot de Passe Requis)

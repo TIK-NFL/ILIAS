@@ -328,7 +328,14 @@ abstract class SurveyQuestionGUI
             $this->object->label = ($form->getInput("label"));
             $this->object->setAuthor($form->getInput("author"));
             $this->object->setDescription($form->getInput("description"));
-            $this->object->setQuestiontext($form->getInput("question"));
+
+            $tags = ilObjAdvancedEditing::_getUsedHTMLTags("survey");
+            $purifier = new HTMLPurifier($tags);
+            $question = $form->getInput("question");
+
+            $question = $purifier->purify($question);
+
+            $this->object->setQuestiontext($question);
             $this->object->setObligatory($form->getInput("obligatory"));
 
             $this->importEditFormValues($form);

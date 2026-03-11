@@ -2178,6 +2178,7 @@ auth#:#auth_saml_deleted_idp#:#Identitetsleverantören har tagits bort.
 auth#:#auth_saml_enable#:#Aktivera #SAML-stöd
 auth#:#auth_saml_err_sqlite_driver#:#SAML-autentisering kräver SQLite-drivrutinerna för PHP. Installera dem och försök igen.
 auth#:#auth_saml_idp#:#IDP
+auth#:#auth_saml_idp_deactivated_auth_failed#:#Authentication failed, the identity provider is disabled.###10 03 2026 new variable
 auth#:#auth_saml_idp_selection_table_desc#:#Välj den identitetsleverantör som du vill logga in med.
 auth#:#auth_saml_idp_selection_table_title#:#Identitetsleverantör
 auth#:#auth_saml_idp_settings#:#IDP-inställningar
@@ -2769,6 +2770,7 @@ buddysystem#:#buddy_bs_state_requested_p#:#Frågade
 buddysystem#:#buddy_bs_state_unlinked#:#Inte nätverk
 buddysystem#:#buddy_bs_state_unlinked_a#:#Inte nätverk
 buddysystem#:#buddy_bs_state_unlinked_p#:#Inte nätverk
+buddysystem#:#buddy_confirm_unlink#:#Do you really want to disconnect from this contact?###10 03 2026 new variable
 buddysystem#:#buddy_enable#:#Aktivera "Användarkontakter
 buddysystem#:#buddy_enable_info#:#Om den är aktiverad kan användare i systemet kontakta varandra via kontaktförfrågningar. En ytterligare personlig inställning gör det möjligt för varje användare att tillåta eller förhindra kontaktförfrågningar.
 buddysystem#:#buddy_handle_contact_request#:#Kontaktförfrågan
@@ -5476,6 +5478,7 @@ common#:#renderer_supported_file_types#:#Filtyper som stöds
 common#:#renderer_supported_repo_types#:#ILIAS-objekt som stöds
 common#:#renderer_type_builtin#:#Inbyggd i
 common#:#rep_main_page#:#Inledande sida
+common#:#rep_main_page_logo_alt#:#Logo ILIAS - to the start page###10 03 2026 new variable
 common#:#repeat_scan#:#Upprepa virussökning...
 common#:#repeat_scan_failed#:# Upprepad sökning misslyckades.
 common#:#repeat_scan_succeded#:# Upprepad skanning lyckades.
@@ -7395,6 +7398,7 @@ copa#:#copa_value_reading_time_f_p#:#%s minuter
 copa#:#copa_value_reading_time_f_s#:#%s minut
 copa#:#obj_copa_duplicate#:#Sidor med duplicerat innehåll
 copg#:#copg_active_to_small#:#This date must be higher than the starting date.###26 08 2024 new variable
+copg#:#copg_add_content#:#Add Content###10 03 2026 new variable
 copg#:#copg_allow_html#:#Tillåt HTML/Javascript
 copg#:#copg_allow_html_info#:#Användare kan använda HTML eller Javascript i sidinnehåll. Detta kan leda till säkerhetsproblem. Du bör endast aktivera denna funktion för komponenter som används av betrodda användare. Möjligheten att inkludera HTML på detta sätt kan komma att tas bort
 copg#:#copg_an_error_occured#:#Tyvärr har ett problem uppstått.
@@ -7430,6 +7434,7 @@ copg#:#copg_remove_formats#:#Remove Formatting###26 08 2024 new variable
 copg#:#copg_sec_link_info#:#Välj en destination för länkning av blocket. Uppmärksamhet
 copg#:#copg_snippet_cannot_be_edited#:#Detta är en fördefinierad innehållsmodul som inte kan redigeras just nu.
 copg#:#copg_unsupported_media_type#:#This media object has an unsupported media type.###26 08 2024 new variable
+copg#:#copg_use_template#:#Use Template###10 03 2026 new variable
 copg#:#copg_x_minutes#:#%s minut(er)
 cpad#:#cpad_reading_time_status#:#Tid för läsning
 cpad#:#cpad_reading_time_status_desc#:#Om den är aktiverad beräknas och visas den uppskattade lästiden för innehållssidor.
@@ -8133,6 +8138,18 @@ dash#:#dash_click_here#:#Klicka här
 dash#:#dash_co_delete#:#Delete Dashboard style###28 10 2024 new variable
 dash#:#dash_co_lang#:#Dashboard style by languages###28 10 2024 new variable
 dash#:#dash_customization#:#Customize Dashboard Content###28 10 2024 new variable
+dash#:#dash_dash_fav_remove#:#Remove###10 03 2026 new variable
+dash#:#dash_dash_fav_remove_info#:#Are you sure you want to remove the following objects from your Favourites?###10 03 2026 new variable
+dash#:#dash_dash_fav_remove_multiple#:#Remove Multiple Favorites###10 03 2026 new variable
+dash#:#dash_dash_ls_remove#:#Unsubscribe###10 03 2026 new variable
+dash#:#dash_dash_ls_remove_info#:#Are you sure you want to unsubscribe from the following learning sequences?###10 03 2026 new variable
+dash#:#dash_dash_ls_remove_multiple#:#Unsubscribe Multiple Learning Sequences###10 03 2026 new variable
+dash#:#dash_dash_mem_remove#:#Unsubscribe###10 03 2026 new variable
+dash#:#dash_dash_mem_remove_info#:#Are you sure you want to unsubscribe from the following courses and groups?###10 03 2026 new variable
+dash#:#dash_dash_mem_remove_multiple#:#Unsubscribe Multiple Courses and Groups###10 03 2026 new variable
+dash#:#dash_dash_rc_remove#:#Remove###10 03 2026 new variable
+dash#:#dash_dash_rc_remove_info#:#Are you sure you want to remove the following objects from your recommended content?###10 03 2026 new variable
+dash#:#dash_dash_rc_remove_multiple#:#Remove Multiple Contents###10 03 2026 new variable
 dash#:#dash_dashboard#:#Dashboard
 dash#:#dash_default_presentation#:#Standardiserad presentation
 dash#:#dash_default_sortation#:#Standard sortering
@@ -8146,7 +8163,6 @@ dash#:#dash_enable_recommended_content#:#Recommended Content###21 11 2023 new va
 dash#:#dash_enable_study_programmes#:#Study Programmes###21 11 2023 new variable
 dash#:#dash_enable_task#:#Att göra
 dash#:#dash_favourites#:#Favoriter
-dash#:#dash_info_sure_remove_from_favs#:#Vill du verkligen ta bort följande objekt från dina favoriter?
 dash#:#dash_item_removed#:#Posten har tagits bort från listan.
 dash#:#dash_learning_sequences#:#My Learning Sequences###21 11 2023 new variable
 dash#:#dash_list#:#Lista
@@ -8154,6 +8170,7 @@ dash#:#dash_main_panel#:#Huvudområde
 dash#:#dash_make_favourite#:#Lägg till i favoriter
 dash#:#dash_member_main_alt#:#En vy över medlemskapen kan också inkluderas direkt i huvudmenyn.
 dash#:#dash_memberships#:#Mina kurser och grupper
+dash#:#dash_no_items_to_manage#:#No items available for removal.###10 03 2026 new variable
 dash#:#dash_page_edit_info#:#The content of this page is displayed to all users on their dashboard. The contents of the various blocks of the dashboard are presented below.###28 10 2024 new variable
 dash#:#dash_presentation#:#Presentation
 dash#:#dash_recommended_content#:#Recommended Content###21 11 2023 new variable
@@ -9613,6 +9630,7 @@ exc#:#exc_settings_feedback_mail_info#:#Tutors anger sin feedback på inlämning
 exc#:#exc_settings_feedback_text#:# Textinmatning
 exc#:#exc_settings_feedback_text_info#:#Tutorer anger sin feedback i ett textfält. Respektive deltagare får ett meddelande och texten visas i översikten över övningsenheten.
 exc#:#exc_show_instructions#:#Show Work Instructions###26 08 2024 new variable
+exc#:#exc_show_more#:#Show More###10 03 2026 new variable
 exc#:#exc_show_peer_review#:#Visa Peer feedback
 exc#:#exc_show_submissions#:#Publicera lösningsavgifter
 exc#:#exc_show_submissions_info#:#Alla inlämnade lösningar för en övningsenhet kan ses av alla deltagare efter tidsfristen för inlämning.
@@ -9728,6 +9746,7 @@ exc#:#exc_type_upload#:#Fil
 exc#:#exc_type_upload_team#:#Skicka in filen som ett team
 exc#:#exc_value_can_not_set#:#Detta värde kan inte ställas in
 exc#:#exc_view_portfolio#:#View Portfolio###21 11 2023 new variable
+exc#:#exc_view_wiki#:#View Wiki###10 03 2026 new variable
 exc#:#exc_wait_for_files#:#Nedladdningen bör starta automatiskt. Om du har några problem, vänligen klicka här.
 exc#:#exc_wiki_container#:#Wiki behållare
 exc#:#exc_wiki_container_info#:#Plats där nya wikis för deltagarna skapas.
@@ -10971,6 +10990,7 @@ lm#:#lm_btn_lp_toggle_state_completed#:#Set till "Ej redigerad
 lm#:#lm_btn_lp_toggle_state_not_completed#:#Set till "Redigerad
 lm#:#lm_copy#:#Kopiera ILIAS utbildningsmodul
 lm#:#lm_edit_chapters#:#Redigera kapitel
+lm#:#lm_edit_content#:#Edit Content###10 03 2026 new variable
 lm#:#lm_edit_lm_settings#:#Redigera inställningar för lärmodulen
 lm#:#lm_est_reading_time#:#Uppskattad lästid
 lm#:#lm_est_reading_time_info#:#I lärmoduler kan en uppskattad lästid bestämmas och visas.
@@ -10988,6 +11008,7 @@ lm#:#lm_insert_page_before#:#Insert page before###28 10 2024 new variable
 lm#:#lm_insert_page_clip#:#Insert page from clipboard###28 10 2024 new variable
 lm#:#lm_insert_page_clip_after#:#Insert page from clipboard after###28 10 2024 new variable
 lm#:#lm_insert_page_clip_before#:#Insert page from clipboard before###28 10 2024 new variable
+lm#:#lm_list_pages#:#Edit Pages###10 03 2026 new variable
 lm#:#lm_page_added#:#Page has been added.###21 11 2023 new variable
 lm#:#lm_page_type_lm#:#sida för utbildningsmodul
 lm#:#lm_pages_added#:#Pages have been added.###21 11 2023 new variable
@@ -12739,8 +12760,8 @@ mmbr#:#info_refuse_sure#:#Är du säker på att du vill avvisa följande använd
 mmbr#:#mmbr_awrn_my_groups_courses#:#Mina kurser och grupper
 mmbr#:#mmbr_awrn_my_groups_courses_info#:#Alla medlemmar i grupper och kurser för en användare listas.
 mmbr#:#mmbr_btn_mail_selected_users#:#Skicka e-post
-mmbr#:#mmbr_info_delete_sure_unsubscribe#:#Vill du verkligen säga upp ditt medlemskap för följande kurser och grupper?
 mmbr#:#mmbr_memberships#:#Memberships
+mmbr#:#mmbr_role_error#:#Members must have at least one role assigned.###10 03 2026 new variable
 mmbr#:#mmbr_selected_users#:#Utvalda deltagare
 mmbr#:#mmbr_unsubscribed_from_objs#:#Du har loggats ut från de valda objekten.
 mme#:#add_languages#:#Lägg till språk
@@ -13275,7 +13296,6 @@ pd#:#pd_ended#:#Färdig
 pd#:#pd_export_profile#:#Exportera personuppgifter
 pd#:#pd_import_personal_data#:#Importera personuppgifter
 pd#:#pd_my_memberships_sort_default#:#Standard sortering
-pd#:#pd_no_items_to_manage#:#No items available for removal.###26 08 2024 new variable
 pd#:#pd_not_dated#:#Not Dated###21 11 2023 new variable
 pd#:#pd_ongoing#:#Aktuell
 pd#:#pd_personal_items_default_view#:#Standardvy
@@ -13285,9 +13305,6 @@ pd#:#pd_presentation_mode_tile#:#Kakel utsikt
 pd#:#pd_private_calendars#:#Privata kalendrar
 pd#:#pd_profile_data#:#Profiluppgifter
 pd#:#pd_remove_multi_confirm#:#Objekten har tagits bort.
-pd#:#pd_remove_multiple#:#Ta bort flera objekt
-pd#:#pd_unsubscribe_memberships#:#Avsluta medlemskap
-pd#:#pd_unsubscribe_multiple_memberships#:#Avsluta flera medlemskap
 pd#:#pd_upcoming#:#Föregående
 pd#:#pd_view_select_at_least_one#:#Välj minst en vy, antingen "Utvalda erbjudanden" och/eller "Kurser och grupper".
 pdesk#:#bookmark_moved_ok#:#Bookmark har flyttats.
@@ -17835,7 +17852,6 @@ wopi#:#wopi_url_byline#:#Complete URL of the WOPI-Discovery, this must be access
 wsp#:#element_already_shared#:#Resursen har redan släppts för denna person.###Modifierad som en del av jämställdhetsintegreringsaktiviteter för ILIAS 8
 wsp#:#element_shared#:#Resursen har frigjorts.
 wsp#:#error_creating_certificate_pdf#:#Certifikatet kunde inte skapas. Låt en administratör kontrollera certifikatservern.
-wsp#:#search_no_match#:#Din sökning gav inga resultat.
 wsp#:#share#:#Släpp
 wsp#:#share_content#:#Release resurs
 wsp#:#share_with#:#Login name###Modifierad som en del av arbetet med att integrera ett jämställdhetsperspektiv i ILIAS 8
@@ -17857,6 +17873,7 @@ wsp#:#wsp_permission_registered_info#:#Detta objekt är tillgängligt för alla 
 wsp#:#wsp_permission_removed#:#Posten har tagits bort.
 wsp#:#wsp_permissions#:#Släpp
 wsp#:#wsp_personal_resources_description#:#Här kan du hantera personliga filer, bloggar och bevis.
+wsp#:#wsp_search_no_match#:#Your search did not match any results.###10 03 2026 new variable
 wsp#:#wsp_send_mail#:#Send Mail###21 11 2023 new variable
 wsp#:#wsp_set_permission_all#:#Internet/WWW
 wsp#:#wsp_set_permission_all_password#:#Internet/WWW med lösenord

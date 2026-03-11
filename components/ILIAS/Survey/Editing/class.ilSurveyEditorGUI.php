@@ -1027,14 +1027,13 @@ class ilSurveyEditorGUI
 
         $form = $this->initHeadingForm($q_id);
         if ($form->checkInput()) {
-            $this->object->saveHeading(
-                ilUtil::stripSlashes(
-                    $form->getInput("heading"),
-                    true,
-                    ilObjAdvancedEditing::_getUsedHTMLTagsAsString("survey")
-                ),
-                $form->getInput("insertbefore")
-            );
+            $tags = ilObjAdvancedEditing::_getUsedHTMLTags("survey");
+            $purifier = new HTMLPurifier($tags);
+            $heading = $form->getInput("heading");
+
+            $heading = $purifier->purify($heading);
+
+            $this->object->saveHeading($heading, $form->getInput("insertbefore"));
             $this->ctrl->redirect($this, "questions");
         }
 
