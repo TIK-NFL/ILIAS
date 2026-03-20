@@ -38,7 +38,7 @@ class ilAdvancedMDFieldDefinitionSelect extends ilAdvancedMDFieldDefinition
     protected array $confirm_objects_values = [];
     protected ?array $confirmed_objects = null;
     protected ?array $old_options_array = null;
-    protected SelectSpecificData $options;
+    protected ?SelectSpecificData $options;
 
     protected string $default_language;
 
