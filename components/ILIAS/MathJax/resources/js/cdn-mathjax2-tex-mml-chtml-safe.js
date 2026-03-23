@@ -20,14 +20,7 @@
 
 (function () {
   const script = document.createElement('script');
-  script.src = 'https://ilias-cdn.tik.uni-stuttgart.de/mj2/MathJax.js?config=TeX-AMS-MML_HTMLorMML,Safe';
+  script.src = 'https://ilias-cdn.tik.uni-stuttgart.de/mj2/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local.js,Safe';
   script.async = true;
   document.head.appendChild(script);
 }());
-
-MathJax.Hub.Config({
-  menuSettings: {
-    zoom: "Click",
-    zscale: "200%"
-  }
-});
