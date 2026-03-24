@@ -1,6 +1,6 @@
 <?php
 
-$iliasini = parse_ini_file("ilias.ini.php", true);
+$iliasini = parse_ini_file(__DIR__ . "/../ilias.ini.php", true);
 #print_r($iliasini);
 $iliasID = $iliasini['clients']['default'];
 $iliasbaseurl = $iliasini['server']['http_path'];
