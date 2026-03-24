@@ -13,7 +13,7 @@ if (null !== ($cms = filter_input(INPUT_GET, 'cmsid', FILTER_VALIDATE_INT, FILTE
         echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
 
-    if (!($stmt = $mysqli->prepare("select ref_id from ecs_course_assignments as ecs, object_reference as objref ".  
+    if (!($stmt = $mysqli->prepare("select ref_id from ecs_course_assignments as ecs, object_reference as objref ".
                                    "where ecs.cms_id = (?) and objref.obj_id = ecs.obj_id "))) {
         echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }
@@ -32,12 +32,12 @@ if (null !== ($cms = filter_input(INPUT_GET, 'cmsid', FILTER_VALIDATE_INT, FILTE
     $stmt->fetch();
 
     if( $crs_obj ) {
-        header('Location: '.$iliasbaseurl.'/goto.php?target=crs_'.$crs_obj.'&client_id='.$iliasID  , true,  301);
+        header('Location: ' . $iliasbaseurl . '/go/crs/' . $crs_obj, true, 301);
     } else {
-        header('Location: '.$iliasbaseurl , true,  301);
+        header('Location: ' . $iliasbaseurl, true, 301);
     }
     /* close statement */
     $stmt->close();
 } else {
-    header('Location: '.$iliasbaseurl, true,  301);
+    header('Location: ' . $iliasbaseurl, true, 301);
 }
