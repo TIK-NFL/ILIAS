@@ -134,6 +134,11 @@ class ilObjMediaCastAccess extends ilObjectAccess
         $mc_set = $ilDB->query($q);
         $mc_rec = $mc_set->fetchRow(ilDBConstants::FETCHMODE_ASSOC);
 
+        ### hotfix for type error
+        if (!is_array($mc_rec)) {
+           return false;
+        }
+
         return (bool) $mc_rec["public_files"];
     }
 
