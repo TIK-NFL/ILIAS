@@ -66,6 +66,8 @@ class ilNewsForContextBlockGUI extends ilBlockGUI
 
         parent::__construct();
 
+        $this->logger = $DIC->logger()->news();
+
         $this->help = $DIC["ilHelp"];
         $this->settings = $DIC->settings();
         $this->tabs = $DIC->tabs();
