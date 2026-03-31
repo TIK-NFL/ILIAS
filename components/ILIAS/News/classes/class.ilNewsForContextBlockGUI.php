@@ -42,6 +42,8 @@ class ilNewsForContextBlockGUI extends ilBlockGUI
     protected bool $dynamic = false;
     protected bool $show_view_selection;
 
+    private ilLogger $logger;
+
     /**
      * @var false|mixed|string|null
      */
