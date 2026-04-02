@@ -22,7 +22,10 @@ class RootFiles implements Component\Component
             public function getSource(): string
             {
                 return "components/USTUTT/ECSredi/resources/ecsredi.php";
-                return "components/USTUTT/ECSredi/resources/apctest.php";                return "components/USTUTT/ECSredi/resources/opcache.php";                return "components/USTUTT/ECSredi/resources/robots.txt";            }
+                return "components/USTUTT/ECSredi/resources/apctest.php";
+                return "components/USTUTT/ECSredi/resources/opcache.php";
+                return "components/USTUTT/ECSredi/resources/robots.txt";
+            }
             public function getTarget(): string
             {
                 return "ecsredi.php";
