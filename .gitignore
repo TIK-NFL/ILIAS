@@ -24,6 +24,7 @@
 # Core Components and Components From Other Vendors
 /components/*
 !/components/ILIAS
+!/components/USTUTT
 
 # Generated Files
 /artifacts/*
