@@ -6,7 +6,7 @@ namespace USTUTT;
 
 use ILIAS\Component;
 
-class RootFiles implements Component\Component
+class APCtest implements Component\Component
 {
     public function init(
         array | \ArrayAccess &$define,
@@ -21,17 +21,11 @@ class RootFiles implements Component\Component
         $contribute[Component\Resource\PublicAsset::class] = static fn() => new class () implements Component\Resource\PublicAsset {
             public function getSource(): string
             {
-                return "components/USTUTT/ECSredi/resources/ecsredi.php";
-                return "components/USTUTT/ECSredi/resources/apctest.php";
-                return "components/USTUTT/ECSredi/resources/opcache.php";
-                return "components/USTUTT/ECSredi/resources/robots.txt";
+                return "components/USTUTT/APCtest/resources/apctest.php";
             }
             public function getTarget(): string
             {
-                return "ecsredi.php";
                 return "apctest.php";
-                return "opcache.php";
-                return "robots.txt";
             }
         };
     }
