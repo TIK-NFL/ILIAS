@@ -295,7 +295,14 @@ abstract class AbstractFileSystemStorageHandler implements StorageHandler
         $first_level = strtok($container_path, "/");
         if (!empty($first_level)) {
             $full_first_level = $storage_path . '/' . $first_level;
-            $number_of_files = $this->fs->finder()->files()->in([$full_first_level])->count();
+            // Patch von Martin Gorgas
+            // $number_of_files = $this->fs->finder()->files()->in([$full_first_level])->count();
+            $has_files = false;
+            foreach ($this->fs->finder()->files()->in([$full_first_level]) as $file) {
+                $has_files = true;
+                break;
+            }
+            // Ende Patch
             if ($number_of_files === 0) {
                 $this->fs->deleteDir($full_first_level);
             }
