@@ -82,11 +82,11 @@ class assLongMenuGUI extends assQuestionGUI implements ilGuiQuestionScoringAdjus
         $min_auto_complete = (int) ($form->getInput('min_auto_complete') ?? assLongMenu::MIN_LENGTH_AUTOCOMPLETE);
         $hidden_text_files = $this->request_data_collector->string('hidden_text_files');
         $hidden_correct_answers = $this->request_data_collector->string('hidden_correct_answers');
-        $long_menu_type = $this->request_data_collector->raw('long_menu_type') ?? [];
+        $long_menu_type = $this->request_data_collector->intArray('long_menu_type');
         $this->object->setLongMenuTextValue($this->request_data_collector->string('longmenu_text'));
         $this->object->setAnswers($this->trimArrayRecursive($this->stripSlashesRecursive(json_decode($hidden_text_files))));
         $this->object->setCorrectAnswers($this->trimArrayRecursive($this->stripSlashesRecursive(json_decode($hidden_correct_answers))));
-        $this->object->setAnswerType(ilArrayUtil::stripSlashesRecursive($long_menu_type));
+        $this->object->setAnswerType($long_menu_type);
         $this->object->setQuestion($this->request_data_collector->string('question'));
         $this->object->setMinAutoComplete($min_auto_complete);
         $this->object->setIdenticalScoring($this->request_data_collector->int('identical_scoring'));
@@ -122,9 +122,12 @@ class assLongMenuGUI extends assQuestionGUI implements ilGuiQuestionScoringAdjus
     private function stripSlashesRecursive(array $data): array
     {
         return array_map(
-            function (string|array $v): string|array {
+            function (int|string|array $v): int|string|array {
                 if (is_array($v)) {
                     return $this->stripSlashesRecursive($v);
+                }
+                if (is_int($v)) {
+                    return $v;
                 }
                 return ilUtil::stripSlashes($v);
             },
@@ -135,9 +138,12 @@ class assLongMenuGUI extends assQuestionGUI implements ilGuiQuestionScoringAdjus
     private function trimArrayRecursive(array $data): array
     {
         return array_map(
-            function (string|array $v): string|array {
+            function (int|string|array $v): int|string|array {
                 if (is_array($v)) {
                     return $this->trimArrayRecursive($v);
+                }
+                if (is_int($v)) {
+                    return $v;
                 }
                 return trim($v);
             },
@@ -253,8 +259,14 @@ class assLongMenuGUI extends assQuestionGUI implements ilGuiQuestionScoringAdjus
         $answers = $this->object->getAnswersObject();
 
         if ($this->request_data_collector->isset('hidden_text_files')) {
-            $question_parts['list'] = json_decode($this->request_data_collector->raw('hidden_correct_answers')) ?? [];
-            $answers = $this->request_data_collector->raw('hidden_text_files');
+            $question_parts['list'] = $this->trimArrayRecursive(
+                $this->stripSlashesRecursive(
+                    json_decode(
+                        $this->request_data_collector->string('hidden_correct_answers')
+                    ) ?? []
+                )
+            );
+            $answers = $this->request_data_collector->string('hidden_text_files');
         }
 
         $this->tpl->addJavaScript('assets/js/longMenuQuestionGapBuilder.js');
