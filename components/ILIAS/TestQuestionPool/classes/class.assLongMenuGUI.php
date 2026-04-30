@@ -85,8 +85,16 @@ class assLongMenuGUI extends assQuestionGUI implements ilGuiQuestionScoringAdjus
         $long_menu_type = $this->request_data_collector->intArray('long_menu_type');
         $this->object->setLongMenuTextValue($this->request_data_collector->string('longmenu_text'));
         $this->object->setAnswers($this->trimArrayRecursive($this->stripSlashesRecursive(json_decode($hidden_text_files))));
-        $this->object->setCorrectAnswers($this->trimArrayRecursive($this->stripSlashesRecursive(json_decode($hidden_correct_answers))));
-        $this->object->setAnswerType($long_menu_type);
+        $this->object->setCorrectAnswers(
+            $this->convertPointsToFloat(
+                $this->trimArrayRecursive(
+                    $this->stripSlashesRecursive(
+                        json_decode($hidden_correct_answers)
+                    )
+                )
+            )
+        );
+        $this->object->setAnswerType(ilArrayUtil::stripSlashesRecursive($long_menu_type));
         $this->object->setQuestion($this->request_data_collector->string('question'));
         $this->object->setMinAutoComplete($min_auto_complete);
         $this->object->setIdenticalScoring($this->request_data_collector->int('identical_scoring'));
@@ -122,11 +130,11 @@ class assLongMenuGUI extends assQuestionGUI implements ilGuiQuestionScoringAdjus
     private function stripSlashesRecursive(array $data): array
     {
         return array_map(
-            function (int|string|array $v): int|string|array {
+            function (int|float|string|array $v): int|float|string|array {
                 if (is_array($v)) {
                     return $this->stripSlashesRecursive($v);
                 }
-                if (is_int($v)) {
+                if (is_int($v) || is_float($v)) {
                     return $v;
                 }
                 return ilUtil::stripSlashes($v);
@@ -138,16 +146,28 @@ class assLongMenuGUI extends assQuestionGUI implements ilGuiQuestionScoringAdjus
     private function trimArrayRecursive(array $data): array
     {
         return array_map(
-            function (int|string|array $v): int|string|array {
+            function (int|float|string|array $v): int|float|string|array {
                 if (is_array($v)) {
                     return $this->trimArrayRecursive($v);
                 }
-                if (is_int($v)) {
+                if (is_int($v) || is_float($v)) {
                     return $v;
                 }
                 return trim($v);
             },
             $data
+        );
+    }
+
+    private function convertPointsToFloat(
+        array $correct_answers
+    ): array {
+        return array_map(
+            function (array $v): array {
+                $v[1] = $this->refinery->kindlyTo()->float()->transform($v[1]);
+                return $v;
+            },
+            $correct_answers
         );
     }
 
@@ -722,7 +742,9 @@ class assLongMenuGUI extends assQuestionGUI implements ilGuiQuestionScoringAdjus
         $correct_answers = $this->object->getCorrectAnswers();
 
         foreach ($this->object->getAnswers() as $lm_index => $lm) {
-            $points_input = (float) str_replace(',', '.', $form->getInput('points_' . $lm_index));
+            $points_input = $this->refinery->kindlyTo()->float()->transform(
+                $form->getInput('points_' . $lm_index)
+            );
             $correct_answers_input = (array) $form->getInput('longmenu_' . $lm_index . '_tags');
 
             foreach ($correct_answers_input as $idx => $answer) {
