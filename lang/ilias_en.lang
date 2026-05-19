@@ -1461,6 +1461,7 @@ assessment#:#tst_eval_total_passed_average_points#:#Average points of passed tes
 assessment#:#tst_eval_total_passed_average_time#:#Average Time on Task of All Passed Tests
 assessment#:#tst_eval_total_persons#:#Total number of participants who started the test
 assessment#:#tst_exam_access_code#:#Access Code
+assessment#:#tst_exam_access_code_invalid_message#:#The code you provided is invalid.
 assessment#:#tst_exam_access_code_label#:#Enter access code to continue your already started test. Leave the field empty to start a new test run.
 assessment#:#tst_exam_conditions#:#Exam Conditions
 assessment#:#tst_exam_conditions_label#:#Check to accept the conditions.
@@ -1689,7 +1690,8 @@ assessment#:#tst_objective_oriented_test_pass_without_questions#:#The started pa
 assessment#:#tst_objective_progress_header#:#Learning Objective Progress
 assessment#:#tst_objectives_progress_header#:#Learning Objectives Progress
 assessment#:#tst_old_style_rnd_quest_set_broken#:#This random test is in a irreparable state, because one or more connected question pools have been deleted. Therefor participants cannot take the test any longer.
-assessment#:#tst_optional_questions_confirmation_non_fixed_test#:#<b>Question related to already passed learning objectives are optional.</b><br /><br />You want to navigate to a question, that relates to an already passed learning objective.<br />You can choose:<br /><br />I you proceed, you can work on these questions. Your answers from previous attempts were not adopted, since new random questions were selected for this attempt. With working on this questions you can also degrade your learning objective result.<br /><br />If you decide to not work on these questions, you can go back. In this case these questions won't be considered in the evaluation.
+assessment#:#tst_optional_questions_confirmation_fixed_test#:#<b>Questions for already passed learning objectives are already answered.</b><br /><br />The next questions are assigned to already passed learning objectives. Your answers from previous test attempts will carry over.<br /><br />If you continue, you can revise your answers. Doing so may change your results in the related learning objectives.<br /><br />If you do not want to revise your answers, you may go back.
+assessment#:#tst_optional_questions_confirmation_non_fixed_test#:#<b>Questions for already passed learning objectives are optional.</b><br /><br />The next questions are assigned to already passed learning objectives.<br /><br />If you continue, you can work through these questions. Your results in the related learning objectives may change.<br /><br />If you go back, the questions will not factor into the evaluation of this test.
 assessment#:#tst_out_of_time_message#:#You have reached the maximum allowed processing time of the test!
 assessment#:#tst_participant#:#Participant
 assessment#:#tst_participant_fullname_pattern#:#%2$s, %1$s
@@ -5577,7 +5579,7 @@ common#:#scorm_login_as_learner_id_info#:#If enabled, the Username instead of th
 common#:#scorm_lp_auto_activate#:#Default setting for learning progress
 common#:#scorm_lp_auto_activate_info#:#If learning progress is activated in general, the settings for new SCORM learning modules are set to ‘Collection of SCORM Items’ and all SCOs are selected for learning progress determination. Adjustments are still possible for every SCORM learning module.
 common#:#scorm_new#:#Create SCORM Learning Module (Authoring Mode)
-common#:#scorm_without_session#:#SCORM 2004: enable storing data without session
+common#:#scorm_without_session#:#SCORM 2004: Data Storage Without Session
 common#:#scorm_without_session_info#:#This ensures the storage of SCORM 2004 learning data even if ILIAS session expired. For SCORM 1.2, storage without session is always enabled.
 common#:#search#:#Search
 common#:#search_active#:#Include active users
@@ -7082,7 +7084,7 @@ content#:#cont_sc_stat_running#:#Running
 content#:#cont_sc_store_if_previous_score_was_lower#:#if achieved score in previous attempt was higher or equal
 content#:#cont_sc_title#:#title
 content#:#cont_sc_usession#:#Prevent from Logging-Out Automatically
-content#:#cont_sc_usession_info#:#Periodical requests will be sent to ILIAS to keep the session alive. Otherwise ILIAS will categorize working on the learning module as idleness, terminate the session and loose the tracking data.
+content#:#cont_sc_usession_info#:#While working on a learning module, logging out of ILIAS can be disruptive and lead to the loss of learning data. The SCORM RTE regularly sends requests to ILIAS to prevent automatic logouts. To prevent the loss of learning data for SCORM 2004, please also activate the "SCORM 2004: Data Storage Without Session" option. For SCORM 1.2, this option is permanently enabled. You can find this option in the system-wide administration of learning modules.
 content#:#cont_sc_version#:#Version of Learning Module
 content#:#cont_sc_version_info#:#The version number is provided automatically by the version management of the learning module.
 content#:#cont_scheduled_activation#:#Scheduled Activation

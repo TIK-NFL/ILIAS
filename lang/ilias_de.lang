@@ -1461,6 +1461,7 @@ assessment#:#tst_eval_total_passed_average_points#:#Durchschnittliche Punktezahl
 assessment#:#tst_eval_total_passed_average_time#:#Mittlere Bearbeitungsdauer aller bestandenen Tests
 assessment#:#tst_eval_total_persons#:#Gesamtzahl der Personen, die den Test gestartet haben
 assessment#:#tst_exam_access_code#:#Zugangscode
+assessment#:#tst_exam_access_code_invalid_message#:#Der Zugangscode ist ungültig.
 assessment#:#tst_exam_access_code_label#:#Geben Sie den Zugangscode ein, um Ihren bereits begonnenen Test fortzusetzen. Lassen Sie das Feld leer, um einen neuen Testdurchlauf zu starten.
 assessment#:#tst_exam_conditions#:#Prüfungsbedingungen
 assessment#:#tst_exam_conditions_label#:#Ankreuzen, um die Bedingungen zu akzeptieren.
@@ -1689,7 +1690,8 @@ assessment#:#tst_objective_oriented_test_pass_without_questions#:#Der gestartete
 assessment#:#tst_objective_progress_header#:#Fortschritt im Lernziel
 assessment#:#tst_objectives_progress_header#:#Fortschritte in den Lernzielen
 assessment#:#tst_old_style_rnd_quest_set_broken#:#Dieser Random Test befindet sich in einem irreparablen Zustand, da angeschlossene Fragepools gelöscht wurden. Aus diesem Grund können Teilnehmer diesen Test nicht länger absolvieren.
-assessment#:#tst_optional_questions_confirmation_non_fixed_test#:#<b>Fragen zu bereits erfolgreich bearbeiteten Lernzielen sind optional.</b><br /><br />Sie wollen nun zu einer Frage wechseln, welche zu einem bereits bestandenen Lernziel gehört.<br />Sie können wählen:<br /><br />Wenn Sie fortfahren, können Sie die Fragen zu diesen Lernzielen bearbeiten. Da für diesen Versuch aber neue Fragen ausgewählt wurden, wurden Ihre Antworten aus vorherigen Versuchen nicht übernommen. Sie können sich bei erneuter Bearbeitung der Fragen Ihr Lernzielergebnis auch verschlechtern.<br /><br />Wenn Sie die Fragen nicht erneut bearbeiten möchten können Sie zurück gehen. Die Fragen werden dann in der Auswertung nicht berücksichtigt.
+assessment#:#tst_optional_questions_confirmation_fixed_test#:#<b>Fragen zu bereits bestandenen Lernzielen sind schon bearbeitet.</b><br /><br />Die nächsten Fragen gehören zu bereits bestandenen Lernzielen. Die Fragen werden in der Auswertung berücksichtigt, Ihre Antworten aus früheren Versuchen werden übernommen.<br /><br />Wenn Sie fortfahren, können Sie Ihre Antworten einsehen und überarbeiten. Wenn Sie Ihre früheren Antworten verändern, können sich Ihre Lernzielergebnisse verbessern oder verschlechtern.<br /><br />Wenn Sie Ihre Antworten nicht einsehen möchten, können Sie zurück gehen.
+assessment#:#tst_optional_questions_confirmation_non_fixed_test#:#<b>Fragen zu bereits bestandenen Lernzielen sind optional.</b><br /><br />Die nächsten Fragen gehören zu bereits bestandenen Lernzielen.<br /><br />Wenn Sie fortfahren, können Sie die Fragen zu diesen Lernzielen bearbeiten. Dabei können sich Ihre Lernzielergebnisse verbessern oder verschlechtern.<br /><br />Wenn Sie die Fragen nicht bearbeiten möchten, können Sie zurück gehen. Die Fragen werden dann in der Auswertung nicht berücksichtigt.
 assessment#:#tst_out_of_time_message#:#Sie haben die maximal erlaubte Bearbeitungszeit des Tests erreicht!
 assessment#:#tst_participant#:#Teilnehmer
 assessment#:#tst_participant_fullname_pattern#:#%2$s, %1$s
@@ -2542,10 +2544,10 @@ blog#:#blog_news_posting_authors#:#Mitwirkende: %s
 blog#:#blog_news_posting_published#:#Ein neuer Blogbeitrag wurde veröffentlicht von %s.
 blog#:#blog_news_posting_updated#:#Ein Blogbeitrag wurde aktualisiert von %s.
 blog#:#blog_no_keywords#:#Es sind bisher keine Schlagwörter vergeben worden.
-blog#:#blog_notification_activated#:#Änderungs-Benachrichtigung aktiviert
-blog#:#blog_notification_deactivated#:#Änderungs-Benachrichtigung deaktiviert
-blog#:#blog_notification_toggle_off#:#Änderungs-Benachrichtigung deaktivieren
-blog#:#blog_notification_toggle_on#:#Änderungs-Benachrichtigung aktivieren
+blog#:#blog_notification_activated#:#Sie haben die Benachrichtigung aktiviert.
+blog#:#blog_notification_deactivated#:#Sie haben die Benachrichtigung deaktiviert.
+blog#:#blog_notification_toggle_off#:#Benachrichtigung deaktivieren
+blog#:#blog_notification_toggle_on#:#Benachrichtigung aktivieren
 blog#:#blog_number_users_notes_or_comments#:#Anzahl der Benutzer, die zu diesem Beitrag Notizen oder Kommentare verfasst haben.
 blog#:#blog_posting#:#Beitrag
 blog#:#blog_posting_deleted#:#Der Beitrag wurde gelöscht.
@@ -2953,7 +2955,7 @@ chatroom#:#chat_deletion_ival_max_val#:#Der maximale Wert für die gewählte Ein
 chatroom#:#chat_deletion_section_head#:#Löschen alter Nachrichten
 chatroom#:#chat_enable_history#:#Verlauf
 chatroom#:#chat_enable_history_info#:#Alle können im Reiter „Verlauf“ Chat-Beiträge aus der Vergangenheit lesen und exportieren.
-chatroom#:#chat_error_log_info#:#Bitte geben Sier hier den absoluten Serverpfad zu jener Datei an (bspw. /var/www/ilias/data/chat_errors.log), in die der Chat-Server Fehler protokolliert. Wird kein Pfad eingetragen, wird die eine Protokolldatei im selben Verzeichnis erstellt, in dem der Chat-Server liegt.
+chatroom#:#chat_error_log_info#:#Bitte geben Sie hier den absoluten Serverpfad zu jener Datei an (bspw. /var/www/ilias/data/chat_errors.log), in die der Chat-Server Fehler protokolliert. Wird kein Pfad eingetragen, wird die eine Protokolldatei im selben Verzeichnis erstellt, in dem der Chat-Server liegt.
 chatroom#:#chat_functions#:#Chat Funktionen
 chatroom#:#chat_https_cert_info#:#Bitte geben Sie den absoluten Serverpfad zum SSL-Zertifikat an (bspw.: /etc/ssl/certs/server.pem).
 chatroom#:#chat_https_dhparam_info#:#Bitte geben Sie hier den absoluten Serverpfad zu einer Datei an (bspw.: /etc/ssl/private/dhparam.pem), um Diffie-Hellman-Parameter auszuhandeln (z.B. generiert via: openssl dhparam -out /etc/ssl/private/dhparam.pem 2048 ).
@@ -2967,7 +2969,7 @@ chatroom#:#chat_invitations#:#Chateinladungen
 chatroom#:#chat_invite#:#Einladen
 chatroom#:#chat_join#:#Betreten
 chatroom#:#chat_kick#:#Rauswerfen
-chatroom#:#chat_log_info#:#Bitte geben Sier hier den absoluten Serverpfad zu jener Datei an (bspw. /var/www/ilias/data/chat.log), in die der Chat-Server allgemeine Ereignisse protokolliert. Wird kein Pfad eingetragen, wird die eine Protokolldatei im selben Verzeichnis erstellt, in dem der Chat-Server liegt.
+chatroom#:#chat_log_info#:#Bitte geben Sie hier den absoluten Serverpfad zu jener Datei an (bspw. /var/www/ilias/data/chat.log), in die der Chat-Server allgemeine Ereignisse protokolliert. Wird kein Pfad eingetragen, wird die eine Protokolldatei im selben Verzeichnis erstellt, in dem der Chat-Server liegt.
 chatroom#:#chat_log_level#:#Log-Level
 chatroom#:#chat_mainroom#:#Hauptraum
 chatroom#:#chat_message#:#Nachricht
@@ -3861,7 +3863,7 @@ common#:#create_export_file#:#Exportdatei erstellen
 common#:#create_stylesheet#:#Style erstellen
 common#:#created#:#Erstellt am
 common#:#cron_forum_notification#:#Foren-Benachrichtigungen via Cron-Job versenden
-common#:#cron_forum_notification_crob_desc#:#Wenn aktiviert, sendet ILIAS täglich Benachrichtigungen an die Benutzer, die bei ausgewählten Foren oder Foren-Themen über neue und geänderte Beiträge benachrichtigt werden wollen. Bitte beachten Sie: Wenn Sie diese Form der Foren-Benachrichtigungen aktivieren, werden keine direkten Benachrichtungen mehr verschickt (Administration / Foren / Foren-Benachrichtigungen versenden).
+common#:#cron_forum_notification_crob_desc#:#Wenn aktiviert, sendet ILIAS täglich Benachrichtigungen an die Benutzer, die bei ausgewählten Foren oder Foren-Themen über neue und geänderte Beiträge benachrichtigt werden wollen. Bitte beachten Sie: Wenn Sie diese Form der Foren-Benachrichtigungen aktivieren, werden keine direkten Benachrichtigungen mehr verschickt (Administration / Foren / Foren-Benachrichtigungen versenden).
 common#:#cron_forum_notification_disabled#:#Kann nicht deaktiviert werden, wenn der Cron-Job aktiv ist.
 common#:#cron_jobs#:#Cron-Jobs
 common#:#cron_lucene_index#:#Lucene-Suchindex aktualisieren
@@ -5576,7 +5578,7 @@ common#:#scorm_login_as_learner_id_info#:#An Stelle der ILIAS-Benutzer-ID wird d
 common#:#scorm_lp_auto_activate#:#Standardeinstellungen für den Lernfortschritt
 common#:#scorm_lp_auto_activate_info#:#Wenn der Lernfortschritt im Allgemeinen aktiviert ist, wird bei neuen SCORM-Lernmodulen der Gesamtstatus des Lernfortschritts bestimmt durch ausgewählte SCORM-Materialien (SCOs) und alle SCOs werden für die Lernfortschritts-Bestimmung ausgewählt. Anpassungen sind weiterhin bei jedem SCORM-Lernmodul möglich.
 common#:#scorm_new#:#Neues SCORM-Lernmodul anlegen
-common#:#scorm_without_session#:#SCORM 2004-Speicherung ohne Session aktivieren
+common#:#scorm_without_session#:#SCORM 2004: Speicherung ohne Session
 common#:#scorm_without_session_info#:#Dies sichert die Speicherung von SCORM 2004-Lernstandsdaten auch bei abgelaufener ILIAS-Session. Bei SCORM 1.2 ist die Speicherung ohne Session immer aktiviert.
 common#:#search#:#Suche
 common#:#search_active#:#Aktive Benutzer
@@ -6843,14 +6845,14 @@ content#:#cont_nomenu#:#Oberes Navigationsmenü ausblenden
 content#:#cont_nomenu_info#:#Falls das SCORM-Lernmodul eigene Möglichkeiten zum Beenden und Navigieren mitbringt, kann das von der SCORM-Spezifikation vorgesehene obere Navigationsmenü ausgeblendet werden.
 content#:#cont_none#:#Keine
 content#:#cont_not_saved_edit_lock_expired#:#Entschuldigung, Ihre Änderungen konnten nicht gespeichert werden. Die Seite wurde zwischenzeitlich von einem anderen Benutzer zur Bearbeitung gesperrt. Sie können diesen Dialog schließen und dann den Inhalt in Ihre Zwischenablage kopieren.
-content#:#cont_notification_activate_lm#:#Benachrichtigungen für Lernmodul aktivieren
-content#:#cont_notification_activate_page#:#Benachrichtigungen für Seite aktivieren
-content#:#cont_notification_activated#:#Benachrichtigung aktiviert (Gesamtes Lernmodul)
+content#:#cont_notification_activate_lm#:#Benachrichtigung für das Lernmodul aktivieren
+content#:#cont_notification_activate_page#:#Benachrichtigung für diese Seite aktivieren
+content#:#cont_notification_activated#:#Sie haben die Benachrichtigung für das gesamte Lernmodul aktiviert.
 content#:#cont_notification_comment_lm#:#die folgende Seite wurde kommentiert
 content#:#cont_notification_comment_subject_lm#:#Es wurde ein Kommentar zur Seite %s: %s" hinzugefügt
-content#:#cont_notification_deactivate_lm#:#Benachrichtigungen für Lernmodul deaktivieren
-content#:#cont_notification_deactivate_page#:#Benachrichtigungen für Seite deaktivieren
-content#:#cont_notification_deactivated#:#Benachrichtigungen wurden deaktiviert.
+content#:#cont_notification_deactivate_lm#:#Benachrichtigung für das Lernmodul deaktivieren
+content#:#cont_notification_deactivate_page#:#Benachrichtigung für diese Seite deaktivieren
+content#:#cont_notification_deactivated#:#Sie haben die Benachrichtigung deaktiviert.
 content#:#cont_notification_update_lm#:#das folgende Lernmodul wurde geändert
 content#:#cont_notify_on_blocked_users#:#Benachrichtigung über gesperrte Benutzer
 content#:#cont_notify_on_blocked_users_info#:#Sie werden benachrichtigt, sobald Benutzer gesperrt werden, weil Sie die maximale Anzahl an Antwortversuchen überschritten haben.
@@ -7081,7 +7083,7 @@ content#:#cont_sc_stat_running#:#Aktiv
 content#:#cont_sc_store_if_previous_score_was_lower#:#wenn der zuvor erzielte Punktestand höher oder gleich war
 content#:#cont_sc_title#:#Titel
 content#:#cont_sc_usession#:#Automatische Abmeldung aus ILIAS verhindern
-content#:#cont_sc_usession_info#:#Um das automatische Ausloggen und den Verlust von Bearbeitungsdaten zu verhindern, sendet das Lernmodul regelmäßig Anfragen an ILIAS. Die Bearbeitung des SCORM-Lernmoduls würde ansonsten nicht als Aktivität gewertet und die ILIAS-Sitzung beendet werden.
+content#:#cont_sc_usession_info#:#Während das Lernmodul bearbeitet wird, kann eine Abmeldung aus ILIAS als störend empfunden werden und zum Verlust von Bearbeitungsdaten führen. Die SCORM RTE sendet regelmäßig Anfragen an ILIAS, um das automatische Abmelden zu verhindern. Um den Verlust von Bearbeitungsdaten für SCORM 2004 zu verhindern, aktivieren Sie ebenfalls die Option „SCORM 2004: Speicherung ohne Session“. Für SCORM 1.2 ist diese Option dauerhaft aktiviert. Sie finden die Option in der systemweiten Administration von Lernmodulen.
 content#:#cont_sc_version#:#Version des Lernmoduls
 content#:#cont_sc_version_info#:#Die laufende Nummer wird automatisch aus dem Versionsmanagement des Lernmoduls gelesen.
 content#:#cont_scheduled_activation#:#Zeitliche Aktivierung
@@ -7779,8 +7781,8 @@ crs#:#crs_no_users_added#:#Es wurden keine Benutzer hinzugefügt
 crs#:#crs_no_users_selected#:#Sie haben keinen Benutzer ausgewählt
 crs#:#crs_not_available#:#-Nicht angegeben-
 crs#:#crs_notification#:#Benachrichtigungen
-crs#:#crs_notification_activated#:#Benachrichtigung aktiviert
-crs#:#crs_notification_deactivated#:#Benachrichtigung deaktiviert
+crs#:#crs_notification_activated#:#Sie haben die Benachrichtigung aktiviert.
+crs#:#crs_notification_deactivated#:#Sie haben die Benachrichtigung deaktiviert.
 crs#:#crs_notification_explanation_admin#:#Sie erhalten diese Mail, da für Sie als Kursbetreuung die Benachrichtigungen aktiviert sind.
 crs#:#crs_notification_list_title#:#Benachrichtigung
 crs#:#crs_notification_salutation#:#Hallo,
@@ -8298,7 +8300,7 @@ dateplaner#:#cal_ch_cancel_booking_info#:#Bei der Absage von Terminbuchungen wer
 dateplaner#:#cal_ch_cancel_booking_sure#:#Sind Sie sicher, dass die ausgewählten Terminbuchungen abgesagt werden sollen?
 dateplaner#:#cal_ch_canceled_bookings#:#Die ausgewählten Buchungen wurden abgesagt.
 dateplaner#:#cal_ch_ch#:#Sprechstundentermine
-dateplaner#:#cal_ch_cron_reminder#:#Sprechstunden-Benachrichtigungen versenden
+dateplaner#:#cal_ch_cron_reminder#:#Benachrichtigungen über Sprechstunden versenden
 dateplaner#:#cal_ch_cron_reminder_days#:#Anzahl Tage
 dateplaner#:#cal_ch_cron_reminder_info#:#Wenn aktiviert, erhalten Benutzer, die einen Sprechstundentermin gebucht haben, eine Erinnerungsmail über bevorstehende Termine. Bitte legen Sie fest, wieviele Tage im voraus die Erinnerungen verschickt werden sollen.
 dateplaner#:#cal_ch_current_booking_comment#:#Kommentar
@@ -13063,8 +13065,8 @@ notes#:#notes_sort_desc#:#Absteigend sortieren
 notes#:#notes_text#:#Text
 noti#:#noti_activate_notification#:#Benachrichtigung aktivieren
 noti#:#noti_deactivate_notification#:#Benachrichtigung deaktivieren
-noti#:#noti_notification_activated#:#Benachrichtigungen sind aktiviert
-noti#:#noti_notification_deactivated#:#Benachrichtigungen sind deaktiviert
+noti#:#noti_notification_activated#:#Sie haben Benachrichtigungen aktiviert.
+noti#:#noti_notification_deactivated#:#Sie haben Benachrichtigungen deaktiviert.
 notifications_adm#:#enable_osd#:#Pop-up-Benachrichtigungen aktivieren
 notifications_adm#:#enable_osd_desc#:#Wenn aktiviert, werden Benutzer durch ein Pop-up über neue Benachrichtigungen informiert.
 notifications_adm#:#notification_settings#:#Benachrichtigungseinstellungen
@@ -13146,8 +13148,8 @@ obj#:#obj_tool_setting_taxonomies_info#:#Taxonomien erlauben das Filtern von Obj
 obj#:#obj_tool_setting_use_news#:#Neuigkeiten
 obj#:#obj_tool_setting_use_news_info#:#Nutzung des Blocks „Neuigkeiten“ oder der Timeline für Neuigkeiten. Benutzer können Benachrichtigungen für Neuigkeiten aktivieren, sobald der Block oder die Timeline aktiv sind.
 obj#:#obj_tool_setting_use_news_open_settings#:#Einstellungen für Block und Timeline öffnen
-obj#:#obj_user_decides_notification#:#Mitglieder müssen Benachrichtigungen selbst aktivieren
-obj#:#obj_user_not_disable_not#:#Mitglieder können die Benachrichtigung nicht deaktiveren
+obj#:#obj_user_decides_notification#:#Mitglieder müssen Benachrichtigungen selbst aktivieren.
+obj#:#obj_user_not_disable_not#:#Mitglieder können die Benachrichtigung nicht deaktiveren.
 obj#:#online_input_byline#:#Objekt ist veröffentlicht und kann von allen Personen mit dem Recht „Lesezugriff“ genutzt werden. Die Verfügbarkeit kann aber noch durch Vorbedingungen oder zeitliche Zugriffsbeschränkungen eingeschränkt sein. Diese Einstellungen wirkt sich auf alle Referenzen des Objektes aus.
 obj#:#select_import_type_info#:#Der Typ des zu importierenden Objekts konnte nicht automatisch ermittelt werden. Vermutlich wurde die Datei umbenannt. Bitte wählen Sie den Objekt-Typen aus, den Sie importieren möchten.
 obj#:#select_object_type#:#Objekttyp wählen
@@ -13317,7 +13319,7 @@ pdesk#:#bookmark_select_target#:#Bitte wählen Sie das Ziel.
 poll#:#poll_absolute#:#Aktuelle Stimmen
 poll#:#poll_activation_online_info#:#Wählen Sie diese Einstellung, um die Abstimmung für Benutzer verfügbar zumachen.
 poll#:#poll_add#:#Abstimmung anlegen
-poll#:#poll_anonymous_warning#:#Ihre Stimme wurde einzeln erfasst, aber Ihr Name wird in den Abstimmungsergebnissen nicht angezeigt.
+poll#:#poll_anonymous_warning#:#Dies ist eine anonyme Abstimmung. Ihre Stimme wird gespeichert, Ihr Name aber nicht in den Abstimmungsergebnissen angezeigt.
 poll#:#poll_answer#:#Antwort
 poll#:#poll_answer_selected_alt_text#:#Ausgewählt
 poll#:#poll_answers#:#Mögliche Antworten
@@ -13341,13 +13343,13 @@ poll#:#poll_max_number_of_answers#:#Maximale Antworten
 poll#:#poll_max_number_of_answers_info#:#Sie dürfen bis zu %s Antworten auswählen.
 poll#:#poll_mode#:#Modus
 poll#:#poll_mode_anonymous#:#Ohne Namen / Anonym
-poll#:#poll_mode_anonymous_info#:#Im Tab "Abstimmungsergebnisse" werden Namen der Teilnehmenden nicht aufgeführt. Systeminterne IDs der Teilnehmenden werden allerding in der Datenbank gespeichert.
+poll#:#poll_mode_anonymous_info#:#Im Reiter „Abstimmungsergebnisse“ werden keine Namen aufgeführt. Systeminterne IDs der teilnehmenden Personen werden in der Datenbank gespeichert.
 poll#:#poll_mode_personal#:#Mit Namen
-poll#:#poll_mode_personal_info#:#Im Tab "Abstimmungsergebnisse" werden die Namen der Teilnehmenden mit ihren Antworten aufgeführt. Wer Zugriff auf diesen Tab hat, kann prüfen, wer welche Antwort gegeben hat.
+poll#:#poll_mode_personal_info#:#Im Reiter „Abstimmungsergebnisse“ werden die Namen der teilnehmenden Personen mit ihren Antworten aufgeführt.
 poll#:#poll_new#:#Neue Abstimmung anlegen
 poll#:#poll_non_anonymous_warning#:#Ihr Name und Votum sind für die Administration in den Ergebnissen sichtbar.
-poll#:#poll_notification_activated#:#Änderungs-Benachrichtigung aktiviert
-poll#:#poll_notification_deactivated#:#Änderungs-Benachrichtigung deaktiviert
+poll#:#poll_notification_activated#:#Sie haben die Benachrichtigung aktiviert.
+poll#:#poll_notification_deactivated#:#Sie haben die Benachrichtigung deaktiviert.
 poll#:#poll_notification_subscribe#:#Benachrichtigung aktivieren
 poll#:#poll_notification_unsubscribe#:#Benachrichtigung deaktivieren
 poll#:#poll_percentage#:#Aktueller Anteil
