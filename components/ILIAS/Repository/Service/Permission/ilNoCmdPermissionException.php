@@ -18,18 +18,10 @@
 
 declare(strict_types=1);
 
-/**
- * @author Stefan Hecken <stefan.hecken@concepts-and-training.de>
- */
-class ilMailTemplatePlaceholderToEmptyResolver
+namespace ILIAS\Repository\Permission;
+
+use ilException;
+
+class ilNoCmdPermissionException extends ilException
 {
-    public function resolve(
-        string $message,
-    ): string {
-        return preg_replace(
-            "/({{)(\w+)(}})/",
-            "$2",
-            $message
-        );
-    }
 }

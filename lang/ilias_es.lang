@@ -1474,7 +1474,7 @@ assessment#:#tst_exam_modal_message_conditions#:#Por favor, confirme las condici
 assessment#:#tst_exam_modal_message_conditions_and_password#:#Por favor, confirme las condiciones e introduzca la contraseña para iniciar la prueba.
 assessment#:#tst_exam_modal_message_password#:#Por favor, introduzca la contraseña para iniciar la prueba.
 assessment#:#tst_exam_not_assigned_participant_disclaimer#:#No puede iniciar esta prueba, ya que no está asignado como participante.
-assessment#:#tst_exam_password#:#Contraseña del examen
+assessment#:#tst_exam_password#:#Contraseña de la prueba
 assessment#:#tst_exam_password_invalid_message#:#¡La contraseña proporcionada no es válida!
 assessment#:#tst_exam_password_label#:#Contraseña
 assessment#:#tst_exam_required_fields_not_filled_message#:#¡Debe completar todos los campos obligatorios!
@@ -1499,7 +1499,7 @@ assessment#:#tst_final_information#:#Finalizar la prueba
 assessment#:#tst_finish_confirm_button#:#Sí, quiero finalizar la prueba
 assessment#:#tst_finish_confirm_cancel_button#:#No, volver a la pregunta anterior
 assessment#:#tst_finish_confirmation_question#:#Va a finalizar esta prueba. No podrá volver a acceder a este intento de prueba para cambiar sus respuestas. ¿Realmente desea finalizar la prueba?
-assessment#:#tst_finish_confirmation_question_no_attempts_left#:#Va a finalizar esta prueba y alcanzará el número máximo de intentos permitidos. No podrá volver a entrar en esta prueba para cambiar sus respuestas. ¿Realmente desea finalizar la prueba?
+assessment#:#tst_finish_confirmation_question_no_attempts_left#:#Va a finalizar esta prueba y alcanzará el número máximo de intentos permitidos. No podrá volver a acceder a esta prueba para cambiar sus respuestas. ¿Realmente desea finalizarla?
 assessment#:#tst_finish_notification#:#Notificación
 assessment#:#tst_finish_notification_advanced#:#Enviar resultado completo de la prueba
 assessment#:#tst_finish_notification_content_type#:#Contenido del correo electrónico
@@ -1595,9 +1595,9 @@ assessment#:#tst_introduction_text#:#Mensaje introductorio
 assessment#:#tst_invited_nobody#:#No se han añadido usuarios, grupos ni roles como participantes fijos del test
 assessment#:#tst_invited_selected_users#:#Los usuarios seleccionados se han añadido como participantes fijos del test
 assessment#:#tst_launcher_button_label_passes_limit_reached#:#Has alcanzado el límite de intentos posibles del test
-assessment#:#tst_launcher_status_message_conditions#:#Se te pedirá que aceptes las condiciones del examen cuando inicies el test.
-assessment#:#tst_launcher_status_message_conditions_and_password#:#Se te pedirá la contraseña y que aceptes las condiciones del examen cuando inicies el test.
-assessment#:#tst_launcher_status_message_password#:#Se te pedirá la contraseña cuando inicies el test.
+assessment#:#tst_launcher_status_message_conditions#:#Se le pedirá que acepte las condiciones del examen cuando inicie la prueba.
+assessment#:#tst_launcher_status_message_conditions_and_password#:#Se le pedirá la contraseña y que acepte las condiciones del examen cuando inicie la prueba.
+assessment#:#tst_launcher_status_message_password#:#Se le pedirá la contraseña cuando inicie la prueba.
 assessment#:#tst_level#:#Nivel de competencia
 assessment#:#tst_limit_nr_of_tries#:#Limitar el número de intentos del test
 assessment#:#tst_link_only_unassigned#:#Has seleccionado al menos una pregunta que ya está vinculada a un banco de preguntas. Solo se pueden añadir preguntas no asignadas a un banco de preguntas.
@@ -2932,6 +2932,7 @@ certificate#:#persistent_certificate_mode_instant#:#Instantáneo
 certificate#:#persistent_certificate_mode_instant_info#:#Esta opción se recomienda para sistemas con niveles de interacción de usuarios bajos o medios. Los sistemas que tienden a tiempos de carga más largos durante la creación de múltiples certificados de usuario deberían cambiar a la opción 'Tarea programada'.
 chatroom#:#allow_anonymous#:#Permitir inicio de sesión anónimo
 chatroom#:#allow_custom_usernames#:#Permitir nombres de usuario personalizados
+chatroom#:#allow_custom_usernames_info#:#Allow users to enter their own unique session name to use within the chat room. If this option is not selected, users are automatically identified using their usernames (login) when in the chat room.###07 07 2026 new variable
 chatroom#:#anonymous_hint#:#Asegúrese de establecer los permisos adecuados en la pestaña 'Permisos' para permitir el acceso de usuarios anónimos a este elemento del repositorio.
 chatroom#:#auto_scroll#:#Desplazar hacia abajo
 chatroom#:#autogen_usernames#:#Nombres de usuario generados automáticamente
@@ -3028,6 +3029,7 @@ chatroom#:#chat_user_action_invite_public_room#:#Invitar a sala pública
 chatroom#:#chat_user_x_is_typing#:#El usuario %s está escribiendo ...
 chatroom#:#chat_users_are_typing#:#Varios usuarios están escribiendo ...
 chatroom#:#chat_whisper#:#Susurrar
+chatroom#:#chatroom_anonymous_default#:#Anonymous ####07 07 2026 new variable
 chatroom#:#chatroom_auth#:#Autenticación
 chatroom#:#chatroom_auth_btn_txt#:#Generar claves
 chatroom#:#chatroom_auth_key#:#Clave de autenticación
@@ -4829,7 +4831,7 @@ common#:#msg_no_perm_paste#:#No tiene permiso para pegar los siguientes objeto(s
 common#:#msg_no_perm_paste_object_in_folder#:#No tiene permiso para pegar el objeto %s en la carpeta %s.
 common#:#msg_no_perm_perm#:#No tiene permiso para cambiar los ajustes de permisos.
 common#:#msg_no_perm_read#:#No tiene permiso para acceder a este elemento.
-common#:#msg_no_perm_read_item#:#No tiene permiso para acceder al elemento '%s'.
+common#:#msg_no_perm_read_item#:#No tiene permiso para acceder al elemento.
 common#:#msg_no_perm_read_lm#:#No tiene permiso para leer este módulo de aprendizaje.
 common#:#msg_no_perm_view_roles_of_user#:#No tiene permiso para ver la asignación de roles de este usuario
 common#:#msg_no_perm_write#:#No tiene permiso para editar los ajustes.
@@ -5704,6 +5706,7 @@ common#:#show_content#:#Mostrar contenido
 common#:#show_details#:#Mostrar detalles
 common#:#show_filter#:#Mostrar filtro
 common#:#show_hidden_sections#:#Mostrar más información &raquo;
+common#:#show_less#:#Show less###07 07 2026 new variable
 common#:#show_list#:#Mostrar lista
 common#:#show_members#:#Mostrar Miembros
 common#:#show_more#:#Mostrar más
@@ -5850,15 +5853,15 @@ common#:#trash#:#Papelera
 common#:#tree#:#Árbol
 common#:#tree_frame#:#Marco del árbol
 common#:#treeview#:#Mostrar barra lateral
-common#:#tst#:#Test
-common#:#tst_add#:#Añadir test
+common#:#tst#:#Prueba
+common#:#tst_add#:#Añadir prueba
 common#:#tst_edit_questions#:#Editar preguntas
 common#:#tst_history_read#:#Ver historial
-common#:#tst_new#:#Nuevo test
-common#:#tst_results#:#Resultados del examen
+common#:#tst_new#:#Nueva prueba
+common#:#tst_results#:#Resultados de la prueba
 common#:#tst_run#:#Ejecución
-common#:#tst_user_not_invited#:#No está autorizado para realizar este examen.
-common#:#tst_warning_test_not_complete#:#¡El examen no está completo!
+common#:#tst_user_not_invited#:#No está autorizado para realizar esta prueba.
+common#:#tst_warning_test_not_complete#:#¡La prueba no está completa!
 common#:#tutors#:#Tutores
 common#:#txt_registered#:#Se ha registrado correctamente en ILIAS. Por favor, haga clic en el botón de abajo para iniciar sesión con su cuenta de usuario.
 common#:#txt_registered_passw_gen#:#Se ha registrado correctamente en ILIAS. En breve recibirá un correo electrónico con su contraseña generada.
@@ -10713,9 +10716,14 @@ itgr#:#itgr_always_open#:#Siempre abierto
 itgr#:#itgr_assign_materials#:#Asignar materiales
 itgr#:#itgr_assigned_materials#:#Materiales asignados
 itgr#:#itgr_assignment#:#Asignado
-itgr#:#itgr_behaviour#:#Comportamiento del bloque
-itgr#:#itgr_behaviour_info#:#El sistema almacenará el estado abierto/cerrado para el usuario actual hasta que cierre la sesión.
 itgr#:#itgr_desc_info#:#La descripción no formará parte de la presentación del grupo de elementos en su contenedor.
+itgr#:#itgr_display#:#Display###07 07 2026 new variable
+itgr#:#itgr_display_with_title#:#With Title###07 07 2026 new variable
+itgr#:#itgr_display_with_title_and_toggleable#:#With Title, Item Group collapsible###07 07 2026 new variable
+itgr#:#itgr_display_with_title_and_toggleable_initially#:#Initial state###07 07 2026 new variable
+itgr#:#itgr_display_with_title_and_toggleable_initially_closed#:#initially closed###07 07 2026 new variable
+itgr#:#itgr_display_with_title_and_toggleable_initially_open#:#initially opened###07 07 2026 new variable
+itgr#:#itgr_display_without_title#:#Without Title###07 07 2026 new variable
 itgr#:#itgr_edit#:#Editar grupos de elementos
 itgr#:#itgr_expandable_closed#:#Expandible (inicialmente cerrado)
 itgr#:#itgr_expandable_open#:#Expandible (inicialmente abierto)
@@ -10725,8 +10733,6 @@ itgr#:#itgr_list_default#:#Predeterminado
 itgr#:#itgr_list_default_info#:#Hereda el valor del contenedor superior.
 itgr#:#itgr_list_presentation#:#Presentación de elementos
 itgr#:#itgr_materials#:#Materiales
-itgr#:#itgr_show_title#:#Mostrar título
-itgr#:#itgr_show_title_info#:#Muestra el título del grupo de elementos en la presentación para el alumno.
 itgr#:#itgr_tile#:#Mosaicos
 itgr#:#itgr_tile_size#:#Tamaño del mosaico
 jscalendar#:#about_calendar#:#Acerca del calendario
@@ -15086,8 +15092,8 @@ rep#:#rep_export_limitation_limited#:#Limitar exportación
 rep#:#rep_export_limitation_unlimited#:#Exportación ilimitada
 rep#:#rep_failure_trashed_trash#:#Ha seleccionado objetos que no pueden restaurarse a su ubicación original porque sus objetos superiores fueron eliminados. Por favor, desmarque el objeto correspondiente en la tabla o seleccione Restaurar en una ubicación nueva en su lugar.
 rep#:#rep_fav_intro1#:#Aún no ha seleccionado ningún favorito. Para ello, debe seguir dos pasos:
-rep#:#rep_fav_intro2#:#Haga clic en '%s' y seleccione un objeto de aprendizaje de la oferta disponible, por ejemplo, un módulo de aprendizaje o un foro.
-rep#:#rep_fav_intro3#:#Cuando haya encontrado algo que le interese, puede añadirlo fácilmente a sus favoritos. Seleccione el elemento deseado en el menú <i>Acciones</i> y elija "<i>Añadir a favoritos</i>".
+rep#:#rep_fav_intro2#:#Haga clic en '%s' y seleccione un objeto de aprendizaje entre las opciones disponibles, por ejemplo, un módulo de aprendizaje o un foro.
+rep#:#rep_fav_intro3#:#Cuando encuentre algo que le interese, puede añadirlo fácilmente a sus favoritos. En el menú <i>Acciones</i> del elemento deseado, seleccione «<i>Añadir a favoritos</i>».
 rep#:#rep_favourites#:#Favoritos
 rep#:#rep_favourites_info#:#Los usuarios pueden marcar elementos individuales del repositorio como favoritos. Las listas de favoritos se pueden activar y configurar en los ajustes del tablero y del menú.
 rep#:#rep_input_not_empty#:#Este campo no puede estar vacío, por favor proporcione un valor.
