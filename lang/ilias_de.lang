@@ -4827,7 +4827,7 @@ common#:#msg_no_perm_paste#:#Sie besitzen keine ausreichende Berechtigung, um di
 common#:#msg_no_perm_paste_object_in_folder#:#Sie besitzen keine ausreichende Berechtigung, um das Objekt %s in den Ordner %s einzufügen.
 common#:#msg_no_perm_perm#:#Sie besitzen keine ausreichende Berechtigung, um auf die Rechteeinstellungen zuzugreifen.
 common#:#msg_no_perm_read#:#Sie besitzen keine ausreichende Berechtigung, um auf dieses Objekt zuzugreifen.
-common#:#msg_no_perm_read_item#:#Sie haben keine Berechtigung, auf das Objekt „%s“ zuzugreifen.
+common#:#msg_no_perm_read_item#:#Sie haben keine Berechtigung, auf das Objekt zuzugreifen.
 common#:#msg_no_perm_read_lm#:#Sie besitzen keine ausreichende Berechtigung, um diese Lernmodul anzuzeigen.
 common#:#msg_no_perm_view_roles_of_user#:#Sie haben keine Berechtigung, auf die Rollenzuweisung des Kontos zuzugreifen
 common#:#msg_no_perm_write#:#Sie besitzen keine Rechte, um Einstellungen zu ändern!
@@ -5380,6 +5380,7 @@ common#:#preconditions_optional_hint#:#Bitte erfüllen Sie mindestens <b>%s</b> 
 common#:#predefined_template#:#Vordefinierte Rollenvorlage
 common#:#preferences#:#Benutzerdefinierte Einstellungen
 common#:#presentation_table_more#:#Mehr anzeigen
+common#:#presenter#:#Präsentiert von
 common#:#preview#:#Vorschau
 common#:#preview_create#:#Vorschau erstellen
 common#:#preview_delete#:#Vorschau löschen
@@ -7668,20 +7669,20 @@ crs#:#crs_loc_passes_info#:#Maximalanzahl Testdurchläufe:
 crs#:#crs_loc_passes_left#:#Verbleibende Anzahl von Testdurchläufen
 crs#:#crs_loc_passes_reached#:#Keine weiteren Testdurchläufe möglich
 crs#:#crs_loc_perc#:#Benötigte Prozentzahl an Punkten
-crs#:#crs_loc_progress_do_qualifying#:#Bitte führen Sie den Abschlusstest durch, um das Lernziel abzuschließen.
-crs#:#crs_loc_progress_do_qualifying_again#:#Bitte bearbeiten Sie das Lernziel erneut.
+crs#:#crs_loc_progress_do_qualifying#:#Führen Sie den Abschlusstest durch, um das Erreichen des Lernziels zu überprüfen.
+crs#:#crs_loc_progress_do_qualifying_again#:#Bitte bearbeiten Sie die Materialien zum Lernziel erneut.
 crs#:#crs_loc_progress_no_result_do_initial#:#Bearbeiten Sie den Einstiegstest
-crs#:#crs_loc_progress_no_result_no_initial#:#Bearbeiten Sie die folgenden Materialien und danach den Abschlusstest.
+crs#:#crs_loc_progress_no_result_no_initial#:#Bearbeiten Sie die folgenden Materialien und absolvieren danach den Abschlusstest.
 crs#:#crs_loc_progress_objective_complete#:#Sie haben das Lernziel erreicht.
 crs#:#crs_loc_progress_result_itest#:#Ergebnis Einstiegstest
 crs#:#crs_loc_progress_result_qtest#:#Ergebnis
-crs#:#crs_loc_qst_resume_tst_itest#:#Einstiegstests zu verschiedenen Lernzielen dürfen nicht parallel gestartet werden. Sie haben schon einen Einstiegstest zu einem Lernziel gestartet. Entweder setzen Sie diesen alten Test fort oder Sie starten einen neuen Test.
-crs#:#crs_loc_qst_resume_tst_qtest#:#Qualifizierende Tests zu verschiedenen Lernzielen dürfen nicht parallel gestartet werden. Sie haben schon einen Qualifizierenden Test zu einem Lernziel gestartet. Entweder setzen Sie diesen alten Test fort oder Sie starten einen neuen Test.
+crs#:#crs_loc_qst_resume_tst_itest#:#Einstiegstests zu verschiedenen Lernzielen dürfen nicht parallel gestartet werden. Sie haben schon einen Einstiegstest zu einem Lernziel gestartet. Entweder setzen Sie diesen Test fort oder starten einen neuen Test.
+crs#:#crs_loc_qst_resume_tst_qtest#:#Qualifizierende Tests zu verschiedenen Lernzielen dürfen nicht parallel gestartet werden. Sie haben schon einen Qualifizierenden Test zu einem Lernziel gestartet. Entweder setzen Sie diesen Test fort oder starten einen neuen Test.
 crs#:#crs_loc_qtest_info#:#Abschlusstest
-crs#:#crs_loc_qtst_for_objective#:#Qualifizierender Test "%1$s"
+crs#:#crs_loc_qtst_for_objective#:#Qualifizierender Test „%1$s“
 crs#:#crs_loc_rand_assign_qpl#:#Zuordnung aus Fragenpool
 crs#:#crs_loc_rand_qpl#:#Verfügbare Fragenpools
-crs#:#crs_loc_settings_err_qstart#:#Die Option "Abschlusstest als Startobjekt" wurde deaktiviert, da sie nur für Kurse ohne Einstiegstest verwendet werden kann.
+crs#:#crs_loc_settings_err_qstart#:#Die Option „Abschlusstest als Startobjekt“ wurde deaktiviert, da sie nur für Kurse ohne Einstiegstest verwendet werden kann.
 crs#:#crs_loc_settings_it_start_object#:#Einstiegstest ist Startobjekt
 crs#:#crs_loc_settings_it_type#:#Einstiegstest
 crs#:#crs_loc_settings_itest_tbl#:#Einstellungen für Einstiegstest
@@ -7702,21 +7703,21 @@ crs#:#crs_loc_settings_tbl_its_q_all#:#Qualifizierender Einstiegstest über alle
 crs#:#crs_loc_settings_tbl_qt#:#Abschlusstests pro Lernziel
 crs#:#crs_loc_settings_tbl_qts_all#:#Abschlusstest über alle Lernziele
 crs#:#crs_loc_settings_type_it_none#:#Kein Einstiegstest
-crs#:#crs_loc_settings_type_it_none_info#:#Kein Einstiegstest
+crs#:#crs_loc_settings_type_it_none_info#:#Die am Kurs teilnehmenden Personen arbeiten sich selbstgesteuert durch das Kursangebot, um die Lernziele zu erreichen. Sie können den Abschlusstest ablegen, um festzustellen, ob sie die Lernziele bereits erreicht haben oder ob zusätzliches Lernen und Training erforderlich ist.
 crs#:#crs_loc_settings_type_it_placement_all#:#Diagnostischer Einstiegstest über alle Lernziele
-crs#:#crs_loc_settings_type_it_placement_all_info#:#Diagnostischer Einstiegstest über alle Lernziele
+crs#:#crs_loc_settings_type_it_placement_all_info#:#Es muss zunächst ein erster Test absolviert werden, der Fragen zu allen Lernzielen enthält. Auf der Grundlage der individuellen Ergebnisse wird  unterstützendes Lernmaterial empfohlen. Auch Lernziele, die in diesem Test bereits bestanden wurden, werden im Abschlusstest erneut überprüft.
 crs#:#crs_loc_settings_type_it_placement_sel#:#Diagnostischer Einstiegstest pro Lernziel
-crs#:#crs_loc_settings_type_it_placement_sel_info#:#Diagnostischer Einstiegstest pro Lernziel
+crs#:#crs_loc_settings_type_it_placement_sel_info#:#Für jedes Lernziel muss ein separater Einstiegstest absolviert werden. Dieser enthält nur Fragen zu dem jeweiligen Lernziel. Auf der Grundlage der individuellen Ergebnisse wird unterstützendes Lernmaterial empfohlen. Auch Lernziele, die in den Einstiegstests bestanden wurden, werden im Abschlusstest erneut überprüft.
 crs#:#crs_loc_settings_type_it_qualifying_all#:#Qualifizierender Einstiegstest über alle Lernziele
-crs#:#crs_loc_settings_type_it_qualifying_all_info#:#Qualifizierender Einstiegstest über alle Lernziele
+crs#:#crs_loc_settings_type_it_qualifying_all_info#:#Der Eingangstest bewertet, ob ein Lernziel bereits erreicht wird. Der Test enthält Fragen zu allen Lernzielen. Wurden Lernziele im Einstiegstest bereits erreicht, werden sie nicht mehr im Abschlusstest überprüft.
 crs#:#crs_loc_settings_type_it_qualifying_sel#:#Qualifizierender Einstiegstest pro Lernziel
-crs#:#crs_loc_settings_type_it_qualifying_sel_info#:#Qualifizierender Einstiegstest pro Lernziel
+crs#:#crs_loc_settings_type_it_qualifying_sel_info#:#Für jedes Lernziel bewertet ein separater Einstiegstest, ob ein Lernziel bereits erreicht wird. Die jeweiligen Tests enthalten nur Fragen zum jeweiligen Lernziel und prüfen, ob das jeweilige Lernziel bereits erreicht wird oder nicht. Wurde ein Lernziel im zugehörigen Einstiegstest bereits erreicht, wird es nicht mehr im Abschlusstest überprüft.
 crs#:#crs_loc_settings_type_q_all#:#Abschlusstest über alle Lernziele
-crs#:#crs_loc_settings_type_q_all_info#:#Abschlusstest über alle Lernziele
+crs#:#crs_loc_settings_type_q_all_info#:#Das Erreichen aller Lernziele wird in einem einzigen Abschlusstest überprüft.
 crs#:#crs_loc_settings_type_q_selected#:#Abschlusstest pro Lernziel
-crs#:#crs_loc_settings_type_q_selected_info#:#Abschlusstest pro Lernziel
+crs#:#crs_loc_settings_type_q_selected_info#:#Für jedes Lernziel ist ein separater Abschlusstest zu absolvieren, um das Erreichen des jeweiligen Lernziels zu bestätigen.
 crs#:#crs_loc_subtab_creation#:#Erstellen
-crs#:#crs_loc_suggested#:#Bearbeiten Sie bitte die aufgeführten Materialien, um das Lernziel zu erreichen.
+crs#:#crs_loc_suggested#:#Bearbeiten Sie die nachfolgend aufgeführten Materialien. Führen Sie am Ende den Abschlusstest durch, um das Erreichen des Lernziels zu überprüfen.
 crs#:#crs_loc_tab_itest#:#Einstiegstest
 crs#:#crs_loc_tab_itests#:#Einstiegstests
 crs#:#crs_loc_tab_materials#:#Materialien
@@ -15620,8 +15621,8 @@ sess#:#sess_msg_applicants_assigned#:#Person wurde für den Sitzungstermin angem
 sess#:#sess_msg_applicants_removed#:#Antrag abgelehnt und aus der Liste entfernt.
 sess#:#sess_new#:#Neue Sitzung anlegen
 sess#:#sess_new_registrations#:#Teilnahmeanträge
-sess#:#sess_notification_option#:#Option
-sess#:#sess_notification_option_inherit#:#Vom übergeordneten Objekt erben
+sess#:#sess_notification_option#:#Benachrichtigte Personen
+sess#:#sess_notification_option_inherit#:#Wie in Kurs oder Gruppe
 sess#:#sess_notification_option_inherit_info#:#Es werden die gleichen Personen benachrichtigt wie im übergeordneten Objekt.
 sess#:#sess_notification_option_manual#:#Manuell setzen
 sess#:#sess_notification_option_manual_info#:#Es muss manuell festgelegt werden, wer die Benachrichtigung empfangen soll.

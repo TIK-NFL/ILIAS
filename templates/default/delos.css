@@ -7677,7 +7677,7 @@ code {
   .c-maincontrols__footer {
     font-size: 0.75rem;
   }
-  .c-maincontrols__footer-grid {
+  .c-maincontrols__footer-grid--sm {
     grid-template-columns: repeat(4, 1fr);
   }
 }
@@ -7685,7 +7685,7 @@ code {
   .c-maincontrols__footer {
     font-size: 0.875rem;
   }
-  .c-maincontrols__footer-grid {
+  .c-maincontrols__footer-grid--sm, .c-maincontrols__footer-grid--md {
     grid-template-columns: repeat(1, 1fr);
   }
   .c-maincontrols__footer ul li {
@@ -10180,10 +10180,6 @@ div.alert ul > li:before {
   content: "\e108";
 }
 
-.glyphicon-calendar:before {
-  content: "\e109";
-}
-
 .glyphicon-random:before {
   content: "\e110";
 }
@@ -11030,6 +11026,31 @@ div.alert ul > li:before {
   font-family: il-icons;
   content: "\e90d";
   cursor: grab;
+}
+
+.glyphicon-presenter:before {
+  font-family: il-icons;
+  content: "\e90e";
+}
+
+.glyphicon-owner:before {
+  font-family: il-icons;
+  content: "\e90f";
+}
+
+.glyphicon-date:before {
+  font-family: il-icons;
+  content: "\e619";
+}
+
+.glyphicon-calendar:before {
+  font-family: il-icons;
+  content: "\e075";
+}
+
+.glyphicon-location:before {
+  font-family: il-icons;
+  content: "\e096";
 }
 
 .il-avatar {
