@@ -20,19 +20,19 @@ declare(strict_types=1);
 
 class ForumDto
 {
-    private int $top_pk;
-    private int $top_frm_fk;
-    private string $top_name;
-    private string $top_description;
-    private int $top_num_posts;
-    private int $top_num_threads;
+    private int $top_pk = 0;
+    private int $top_frm_fk = 0;
+    private ?string $top_name = null;
+    private ?string $top_description = null;
+    private int $top_num_posts = 0;
+    private int $top_num_threads = 0;
     private ?string $top_last_post = null;
-    private int $top_mods;
+    private int $top_mods = 0;
     private ?string $top_date = null;
-    private int $visits;
+    private int $visits = 0;
     private ?string $top_update = null;
-    private int $update_user;
-    private int $top_usr_id;
+    private int $update_user = 0;
+    private int $top_usr_id = 0;
 
     public function getTopPk(): int
     {
