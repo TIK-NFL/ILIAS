@@ -1296,7 +1296,7 @@ class ilObjStyleSheet extends ilObject
         $this->chars_by_type = array();
         $q = "SELECT * FROM style_char WHERE style_id = " .
             $ilDB->quote($this->getId(), "integer") .
-            " ORDER BY type ASC, characteristic ASC";
+            " ORDER BY type ASC, order_nr ASC, characteristic ASC";
         $par_set = $ilDB->query($q);
         while ($par_rec = $ilDB->fetchAssoc($par_set)) {
             $this->chars[] = array("type" => $par_rec["type"], "class" => $par_rec["characteristic"], "hide" => $par_rec["hide"]);
@@ -2842,7 +2842,7 @@ class ilObjStyleSheet extends ilObject
      */
     public function lookupTemplateName(int $a_t_id): string
     {
-        return self::_lookupTemplateName($a_t_id);
+        return (string) self::_lookupTemplateName($a_t_id);
     }
 
     /**

@@ -7162,7 +7162,7 @@ content#:#cont_standard#:#Standard
 content#:#cont_start#:#Start
 content#:#cont_start_file_set_to#:#%s has been set as start file.
 content#:#cont_start_value#:#Start Value
-content#:#cont_start_value_info#:#Enter start value as decimal number. Default is 1.
+content#:#cont_start_value_info#:#Enter start value as decimal number. Default is 1. If you use an own counter via ::before, the start value will only be used, if you use the internal 'list-item' counter.
 content#:#cont_startfile#:#Start File
 content#:#cont_status#:#Status
 content#:#cont_std_is_in_dir#:#Deletion not possible. Standard view file is in directory.
@@ -9617,6 +9617,7 @@ exc#:#exc_reminder_submit_setting#:#Remind Users to Submit
 exc#:#exc_reminder_submit_subject#:#Assignment "%s" was not finished
 exc#:#exc_reminders_cron#:#Reminders for Assignments
 exc#:#exc_reminders_cron_info#:#If enabled, 3 reminders will be active: Users to Submit, Tutors to Grade and Participants to Feedback.
+exc#:#exc_reminders_cron_not_active#:#Note: Notifications will not be sent until the 'Reminders for Assignments' cron job is activated. Currently the cron job is deactivated.
 exc#:#exc_request_deadline#:#Request Deadline
 exc#:#exc_requirement#:#Requirement
 exc#:#exc_review_anytime#:#Give Feedback Anytime
@@ -15662,7 +15663,6 @@ sess#:#sess_registration_notification#:#Notification
 sess#:#sess_registration_notification_info#:#Shows column in tab 'Participants' to select users being notified about new or leaving participants
 sess#:#sess_section_reg#:#Registration Settings
 sess#:#sess_setting_header_presentation#:#Presentation
-sess#:#sess_show_members#:#Show Participants
 sess#:#sess_show_participants_info#:#If activated, session participants can access the participant gallery
 sess#:#sess_title#:#Title of Session
 sess#:#sess_users_added#:#Registered selected users for the session.
